@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy｜PickleStart Taiwan"
+  description="PickleStart Taiwan 的隱私說明。MVP 不需註冊，也不要求姓名、Email、電話或付款資料。"
+>
+  <article class="content-page content-page-narrow">
+    <p class="eyebrow">Privacy</p>
+    <h1>我們刻意少收資料。</h1>
+
+    <p class="content-lead">
+      PickleStart 不需要帳號，也不要求你提供姓名、Email、電話、地址或付款資料。
+    </p>
+
+    <section class="content-section">
+      <h2>Builder 會問什麼？</h2>
+      <p>
+        Builder 只詢問與 Starter Kit 有關的選項，例如匹克球經驗、
+        球拍數量、使用場地、已有裝備、總預算與使用目標。
+      </p>
+      <p>
+        這些答案用於在瀏覽器中即時計算結果，PickleStart 不建立個人會員檔案，
+        也不把完整 Builder 答案送到分析服務。
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>網站分析</h2>
+      <p>
+        正式部署後，PickleStart 可啟用 GoatCounter 來統計頁面瀏覽與少量產品事件，
+        例如是否開始 Builder、是否完成 Builder，以及是否點擊商品連結。
+      </p>
+      <p>
+        事件只使用一般事件名稱與非個人商品識別資訊，不傳送姓名、Email、電話、地址
+        或完整 Builder 回答。若網站未設定 GoatCounter，這套分析程式不會啟用。
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>外部商品網站</h2>
+      <p>
+        點擊商品來源或未來的 affiliate link 後，你會離開 PickleStart。
+        外部商店的資料收集、Cookie、付款與隱私政策由該網站自行管理。
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>我們不會在前端放秘密金鑰</h2>
+      <p>
+        PickleStart 是靜態網站，不需要把 API secret、商店密碼或其他私人憑證
+        放進瀏覽器程式碼。
+      </p>
+    </section>
+
+    <section class="content-section content-callout">
+      <p>
+        如果未來加入新的分析、表單、會員或其他資料處理功能，
+        應在上線前同步更新這份說明。
+      </p>
+    </section>
+  </article>
+</BaseLayout>

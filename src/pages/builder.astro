@@ -1,0 +1,1333 @@
+---
+import Analytics from "../components/Analytics.astro";
+const title = "Starter Kit Builder | PickleStart Taiwan";
+
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site ?? Astro.url.origin
+);
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>{title}</title>
+
+    <meta
+      name="description"
+      content="回答 6 個問題，60 秒建立你的匹克球新手 Starter Kit。"
+    />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="回答 6 個問題，60 秒建立你的匹克球新手 Starter Kit。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="zh_TW" />
+
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+
+  <body>
+    <main class="shell builder-shell">
+      <header id="builder-header" class="builder-header">
+        <a class="back-home" href="/">← PickleStart</a>
+
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span id="step-label">Question 1 of 6</span>
+            <span id="progress-percent">17%</span>
+          </div>
+
+          <div class="progress-track">
+            <div
+              id="progress-bar"
+              class="progress-bar"
+              style="width: 16.67%"
+            ></div>
+          </div>
+        </div>
+      </header>
+
+      <section id="builder-container">
+
+        <!-- Q1 -->
+        <section class="builder-step active" data-step="1">
+          <p class="eyebrow">先了解你的經驗</p>
+
+          <h1 class="question-title">
+            你目前是哪種狀態？
+          </h1>
+
+          <div class="choice-grid" data-choice-group="experience">
+            <button
+              type="button"
+              class="choice-card"
+              data-value="first_time"
+            >
+              <span class="choice-icon">🌱</span>
+              <span>
+                <strong>第一次體驗</strong>
+                <small>還沒正式開始打</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="few_times"
+            >
+              <span class="choice-icon">🎾</span>
+              <span>
+                <strong>已經玩過幾次</strong>
+                <small>還在熟悉這項運動</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="weekly"
+            >
+              <span class="choice-icon">📅</span>
+              <span>
+                <strong>每週固定打</strong>
+                <small>已經開始養成習慣</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="serious"
+            >
+              <span class="choice-icon">🏆</span>
+              <span>
+                <strong>想認真進步 / 比賽</strong>
+                <small>願意投入較好的裝備</small>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Q2 -->
+        <section class="builder-step" data-step="2">
+          <p class="eyebrow">需要多少球拍？</p>
+
+          <h1 class="question-title">
+            這次你總共需要幾支球拍？
+          </h1>
+
+          <p class="question-description">
+            例如你和朋友兩個人都沒有球拍，就選 2。
+          </p>
+
+          <div class="stepper-card">
+            <button
+              type="button"
+              id="paddle-minus"
+              class="stepper-button"
+              aria-label="減少球拍數量"
+            >
+              −
+            </button>
+
+            <div>
+              <span id="paddle-count" class="stepper-value">2</span>
+              <span class="stepper-unit">支</span>
+            </div>
+
+            <button
+              type="button"
+              id="paddle-plus"
+              class="stepper-button"
+              aria-label="增加球拍數量"
+            >
+              +
+            </button>
+          </div>
+
+          <p class="helper-text">
+            MVP 目前支援 1–4 支球拍。
+          </p>
+        </section>
+
+        <!-- Q3 -->
+        <section class="builder-step" data-step="3">
+          <p class="eyebrow">使用場地</p>
+
+          <h1 class="question-title">
+            你主要會在哪裡玩？
+          </h1>
+
+          <div class="choice-grid" data-choice-group="venue">
+            <button
+              type="button"
+              class="choice-card"
+              data-value="indoor"
+            >
+              <span class="choice-icon">🏟️</span>
+              <span>
+                <strong>室內球館</strong>
+                <small>通常已有球網</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="outdoor_court"
+            >
+              <span class="choice-icon">☀️</span>
+              <span>
+                <strong>戶外固定球場</strong>
+                <small>公共球場或固定場地</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="self_setup"
+            >
+              <span class="choice-icon">🌳</span>
+              <span>
+                <strong>公園 / 空地</strong>
+                <small>可能需要自己準備球網</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="unknown"
+            >
+              <span class="choice-icon">🤔</span>
+              <span>
+                <strong>還不知道</strong>
+                <small>先從最基本的裝備開始</small>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Q4 -->
+        <section class="builder-step" data-step="4">
+          <p class="eyebrow">避免重複購買</p>
+
+          <h1 class="question-title">
+            你已經有哪些裝備？
+          </h1>
+
+          <p class="question-description">
+            我們會優先沿用你已經有的東西。
+          </p>
+
+          <div class="equipment-list">
+            <div class="equipment-row">
+              <div>
+                <strong>匹克球拍</strong>
+                <small>目前已經有幾支？</small>
+              </div>
+
+              <div class="mini-stepper">
+                <button
+                  type="button"
+                  id="existing-paddle-minus"
+                >
+                  −
+                </button>
+
+                <span id="existing-paddle-count">0</span>
+
+                <button
+                  type="button"
+                  id="existing-paddle-plus"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            <label class="equipment-option">
+              <input id="has-balls" type="checkbox" />
+              <span>
+                <strong>匹克球</strong>
+                <small>已經有可以使用的球</small>
+              </span>
+            </label>
+
+            <label class="equipment-option">
+              <input id="has-badminton-shoes" type="checkbox" />
+              <span>
+                <strong>羽球鞋</strong>
+                <small>可以先沿用，不必急著換鞋</small>
+              </span>
+            </label>
+
+            <label class="equipment-option">
+              <input id="has-tennis-shoes" type="checkbox" />
+              <span>
+                <strong>網球鞋</strong>
+                <small>具備側向移動支撐</small>
+              </span>
+            </label>
+
+            <label class="equipment-option">
+              <input id="has-court-shoes" type="checkbox" />
+              <span>
+                <strong>Court Shoes</strong>
+                <small>其他適合球場側向移動的鞋款</small>
+              </span>
+            </label>
+
+            <label class="equipment-option">
+              <input id="has-net" type="checkbox" />
+              <span>
+                <strong>已有球網 / 場地有球網</strong>
+                <small>只有自備場地時特別重要</small>
+              </span>
+            </label>
+
+            <button
+              type="button"
+              id="clear-equipment"
+              class="secondary-button"
+            >
+              我什麼都沒有
+            </button>
+          </div>
+        </section>
+
+        <!-- Q5 -->
+        <section class="builder-step" data-step="5">
+          <p class="eyebrow">控制總花費</p>
+
+          <h1 class="question-title">
+            你整套裝備總共想花多少？
+          </h1>
+
+          <div class="choice-grid" data-choice-group="budget">
+            <button
+              type="button"
+              class="choice-card"
+              data-value="1500"
+            >
+              <strong>NT$1,500 以下</strong>
+              <small>先體驗看看</small>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="3000"
+            >
+              <strong>NT$1,500–3,000</strong>
+              <small>基本入門</small>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="5000"
+            >
+              <strong>NT$3,000–5,000</strong>
+              <small>比較完整的新手裝備</small>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="8000"
+            >
+              <strong>NT$5,000–8,000</strong>
+              <small>準備固定使用</small>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="12000"
+            >
+              <strong>NT$8,000+</strong>
+              <small>願意投資更好的裝備</small>
+            </button>
+          </div>
+        </section>
+
+        <!-- Q6 -->
+        <section class="builder-step" data-step="6">
+          <p class="eyebrow">最後一題</p>
+
+          <h1 class="question-title">
+            你希望怎麼玩？
+          </h1>
+
+          <div class="choice-grid" data-choice-group="goal">
+            <button
+              type="button"
+              class="choice-card"
+              data-value="casual"
+            >
+              <span class="choice-icon">😄</span>
+              <span>
+                <strong>偶爾跟朋友玩</strong>
+                <small>先以低成本體驗為主</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="regular"
+            >
+              <span class="choice-icon">🎾</span>
+              <span>
+                <strong>每週休閒</strong>
+                <small>希望裝備耐用、好上手</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="improve"
+            >
+              <span class="choice-icon">📈</span>
+              <span>
+                <strong>想慢慢進步</strong>
+                <small>願意買可以用比較久的裝備</small>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="choice-card"
+              data-value="competitive"
+            >
+              <span class="choice-icon">🏆</span>
+              <span>
+                <strong>想認真訓練 / 比賽</strong>
+                <small>優先考慮長期使用</small>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <p id="validation-message" class="validation-message"></p>
+
+        <div class="builder-navigation">
+          <button
+            id="back-button"
+            class="secondary-button"
+            type="button"
+            disabled
+          >
+            ← 上一題
+          </button>
+
+          <button
+            id="next-button"
+            class="primary-button"
+            type="button"
+          >
+            下一題 →
+          </button>
+        </div>
+      </section>
+      <!-- Result -->
+      <section id="result-container" class="result-page hidden">
+        <a class="back-home result-home-link" href="/">← PickleStart</a>
+
+        <div class="result-hero">
+          <div>
+            <p class="eyebrow">Your PickleStart Kit</p>
+            <h1 class="result-title">先買需要的，其他晚點再說。</h1>
+            <p class="result-lead">
+              我們依照你的經驗、場地、現有裝備與總預算，
+              整理出一個比較不容易買錯的起步方案。
+            </p>
+          </div>
+
+          <div class="result-status">
+            <span class="status-dot"></span>
+            <span>Recommendation Engine v1</span>
+          </div>
+        </div>
+
+        <div id="result-summary"></div>
+
+        <div
+          id="warning-section"
+          class="result-section warning-section hidden"
+        ></div>
+
+        <div class="decision-grid">
+          <section class="result-section result-section-buy">
+            <div class="section-heading">
+              <div>
+                <span class="section-kicker">BUY NOW</span>
+                <h2>現在需要</h2>
+              </div>
+              <span class="section-icon">🟢</span>
+            </div>
+            <div id="buy-now-list"></div>
+          </section>
+
+          <section class="result-section result-section-have">
+            <div class="section-heading">
+              <div>
+                <span class="section-kicker">REUSE</span>
+                <h2>你已經有</h2>
+              </div>
+              <span class="section-icon">✓</span>
+            </div>
+            <div id="already-have-list"></div>
+          </section>
+
+          <section class="result-section result-section-later">
+            <div class="section-heading">
+              <div>
+                <span class="section-kicker">LATER</span>
+                <h2>之後再考慮</h2>
+              </div>
+              <span class="section-icon">⏳</span>
+            </div>
+            <div id="optional-later-list"></div>
+          </section>
+
+          <section class="result-section result-section-skip">
+            <div class="section-heading">
+              <div>
+                <span class="section-kicker">SKIP</span>
+                <h2>暫時不用買</h2>
+              </div>
+              <span class="section-icon">✕</span>
+            </div>
+            <div id="skip-now-list"></div>
+          </section>
+        </div>
+
+        <section id="product-section" class="product-section">
+          <div class="product-section-header">
+            <div>
+              <p class="eyebrow">Product Options</p>
+              <h2>符合你目前條件的商品</h2>
+            </div>
+
+            <p class="product-section-note">
+              價格與供貨可能變動。以下依最近一次人工驗證的
+              價格帶與公開規格整理。
+            </p>
+          </div>
+
+          <div id="product-list" class="product-list"></div>
+        </section>
+
+        <section class="trust-panel">
+          <div><span class="trust-icon">◎</span></div>
+          <div>
+            <strong>為什麼沒有塞更多商品？</strong>
+            <p>
+              PickleStart 的排序不看分潤比例。
+              如果你已有裝備、目前不需要，或預算根本不適合，
+              我們寧可叫你先不要買。
+            </p>
+          </div>
+        </section>
+
+        <div class="result-actions">
+          <button id="restart-button" class="primary-button" type="button">
+            重新建立 Starter Kit
+          </button>
+          <a class="secondary-button action-link" href="/">回首頁</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      import { buildStarterKit } from "../logic/recommendation";
+      import { trackEvent } from "../lib/analytics";
+      import type {
+        BuilderInput,
+        BudgetTier,
+        Experience,
+        Goal,
+        Venue
+      } from "../types";
+
+      let currentStep = 1;
+
+
+      let builderStarted = false;
+
+
+
+      function markBuilderStarted() {
+
+
+        if (builderStarted) return;
+
+
+
+        builderStarted = true;
+
+
+        trackEvent("builder_started");
+
+
+      }
+
+      let experience: Experience | null = null;
+      let requestedPaddles = 2;
+      let venue: Venue | null = null;
+      let budget: BudgetTier | null = null;
+      let goal: Goal | null = null;
+
+      const steps = Array.from(
+        document.querySelectorAll<HTMLElement>(".builder-step")
+      );
+
+      const builderHeader =
+        document.querySelector<HTMLElement>("#builder-header");
+
+      const stepLabel =
+        document.querySelector<HTMLElement>("#step-label");
+
+      const progressPercent =
+        document.querySelector<HTMLElement>("#progress-percent");
+
+      const progressBar =
+        document.querySelector<HTMLElement>("#progress-bar");
+
+      const nextButton =
+        document.querySelector<HTMLButtonElement>("#next-button");
+
+      const backButton =
+        document.querySelector<HTMLButtonElement>("#back-button");
+
+      const validationMessage =
+        document.querySelector<HTMLElement>(
+          "#validation-message"
+        );
+
+      const builderContainer =
+        document.querySelector<HTMLElement>(
+          "#builder-container"
+        );
+
+      const resultContainer =
+        document.querySelector<HTMLElement>(
+          "#result-container"
+        );
+
+      function selectChoice(
+        groupName: string,
+        value: string,
+        button: HTMLButtonElement
+      ) {
+        markBuilderStarted();
+        const group = document.querySelector(
+          `[data-choice-group="${groupName}"]`
+        );
+
+        group
+          ?.querySelectorAll(".choice-card")
+          .forEach((item) =>
+            item.classList.remove("selected")
+          );
+
+        button.classList.add("selected");
+
+        if (groupName === "experience") {
+          experience = value as Experience;
+        }
+
+        if (groupName === "venue") {
+          venue = value as Venue;
+        }
+
+        if (groupName === "budget") {
+          budget = Number(value) as BudgetTier;
+        }
+
+        if (groupName === "goal") {
+          goal = value as Goal;
+        }
+
+        clearValidation();
+      }
+
+      document
+        .querySelectorAll<HTMLButtonElement>(".choice-card")
+        .forEach((button) => {
+          button.addEventListener("click", () => {
+            const group =
+              button.closest<HTMLElement>(
+                "[data-choice-group]"
+              );
+
+            if (!group) return;
+
+            selectChoice(
+              group.dataset.choiceGroup ?? "",
+              button.dataset.value ?? "",
+              button
+            );
+          });
+        });
+
+      const paddleCount =
+        document.querySelector<HTMLElement>(
+          "#paddle-count"
+        );
+
+      document
+        .querySelector("#paddle-minus")
+        ?.addEventListener("click", () => {
+          requestedPaddles =
+            Math.max(1, requestedPaddles - 1);
+
+          if (paddleCount) {
+            paddleCount.textContent =
+              String(requestedPaddles);
+          }
+        });
+
+      document
+        .querySelector("#paddle-plus")
+        ?.addEventListener("click", () => {
+          requestedPaddles =
+            Math.min(4, requestedPaddles + 1);
+
+          if (paddleCount) {
+            paddleCount.textContent =
+              String(requestedPaddles);
+          }
+        });
+
+      let existingPaddles = 0;
+
+      const existingPaddleCount =
+        document.querySelector<HTMLElement>(
+          "#existing-paddle-count"
+        );
+
+      function updateExistingPaddles() {
+        existingPaddles = Math.min(
+          existingPaddles,
+          requestedPaddles
+        );
+
+        if (existingPaddleCount) {
+          existingPaddleCount.textContent =
+            String(existingPaddles);
+        }
+      }
+
+      document
+        .querySelector("#existing-paddle-minus")
+        ?.addEventListener("click", () => {
+          existingPaddles =
+            Math.max(0, existingPaddles - 1);
+
+          updateExistingPaddles();
+        });
+
+      document
+        .querySelector("#existing-paddle-plus")
+        ?.addEventListener("click", () => {
+          existingPaddles =
+            Math.min(
+              requestedPaddles,
+              existingPaddles + 1
+            );
+
+          updateExistingPaddles();
+        });
+
+      document
+        .querySelector("#clear-equipment")
+        ?.addEventListener("click", () => {
+          existingPaddles = 0;
+
+          [
+            "has-balls",
+            "has-badminton-shoes",
+            "has-tennis-shoes",
+            "has-court-shoes",
+            "has-net"
+          ].forEach((id) => {
+            const input =
+              document.querySelector<HTMLInputElement>(
+                `#${id}`
+              );
+
+            if (input) {
+              input.checked = false;
+            }
+          });
+
+          updateExistingPaddles();
+        });
+
+      function checkboxValue(id: string): boolean {
+        return (
+          document.querySelector<HTMLInputElement>(
+            `#${id}`
+          )?.checked ?? false
+        );
+      }
+
+      function validateStep(): boolean {
+        clearValidation();
+
+        if (currentStep === 1 && !experience) {
+          showValidation("請先選擇目前的經驗狀態。");
+          return false;
+        }
+
+        if (currentStep === 3 && !venue) {
+          showValidation("請先選擇主要使用場地。");
+          return false;
+        }
+
+        if (currentStep === 5 && !budget) {
+          showValidation("請先選擇你的總預算。");
+          return false;
+        }
+
+        if (currentStep === 6 && !goal) {
+          showValidation("請先選擇你的使用目標。");
+          return false;
+        }
+
+        return true;
+      }
+
+      function showValidation(message: string) {
+        if (validationMessage) {
+          validationMessage.textContent = message;
+        }
+      }
+
+      function clearValidation() {
+        if (validationMessage) {
+          validationMessage.textContent = "";
+        }
+      }
+
+      function renderStep() {
+        steps.forEach((step) => {
+          step.classList.toggle(
+            "active",
+            Number(step.dataset.step) === currentStep
+          );
+        });
+
+        const percent =
+          Math.round((currentStep / 6) * 100);
+
+        if (stepLabel) {
+          stepLabel.textContent =
+            `Question ${currentStep} of 6`;
+        }
+
+        if (progressPercent) {
+          progressPercent.textContent =
+            `${percent}%`;
+        }
+
+        if (progressBar) {
+          progressBar.style.width =
+            `${percent}%`;
+        }
+
+        if (backButton) {
+          backButton.disabled =
+            currentStep === 1;
+        }
+
+        if (nextButton) {
+          nextButton.textContent =
+            currentStep === 6
+              ? "看我的 Starter Kit →"
+              : "下一題 →";
+        }
+
+        if (currentStep === 4) {
+          updateExistingPaddles();
+        }
+
+        clearValidation();
+      }
+
+      backButton?.addEventListener("click", () => {
+        if (currentStep > 1) {
+          currentStep -= 1;
+          renderStep();
+        }
+      });
+
+      nextButton?.addEventListener("click", () => {
+        if (!validateStep()) return;
+
+        markBuilderStarted();
+        trackEvent(`builder_q${currentStep}_completed`);
+
+        if (currentStep < 6) {
+          currentStep += 1;
+          renderStep();
+          return;
+        }
+
+        generateResult();
+      });
+
+      function generateResult() {
+        if (
+          !experience ||
+          !venue ||
+          !budget ||
+          !goal
+        ) {
+          return;
+        }
+
+        const input: BuilderInput = {
+          experience,
+          requestedPaddles,
+          venue,
+
+          existingEquipment: {
+            paddles: existingPaddles,
+            balls: checkboxValue("has-balls"),
+
+            badmintonShoes:
+              checkboxValue(
+                "has-badminton-shoes"
+              ),
+
+            tennisShoes:
+              checkboxValue(
+                "has-tennis-shoes"
+              ),
+
+            courtShoes:
+              checkboxValue(
+                "has-court-shoes"
+              ),
+
+            netAvailable:
+              checkboxValue("has-net")
+          },
+
+          budget,
+          goal
+        };
+
+        const result =
+
+
+          buildStarterKit(input);
+
+
+
+        trackEvent("builder_completed");
+
+
+        trackEvent("result_viewed");
+
+        builderContainer?.classList.add("hidden");
+        builderHeader?.classList.add("hidden");
+
+        resultContainer?.classList.remove(
+          "hidden"
+        );
+
+        renderResult(result, input);
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+
+      function money(value: number) {
+        return new Intl.NumberFormat(
+          "zh-TW"
+        ).format(Math.round(value));
+      }
+
+      function renderItems(
+        targetId: string,
+        items: Array<{
+          label: string;
+          quantity?: number;
+          estimatedMin?: number;
+          estimatedMax?: number;
+          reason: string;
+        }>
+      ) {
+        const target =
+          document.querySelector<HTMLElement>(
+            `#${targetId}`
+          );
+
+        if (!target) return;
+
+        if (items.length === 0) {
+          target.innerHTML =
+            `<p class="empty-state">目前沒有項目。</p>`;
+          return;
+        }
+
+        target.innerHTML = items
+          .map((item) => {
+            const quantity =
+              item.quantity
+                ? ` × ${item.quantity}`
+                : "";
+
+            const price =
+              item.estimatedMin !== undefined &&
+              item.estimatedMax !== undefined
+                ? `
+                  <p class="item-price">
+                    約 NT$${money(item.estimatedMin)}
+                    – ${money(item.estimatedMax)}
+                  </p>
+                `
+                : "";
+
+            return `
+              <article class="result-item">
+                <strong>
+                  ${item.label}${quantity}
+                </strong>
+
+                ${price}
+
+                <p>${item.reason}</p>
+              </article>
+            `;
+          })
+          .join("");
+      }
+      function categoryLabel(category: string) {
+        switch (category) {
+          case "paddle": return "球拍";
+          case "ball": return "匹克球";
+          case "shoes": return "場地鞋";
+          case "net": return "球網";
+          default: return category;
+        }
+      }
+
+      function evidenceLabel(level: string) {
+        switch (level) {
+          case "manufacturer_specs": return "官方規格";
+          case "hands_on": return "實際使用";
+          default: return "資料整理";
+        }
+      }
+
+      function renderResult(
+        result: ReturnType<typeof buildStarterKit>,
+        input: BuilderInput
+      ) {
+        const resultSummary =
+          document.querySelector<HTMLElement>("#result-summary");
+
+        const budgetInsufficient = result.warnings.some(
+          (warning) => warning.code === "BUDGET_INSUFFICIENT"
+        );
+
+        if (resultSummary) {
+          const remainingMin = Math.max(
+            0,
+            input.budget - result.estimatedMaxSpend
+          );
+
+          const remainingMax = Math.max(
+            0,
+            input.budget - result.estimatedMinSpend
+          );
+
+          resultSummary.innerHTML = `
+            <div class="budget-summary">
+              <div class="budget-summary-copy">
+                <span class="summary-label">
+                  ${
+                    budgetInsufficient
+                      ? "這個方案目前超出你的預算"
+                      : "你的起步預算看起來可行"
+                  }
+                </span>
+
+                <strong class="summary-range">
+                  NT$${money(result.estimatedMinSpend)}
+                  –
+                  NT$${money(result.estimatedMaxSpend)}
+                </strong>
+
+                <p>
+                  ${
+                    budgetInsufficient
+                      ? `你的預算是 NT$${money(input.budget)}，先調整場地或借用部分裝備會更合理。`
+                      : `你的總預算是 NT$${money(input.budget)}，不用為了把預算花完而升級不必要的裝備。`
+                  }
+                </p>
+              </div>
+
+              <div class="summary-metrics">
+                <div class="summary-metric">
+                  <span>你的預算</span>
+                  <strong>NT$${money(input.budget)}</strong>
+                </div>
+
+                <div class="summary-metric">
+                  <span>${budgetInsufficient ? "最低可行花費" : "建議保留"}</span>
+                  <strong>
+                    ${
+                      budgetInsufficient
+                        ? `NT$${money(result.estimatedMinSpend)}`
+                        : remainingMax === remainingMin
+                          ? `NT$${money(remainingMin)}`
+                          : `NT$${money(remainingMin)}–${money(remainingMax)}`
+                    }
+                  </strong>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        renderItems("buy-now-list", result.buyNow);
+        renderItems("already-have-list", result.alreadyHave);
+        renderItems("optional-later-list", result.optionalLater);
+        renderItems("skip-now-list", result.skipForNow);
+
+        const warningSection =
+          document.querySelector<HTMLElement>("#warning-section");
+
+        if (warningSection) {
+          if (result.warnings.length > 0) {
+            warningSection.classList.remove("hidden");
+            warningSection.innerHTML = `
+              <div class="section-heading">
+                <div>
+                  <span class="section-kicker">CHECK FIRST</span>
+                  <h2>先處理這些問題</h2>
+                </div>
+                <span class="section-icon">⚠️</span>
+              </div>
+
+              ${result.warnings
+                .map(
+                  (warning) => `
+                    <article class="warning-card">
+                      <strong>${warning.message}</strong>
+                      <ul>
+                        ${warning.suggestions
+                          .map((item) => `<li>${item}</li>`)
+                          .join("")}
+                      </ul>
+                    </article>
+                  `
+                )
+                .join("")}
+            `;
+          } else {
+            warningSection.classList.add("hidden");
+            warningSection.innerHTML = "";
+          }
+        }
+
+        const productSection =
+          document.querySelector<HTMLElement>("#product-section");
+
+        const productList =
+          document.querySelector<HTMLElement>("#product-list");
+
+        if (productSection && productList) {
+          if (result.productRecommendations.length === 0) {
+            productSection.classList.add("hidden");
+            productList.innerHTML = "";
+          } else {
+            productSection.classList.remove("hidden");
+
+            productList.innerHTML = result.productRecommendations
+              .map((recommendation, index) => {
+                const product = recommendation.product;
+                const topPick =
+                  index === 0
+                    ? `<span class="fit-badge">最符合目前條件</span>`
+                    : "";
+
+                const reasons = recommendation.reasons
+                  .slice(0, 3)
+                  .map((reason) => `<li><span>✓</span>${reason}</li>`)
+                  .join("");
+
+                return `
+                  <article class="product-card">
+                    <div class="product-card-top">
+                      <div>
+                        <div class="product-meta">
+                          <span class="product-category">
+                            ${categoryLabel(product.category)}
+                          </span>
+                          ${topPick}
+                        </div>
+
+                        <h3>${product.name}</h3>
+                        <p class="product-merchant">${product.merchant}</p>
+                      </div>
+
+                      <div class="product-price">
+                        <span>約</span>
+                        <strong>
+                          NT$${money(product.priceMin)}
+                          – ${money(product.priceMax)}
+                        </strong>
+                      </div>
+                    </div>
+
+                    <p class="product-reason">${product.shortReason}</p>
+
+                    <ul class="product-fit-list">
+                      ${reasons}
+                    </ul>
+
+                    <div class="product-card-footer">
+                      <div class="product-verification">
+                        <span>${evidenceLabel(product.evidenceLevel)}</span>
+                        <span>·</span>
+                        <span>驗證 ${product.lastVerified}</span>
+                      </div>
+
+                      <a
+                        class="product-link js-product-link"
+                        href="${product.affiliateUrl ?? product.sourceUrl}"
+                        target="_blank"
+                        rel="sponsored noopener noreferrer"
+                        data-product-id="${product.id}"
+                        data-category="${product.category}"
+                        data-rank="${index + 1}"
+                        data-link-type="${product.affiliateUrl ? "affiliate" : "source"}"
+                      >
+                        ${
+                          product.affiliateUrl
+                            ? "查看目前價格 →"
+                            : "查看商品來源 →"
+                        }
+                      </a>
+                    </div>
+                  </article>
+                `;
+              })
+              .join("");
+          }
+        }
+      }
+
+      document
+        .querySelector("#restart-button")
+        ?.addEventListener("click", () => {
+          window.location.reload();
+        });
+
+      document.addEventListener("click", (event) => {
+
+
+        const target =
+
+
+          event.target as HTMLElement | null;
+
+
+
+        const link =
+
+
+          target?.closest<HTMLAnchorElement>(
+
+
+            ".js-product-link"
+
+
+          );
+
+
+
+        if (!link) return;
+
+
+
+        const isAffiliate =
+
+
+          link.dataset.linkType ===
+
+
+          "affiliate";
+
+
+
+        trackEvent(
+
+
+          isAffiliate
+
+
+            ? "affiliate_clicked"
+
+
+            : "product_source_clicked",
+
+
+          {
+
+
+            product:
+
+
+              link.dataset.productId,
+
+
+            category:
+
+
+              link.dataset.category,
+
+
+            rank:
+
+
+              link.dataset.rank
+
+
+          }
+
+
+        );
+
+
+      });
+
+
+
+      renderStep();
+    </script>
+    <Analytics />
+  </body>
+</html>

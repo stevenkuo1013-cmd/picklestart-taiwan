@@ -1,0 +1,4 @@
+---
+const path = Astro.url.pathname;
+---
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="/"><span class="brand-mark" aria-hidden="true">●</span><span>PickleStart Taiwan</span></a><nav class="site-nav" aria-label="主要導覽"><a class:list={[{ active: path === "/" }]} href="/">首頁</a><a class:list={[{ active: path === "/builder/" }]} href="/builder">建立 Starter Kit</a><a href="/#guides">新手指南</a><a class:list={[{ active: path === "/how-we-recommend/" }]} href="/how-we-recommend">推薦方式</a></nav></div></header>

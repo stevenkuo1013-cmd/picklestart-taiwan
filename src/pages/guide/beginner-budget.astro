@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { buildStarterKit } from "../../logic/recommendation";
+import type { BuilderInput } from "../../types";
+import "../../styles/guide.css";
+
+const twoPersonInput: BuilderInput = {
+  experience: "first_time",
+  requestedPaddles: 2,
+  venue: "outdoor_court",
+  existingEquipment: {
+    paddles: 0,
+    balls: false,
+    badmintonShoes: true,
+    tennisShoes: false,
+    courtShoes: false,
+    netAvailable: true
+  },
+  budget: 3000,
+  goal: "casual"
+};
+
+const seriousInput: BuilderInput = {
+  experience: "serious",
+  requestedPaddles: 1,
+  venue: "indoor",
+  existingEquipment: {
+    paddles: 0,
+    balls: false,
+    badmintonShoes: false,
+    tennisShoes: false,
+    courtShoes: false,
+    netAvailable: true
+  },
+  budget: 8000,
+  goal: "competitive"
+};
+
+const twoPersonResult = buildStarterKit(twoPersonInput);
+const seriousResult = buildStarterKit(seriousInput);
+
+const money = (value: number) =>
+  new Intl.NumberFormat("zh-TW").format(Math.round(value));
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-09-29"
+  dateModified="2026-09-29"
+  title="第一次玩匹克球要花多少錢？NT$2,000／3,000／5,000 新手預算｜PickleStart Taiwan"
+  description="匹克球新手預算怎麼抓？從 NT$2,000、3,000 到 5,000 以上，拆解球拍、球、鞋與球網的優先順序，並用 Starter Kit Builder 算出你的實際預算。"
+>
+  <article class="guide-page">
+    <div class="guide-hero">
+      <p class="eyebrow">Beginner Budget Guide</p>
+      <h1>第一次玩匹克球，要花多少錢才合理？</h1>
+
+      <p class="guide-lead">
+        沒有一個所有人都適用的「新手預算」。兩個人已有羽球鞋、
+        去固定戶外球場，和四個人要在公園自己架球網，成本可以差非常多。
+        所以與其先問「球拍多少錢」，更應該先問「整套我需要什麼」。
+      </p>
+
+      <div class="guide-cta-row">
+        <a class="primary-button" href="/builder">
+          算我的實際 Starter Kit 預算 →
+        </a>
+        <span>使用目前商品 catalog 即時計算</span>
+      </div>
+    </div>
+
+    <section class="guide-budget-rule">
+      <span>PickleStart 的預算邏輯</span>
+      <strong>總預算 − 必要非球拍成本 = 可用球拍預算</strong>
+      <strong>可用球拍預算 ÷ 還缺的球拍數量 = 單支球拍預算</strong>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">NT$2,000 左右</p>
+      <h2>適合：一個人先體驗，或你已經有部分裝備</h2>
+      <p>
+        這個預算最適合「先開始」而不是「一次買完整」。
+        如果你已經有可沿用的場地鞋、場地有球網，而且只需要一支入門拍，
+        通常比較有機會控制在這個範圍。
+      </p>
+
+      <div class="guide-note">
+        <strong>這個預算最怕什麼？</strong>
+        <p>
+          同時需要多支球拍、鞋子或攜帶式球網。這些需求一疊加，
+          就不應該為了守住 NT$2,000 而硬買不合理的產品。
+        </p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">NT$3,000 左右</p>
+      <h2>適合：兩人休閒入門，但已有合適鞋子與固定場地</h2>
+
+      <p>
+        例如兩個第一次玩的使用者，到戶外固定球場、已經有羽球鞋，
+        目前 PickleStart 的 catalog 與 Recommendation Engine 會估出：
+      </p>
+
+      <div class="dynamic-budget-card">
+        <span>兩人休閒示例</span>
+        <strong>
+          NT${money(twoPersonResult.estimatedMinSpend)}
+          –
+          NT${money(twoPersonResult.estimatedMaxSpend)}
+        </strong>
+        <p>
+          球拍 × 2 + 小包裝戶外球，沿用現有羽球鞋，不買球網。
+        </p>
+      </div>
+
+      <p>
+        這也是為什麼「總預算 NT$3,000」不代表一定要找到一支 NT$3,000 的球拍。
+        對兩個人來說，預算要先分給兩支球拍與球。
+      </p>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">NT$5,000 左右</p>
+      <h2>適合：開始固定打，希望第一支拍可以用久一點</h2>
+
+      <p>
+        預算提高之後，可以開始考慮較完整的入門或中階球拍，
+        但仍然不代表一定要把 NT$5,000 全部花完。
+        如果你已有鞋、球網與球，剩餘預算應該優先花在最會影響使用體驗的裝備上。
+      </p>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">NT$8,000 左右</p>
+      <h2>適合：認真固定打，並且還缺場地鞋</h2>
+
+      <p>
+        例如一名認真訓練的室內玩家，沒有場地鞋、需要一支較高階球拍與室內球，
+        目前系統估算為：
+      </p>
+
+      <div class="dynamic-budget-card">
+        <span>認真訓練示例</span>
+        <strong>
+          NT${money(seriousResult.estimatedMinSpend)}
+          –
+          NT${money(seriousResult.estimatedMaxSpend)}
+        </strong>
+        <p>
+          較高 tier 球拍 + 室內球 + 場地鞋；即使預算是 NT$8,000，
+          也不會為了花完預算而自動升級更多配件。
+        </p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2>真正容易讓預算爆掉的是球網</h2>
+      <p>
+        如果你選擇公園或空地自行架場，而且現場沒有球網，
+        portable net 可能直接成為整套裝備中非常大的支出。
+        對第一次體驗的人，先找已有球網的公共場地通常比「硬買完整自架套裝」更有效率。
+      </p>
+    </section>
+
+    <section class="guide-builder-callout">
+      <p class="eyebrow">Your Budget, Not Average Budget</p>
+      <h2>你真正需要的預算，要看已有裝備與場地。</h2>
+      <p>
+        Builder 會先算你缺什麼，再依你的總預算產生合理組合；
+        如果做不到，它會直接告訴你預算不足。
+      </p>
+
+      <a class="primary-button" href="/builder">
+        算我的 Starter Kit 預算 →
+      </a>
+    </section>
+
+    <section class="guide-source-note">
+      <h2>價格說明</h2>
+      <p>
+        本頁動態示例使用網站目前的商品 catalog 與 Recommendation Engine 產生，
+        商品價格與供貨仍可能變動，實際價格以外部商店當下頁面為準。
+      </p>
+    </section>
+  </article>
+</BaseLayout>

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+
+.env
+.env.*
+
+backups/
+__pycache__/
+
+apply_m*_*.py
+builder.backup.astro
+
+.DS_Store
+Thumbs.db
+src/styles/global.backup.css
+src/styles/global.backup.css
