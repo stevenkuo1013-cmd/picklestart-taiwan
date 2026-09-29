@@ -2,6 +2,8 @@
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import Analytics from "../components/Analytics.astro";
+import "../styles/global.css";
+import "../styles/public.css";
 
 interface Props {
   title: string;
@@ -98,8 +100,6 @@ const structuredData = {
       set:html={JSON.stringify(structuredData)}
     ></script>
 
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    <link rel="stylesheet" href="/src/styles/public.css" />
   </head>
 
   <body>
