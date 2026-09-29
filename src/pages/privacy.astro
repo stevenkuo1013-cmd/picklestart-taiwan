@@ -6,15 +6,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Privacy｜PickleStart Taiwan"
   description="PickleStart Taiwan 的隱私說明。MVP 不需註冊，也不要求姓名、Email、電話或付款資料。"
 >
-  <article class="content-page content-page-narrow">
-    <p class="eyebrow">Privacy</p>
-    <h1>我們刻意少收資料。</h1>
+  <article class="content-page content-page-narrow branded-page">
+    <header class="content-hero compact-content-hero">
+      <div class="content-hero-copy">
+        <p class="eyebrow">PRIVACY</p>
+        <h1>我們刻意少收資料。</h1>
+        <p class="content-lead">
+          不需要帳號，也不要求姓名、Email、電話、地址或付款資料。
+        </p>
+      </div>
 
-    <p class="content-lead">
-      PickleStart 不需要帳號，也不要求你提供姓名、Email、電話、地址或付款資料。
-    </p>
+      <aside class="privacy-badge-card">
+        <strong>NO ACCOUNT</strong>
+        <span>NO PROFILE</span>
+        <span>NO PAYMENT DATA</span>
+      </aside>
+    </header>
+
+    <section class="privacy-principles">
+      <article><span>01</span><strong>Builder 只問推薦需要的資料</strong></article>
+      <article><span>02</span><strong>完整答案不送到分析服務</strong></article>
+      <article><span>03</span><strong>外部商店有自己的隱私政策</strong></article>
+    </section>
 
     <section class="content-section">
+      <p class="section-kicker">BUILDER DATA</p>
       <h2>Builder 會問什麼？</h2>
       <p>
         Builder 只詢問與 Starter Kit 有關的選項，例如匹克球經驗、
@@ -27,6 +43,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
     <section class="content-section">
+      <p class="section-kicker">ANALYTICS</p>
       <h2>網站分析</h2>
       <p>
         正式部署後，PickleStart 可啟用 GoatCounter 來統計頁面瀏覽與少量產品事件，
@@ -39,6 +56,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
     <section class="content-section">
+      <p class="section-kicker">EXTERNAL SITES</p>
       <h2>外部商品網站</h2>
       <p>
         點擊商品來源或未來的 affiliate link 後，你會離開 PickleStart。
@@ -47,6 +65,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
     <section class="content-section">
+      <p class="section-kicker">SECURITY</p>
       <h2>我們不會在前端放秘密金鑰</h2>
       <p>
         PickleStart 是靜態網站，不需要把 API secret、商店密碼或其他私人憑證
@@ -54,7 +73,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </p>
     </section>
 
-    <section class="content-section content-callout">
+    <section class="content-section content-callout brand-callout privacy-callout">
       <p>
         如果未來加入新的分析、表單、會員或其他資料處理功能，
         應在上線前同步更新這份說明。

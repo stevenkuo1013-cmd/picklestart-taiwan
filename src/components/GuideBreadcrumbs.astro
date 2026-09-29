@@ -1,0 +1,15 @@
+---
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+---
+
+<nav class="guide-breadcrumb" aria-label="麵包屑">
+  <a href="/">首頁</a>
+  <span aria-hidden="true">›</span>
+  <a href="/guide">新手指南</a>
+  <span aria-hidden="true">›</span>
+  <span aria-current="page">{current}</span>
+</nav>

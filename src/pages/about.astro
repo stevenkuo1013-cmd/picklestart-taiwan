@@ -1,4 +1,101 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="About｜PickleStart Taiwan" description="了解 PickleStart Taiwan 為什麼從新手預算與真正需要的裝備出發，而不是做另一個球拍排行榜。"><article class="content-page"><p class="eyebrow">About PickleStart</p><h1>我們想讓第一次開始匹克球，少一點資訊焦慮。</h1><p class="content-lead">搜尋「匹克球新手」很容易找到規則、球拍、鞋子與大量商品，但真正準備開始的人通常還有另一個更基本的問題：「我現在到底要買什麼？」</p><section class="content-section"><h2>PickleStart 解決的問題</h2><p>PickleStart Taiwan 是一個給台灣新手使用的 Starter Kit Builder。你回答目前的經驗、場地、已有裝備、總預算與使用目標後，系統會整理出：</p><ul class="content-list"><li>現在真的需要買的東西</li><li>你已經有、可以繼續沿用的裝備</li><li>之後固定打球再升級也不遲的東西</li><li>目前可以直接跳過的花費</li></ul></section><section class="content-section"><h2>我們刻意沒有做什麼</h2><p>MVP 不需要帳號、沒有社群功能、不做即時價格爬蟲，也沒有用 AI API 產生推薦。</p><p>這些限制是刻意的：讓推薦可以被解釋，也讓網站保持輕量、低維護，不需要為了營運一個工具而收集更多使用者資料。</p></section><section class="content-section content-callout"><h2>核心原則</h2><blockquote>先買需要的，其他晚點再說。</blockquote><p>如果你的現有裝備已經夠用，我們會直接告訴你不用買。如果預算根本不適合目前的場地設定，我們會先建議改變場地或借用裝備，而不是為了塞進預算而推薦不合理的商品。</p></section><a class="primary-button" href="/builder">建立我的 Starter Kit →</a></article></BaseLayout>
+
+<BaseLayout
+  title="About｜PickleStart Taiwan"
+  description="了解 PickleStart Taiwan 為什麼從新手預算與真正需要的裝備出發，而不是做另一個球拍排行榜。"
+>
+  <article class="content-page branded-page">
+    <header class="content-hero content-hero-about">
+      <div class="content-hero-copy">
+        <p class="eyebrow">ABOUT PICKLESTART</p>
+        <h1>讓第一次開始匹克球，少一點資訊焦慮。</h1>
+        <p class="content-lead">
+          PickleStart Taiwan 不是另一個「十大球拍排行榜」。
+          我們想先回答更基本的問題：你現在到底需要買什麼？
+        </p>
+        <a class="primary-button" href="/builder?from=about" data-analytics-event="site_builder_clicked" data-analytics-detail-event="site_builder_source" data-analytics-placement="page_cta" data-analytics-page="about">建立我的 Starter Kit →</a>
+      </div>
+
+      <aside class="content-hero-card">
+        <span class="content-card-kicker">OUR PRINCIPLE</span>
+        <strong>先買需要的，<br />其他晚點再說。</strong>
+        <p>不因為商品比較貴，就把它排得更前面。</p>
+      </aside>
+    </header>
+
+    <section class="content-stat-strip">
+      <div><strong>6</strong><span>個問題</span></div>
+      <div><strong>0</strong><span>帳號需求</span></div>
+      <div><strong>4</strong><span>種決策：買 / 沿用 / 稍後 / 跳過</span></div>
+    </section>
+
+    <section class="content-section content-section-card">
+      <p class="section-kicker">THE PROBLEM</p>
+      <h2>新手缺的通常不是更多商品，而是更少的決策。</h2>
+      <p>
+        搜尋「匹克球新手」很容易找到規則、球拍、鞋子與大量商品，
+        但真正準備開始的人通常還有另一個更基本的問題：「我現在到底要買什麼？」
+      </p>
+    </section>
+
+    <section class="content-section">
+      <p class="section-kicker">WHAT WE DO</p>
+      <h2>PickleStart 解決的問題</h2>
+      <p>
+        你回答目前的經驗、場地、已有裝備、總預算與使用目標後，
+        系統會把裝備整理成四個清楚的決策。
+      </p>
+
+      <div class="decision-feature-grid">
+        <article class="decision-feature buy">
+          <span>BUY NOW</span>
+          <strong>現在真的需要買</strong>
+          <p>先把必要項目處理好。</p>
+        </article>
+        <article class="decision-feature reuse">
+          <span>REUSE</span>
+          <strong>已有裝備繼續用</strong>
+          <p>能沿用就不要求重買。</p>
+        </article>
+        <article class="decision-feature later">
+          <span>LATER</span>
+          <strong>固定打球再升級</strong>
+          <p>把非必要支出延後。</p>
+        </article>
+        <article class="decision-feature skip">
+          <span>SKIP</span>
+          <strong>目前可以直接跳過</strong>
+          <p>不為了湊清單增加花費。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section split-content-section">
+      <div>
+        <p class="section-kicker">LOW MAINTENANCE BY DESIGN</p>
+        <h2>我們刻意沒有做什麼</h2>
+      </div>
+      <div>
+        <p>
+          MVP 不需要帳號、沒有社群功能、不做即時價格爬蟲，也沒有用 AI API 產生推薦。
+        </p>
+        <p>
+          這些限制是刻意的：讓推薦可以被解釋，也讓網站保持輕量、低維護，
+          不需要為了營運一個工具而收集更多使用者資料。
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section content-callout brand-callout">
+      <p class="section-kicker">THE RULE WE KEEP</p>
+      <blockquote>如果答案是「現在不要買」，我們就直接這樣告訴你。</blockquote>
+      <p>
+        如果你的現有裝備已經夠用，我們會直接告訴你不用買。
+        如果預算根本不適合目前的場地設定，我們會先建議改變場地或借用裝備，
+        而不是為了塞進預算而推薦不合理的商品。
+      </p>
+    </section>
+  </article>
+</BaseLayout>

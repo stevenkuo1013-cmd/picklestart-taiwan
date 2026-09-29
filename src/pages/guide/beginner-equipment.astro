@@ -1,16 +1,62 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
 import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "第一次打匹克球一定要買球網嗎？",
+    answer: "不一定。如果固定球場或球館已經有球網，就沒有必要重複購買；只有自行架場而現場沒有網時才需要。"
+  },
+  {
+    question: "已有羽球鞋還需要買匹克球鞋嗎？",
+    answer: "不一定。鞋況良好、抓地與側向支撐合適時，第一次通常可以先沿用，再依使用頻率決定是否升級。",
+    href: "/guide/badminton-shoes",
+    linkLabel: "看鞋款判斷方式"
+  },
+  {
+    question: "第一次需要直接買高階球拍嗎？",
+    answer: "通常不用。先確認自己會不會固定打、偏好的手感與場地，再升級通常比第一次就買高階款更有效率。"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/beginner-budget",
+    title: "新手預算怎麼抓？",
+    description: "從整套裝備算，不只看球拍"
+  },
+  {
+    href: "/guide/badminton-shoes",
+    title: "羽球鞋可以嗎？",
+    description: "已有鞋款先判斷能不能沿用"
+  },
+  {
+    href: "/guide/first-game",
+    title: "第一次去球場",
+    description: "確認真正需要帶的東西"
+  }
+];
+
 ---
 
 <BaseLayout
   pageType="article"
   datePublished="2026-09-29"
   dateModified="2026-09-29"
-  title="第一次玩匹克球要買什麼？新手裝備完整清單｜PickleStart Taiwan"
-  description="第一次打匹克球要準備什麼？整理球拍、球、鞋子、球網與哪些裝備可以先不用買，並可用 60 秒 Starter Kit Builder 算出你的個人清單。"
+  title="匹克球新手裝備清單：第一次要買什麼、哪些先不用｜PickleStart Taiwan"
+  description="第一次打匹克球要買什麼？整理球拍、球、鞋子、球網的購買優先順序，告訴你哪些可以沿用、哪些第一次先不用買，避免一次買太多。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "新手裝備清單", href: "/guide/beginner-equipment" }
+  ]}
 >
   <article class="guide-page">
+    <GuideBreadcrumbs current="新手裝備清單" />
     <div class="guide-hero">
       <p class="eyebrow">Beginner Equipment Guide</p>
       <h1>第一次玩匹克球要買什麼？</h1>
@@ -20,14 +66,25 @@ import "../../styles/guide.css";
       </p>
 
       <div class="guide-cta-row">
-        <a class="primary-button" href="/builder">
+        <a
+          class="primary-button"
+          href="/builder?from=guide_inline&article=beginner-equipment"
+          data-analytics-event="guide_builder_clicked"
+          data-analytics-detail-event="guide_builder_source"
+          data-analytics-placement="hero_inline"
+          data-analytics-article="beginner-equipment"
+        >
           60 秒建立我的裝備清單 →
         </a>
         <span>免費 · 不需註冊</span>
       </div>
     </div>
 
-    <section class="guide-summary">
+      <figure class="guide-cover-image">
+    <img src="/images/guide-equipment.webp" alt="匹克球拍、黃色匹克球與球網" loading="eager" />
+  </figure>
+
+<section class="guide-summary">
       <div>
         <span class="guide-summary-label">通常先準備</span>
         <strong>球拍 + 對應場地的球</strong>
@@ -115,17 +172,16 @@ import "../../styles/guide.css";
       </div>
     </section>
 
-    <section class="guide-builder-callout">
-      <p class="eyebrow">Personalize It</p>
-      <h2>真正的答案取決於你已經有什麼。</h2>
-      <p>
-        兩個人、已有羽球鞋、預算 NT$3,000，和四個人要在公園自己架場，
-        需要的 Starter Kit 完全不同。
-      </p>
-      <a class="primary-button" href="/builder">
-        建立我的 Starter Kit →
-      </a>
-    </section>
+
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="最省錢的方法不是買最便宜，而是不要重複買。"
+      text="Builder 會把你已有的球拍、球、鞋與現場球網都算進去，再列真正缺的項目。"
+      buttonText="建立我的裝備清單"
+    />
 
     <section class="guide-source-note">
       <h2>資料說明</h2>

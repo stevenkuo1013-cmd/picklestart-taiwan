@@ -1,0 +1,36 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+  href?: string;
+  linkLabel?: string;
+}
+
+interface Props {
+  items: FAQItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="guide-faq" aria-labelledby="guide-faq-title">
+  <div class="guide-faq-heading">
+    <p class="guide-step">FAQ</p>
+    <h2 id="guide-faq-title">新手常見問題</h2>
+    <p>把最容易卡住的問題先收在這裡，想看細節再往延伸指南走。</p>
+  </div>
+
+  <div class="guide-faq-list">
+    {items.map((item) => (
+      <details class="guide-faq-item">
+        <summary>{item.question}</summary>
+        <div>
+          <p>{item.answer}</p>
+          {item.href && item.linkLabel && (
+            <a href={item.href}>{item.linkLabel} →</a>
+          )}
+        </div>
+      </details>
+    ))}
+  </div>
+</section>

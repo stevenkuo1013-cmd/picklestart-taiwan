@@ -1,0 +1,159 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "Kitchen 線算 Kitchen 裡面嗎？",
+    answer: "算。Kitchen 線本身屬於 Non-Volley Zone，所以站在線上直接 volley 也會有問題。"
+  },
+  {
+    question: "球落地後可以走進 Kitchen 打嗎？",
+    answer: "可以。Kitchen 並不是禁止進入區，限制的是 volley；球先落地後進去擊球是合法情境。"
+  },
+  {
+    question: "我在 Kitchen 外 volley，之後煞不住踩進去呢？",
+    answer: "如果是該次 volley 的動量把你帶進 Non-Volley Zone，仍可能構成 fault。",
+    href: "/guide/dink-guide",
+    linkLabel: "接著認識 Dink"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/beginner-rules",
+    title: "5 條新手規則",
+    description: "把 Kitchen 放回完整比賽流程理解"
+  },
+  {
+    href: "/guide/dink-guide",
+    title: "Dink 是什麼？",
+    description: "為什麼大家都站在 Kitchen line 附近"
+  },
+  {
+    href: "/guide/first-game",
+    title: "第一次去球場",
+    description: "把規則放進真實上場情境"
+  }
+];
+
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-09-29"
+  dateModified="2026-09-29"
+  title="匹克球 Kitchen 規則：可以進去嗎？NVZ 3 分鐘看懂｜PickleStart Taiwan"
+  description="匹克球 Kitchen 可以進去嗎、踩線算不算、volley 後踩進去會怎樣？用場地圖與情境題快速看懂 Non-Volley Zone（NVZ）規則。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "Kitchen 規則", href: "/guide/kitchen-rule" }
+  ]}
+>
+  <article class="guide-page guide-story-page">
+    <GuideBreadcrumbs current="Kitchen 規則" />
+    <div class="guide-hero">
+      <p class="eyebrow">THE KITCHEN · 3 MIN</p>
+      <h1>Kitchen 不是叫你去煮飯。</h1>
+      <p class="guide-lead">
+        它是匹克球最有名、也最容易被第一次上場的人誤會的規則。
+        好消息是：核心其實只有一句——<strong>你不能在 Kitchen 裡 volley。</strong>
+      </p>
+      <div class="guide-answer">
+        <span>先回答最常見問題</span>
+        <strong>可以走進 Kitchen。只要你打的是已經落地的球，就不是因為「進去」本身而犯規。</strong>
+      </div>
+    </div>
+
+    <section class="guide-section">
+      <p class="guide-step">WHERE IS IT?</p>
+      <h2>Kitchen 正式名稱叫 Non-Volley Zone（NVZ）</h2>
+      <p>
+        它位在網子兩側，各自從網前往後延伸 7 英尺，因此你會看到球場中央有兩塊對稱區域。
+        Kitchen 線本身也屬於 NVZ。
+      </p>
+
+      <div class="pickle-court-diagram pickle-court-large" aria-label="Kitchen 區域示意圖">
+        <div class="court-half court-half-top"><span>安全 volley 區</span></div>
+        <div class="court-kitchen">KITCHEN · NO VOLLEY</div>
+        <div class="court-net-label">NET</div>
+        <div class="court-kitchen">KITCHEN · NO VOLLEY</div>
+        <div class="court-half court-half-bottom"><span>安全 volley 區</span></div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">THE ONE RULE</p>
+      <h2>Volley 時，你的身體不能「在裡面，也不能被動量帶進去」</h2>
+      <p>
+        Volley 是球還沒落地就直接擊球。如果你擊球當下站在 Kitchen、踩到 Kitchen 線，
+        或你在外面 volley 完之後因為慣性踏進 NVZ，都可能是 fault。
+      </p>
+
+      <div class="guide-scenario-grid">
+        <article class="scenario-good"><span>✓ 合法</span><strong>球先落進 Kitchen，你走進去再打</strong><p>因為這不是 volley。</p></article>
+        <article class="scenario-bad"><span>× Fault</span><strong>站在 Kitchen 裡直接截擊空中球</strong><p>你在 NVZ 內 volley。</p></article>
+        <article class="scenario-bad"><span>× Fault</span><strong>在外面 volley，煞不住踩進 Kitchen</strong><p>動量造成的 NVZ 進入仍然有問題。</p></article>
+        <article class="scenario-good"><span>✓ 合法</span><strong>從 Kitchen 走出來、重新站穩後再 volley</strong><p>重點是擊球與動量狀態。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">MINI QUIZ</p>
+      <h2>三題看看你是不是真的懂了</h2>
+
+      <details class="guide-quiz">
+        <summary>Q1：我站在 Kitchen 裡，球落地一次後再打，可以嗎？</summary>
+        <p><strong>可以。</strong> Kitchen 限制的是 volley，不是禁止你踏進去。</p>
+      </details>
+      <details class="guide-quiz">
+        <summary>Q2：我在 Kitchen 外跳起來 volley，落地踩進 Kitchen 呢？</summary>
+        <p><strong>不行。</strong> 如果你的動量把你帶進 NVZ，仍可能構成 fault。</p>
+      </details>
+      <details class="guide-quiz">
+        <summary>Q3：所以高手為什麼都貼著 Kitchen line？</summary>
+        <p>
+          因為靠近 NVZ line 能縮短對手可利用的角度與反應空間，也是控制網前回合的重要位置。
+          但你仍要避免 volley 時踩線。
+        </p>
+      </details>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">WHY IT EXISTS</p>
+      <h2>如果沒有 Kitchen，大家可能只想衝到網前一直往下砸</h2>
+      <p>
+        Non-Volley Zone 讓球員不能直接貼著網子攔截所有空中球，
+        因此比賽會多出 Dink、drop、位置交換與耐心控制等策略。
+        這也是匹克球看似小場地，卻不只是比誰手快的原因之一。
+      </p>
+
+      <a class="guide-inline-link" href="/guide/dink-guide">下一個最常聽到的詞：Dink 是什麼？→</a>
+    </section>
+
+    
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="Kitchen 搞懂了，第一場就少掉一大半困惑。"
+      text="如果你也還沒決定裝備，讓 Builder 幫你把已有的和真正缺的分開。"
+      buttonText="建立我的 Starter Kit"
+    />
+
+    <section class="guide-source-note">
+      <h2>資料來源與規則版本</h2>
+      <p>Kitchen / NVZ 定義與 volley fault 說明以 USA Pickleball 2026 官方規則與新手教材為準。</p>
+      <div class="source-links">
+        <a href="https://usapickleball.org/pickleball-skills/level-one/the-basics-of-pickleball/" target="_blank" rel="noopener noreferrer">USA Pickleball：The Basics of Pickleball ↗</a>
+        <a href="https://usapickleball.org/rules/" target="_blank" rel="noopener noreferrer">USA Pickleball：2026 Official Rulebook ↗</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

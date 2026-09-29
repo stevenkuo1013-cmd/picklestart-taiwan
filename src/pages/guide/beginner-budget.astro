@@ -1,5 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
 import { buildStarterKit } from "../../logic/recommendation";
 import type { BuilderInput } from "../../types";
 import "../../styles/guide.css";
@@ -41,16 +45,58 @@ const seriousResult = buildStarterKit(seriousInput);
 
 const money = (value: number) =>
   new Intl.NumberFormat("zh-TW").format(Math.round(value));
+
+const faqItems = [
+  {
+    question: "有 NT$5,000 預算就應該全部花完嗎？",
+    answer: "不用。預算是上限，不是目標；如果你已有鞋、球或球網，剩下的錢沒有必要為了「用完預算」硬升級配件。"
+  },
+  {
+    question: "為什麼兩個新手需要的預算可能差很多？",
+    answer: "差異通常來自需要幾支球拍、已有裝備、室內或戶外場地，以及現場是否提供球網。",
+    href: "/guide/beginner-equipment",
+    linkLabel: "先看裝備優先順序"
+  },
+  {
+    question: "哪個項目最容易讓新手預算突然變高？",
+    answer: "如果要在公園或空地自行架場，攜帶式球網可能成為很大的額外支出；第一次體驗可優先找已有球網的場地。"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/beginner-equipment",
+    title: "第一次要買什麼？",
+    description: "先把必要與可延後分開"
+  },
+  {
+    href: "/guide/badminton-shoes",
+    title: "已有鞋要重買嗎？",
+    description: "省下最容易重複花的預算"
+  },
+  {
+    href: "/guide/first-game",
+    title: "第一次去球場",
+    description: "先確認場地提供什麼"
+  }
+];
+
 ---
 
 <BaseLayout
   pageType="article"
   datePublished="2026-09-29"
   dateModified="2026-09-29"
-  title="第一次玩匹克球要花多少錢？NT$2,000／3,000／5,000 新手預算｜PickleStart Taiwan"
-  description="匹克球新手預算怎麼抓？從 NT$2,000、3,000 到 5,000 以上，拆解球拍、球、鞋與球網的優先順序，並用 Starter Kit Builder 算出你的實際預算。"
+  title="匹克球新手預算：第一次玩要花多少？NT$2,000–8,000 怎麼配｜PickleStart Taiwan"
+  description="匹克球新手第一次要花多少錢？從 NT$2,000、3,000、5,000 到 8,000，拆解球拍、球、鞋與球網優先順序，並依已有裝備估算實際 Starter Kit。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "新手預算指南", href: "/guide/beginner-budget" }
+  ]}
 >
   <article class="guide-page">
+    <GuideBreadcrumbs current="新手預算指南" />
     <div class="guide-hero">
       <p class="eyebrow">Beginner Budget Guide</p>
       <h1>第一次玩匹克球，要花多少錢才合理？</h1>
@@ -62,14 +108,25 @@ const money = (value: number) =>
       </p>
 
       <div class="guide-cta-row">
-        <a class="primary-button" href="/builder">
+        <a
+          class="primary-button"
+          href="/builder?from=guide_inline&article=beginner-budget"
+          data-analytics-event="guide_builder_clicked"
+          data-analytics-detail-event="guide_builder_source"
+          data-analytics-placement="hero_inline"
+          data-analytics-article="beginner-budget"
+        >
           算我的實際 Starter Kit 預算 →
         </a>
         <span>使用目前商品 catalog 即時計算</span>
       </div>
     </div>
 
-    <section class="guide-budget-rule">
+      <figure class="guide-cover-image">
+    <img src="/images/guide-budget.webp" alt="匹克球新手裝備與場地鞋" loading="eager" />
+  </figure>
+
+<section class="guide-budget-rule">
       <span>PickleStart 的預算邏輯</span>
       <strong>總預算 − 必要非球拍成本 = 可用球拍預算</strong>
       <strong>可用球拍預算 ÷ 還缺的球拍數量 = 單支球拍預算</strong>
@@ -163,18 +220,16 @@ const money = (value: number) =>
       </p>
     </section>
 
-    <section class="guide-builder-callout">
-      <p class="eyebrow">Your Budget, Not Average Budget</p>
-      <h2>你真正需要的預算，要看已有裝備與場地。</h2>
-      <p>
-        Builder 會先算你缺什麼，再依你的總預算產生合理組合；
-        如果做不到，它會直接告訴你預算不足。
-      </p>
 
-      <a class="primary-button" href="/builder">
-        算我的 Starter Kit 預算 →
-      </a>
-    </section>
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="你的真正預算，不是網路上的平均數字。"
+      text="讓 Builder 先扣掉你已經有的，再依場地與需求估出 Starter Kit 的合理價格帶。"
+      buttonText="算我的 Starter Kit 預算"
+    />
 
     <section class="guide-source-note">
       <h2>價格說明</h2>

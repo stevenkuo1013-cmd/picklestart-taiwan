@@ -1,4 +1,109 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="How We Recommend｜PickleStart Taiwan" description="了解 PickleStart 如何用可解釋的規則、預算限制與商品分級產生 Starter Kit 推薦。"><article class="content-page"><p class="eyebrow">How We Recommend</p><h1>推薦不是黑盒子。</h1><p class="content-lead">PickleStart 使用 deterministic rule-based recommendation engine，不是 AI 聊天機器人。相同輸入會得到相同的推薦邏輯。</p><section class="content-section"><h2>1. 先算你真的缺什麼</h2><p>球拍需求會扣掉你已經擁有的球拍；已有羽球鞋、網球鞋或其他適合側向移動的場地鞋，第一階段就不會再次把鞋列成必買。</p></section><section class="content-section"><h2>2. 場地會改變需求</h2><p>室內與戶外使用不同類型的球；選擇公園或空地自架場地時，如果沒有球網，系統才會把攜帶式球網計入必要成本。</p></section><section class="content-section"><h2>3. 先扣必要成本，再分球拍預算</h2><div class="formula-card"><code>總預算 − 必要非球拍成本 = 可用球拍預算</code><code>可用球拍預算 ÷ 還缺的球拍數量 = 單支實際預算</code></div></section><section class="content-section"><h2>4. 球拍不是越貴越優先</h2><p>球拍除了要符合預算，也會依照玩家投入程度分級。第一次休閒體驗不需要直接跳到競賽等級；已固定打球或認真訓練的人，也不應永遠只看到最低價入門拍。</p></section><section class="content-section"><h2>5. 預算不合理時，商品推薦會停止</h2><p>如果最低可行裝備已經超出你的總預算，PickleStart 會先顯示 budget insufficient 警告與降低成本的方法，不顯示商品導購。</p></section><section class="content-section"><h2>商品資料如何處理？</h2><p>MVP 的商品資料來自公開的品牌或商店頁面，由人工記錄價格範圍、來源與最後驗證日期。PickleStart 不做 24/7 即時價格爬蟲，所以實際價格與供貨仍以外部商店頁面為準。</p></section><section class="content-section content-callout"><h2>分潤不參與排序</h2><p>Recommendation score 不包含 affiliate commission。即使某個商品沒有分潤關係，只要它更符合條件，架構仍允許推薦它。</p></section><a class="primary-button" href="/builder">試試 Starter Kit Builder →</a></article></BaseLayout>
+
+<BaseLayout
+  title="How We Recommend｜PickleStart Taiwan"
+  description="了解 PickleStart 如何用可解釋的規則、預算限制與商品分級產生 Starter Kit 推薦。"
+>
+  <article class="content-page branded-page">
+    <header class="content-hero content-hero-recommend">
+      <div class="content-hero-copy">
+        <p class="eyebrow">HOW WE RECOMMEND</p>
+        <h1>推薦不是黑盒子。</h1>
+        <p class="content-lead">
+          PickleStart 使用 deterministic rule-based recommendation engine，
+          不是 AI 聊天機器人。相同輸入會得到相同的推薦邏輯。
+        </p>
+        <a class="primary-button" href="/builder?from=recommendation_page" data-analytics-event="site_builder_clicked" data-analytics-detail-event="site_builder_source" data-analytics-placement="page_cta" data-analytics-page="recommendation_page">試試 Starter Kit Builder →</a>
+      </div>
+
+      <aside class="logic-visual-card">
+        <span>INPUT</span>
+        <strong>場地 + 裝備 + 預算</strong>
+        <i>↓</i>
+        <span>RULE ENGINE</span>
+        <strong>必要性 + 適配 + 預算</strong>
+        <i>↓</i>
+        <span>OUTPUT</span>
+        <strong>BUY / REUSE / LATER / SKIP</strong>
+      </aside>
+    </header>
+
+    <section class="recommend-flow">
+      <article><span>01</span><strong>先算你缺什麼</strong><p>已有的裝備先扣掉。</p></article>
+      <article><span>02</span><strong>場地改變需求</strong><p>球種與球網依場地決定。</p></article>
+      <article><span>03</span><strong>必要成本先扣</strong><p>再分配球拍預算。</p></article>
+      <article><span>04</span><strong>依投入程度分級</strong><p>不是越貴越優先。</p></article>
+      <article><span>05</span><strong>預算不合理就停止</strong><p>先解決情境，不硬塞商品。</p></article>
+    </section>
+
+    <section class="content-section">
+      <p class="section-kicker">STEP 01</p>
+      <h2>先算你真的缺什麼</h2>
+      <p>
+        球拍需求會扣掉你已經擁有的球拍；已有羽球鞋、網球鞋或其他適合側向移動的場地鞋，
+        第一階段就不會再次把鞋列成必買。
+      </p>
+    </section>
+
+    <section class="content-section">
+      <p class="section-kicker">STEP 02</p>
+      <h2>場地會改變需求</h2>
+      <p>
+        室內與戶外使用不同類型的球；選擇公園或空地自架場地時，如果沒有球網，
+        系統才會把攜帶式球網計入必要成本。
+      </p>
+    </section>
+
+    <section class="content-section">
+      <p class="section-kicker">STEP 03</p>
+      <h2>先扣必要成本，再分球拍預算</h2>
+      <div class="formula-card formula-card-brand">
+        <code>總預算 − 必要非球拍成本 = 可用球拍預算</code>
+        <code>可用球拍預算 ÷ 還缺的球拍數量 = 單支實際預算</code>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <p class="section-kicker">STEP 04</p>
+      <h2>球拍不是越貴越優先</h2>
+      <p>
+        球拍除了要符合預算，也會依照玩家投入程度分級。
+        第一次休閒體驗不需要直接跳到競賽等級；已固定打球或認真訓練的人，
+        也不應永遠只看到最低價入門拍。
+      </p>
+    </section>
+
+    <section class="content-section">
+      <p class="section-kicker">STEP 05</p>
+      <h2>預算不合理時，商品推薦會停止</h2>
+      <p>
+        如果最低可行裝備已經超出你的總預算，PickleStart 會先顯示 budget insufficient
+        警告與降低成本的方法，不顯示商品導購。
+      </p>
+    </section>
+
+    <section class="content-section split-content-section">
+      <div>
+        <p class="section-kicker">PRODUCT DATA</p>
+        <h2>商品資料如何處理？</h2>
+      </div>
+      <div>
+        <p>
+          MVP 的商品資料來自公開的品牌或商店頁面，由人工記錄價格範圍、來源與最後驗證日期。
+          PickleStart 不做 24/7 即時價格爬蟲，所以實際價格與供貨仍以外部商店頁面為準。
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section content-callout brand-callout">
+      <p class="section-kicker">AFFILIATE FIREWALL</p>
+      <h2>分潤不參與排序</h2>
+      <p>
+        Recommendation score 不包含 affiliate commission。
+        即使某個商品沒有分潤關係，只要它更符合條件，架構仍允許推薦它。
+      </p>
+    </section>
+  </article>
+</BaseLayout>

@@ -1,0 +1,224 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "匹克球單打和雙打的場地大小一樣嗎？",
+    answer: "一樣。正式匹克球單打與雙打都使用 20 × 44 英尺的場地，差別主要在球員人數與戰術。",
+    href: "/guide/beginner-rules",
+    linkLabel: "接著看 5 條新手規則"
+  },
+  {
+    question: "Kitchen 是不是完全不能走進去？",
+    answer: "不是。Kitchen 是 Non-Volley Zone；你可以走進去打已經落地的球，真正限制的是在區域內或踩線時直接 volley。",
+    href: "/guide/kitchen-rule",
+    linkLabel: "看 Kitchen 情境題"
+  },
+  {
+    question: "第一次上場最先要記什麼？",
+    answer: "先記斜對角發球、發球後雙方各讓球落地一次，以及 Kitchen 不能直接 volley。其他細節可以邊打邊補。",
+    href: "/guide/first-game",
+    linkLabel: "看第一次去球場流程"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/beginner-rules",
+    title: "5 條新手規則",
+    description: "發球、Two-Bounce、Kitchen、fault 與計分"
+  },
+  {
+    href: "/guide/first-game",
+    title: "第一次去球場",
+    description: "從出門到打完第一場怎麼做"
+  },
+  {
+    href: "/guide/beginner-equipment",
+    title: "第一次要買什麼？",
+    description: "裝備先買必要的，其他晚點"
+  }
+];
+
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-09-29"
+  dateModified="2026-09-29"
+  title="匹克球是什麼？5 分鐘看懂規則、場地與玩法｜PickleStart Taiwan"
+  description="匹克球是什麼、怎麼玩？5 分鐘認識球拍、洞洞球、20×44 英尺場地、Kitchen、Two-Bounce Rule，以及第一次上場最先要懂的玩法。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "匹克球是什麼？", href: "/guide/what-is-pickleball" }
+  ]}
+>
+  <article class="guide-page guide-story-page">
+    <GuideBreadcrumbs current="匹克球是什麼？" />
+    <div class="guide-hero">
+      <p class="eyebrow">PICKLEBALL 101 · 5 MIN</p>
+      <h1>匹克球到底是什麼？</h1>
+      <p class="guide-lead">
+        看起來有點像網球，球拍卻沒有網線，球還是一顆打滿洞的塑膠球。
+        如果你第一次看到匹克球腦中只剩「這到底是什麼」，這篇就是給你的。
+      </p>
+
+      <div class="guide-quick-start">
+        <div><span>適合誰</span><strong>完全沒打過的人</strong></div>
+        <div><span>閱讀時間</span><strong>約 5 分鐘</strong></div>
+        <div><span>看完會知道</span><strong>場地、器材、回合怎麼開始</strong></div>
+      </div>
+    </div>
+
+    <section class="guide-one-line">
+      <span>如果你只想記一句話</span>
+      <strong>
+        匹克球是一項用「實心球拍」打「塑膠洞洞球」的球拍運動；
+        場地比網球小、規則容易開始，但越打越會發現它其實很講究位置、節奏與控制。
+      </strong>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">01 · LOOKS FAMILIAR, PLAYS DIFFERENT</p>
+      <h2>它像網球、羽球和桌球的親戚，但不是任何一個的縮小版</h2>
+      <p>
+        正式匹克球場尺寸是 20 × 44 英尺（約 6.10 × 13.41 公尺），
+        單打和雙打使用相同尺寸。網高在兩側約 36 英吋、中央約 34 英吋。
+        球拍是沒有網線的實心 paddle，球則是有孔洞的塑膠球。
+      </p>
+
+      <div class="guide-compare-table" role="table" aria-label="匹克球、網球與羽球快速比較">
+        <div class="guide-compare-row guide-compare-head" role="row">
+          <span></span><strong>匹克球</strong><strong>網球</strong><strong>羽球</strong>
+        </div>
+        <div class="guide-compare-row" role="row">
+          <strong>球拍</strong><span>實心 paddle</span><span>有線球拍</span><span>有線球拍</span>
+        </div>
+        <div class="guide-compare-row" role="row">
+          <strong>球</strong><span>塑膠洞洞球</span><span>網球</span><span>羽球</span>
+        </div>
+        <div class="guide-compare-row" role="row">
+          <strong>常見玩法</strong><span>雙打很常見</span><span>單／雙打</span><span>單／雙打</span>
+        </div>
+        <div class="guide-compare-row" role="row">
+          <strong>最有特色</strong><span>Kitchen + Two-Bounce</span><span>大場地與底線攻防</span><span>高速空中球</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">02 · THE COURT</p>
+      <h2>先認識場上最有名的地方：Kitchen</h2>
+      <p>
+        網子兩側各有一段 7 英尺深的 Non-Volley Zone（NVZ），大家通常直接叫它
+        <strong>Kitchen</strong>。你可以走進去，但如果你站在裡面、踩到 Kitchen 線，
+        就不能直接把還沒落地的球 volley 回去。
+      </p>
+
+      <div class="pickle-court-diagram" aria-label="簡化匹克球場示意圖">
+        <div class="court-half court-half-top"><span>BASELINE</span></div>
+        <div class="court-kitchen">KITCHEN · 7 FT</div>
+        <div class="court-net-label">NET</div>
+        <div class="court-kitchen">KITCHEN · 7 FT</div>
+        <div class="court-half court-half-bottom"><span>BASELINE</span></div>
+      </div>
+
+      <div class="guide-fun-note">
+        <span class="guide-fun-emoji">🥒</span>
+        <div>
+          <strong>PickleStart 小知識</strong>
+          <p>Kitchen 不是「禁止進入區」。真正被限制的是 <em>volley</em>。</p>
+        </div>
+      </div>
+
+      <a class="guide-inline-link" href="/guide/kitchen-rule">Kitchen 規則完整看懂 →</a>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">03 · ONE RALLY IN 20 SECONDS</p>
+      <h2>一個回合到底怎麼開始？其實先記「發球、彈、彈」就好</h2>
+
+      <div class="guide-flow-steps">
+        <article><span>1</span><strong>斜對角發球</strong><p>從底線後方把球發到對角發球區。</p></article>
+        <article><span>2</span><strong>接發球先落地</strong><p>接球方要先讓發球彈地再回擊。</p></article>
+        <article><span>3</span><strong>回球也先落地</strong><p>發球方也要讓這一球彈地再打。</p></article>
+        <article><span>4</span><strong>之後自由多了</strong><p>完成兩次落地後，才可以 volley 或等球落地。</p></article>
+      </div>
+
+      <div class="guide-note">
+        <strong>這就是 Two-Bounce Rule</strong>
+        <p>
+          發球與接發球之後，兩邊都必須先完成一次 groundstroke。
+          它讓回合不會一開始就變成網前全面壓制。
+        </p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">04 · FOUR WORDS YOU WILL HEAR</p>
+      <h2>第一次去球場，先認得這 4 個詞就很夠用</h2>
+
+      <div class="guide-term-grid">
+        <article><strong>Kitchen</strong><p>網前 Non-Volley Zone。不是不能進，是不能在裡面 volley。</p></article>
+        <article><strong>Volley</strong><p>球還沒落地就直接擊回。</p></article>
+        <article><strong>Dink</strong><p>從 Kitchen line 附近打出的柔和短球，落進對方 Kitchen。</p></article>
+        <article><strong>Side out</strong><p>傳統 side-out scoring 裡，發球權轉到另一隊。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">05 · WHY BEGINNERS LIKE IT</p>
+      <h2>它容易開始，不代表它很淺</h2>
+      <p>
+        USA Pickleball 的新手教材也把「容易學會基本玩法」視為這項運動吸引人的原因之一。
+        小場地、雙打與 Two-Bounce Rule 讓第一次上場的人很快就能開始回合；
+        但當你真的固定打，就會開始遇到站位、Kitchen line、Dink、節奏與出手選擇。
+      </p>
+
+      <div class="guide-myth-card">
+        <span>新手常見想法</span>
+        <strong>「所以就是比較簡單的網球？」</strong>
+        <p>不是。入門門檻低，不等於戰術深度低。你很快會發現「打大力」不是每一球的答案。</p>
+      </div>
+    </section>
+
+    <section class="guide-next-reading">
+      <div>
+        <span>NEXT</span>
+        <h2>已經知道在玩什麼了，下一篇先看規則。</h2>
+      </div>
+      <a href="/guide/beginner-rules">第一次上場只要先懂這 5 條規則 →</a>
+    </section>
+
+    
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="懂基本玩法了，接著把裝備變簡單。"
+      text="告訴 Builder 你的場地、預算與現有裝備，它會幫你拆出真正缺的 Starter Kit。"
+      buttonText="建立我的 Starter Kit"
+    />
+
+    <section class="guide-source-note">
+      <h2>資料來源與規則版本</h2>
+      <p>
+        場地尺寸、發球、Two-Bounce Rule 與 Kitchen 說明以 USA Pickleball
+        2026 官方規則與 Level One 新手教材為主要依據。正式比賽或特定場館如有不同賽制，
+        請以當下規定為準。
+      </p>
+      <div class="source-links">
+        <a href="https://usapickleball.org/rules/" target="_blank" rel="noopener noreferrer">USA Pickleball：2026 Official Rulebook ↗</a>
+        <a href="https://usapickleball.org/pickleball-skills/level-one/how-to-play-pickleball/" target="_blank" rel="noopener noreferrer">USA Pickleball：How to Play Pickleball ↗</a>
+        <a href="https://www.pickleheads.com/guides/how-to-play-pickleball" target="_blank" rel="noopener noreferrer">Pickleheads：7 Simple Rules for Beginners ↗</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

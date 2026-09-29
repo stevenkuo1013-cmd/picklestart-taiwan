@@ -39,7 +39,12 @@ const canonicalURL = new URL(
   <body>
     <main class="shell builder-shell">
       <header id="builder-header" class="builder-header">
-        <a class="back-home" href="/">← PickleStart</a>
+        <div class="builder-brand-bar">
+          <a class="builder-brand" href="/" aria-label="PickleStart Taiwan 首頁">
+            <img src="/brand/picklestart-mark.svg" alt="PickleStart Taiwan" />
+          </a>
+          <a class="builder-home-link" href="/">返回首頁</a>
+        </div>
 
         <div class="progress-wrap">
           <div class="progress-meta">
@@ -228,10 +233,34 @@ const canonicalURL = new URL(
           </h1>
 
           <p class="question-description">
-            我們會優先沿用你已經有的東西。
+            我們會優先沿用你已經有的東西；如果目前都沒有，也請直接告訴我們。
           </p>
 
           <div class="equipment-list">
+            <button
+              type="button"
+              id="no-equipment"
+              class="equipment-none-option"
+              aria-pressed="false"
+            >
+              <span class="equipment-none-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-4 9h8v2H8v-2Z"/>
+                </svg>
+              </span>
+
+              <span class="equipment-none-copy">
+                <strong>我目前都沒有</strong>
+                <small>請從零開始幫我配，不用擔心重複購買</small>
+              </span>
+
+              <span class="equipment-none-check" aria-hidden="true">✓</span>
+            </button>
+
+            <div class="equipment-or">
+              <span>或選擇你已經有／現場可用的裝備</span>
+            </div>
+
             <div class="equipment-row">
               <div>
                 <strong>匹克球拍</strong>
@@ -297,13 +326,6 @@ const canonicalURL = new URL(
               </span>
             </label>
 
-            <button
-              type="button"
-              id="clear-equipment"
-              class="secondary-button"
-            >
-              我什麼都沒有
-            </button>
           </div>
         </section>
 
@@ -445,22 +467,29 @@ const canonicalURL = new URL(
       </section>
       <!-- Result -->
       <section id="result-container" class="result-page hidden">
-        <a class="back-home result-home-link" href="/">← PickleStart</a>
+        <div class="result-topbar">
+          <a class="builder-brand result-brand" href="/" aria-label="PickleStart Taiwan 首頁">
+            <img src="/brand/picklestart-mark.svg" alt="PickleStart Taiwan" />
+          </a>
+          <div class="result-topbar-actions">
+            <a href="/builder">重新開始</a>
+            <a href="/">返回首頁</a>
+          </div>
+        </div>
 
         <div class="result-hero">
           <div>
             <p class="eyebrow">Your PickleStart Kit</p>
-            <h1 class="result-title">先買需要的，其他晚點再說。</h1>
+            <h1 class="result-title">
+              先買需要的，<br />
+              <span>其他晚點再說。</span>
+            </h1>
             <p class="result-lead">
               我們依照你的經驗、場地、現有裝備與總預算，
               整理出一個比較不容易買錯的起步方案。
             </p>
           </div>
 
-          <div class="result-status">
-            <span class="status-dot"></span>
-            <span>Recommendation Engine v1</span>
-          </div>
         </div>
 
         <div id="result-summary"></div>
@@ -477,7 +506,11 @@ const canonicalURL = new URL(
                 <span class="section-kicker">BUY NOW</span>
                 <h2>現在需要</h2>
               </div>
-              <span class="section-icon">🟢</span>
+              <span class="section-icon section-icon-buy" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 7V6a5 5 0 0 1 10 0v1h3l-1.2 14H5.2L4 7h3Zm2 0h6V6a3 3 0 0 0-6 0v1Z"/>
+                </svg>
+              </span>
             </div>
             <div id="buy-now-list"></div>
           </section>
@@ -488,7 +521,11 @@ const canonicalURL = new URL(
                 <span class="section-kicker">REUSE</span>
                 <h2>你已經有</h2>
               </div>
-              <span class="section-icon">✓</span>
+              <span class="section-icon section-icon-reuse" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7.3 7H4V3.7L5.8 5.5A8 8 0 0 1 19.7 9h-2.2A6 6 0 0 0 7.3 7Zm9.4 10H20v3.3l-1.8-1.8A8 8 0 0 1 4.3 15h2.2a6 6 0 0 0 10.2 2Z"/>
+                </svg>
+              </span>
             </div>
             <div id="already-have-list"></div>
           </section>
@@ -499,7 +536,11 @@ const canonicalURL = new URL(
                 <span class="section-kicker">LATER</span>
                 <h2>之後再考慮</h2>
               </div>
-              <span class="section-icon">⏳</span>
+              <span class="section-icon section-icon-later" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6 2h12v5c0 2.1-1.1 3.9-2.7 5 1.6 1.1 2.7 2.9 2.7 5v5H6v-5c0-2.1 1.1-3.9 2.7-5A6 6 0 0 1 6 7V2Zm2 2v3c0 2.2 1.8 4 4 4s4-1.8 4-4V4H8Zm4 9c-2.2 0-4 1.8-4 4v3h8v-3c0-2.2-1.8-4-4-4Z"/>
+                </svg>
+              </span>
             </div>
             <div id="optional-later-list"></div>
           </section>
@@ -510,7 +551,11 @@ const canonicalURL = new URL(
                 <span class="section-kicker">SKIP</span>
                 <h2>暫時不用買</h2>
               </div>
-              <span class="section-icon">✕</span>
+              <span class="section-icon section-icon-skip" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="m6.4 5 5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L6.4 19 5 17.6l5.6-5.6L5 6.4 6.4 5Z"/>
+                </svg>
+              </span>
             </div>
             <div id="skip-now-list"></div>
           </section>
@@ -522,11 +567,18 @@ const canonicalURL = new URL(
               <p class="eyebrow">Product Options</p>
               <h2>符合你目前條件的商品</h2>
             </div>
+          </div>
 
-            <p class="product-section-note">
-              價格與供貨可能變動。以下依最近一次人工驗證的
-              價格帶與公開規格整理。
-            </p>
+          <div class="product-data-note" role="note">
+            <span class="product-data-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"/>
+              </svg>
+            </span>
+            <div>
+              <strong>價格資訊</strong>
+              <span>商品價格與供貨可能變動；以下依最近一次人工驗證與公開規格整理。</span>
+            </div>
           </div>
 
           <div id="product-list" class="product-list"></div>
@@ -565,6 +617,129 @@ const canonicalURL = new URL(
       } from "../types";
 
       let currentStep = 1;
+
+
+      function getBuilderEntryContext() {
+        const params = new URLSearchParams(
+          window.location.search
+        );
+
+        const explicitSource =
+          params.get("from")?.trim();
+
+        const article =
+          params.get("article")?.trim();
+
+        if (explicitSource) {
+          return {
+            source: explicitSource,
+            article
+          };
+        }
+
+        if (!document.referrer) {
+          return {
+            source: "direct",
+            article: null
+          };
+        }
+
+        try {
+          const referrer =
+            new URL(document.referrer);
+
+          if (
+            referrer.origin !==
+            window.location.origin
+          ) {
+            return {
+              source: "external",
+              article: null
+            };
+          }
+
+          const path = referrer.pathname;
+
+          if (path === "/" || path === "") {
+            return {
+              source: "home",
+              article: null
+            };
+          }
+
+          if (
+            path === "/guide/" ||
+            path === "/guide"
+          ) {
+            return {
+              source: "guide_hub",
+              article: null
+            };
+          }
+
+          if (path.startsWith("/guide/")) {
+            const slug =
+              path
+                .split("/")
+                .filter(Boolean)
+                .at(-1);
+
+            return {
+              source: "guide",
+              article: slug ?? null
+            };
+          }
+
+          if (
+            path.startsWith(
+              "/how-we-recommend"
+            )
+          ) {
+            return {
+              source: "recommendation_page",
+              article: null
+            };
+          }
+
+          if (path.startsWith("/about")) {
+            return {
+              source: "about",
+              article: null
+            };
+          }
+
+          return {
+            source: "internal",
+            article: null
+          };
+        } catch {
+          return {
+            source: "unknown",
+            article: null
+          };
+        }
+      }
+
+      const builderEntry =
+        getBuilderEntryContext();
+
+      window.addEventListener(
+        "load",
+        () => {
+          trackEvent("builder_landed");
+
+          trackEvent(
+            "builder_entry_source",
+            {
+              source: builderEntry.source,
+              article:
+                builderEntry.article ??
+                undefined
+            }
+          );
+        },
+        { once: true }
+      );
 
 
       let builderStarted = false;
@@ -715,6 +890,20 @@ const canonicalURL = new URL(
         });
 
       let existingPaddles = 0;
+      let noEquipmentConfirmed = false;
+
+      const noEquipmentButton =
+        document.querySelector<HTMLButtonElement>(
+          "#no-equipment"
+        );
+
+      const equipmentCheckboxIds = [
+        "has-balls",
+        "has-badminton-shoes",
+        "has-tennis-shoes",
+        "has-court-shoes",
+        "has-net"
+      ];
 
       const existingPaddleCount =
         document.querySelector<HTMLElement>(
@@ -732,6 +921,85 @@ const canonicalURL = new URL(
             String(existingPaddles);
         }
       }
+
+      function renderNoEquipmentState() {
+        if (!noEquipmentButton) return;
+
+        noEquipmentButton.classList.toggle(
+          "selected",
+          noEquipmentConfirmed
+        );
+
+        noEquipmentButton.setAttribute(
+          "aria-pressed",
+          String(noEquipmentConfirmed)
+        );
+      }
+
+      function clearExistingEquipment() {
+        existingPaddles = 0;
+
+        equipmentCheckboxIds.forEach((id) => {
+          const input =
+            document.querySelector<HTMLInputElement>(
+              `#${id}`
+            );
+
+          if (input) {
+            input.checked = false;
+          }
+        });
+
+        updateExistingPaddles();
+      }
+
+      function hasAnyExistingEquipment(): boolean {
+        return (
+          existingPaddles > 0 ||
+          equipmentCheckboxIds.some((id) => {
+            return (
+              document.querySelector<HTMLInputElement>(
+                `#${id}`
+              )?.checked ?? false
+            );
+          })
+        );
+      }
+
+      function setNoEquipmentConfirmed(value: boolean) {
+        noEquipmentConfirmed = value;
+        renderNoEquipmentState();
+      }
+
+      noEquipmentButton?.addEventListener("click", () => {
+        markBuilderStarted();
+
+        if (noEquipmentConfirmed) {
+          setNoEquipmentConfirmed(false);
+        } else {
+          clearExistingEquipment();
+          setNoEquipmentConfirmed(true);
+        }
+
+        clearValidation();
+      });
+
+      equipmentCheckboxIds.forEach((id) => {
+        const input =
+          document.querySelector<HTMLInputElement>(
+            `#${id}`
+          );
+
+        input?.addEventListener("change", () => {
+          markBuilderStarted();
+
+          if (input.checked) {
+            setNoEquipmentConfirmed(false);
+          }
+
+          clearValidation();
+        });
+      });
 
       document
         .querySelector("#existing-paddle-minus")
@@ -751,31 +1019,12 @@ const canonicalURL = new URL(
               existingPaddles + 1
             );
 
-          updateExistingPaddles();
-        });
+          if (existingPaddles > 0) {
+            setNoEquipmentConfirmed(false);
+          }
 
-      document
-        .querySelector("#clear-equipment")
-        ?.addEventListener("click", () => {
-          existingPaddles = 0;
-
-          [
-            "has-balls",
-            "has-badminton-shoes",
-            "has-tennis-shoes",
-            "has-court-shoes",
-            "has-net"
-          ].forEach((id) => {
-            const input =
-              document.querySelector<HTMLInputElement>(
-                `#${id}`
-              );
-
-            if (input) {
-              input.checked = false;
-            }
-          });
-
+          markBuilderStarted();
+          clearValidation();
           updateExistingPaddles();
         });
 
@@ -800,6 +1049,17 @@ const canonicalURL = new URL(
           return false;
         }
 
+        if (
+          currentStep === 4 &&
+          !noEquipmentConfirmed &&
+          !hasAnyExistingEquipment()
+        ) {
+          showValidation(
+            "請選擇你已有的裝備；如果目前都沒有，請點選「我目前都沒有」。"
+          );
+          return false;
+        }
+
         if (currentStep === 5 && !budget) {
           showValidation("請先選擇你的總預算。");
           return false;
@@ -814,6 +1074,13 @@ const canonicalURL = new URL(
       }
 
       function showValidation(message: string) {
+        trackEvent(
+          "builder_validation_error",
+          {
+            step: currentStep
+          }
+        );
+
         if (validationMessage) {
           validationMessage.textContent = message;
         }
@@ -865,6 +1132,7 @@ const canonicalURL = new URL(
 
         if (currentStep === 4) {
           updateExistingPaddles();
+          renderNoEquipmentState();
         }
 
         clearValidation();
@@ -872,6 +1140,14 @@ const canonicalURL = new URL(
 
       backButton?.addEventListener("click", () => {
         if (currentStep > 1) {
+          trackEvent(
+            "builder_back_clicked",
+            {
+              from_step: currentStep,
+              to_step: currentStep - 1
+            }
+          );
+
           currentStep -= 1;
           renderStep();
         }
@@ -1095,7 +1371,7 @@ const canonicalURL = new URL(
                 </div>
 
                 <div class="summary-metric">
-                  <span>${budgetInsufficient ? "最低可行花費" : "建議保留"}</span>
+                  <span>${budgetInsufficient ? "最低可行花費" : "預算餘裕"}</span>
                   <strong>
                     ${
                       budgetInsufficient
@@ -1190,14 +1466,12 @@ const canonicalURL = new URL(
                         </div>
 
                         <h3>${product.name}</h3>
-                        <p class="product-merchant">${product.merchant}</p>
+                        <p class="product-merchant">來源：${product.merchant}</p>
                       </div>
 
                       <div class="product-price">
-                        <span>約</span>
                         <strong>
-                          NT$${money(product.priceMin)}
-                          – ${money(product.priceMax)}
+                          約 NT$${money(product.priceMin)}–${money(product.priceMax)}
                         </strong>
                       </div>
                     </div>
@@ -1243,6 +1517,8 @@ const canonicalURL = new URL(
       document
         .querySelector("#restart-button")
         ?.addEventListener("click", () => {
+          trackEvent("builder_restart_clicked");
+
           window.location.reload();
         });
 
@@ -1280,6 +1556,10 @@ const canonicalURL = new URL(
 
 
           "affiliate";
+
+
+
+        trackEvent("product_clicked");
 
 
 

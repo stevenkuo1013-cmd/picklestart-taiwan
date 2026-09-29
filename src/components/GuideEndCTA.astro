@@ -1,0 +1,37 @@
+---
+interface Props {
+  heading: string;
+  text: string;
+  buttonText: string;
+}
+
+const { heading, text, buttonText } = Astro.props;
+
+const articleSlug =
+  Astro.url.pathname.split("/").filter(Boolean).at(-1) ?? "guide";
+
+const builderHref =
+  `/builder?from=guide_end&article=${encodeURIComponent(articleSlug)}`;
+---
+
+<section class="guide-end-cta">
+  <div>
+    <p class="eyebrow">READY TO PLAY?</p>
+    <h2>{heading}</h2>
+    <p>{text}</p>
+  </div>
+
+  <div class="guide-end-cta-actions">
+    <a
+      class="primary-button"
+      href={builderHref}
+      data-analytics-event="guide_builder_clicked"
+      data-analytics-detail-event="guide_builder_source"
+      data-analytics-placement="end_cta"
+      data-analytics-article={articleSlug}
+    >
+      {buttonText} →
+    </a>
+    <a class="guide-secondary-link" href="/guide">回新手指南</a>
+  </div>
+</section>

@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "第一次打匹克球一定要先買球拍嗎？",
+    answer: "不一定。先問場館、朋友或課程是否能借用；如果只是第一次體驗，先確認自己喜不喜歡再買也很合理。",
+    href: "/guide/beginner-equipment",
+    linkLabel: "看新手裝備清單"
+  },
+  {
+    question: "Open play 一定都是把球拍排成一排嗎？",
+    answer: "不一定。不同場地可能用球拍架、名單、分級或其他輪轉方式，到場先問當地流程最準。"
+  },
+  {
+    question: "第一次去球場最基本要帶什麼？",
+    answer: "先確認場地提供什麼。常見會準備球拍、對應場地的球、合適場地鞋、水與毛巾，但不要在不知道場地設備前先把所有東西買齊。"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/beginner-equipment",
+    title: "第一次要買什麼？",
+    description: "先確認場地與現有裝備再花錢"
+  },
+  {
+    href: "/guide/beginner-rules",
+    title: "5 條新手規則",
+    description: "上場前最值得補的規則"
+  },
+  {
+    href: "/guide/taipei-pickleball-courts",
+    title: "台北去哪裡打？",
+    description: "新手找場地、球局與預約方式"
+  }
+];
+
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-09-29"
+  dateModified="2026-09-29"
+  title="第一次打匹克球要帶什麼？新手去球場流程與注意事項｜PickleStart Taiwan"
+  description="第一次去匹克球場要帶什麼、怎麼加入 open play、要不要自備球拍？整理場地確認、排隊方式、暖身、禮貌用語與第一次上場流程。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "第一次去球場", href: "/guide/first-game" }
+  ]}
+>
+  <article class="guide-page guide-story-page">
+    <GuideBreadcrumbs current="第一次去球場" />
+    <div class="guide-hero">
+      <p class="eyebrow">FIRST GAME · REAL LIFE GUIDE</p>
+      <h1>第一次去球場，<br />不用假裝你什麼都懂。</h1>
+      <p class="guide-lead">
+        對很多人來說，第一次最緊張的不是 Kitchen，而是：「我到了以後到底要站哪裡？」
+        這篇不考你規則，直接告訴你從出門到打完第一場可以怎麼做。
+      </p>
+      <div class="guide-quick-start">
+        <div><span>帶什麼</span><strong>球拍、球、場地鞋、水</strong></div>
+        <div><span>最重要</span><strong>先說自己是新手</strong></div>
+        <div><span>不用怕</span><strong>不懂就問當場規則</strong></div>
+      </div>
+    </div>
+
+    <section class="guide-section">
+      <p class="guide-step">BEFORE YOU LEAVE</p>
+      <h2>先確認場地提供什麼，再決定你要帶什麼</h2>
+      <div class="guide-pack-grid">
+        <article><span>01</span><strong>球拍</strong><p>沒有的話先問場館、朋友或課程是否能借。</p></article>
+        <article><span>02</span><strong>對應場地的球</strong><p>室內、戶外用球可能不同；第一次不用囤很多。</p></article>
+        <article><span>03</span><strong>合適場地鞋</strong><p>已有狀況良好的羽球鞋或網球鞋通常可先評估沿用。</p></article>
+        <article><span>04</span><strong>水與毛巾</strong><p>這比帶一堆配件實際得多。</p></article>
+      </div>
+      <a class="guide-inline-link" href="/guide/beginner-equipment">第一次到底要買哪些裝備？→</a>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">WHEN YOU ARRIVE</p>
+      <h2>第一句話直接說：「我第一次打」通常最省事</h2>
+      <div class="guide-script-box">
+        <p>「嗨，我第一次來這裡打，請問這邊怎麼排場？」</p>
+        <p>「我是新手，如果計分或站位錯了再麻煩提醒我。」</p>
+        <p>「這邊是自由配對，還是要先登記？」</p>
+      </div>
+      <p>
+        Open play 通常是讓沒有事先約好固定對手的人也能加入球局的方式。
+        不同場地的輪轉方法可能不同：有些會排球拍、有些按名單、有些按球場與程度分組。
+        所以不要預設流程，到場先問一次就好。
+      </p>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">YOUR FIRST RALLY</p>
+      <h2>第一次打時，先追求「把球留在場上」，不是一球打爆對手</h2>
+      <div class="guide-first-game-list">
+        <article><strong>發球先求進</strong><p>不要第一球就追求速度和角度。</p></article>
+        <article><strong>記得 Two-Bounce</strong><p>接發與下一球都先讓球落地。</p></article>
+        <article><strong>移動到球前面</strong><p>比伸手硬撈更容易控制方向。</p></article>
+        <article><strong>失誤很正常</strong><p>第一次最值得累積的是回合感，不是勝率。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">OPEN PLAY ETIQUETTE</p>
+      <h2>新手最容易被喜歡的方式：讓別人知道你願意學</h2>
+      <p>
+        The Dink 的 open play 新手指南也把「先理解當地輪轉方式與球場禮儀」放在很重要的位置。
+        對第一次參加的人來說，不需要表現得像老手，反而要避免幾件事：
+      </p>
+      <div class="guide-dont-grid">
+        <article><span>不要</span><strong>霸佔球場不輪替</strong><p>先理解場館的輪場機制。</p></article>
+        <article><span>不要</span><strong>球飛進隔壁場立刻衝過去</strong><p>先提醒對方，等安全時再取球。</p></article>
+        <article><span>不用</span><strong>每顆球都拼命殺</strong><p>新手球局先把回合打起來通常更好玩。</p></article>
+        <article><span>記得</span><strong>打完說聲謝謝</strong><p>匹克球很大一部分就是社交。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">AFTER THE GAME</p>
+      <h2>第一場打完，只要回答自己三個問題</h2>
+      <div class="three-checks">
+        <article><span>01</span><strong>我喜歡嗎？</strong><p>如果只是普通，不用急著升級球拍。</p></article>
+        <article><span>02</span><strong>哪裡最卡？</strong><p>規則、站位、發球，下一次只改善一件事。</p></article>
+        <article><span>03</span><strong>我會固定打嗎？</strong><p>這才是決定要不要買更完整裝備的訊號。</p></article>
+      </div>
+    </section>
+
+
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="第一次不用帶得像要去比賽。"
+      text="回答 6 題，Builder 會按照你要去的場地與已有裝備，列出真正需要帶或買的東西。"
+      buttonText="算我的第一次裝備"
+    />
+
+    <section class="guide-source-note">
+      <h2>延伸閱讀</h2>
+      <p>Open play 的實際排隊與輪轉方式依場地而異。本頁以一般新手情境整理，現場仍以各場館規則為準。</p>
+      <div class="source-links">
+        <a href="https://www.thedinkpickleball.com/spickleball-open-play-what-it-is-and-how-to-get-games/" target="_blank" rel="noopener noreferrer">The Dink：Pickleball Open Play Guide ↗</a>
+        <a href="https://usapickleball.org/pickleball-skills/level-one/how-to-play-pickleball/" target="_blank" rel="noopener noreferrer">USA Pickleball：How to Play Pickleball ↗</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

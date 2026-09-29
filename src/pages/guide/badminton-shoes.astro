@@ -1,16 +1,62 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
 import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "羽球鞋可以直接拿來打匹克球嗎？",
+    answer: "如果鞋況良好、抓地正常，而且本來就適合多方向場上移動，第一次打匹克球通常可以先沿用。"
+  },
+  {
+    question: "網球鞋可以打匹克球嗎？",
+    answer: "通常可以先評估沿用。網球鞋本來就針對急停、橫移與耐磨設計，和匹克球常見移動需求相近。"
+  },
+  {
+    question: "一般跑鞋適合固定打匹克球嗎？",
+    answer: "要更謹慎。跑鞋通常更偏向前後直線跑動與緩震，不一定提供相同程度的側向穩定；固定打球時較值得改用場地鞋。",
+    href: "/guide/beginner-equipment",
+    linkLabel: "回到完整裝備清單"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/beginner-equipment",
+    title: "新手裝備清單",
+    description: "球拍、球、鞋、球網的優先順序"
+  },
+  {
+    href: "/guide/beginner-budget",
+    title: "新手預算指南",
+    description: "有鞋能沿用，預算可以放哪裡"
+  },
+  {
+    href: "/guide/first-game",
+    title: "第一次去球場",
+    description: "出門前到底要帶什麼"
+  }
+];
+
 ---
 
 <BaseLayout
   pageType="article"
   datePublished="2026-09-29"
   dateModified="2026-09-29"
-  title="羽球鞋可以打匹克球嗎？哪些鞋可以先不用買｜PickleStart Taiwan"
-  description="羽球鞋、網球鞋、跑鞋能不能打匹克球？從側向支撐、抓地與場地需求判斷，新手第一次是否真的需要買匹克球專用鞋。"
+  title="羽球鞋可以打匹克球嗎？羽球鞋、網球鞋、跑鞋怎麼選｜PickleStart Taiwan"
+  description="羽球鞋、網球鞋、一般跑鞋能不能打匹克球？從側向支撐、抓地、鞋況與場地需求判斷，新手第一次是否真的需要另買匹克球專用鞋。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "羽球鞋可以打匹克球嗎？", href: "/guide/badminton-shoes" }
+  ]}
 >
   <article class="guide-page">
+    <GuideBreadcrumbs current="羽球鞋可以打匹克球嗎？" />
     <div class="guide-hero">
       <p class="eyebrow">Pickleball Shoes Guide</p>
       <h1>羽球鞋可以打匹克球嗎？</h1>
@@ -30,14 +76,25 @@ import "../../styles/guide.css";
       </div>
 
       <div class="guide-cta-row">
-        <a class="primary-button" href="/builder">
+        <a
+          class="primary-button"
+          href="/builder?from=guide_inline&article=badminton-shoes"
+          data-analytics-event="guide_builder_clicked"
+          data-analytics-detail-event="guide_builder_source"
+          data-analytics-placement="hero_inline"
+          data-analytics-article="badminton-shoes"
+        >
           告訴 Builder 我已經有羽球鞋 →
         </a>
         <span>有適合的鞋就不會重複推薦</span>
       </div>
     </div>
 
-    <section class="guide-section">
+      <figure class="guide-cover-image">
+    <img src="/images/guide-shoes.webp" alt="球場邊的白色場地鞋、球拍與黃色匹克球" loading="eager" />
+  </figure>
+
+<section class="guide-section">
       <h2>為什麼重點是「場地鞋」，不是鞋名？</h2>
       <p>
         匹克球有很多側向位移、急停與短距離加速。
@@ -127,17 +184,16 @@ import "../../styles/guide.css";
       </p>
     </section>
 
-    <section class="guide-builder-callout">
-      <p class="eyebrow">Reuse First</p>
-      <h2>已經有合適羽球鞋？把這筆預算留給更需要的地方。</h2>
-      <p>
-        Builder 會把你的現有裝備算進去，不會因為有商品可以賣就叫你全部重買。
-      </p>
 
-      <a class="primary-button" href="/builder">
-        建立我的 Starter Kit →
-      </a>
-    </section>
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="鞋子能沿用，就不要為了名稱不同重買。"
+      text="把你現有的羽球鞋、網球鞋或場地鞋告訴 Builder，它會避免重複推薦。"
+      buttonText="用我的現有裝備配一套"
+    />
 
     <section class="guide-source-note">
       <h2>資料來源</h2>

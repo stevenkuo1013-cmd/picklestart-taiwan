@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "Dink 就是把球打得很輕嗎？",
+    answer: "不只是輕。重點是讓球受控、低而短地落進對方 Kitchen，降低對手舒服向下攻擊的機會。"
+  },
+  {
+    question: "為什麼新手常把 Dink 打太高？",
+    answer: "常見原因包含握拍太緊、揮拍太大、手腕過度甩動或太急著製造致勝球；先追求穩定低弧線比較重要。"
+  },
+  {
+    question: "是不是每一球都應該 Dink？",
+    answer: "不是。Dink 是一個控制選項，是否使用要看球的高度、你的站位與對手位置。",
+    href: "/guide/kitchen-rule",
+    linkLabel: "先把 Kitchen 規則補完整"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/kitchen-rule",
+    title: "Kitchen 規則",
+    description: "Dink 的位置概念從這裡開始"
+  },
+  {
+    href: "/guide/beginner-rules",
+    title: "新手 5 條規則",
+    description: "把戰術建立在規則基礎上"
+  },
+  {
+    href: "/guide/first-game",
+    title: "第一次去球場",
+    description: "先能順利上場，再慢慢練控制"
+  }
+];
+
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-09-29"
+  dateModified="2026-09-29"
+  title="匹克球 Dink 是什麼？新手軟球技巧、用途與練習｜PickleStart Taiwan"
+  description="匹克球 Dink 是什麼、為什麼高手常打軟球？看懂 Dink 的用途、基本動作、新手常見錯誤與 5 分鐘練習，理解 Kitchen line 的控制戰術。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "Dink 新手指南", href: "/guide/dink-guide" }
+  ]}
+>
+  <article class="guide-page guide-story-page">
+    <GuideBreadcrumbs current="Dink 新手指南" />
+    <div class="guide-hero">
+      <p class="eyebrow">DINK 101 · CONTROL BEFORE POWER</p>
+      <h1>為什麼高手不每一球都往死裡打？</h1>
+      <p class="guide-lead">
+        因為匹克球不是力量越大越好。Dink 是一顆柔和、受控的短球，
+        通常從 Kitchen line 附近打出，讓球落進對手的 Kitchen。
+      </p>
+      <div class="guide-answer">
+        <span>一句話理解</span>
+        <strong>Dink 的目的不是直接得分，而是讓對手很難舒服地進攻。</strong>
+      </div>
+    </div>
+
+    <section class="guide-section">
+      <p class="guide-step">WHAT IS A DINK?</p>
+      <h2>它是一顆「故意打軟」的球</h2>
+      <p>
+        The Dink 將 dink 描述為從 Kitchen line 附近擊出的柔和、受控短球，
+        讓球落在對手的 Non-Volley Zone。因為球落得低，對手通常比較難直接向下攻擊。
+      </p>
+      <div class="dink-flight" aria-hidden="true">
+        <span class="dink-net"></span>
+        <span class="dink-arc"></span>
+        <span class="dink-ball"></span>
+        <small>低、短、落進 Kitchen</small>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">WHY USE IT?</p>
+      <h2>你不是在「送球」，而是在限制對手能做什麼</h2>
+      <div class="guide-reason-grid">
+        <article><span>01</span><strong>降低攻擊高度</strong><p>球低於網高時，對手比較難舒服地往下壓。</p></article>
+        <article><span>02</span><strong>把節奏慢下來</strong><p>當回合太快、你位置不好，軟球能幫你重整。</p></article>
+        <article><span>03</span><strong>等對手先失去耐心</strong><p>很多進攻機會不是你硬製造，而是對手先把球送高。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">BEGINNER TECHNIQUE</p>
+      <h2>第一次練 Dink，先不要想旋轉</h2>
+      <div class="guide-flow-steps">
+        <article><span>1</span><strong>握拍放鬆</strong><p>太用力會讓球很容易彈高或飛長。</p></article>
+        <article><span>2</span><strong>揮拍短一點</strong><p>用肩膀帶動小幅度動作，不要像底線抽球。</p></article>
+        <article><span>3</span><strong>往前上方「送」</strong><p>目標是讓球越網後往下掉，不是平平打穿。</p></article>
+        <article><span>4</span><strong>打完回準備姿勢</strong><p>Dink 往往不是一顆就結束，要準備下一球。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">COMMON MISTAKES</p>
+      <h2>新手最常把 Dink 打成「免費進攻球」</h2>
+      <div class="guide-dont-grid">
+        <article><span>太高</span><strong>球浮在網上方</strong><p>對手可以直接往下攻擊。</p></article>
+        <article><span>太長</span><strong>球落到 Kitchen 後面</strong><p>變成舒服的半場球。</p></article>
+        <article><span>太用手</span><strong>手腕一直甩</strong><p>方向與高度更難穩定。</p></article>
+        <article><span>太急</span><strong>第二顆就想打 winner</strong><p>先學會讓對手多打一顆。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">A 5-MINUTE DRILL</p>
+      <h2>找一個人，只打 Kitchen 對角線</h2>
+      <p>
+        兩人站在 Kitchen line，先不比賽，只把球互相送進對方 Kitchen。
+        連續 10 顆都能過網且不浮高，再開始嘗試改變方向。
+      </p>
+      <div class="guide-note">
+        <strong>新手目標不是「漂亮」</strong>
+        <p>如果你能把球穩定送過去、維持低弧線，已經比追求花俏旋轉更有價值。</p>
+      </div>
+    </section>
+
+    <section class="guide-myth-card guide-myth-wide">
+      <span>最重要的反直覺</span>
+      <strong>不是每一球都要 Dink，也不是每一球都要猛打。</strong>
+      <p>好的選擇取決於球的高度、你的站位與對手的位置。學 Dink 的價值，是讓你多一個「控制」選項。</p>
+    </section>
+
+    <section class="guide-next-reading">
+      <div><span>BACK TO BASICS</span><h2>Kitchen 還沒完全懂？先回去看那篇。</h2></div>
+      <a href="/guide/kitchen-rule">Kitchen 規則 3 分鐘看懂 →</a>
+    </section>
+
+    
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="開始懂控制之後，裝備反而不用想得太複雜。"
+      text="先把真正影響你上場的東西準備好，其他配件可以等你確定會固定打再買。"
+      buttonText="建立我的 Starter Kit"
+    />
+
+    <section class="guide-source-note">
+      <h2>資料來源</h2>
+      <p>Dink 定義與基礎策略參考 The Dink 2026 新手教學，以及 USA Pickleball 的站位與 Kitchen line 基礎教材。</p>
+      <div class="source-links">
+        <a href="https://www.thedinkpickleball.com/how-to-dink-in-pickleball-a-step-by-step-guide/" target="_blank" rel="noopener noreferrer">The Dink：How to Dink in Pickleball ↗</a>
+        <a href="https://usapickleball.org/pickleball-skills/level-two/pickleball-basics-positioning-tips/" target="_blank" rel="noopener noreferrer">USA Pickleball：Positioning & Kitchen Line Strategy ↗</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

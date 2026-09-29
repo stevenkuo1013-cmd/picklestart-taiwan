@@ -1,0 +1,30 @@
+<script>
+  import { trackEvent } from "../lib/analytics";
+
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement | null;
+
+    const element =
+      target?.closest<HTMLElement>("[data-analytics-event]");
+
+    if (!element) return;
+
+    const eventName = element.dataset.analyticsEvent;
+
+    if (!eventName) return;
+
+    trackEvent(eventName);
+
+    const detailEvent =
+      element.dataset.analyticsDetailEvent;
+
+    if (!detailEvent) return;
+
+    trackEvent(detailEvent, {
+      placement: element.dataset.analyticsPlacement,
+      page: element.dataset.analyticsPage,
+      article: element.dataset.analyticsArticle,
+      target: element.dataset.analyticsTarget
+    });
+  });
+</script>

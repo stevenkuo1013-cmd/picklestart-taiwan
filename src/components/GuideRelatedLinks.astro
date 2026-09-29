@@ -1,0 +1,41 @@
+---
+interface RelatedItem {
+  href: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  items: RelatedItem[];
+}
+
+const { items } = Astro.props;
+
+const articleSlug =
+  Astro.url.pathname.split("/").filter(Boolean).at(-1) ?? "guide";
+---
+
+<section class="guide-related guide-related-v2">
+  <div>
+    <span>KEEP LEARNING</span>
+    <h2>接著看這幾篇</h2>
+    <p>不用照順序讀，挑你現在最有疑問的就好。</p>
+  </div>
+
+  <div class="guide-related-links">
+    {items.map((item) => (
+      <a
+        href={item.href}
+        data-analytics-event="guide_related_clicked"
+        data-analytics-detail-event="guide_related_target"
+        data-analytics-placement="related_reading"
+        data-analytics-article={articleSlug}
+        data-analytics-target={item.href}
+      >
+        <strong>{item.title}</strong>
+        <small>{item.description}</small>
+        <span>→</span>
+      </a>
+    ))}
+  </div>
+</section>

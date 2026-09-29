@@ -1,0 +1,296 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "第一次打匹克球，沒有球拍也可以去嗎？",
+    answer: "可以先問場館、球局主揪或課程是否提供借拍。第一次體驗不必先把裝備買齊；如果對方沒有借拍，再準備自己的球拍即可。",
+    href: "/guide/beginner-equipment",
+    linkLabel: "先看新手裝備清單"
+  },
+  {
+    question: "看到免費戶外場，可以直接去打嗎？",
+    answer: "不一定。公共場地可能有固定球敘、輪場方式或當日活動，建議出發前先確認場地公告或聯絡窗口，尤其是第一次去的時候。"
+  },
+  {
+    question: "我沒有球友，怎麼找第一場？",
+    answer: "比起自己租整面場，新手更適合先找固定球敘、open play 或新手體驗場。聯絡時直接說自己是第一次或剛開始打，通常比假裝熟悉流程更容易被安排到合適的場次。",
+    href: "/guide/first-game",
+    linkLabel: "看第一次去球場指南"
+  },
+  {
+    question: "哪裡可以看台灣其他縣市的匹克球場？",
+    answer: "中華民國匹克球協會目前有整理全台場地資訊，包含部分場地的室內外、地址、時段、聯絡方式與費用。資料仍可能變動，出發前要再向場地或主辦單位確認。"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/first-game",
+    title: "第一次去球場",
+    description: "到了現場怎麼開口、怎麼加入球局"
+  },
+  {
+    href: "/guide/beginner-equipment",
+    title: "第一次要買什麼？",
+    description: "場地確認後再決定哪些裝備真的要買"
+  },
+  {
+    href: "/guide/beginner-rules",
+    title: "5 條新手規則",
+    description: "上場前先把最容易卡住的地方搞懂"
+  }
+];
+
+const courtExamples = [
+  {
+    name: "士林至善公園",
+    area: "士林",
+    type: "戶外",
+    note: "協會場地表目前列有固定免費時段；適合想先從戶外球敘開始的人。"
+  },
+  {
+    name: "景美河濱球場",
+    area: "文山",
+    type: "戶外",
+    note: "協會場地表目前列有週末固定時段；出發前仍建議先確認當週安排。"
+  },
+  {
+    name: "北投運動中心",
+    area: "北投",
+    type: "室內",
+    note: "協會場地表目前列有付費固定時段；適合在意天候、想找室內場的人。"
+  },
+  {
+    name: "萬華運動中心",
+    area: "萬華",
+    type: "室內",
+    note: "協會場地表目前列有匹克球時段；實際費用與名額請以現場或主辦公告為準。"
+  },
+  {
+    name: "臺北市網球中心",
+    area: "內湖",
+    type: "匹克球場",
+    note: "官方網站有獨立匹克球場與一般民眾預約辦法，適合想自行約朋友租場的人。"
+  }
+];
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-09-29"
+  dateModified="2026-09-29"
+  image="/social/taipei-pickleball-guide.png"
+  title="台北哪裡可以打匹克球？2026 新手找場地、球局與預約方式｜PickleStart Taiwan"
+  description="台北第一次想打匹克球，去哪裡找場地與球友？整理免費戶外、室內場地、固定球敘、預約方式與新手第一次找場的實用流程。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "台北匹克球場地", href: "/guide/taipei-pickleball-courts" }
+  ]}
+>
+  <article class="guide-page guide-local-page">
+    <GuideBreadcrumbs current="台北匹克球場地" />
+
+    <div class="guide-hero local-court-hero">
+      <p class="eyebrow">TAIPEI · FIND A COURT</p>
+      <h1>台北哪裡可以打匹克球？<br /><span>新手先不用自己亂找。</span></h1>
+      <p class="guide-lead">
+        看懂規則之後，下一個真正的問題通常是：「所以我到底去哪裡打？」
+        台北有公園、河濱、運動中心與可預約場地，但第一次找場最重要的不是記住一長串地址，
+        而是先知道自己要的是免費試玩、穩定室內，還是可以直接加入的球局。
+      </p>
+
+      <div class="guide-quick-start local-court-quick">
+        <div><span>想先免費試</span><strong>先找固定戶外球敘</strong></div>
+        <div><span>怕天氣影響</span><strong>找運動中心／室內場</strong></div>
+        <div><span>沒有球友</span><strong>優先找固定球局或 open play</strong></div>
+      </div>
+
+      <p class="guide-verified-note">
+        本頁最後人工確認：2026-09-29。場地時段、費用與開放方式會變動，出發前請再查官方公告。
+      </p>
+    </div>
+
+    <section class="guide-section">
+      <p class="guide-step">START WITH YOUR SITUATION</p>
+      <h2>第一次找場，不要先把所有球場地址背起來</h2>
+
+      <div class="court-path-grid">
+        <article>
+          <span>01</span>
+          <strong>我只是想先試一次</strong>
+          <p>
+            先找有固定時段的戶外球敘，比自己租場更省事。
+            中華民國匹克球協會目前的全台場地表，列有士林至善公園、景美河濱、天母公園等台北戶外選項。
+          </p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <strong>我想要穩定、不想看天氣</strong>
+          <p>
+            先看運動中心或可預約的場地。北投、萬華等運動中心在協會場地表上有匹克球時段；
+            臺北市網球中心也有獨立的匹克球場與預約辦法。
+          </p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <strong>我沒有三個朋友可以一起打</strong>
+          <p>
+            不用先湊滿四個人。優先找固定球敘、open play 或新手體驗場，
+            聯絡時直接說「我是新手，第一次想加入」，通常比自己租一面空場更適合。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">5 PLACES TO CHECK FIRST</p>
+      <h2>台北新手可以先查這 5 種場地</h2>
+      <p>
+        下面不是「排名」，而是讓你知道台北有哪些不同類型的選擇。
+        我們刻意不把容易變動的完整時刻表抄進來，避免你半年後看到過期資訊。
+      </p>
+
+      <div class="court-example-grid">
+        {courtExamples.map((court) => (
+          <article class="court-example-card">
+            <div class="court-example-meta">
+              <span>{court.area}</span>
+              <span>{court.type}</span>
+            </div>
+            <h3>{court.name}</h3>
+            <p>{court.note}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">A BETTER WAY TO FIND A GAME</p>
+      <h2>比「附近有沒有球場」更重要的是：那裡有沒有你能加入的場次</h2>
+
+      <div class="guide-callout">
+        <strong>球場 ≠ 一定有球局。</strong>
+        <p>
+          一個地方有匹克球線，不代表你隨時去都有人陪你打；
+          相反地，有固定球敘的地方，即使場地很普通，對第一次上場的人可能更實用。
+        </p>
+      </div>
+
+      <div class="court-checklist">
+        <article>
+          <span>✓</span>
+          <div>
+            <strong>先問「今天有固定球敘嗎？」</strong>
+            <p>不要只問「可以打匹克球嗎？」兩個問題得到的答案可能完全不同。</p>
+          </div>
+        </article>
+        <article>
+          <span>✓</span>
+          <div>
+            <strong>直接說自己的程度</strong>
+            <p>「我第一次／只打過幾次」可以讓主揪更快判斷適合你的場次。</p>
+          </div>
+        </article>
+        <article>
+          <span>✓</span>
+          <div>
+            <strong>問要不要自備球拍與球</strong>
+            <p>第一次最容易白買的，就是還不知道場地提供什麼就先買完整裝備。</p>
+          </div>
+        </article>
+        <article>
+          <span>✓</span>
+          <div>
+            <strong>出發前再確認一次</strong>
+            <p>學校、運動中心與公共場地都可能因活動、天候或租借而調整。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">OFFICIAL SOURCES FIRST</p>
+      <h2>要找最新場地，先從這兩個來源開始</h2>
+
+      <div class="official-source-grid">
+        <a
+          href="https://pickleball.org.tw/stadium/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <small>全台場地</small>
+          <strong>中華民國匹克球協會｜找球場</strong>
+          <p>目前整理縣市、場館、室內外、部分時段、聯絡方式與費用。</p>
+          <span>查看官方場地表 ↗</span>
+        </a>
+
+        <a
+          href="https://www.tsc.taipei/%E5%A0%B4%E9%A4%A8%E4%BB%8B%E7%B4%B9/%E5%8C%B9%E5%85%8B%E7%90%83%E7%90%83%E5%A0%B4pickleball/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <small>自行租場</small>
+          <strong>臺北市網球中心｜匹克球場</strong>
+          <p>官方頁面列有匹克球場開放、一般民眾預約方式與收費標準。</p>
+          <span>查看場地與預約 ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">YOUR FIRST MESSAGE</p>
+      <h2>不知道怎麼問？把這句直接複製出去就好</h2>
+
+      <div class="guide-script-box">
+        <p>
+          「你好，我是剛開始接觸匹克球的新手，想請問這週有可以加入的球敘或新手場嗎？
+          需要自備球拍／球嗎？第一次去有沒有要先登記？」
+        </p>
+      </div>
+
+      <p>
+        你不需要先知道什麼是 3.0、3.5，也不用假裝自己很熟。
+        對第一次找球局的人來說，把「程度、想去的日期、需不需要借拍」講清楚就夠了。
+      </p>
+    </section>
+
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="找到場地之後，再決定真的需要買什麼。"
+      text="回答 6 題，Builder 會依你的場地、現有裝備與預算，把「現在買／已有沿用／之後再買／不用買」分清楚。"
+      buttonText="建立我的 Starter Kit"
+    />
+
+    <section class="guide-source-note">
+      <h2>資料來源與更新說明</h2>
+      <p>
+        本頁以官方場地與場館資訊作為主要依據。場地使用時段、費用、球敘與預約規則可能隨時調整，
+        PickleStart 不把這些資訊當成即時庫存；出發前請回到原始來源確認。
+      </p>
+      <div class="source-links">
+        <a href="https://pickleball.org.tw/stadium/" target="_blank" rel="noopener noreferrer">
+          中華民國匹克球協會：全台找球場 ↗
+        </a>
+        <a
+          href="https://www.tsc.taipei/%E5%A0%B4%E9%A4%A8%E4%BB%8B%E7%B4%B9/%E5%8C%B9%E5%85%8B%E7%90%83%E7%90%83%E5%A0%B4pickleball/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          臺北市網球中心：匹克球場與預約辦法 ↗
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

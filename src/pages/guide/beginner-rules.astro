@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "匹克球發球要打到哪裡？",
+    answer: "發球要斜對角進入對方的發球區，並避開 Non-Volley Zone；Kitchen 線屬於 NVZ，所以發球碰到 Kitchen 線不是合法落點。"
+  },
+  {
+    question: "Kitchen 可以進去嗎？",
+    answer: "可以，只要不是在 Kitchen 內或踩線時直接 volley。球先落地後，你可以進去擊球。",
+    href: "/guide/kitchen-rule",
+    linkLabel: "用情境題看懂 Kitchen"
+  },
+  {
+    question: "第一次一定要把完整計分背起來嗎？",
+    answer: "不用。先知道現場使用哪種計分方式最重要；休閒場地可能依活動採不同賽制，不確定直接問最省事。"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/kitchen-rule",
+    title: "Kitchen 規則",
+    description: "可以進去嗎？踩線和動量怎麼算"
+  },
+  {
+    href: "/guide/first-game",
+    title: "第一次上場",
+    description: "規則懂了，接著看球場實際流程"
+  },
+  {
+    href: "/guide/dink-guide",
+    title: "Dink 是什麼？",
+    description: "開始理解 Kitchen line 附近的節奏"
+  }
+];
+
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-09-29"
+  dateModified="2026-09-29"
+  title="匹克球規則新手版：發球、Kitchen、計分 5 條必懂｜PickleStart Taiwan"
+  description="第一次打匹克球不用背完整規則書。先懂斜對角發球、Two-Bounce Rule、Kitchen、常見 fault 與基本計分 5 件事，就能順利開始第一場。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide" },
+    { name: "匹克球新手規則", href: "/guide/beginner-rules" }
+  ]}
+>
+  <article class="guide-page guide-story-page">
+    <GuideBreadcrumbs current="匹克球新手規則" />
+    <div class="guide-hero">
+      <p class="eyebrow">BEGINNER RULES · 6 MIN</p>
+      <h1>第一次上場，<br />先懂這 5 條規則就好。</h1>
+      <p class="guide-lead">
+        完整 rulebook 很重要，但不是你第一次去打球前的閱讀作業。
+        先把最常讓新手停下來問「欸，剛剛為什麼？」的五件事弄懂。
+      </p>
+
+      <div class="guide-quick-start">
+        <div><span>適合誰</span><strong>第一次或剛打幾次</strong></div>
+        <div><span>先不用背</span><strong>裁判程序與進階例外</strong></div>
+        <div><span>目標</span><strong>能順利打完第一場</strong></div>
+      </div>
+    </div>
+
+    <section class="guide-30sec">
+      <span>⚡ 30 秒版</span>
+      <div>
+        <strong>發球要斜對角</strong>
+        <strong>前兩次擊球都要先落地</strong>
+        <strong>Kitchen 裡不能 volley</strong>
+        <strong>出界、下網、違規就是 fault</strong>
+        <strong>計分先跟場上確認使用哪一種</strong>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">RULE 01</p>
+      <h2>每個回合都從斜對角發球開始</h2>
+      <p>
+        發球者站在底線後方，將球發到對角的發球區。USA Pickleball 允許合法 volley serve
+        或 drop serve；對第一次打的人，最重要的是記住：<strong>從底線後方、往對角發、球要越過 Kitchen。</strong>
+      </p>
+      <div class="guide-faq-inline">
+        <strong>發球碰到 Kitchen 線呢？</strong>
+        <p>發球必須越過 Non-Volley Zone；如果發球落在 Kitchen 或 Kitchen 線，這球是 fault。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">RULE 02</p>
+      <h2>記一句口訣：「發球彈一次，回球也彈一次」</h2>
+      <p>
+        這就是 Two-Bounce Rule。發球落地後，接球方回擊；接著發球方也必須讓這一球先落地再打。
+        完成這兩次落地之後，雙方才可以選擇 volley 或等球彈地。
+      </p>
+      <div class="guide-myth-card">
+        <span>新手常搞混</span>
+        <strong>Two-Bounce 不是同一邊讓球彈兩次。</strong>
+        <p>那樣回合早就結束了。它指的是「接球方一次 + 發球方一次」。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">RULE 03</p>
+      <h2>Kitchen 不是禁區，但你不能站在裡面直接 volley</h2>
+      <p>
+        Non-Volley Zone 在網前兩側各深 7 英尺。當你站在區域內、踩到線，
+        或 volley 後因動量踩進去，都可能構成 Kitchen fault。
+      </p>
+      <div class="guide-fun-note">
+        <span class="guide-fun-emoji">🍳</span>
+        <div><strong>最重要的觀念</strong><p>你可以進 Kitchen 打「已經落地」的球。</p></div>
+      </div>
+      <a class="guide-inline-link" href="/guide/kitchen-rule">Kitchen 情境題完整解釋 →</a>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">RULE 04</p>
+      <h2>最常見的 fault，其實都不神祕</h2>
+      <div class="guide-fault-grid">
+        <article><strong>球出界</strong><p>球落在界外，回合結束。</p></article>
+        <article><strong>球沒過網</strong><p>直接下網或沒有合法越過球網。</p></article>
+        <article><strong>球彈兩次</strong><p>在你擊球前已經在自己這邊彈了兩次。</p></article>
+        <article><strong>Kitchen volley fault</strong><p>站在 NVZ / 線上 volley，或動量帶你踩進去。</p></article>
+      </div>
+      <p>
+        一般擊球如果球碰到場內邊線通常算 in；但發球有一個容易忘的例外：
+        Kitchen 線屬於 Non-Volley Zone，所以發球碰到那條線不是合法發球。
+      </p>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">RULE 05</p>
+      <h2>計分先學「傳統 side-out scoring」，但知道現在也可能遇到 rally scoring</h2>
+      <p>
+        USA Pickleball 的傳統 side-out scoring 中，只有發球隊贏回合才得分；
+        一般比賽常見打到 11 分且要贏 2 分。2026 官方規則也保留／擴充了部分賽制可使用
+        rally scoring 的選項，因此第一次加入球局時，最省事的一句話其實是：
+        <strong>「我們今天用哪種計分？」</strong>
+      </p>
+
+      <div class="guide-score-card">
+        <span>休閒新手先這樣理解</span>
+        <strong>Side-out：發球方才有機會得分。</strong>
+        <p>如果場館或活動使用 rally scoring，直接跟著現場規則即可，不用第一次就把所有賽制背完。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <p class="guide-step">BEFORE YOU PLAY</p>
+      <h2>第一次上場，真正有用的是「會問」</h2>
+      <div class="guide-script-box">
+        <p>「不好意思，我第一次打，可以提醒我一下計分嗎？」</p>
+        <p>「現在輪到誰發球？」</p>
+        <p>「剛剛那球算 Kitchen fault 嗎？」</p>
+      </div>
+      <p>多數休閒球局都比你想像中更能接受新手問問題。規則搞錯一次，比假裝懂然後整場更混亂好很多。</p>
+    </section>
+
+    <section class="guide-next-reading">
+      <div><span>NEXT</span><h2>最容易卡住的還是 Kitchen。</h2></div>
+      <a href="/guide/kitchen-rule">用 3 分鐘把 Kitchen 搞懂 →</a>
+    </section>
+
+    
+    <GuideFAQ items={faqItems} />
+
+    <GuideRelatedLinks items={relatedItems} />
+
+    <GuideEndCTA
+      heading="規則先懂到「敢上場」就夠了。"
+      text="剩下的裝備問題不用靠猜，Builder 會依你的實際情境整理。"
+      buttonText="幫我配第一套裝備"
+    />
+
+    <section class="guide-source-note">
+      <h2>資料來源與規則版本</h2>
+      <p>
+        本頁以 USA Pickleball 2026 Official Rulebook、Rules Summary 與 Level One 新手教材為主要依據。
+        計分格式可能依場館、活動或比賽規定不同。
+      </p>
+      <div class="source-links">
+        <a href="https://usapickleball.org/rules/summary/" target="_blank" rel="noopener noreferrer">USA Pickleball：Rules Summary ↗</a>
+        <a href="https://usapickleball.org/rules/" target="_blank" rel="noopener noreferrer">USA Pickleball：2026 Official Rulebook ↗</a>
+        <a href="https://www.selkirk.com/blogs/pickleball-education/master-the-basic-rules-of-pickleball-a-beginners-guide" target="_blank" rel="noopener noreferrer">Selkirk：Basic Rules for Beginners ↗</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
