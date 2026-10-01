@@ -1,0 +1,347 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="匿名建議｜PickleStart Taiwan"
+  description="如果你對 PickleStart 有任何建議、看不懂的地方，或希望我們改進的內容，歡迎匿名告訴我們。"
+>
+  <article class="feedback-page">
+    <header class="feedback-hero">
+      <p class="feedback-eyebrow">FEEDBACK</p>
+      <h1>有沒有什麼想對<br />PickleStart 說的？</h1>
+      <p class="feedback-lead">
+        不用留下姓名或 Email。哪裡不好用、看不懂，
+        或有任何希望我們改進的地方，都歡迎直接告訴我們。
+      </p>
+    </header>
+
+    <section class="feedback-meta-grid" aria-label="回饋表單說明">
+      <article class="feedback-meta-card">
+        <span>01</span>
+        <strong>匿名填寫</strong>
+        <p>不用留下姓名或 Email，直接寫下你的想法就好。</p>
+      </article>
+
+      <article class="feedback-meta-card">
+        <span>02</span>
+        <strong>只要 1 題</strong>
+        <p>不用分類、不用評分，想到什麼就直接告訴我們。</p>
+      </article>
+
+      <article class="feedback-meta-card">
+        <span>03</span>
+        <strong>幫助我們改進</strong>
+        <p>看不懂、不好用或希望增加的內容，都很有參考價值。</p>
+      </article>
+    </section>
+
+    <section class="feedback-form-shell">
+      <div class="feedback-form-heading">
+        <div>
+          <p class="feedback-kicker">ANONYMOUS FORM</p>
+          <h2>匿名建議表單</h2>
+          <p>
+            如果你只想快速留一句話，也完全沒問題。
+          </p>
+        </div>
+
+        <span class="feedback-badge">1 題就好</span>
+      </div>
+
+      <div class="feedback-embed-frame">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScHn3RlAWr91-Mt4T3UnhsuWCZRyyUuQdjfAoyW7jq9tGZC3g/viewform?embedded=true"
+          title="PickleStart Taiwan 匿名建議表單"
+          width="100%"
+          height="560"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          loading="lazy"
+        >
+          載入中…
+        </iframe>
+      </div>
+    </section>
+
+    <section class="feedback-callout">
+      <div class="feedback-callout-copy">
+        <p class="feedback-kicker">WHY WE ASK</p>
+        <h2>你的回饋，會幫我們把網站做得更清楚</h2>
+        <p>
+          你遇到的困惑、卡住的地方，很可能也是下一位新手會遇到的問題。
+          我們會把這些回饋當成後續調整內容與功能的重要參考。
+        </p>
+      </div>
+
+      <div class="feedback-callout-list">
+        <div>
+          <span>01</span>
+          <p>哪裡看不懂</p>
+        </div>
+        <div>
+          <span>02</span>
+          <p>哪裡不好用</p>
+        </div>
+        <div>
+          <span>03</span>
+          <p>希望我們增加什麼</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="feedback-note">
+      表單由 Google Forms 提供。請不要在建議中填寫密碼、付款資訊或其他敏感個人資料。
+    </p>
+  </article>
+
+  <style>
+    .feedback-page {
+      --feedback-navy: #10243f;
+      --feedback-blue: #087fa5;
+      --feedback-lime: #e2f52c;
+      --feedback-muted: #6f8090;
+      --feedback-line: #dfe7ea;
+      --feedback-surface: #f7faf9;
+
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 58px 0 92px;
+      color: var(--feedback-muted);
+    }
+
+    .feedback-hero {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .feedback-eyebrow,
+    .feedback-kicker {
+      margin: 0 0 14px;
+      color: var(--feedback-blue);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+    }
+
+    .feedback-hero h1 {
+      margin: 0;
+      color: var(--feedback-navy);
+      font-size: clamp(2.65rem, 5.7vw, 4.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .feedback-lead {
+      max-width: 650px;
+      margin: 22px auto 0;
+      font-size: 1.04rem;
+      line-height: 1.8;
+    }
+
+    .feedback-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 38px 0 24px;
+    }
+
+    .feedback-meta-card {
+      min-height: 152px;
+      padding: 22px;
+      border: 1px solid var(--feedback-line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .feedback-meta-card > span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--feedback-blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .feedback-meta-card strong {
+      display: block;
+      color: var(--feedback-navy);
+      font-size: 1.04rem;
+    }
+
+    .feedback-meta-card p {
+      margin: 8px 0 0;
+      line-height: 1.65;
+    }
+
+    .feedback-form-shell {
+      margin-top: 22px;
+      padding: 26px;
+      border: 1px solid var(--feedback-line);
+      border-radius: 26px;
+      background: linear-gradient(155deg, #f8fbfc 0%, #ffffff 100%);
+      box-shadow: 0 20px 48px rgba(16, 36, 63, 0.07);
+    }
+
+    .feedback-form-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .feedback-form-heading h2,
+    .feedback-callout h2 {
+      margin: 0;
+      color: var(--feedback-navy);
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .feedback-form-heading p:last-child {
+      margin: 10px 0 0;
+      line-height: 1.7;
+    }
+
+    .feedback-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--feedback-lime);
+      color: var(--feedback-navy);
+      font-size: 0.82rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .feedback-embed-frame {
+      overflow: hidden;
+      border: 1px solid var(--feedback-line);
+      border-radius: 20px;
+      background: #fff;
+    }
+
+    .feedback-embed-frame iframe {
+      display: block;
+      width: 100%;
+      border: 0;
+      background: #fff;
+    }
+
+    .feedback-callout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 42px;
+      padding: 32px;
+      border-radius: 26px;
+      background: var(--feedback-navy);
+      color: #dce5ec;
+    }
+
+    .feedback-callout .feedback-kicker {
+      color: #9ddbed;
+    }
+
+    .feedback-callout h2 {
+      color: #fff;
+    }
+
+    .feedback-callout-copy > p:last-child {
+      margin: 16px 0 0;
+      line-height: 1.8;
+    }
+
+    .feedback-callout-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .feedback-callout-list div {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 54px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .feedback-callout-list span {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--feedback-lime);
+      color: var(--feedback-navy);
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    .feedback-callout-list p {
+      margin: 0;
+      color: #fff;
+      font-weight: 750;
+    }
+
+    .feedback-note {
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: #84919d;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .feedback-meta-grid,
+      .feedback-callout {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-meta-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .feedback-page {
+        width: min(100% - 28px, 1080px);
+        padding: 40px 0 70px;
+      }
+
+      .feedback-hero h1 {
+        font-size: clamp(2.3rem, 11vw, 3.3rem);
+      }
+
+      .feedback-form-shell,
+      .feedback-callout {
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .feedback-form-heading {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .feedback-embed-frame {
+        border-radius: 14px;
+      }
+
+      .feedback-embed-frame iframe {
+        height: 610px;
+      }
+    }
+  </style>
+</BaseLayout>

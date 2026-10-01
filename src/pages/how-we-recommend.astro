@@ -3,107 +3,853 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="How We Recommend｜PickleStart Taiwan"
-  description="了解 PickleStart 如何用可解釋的規則、預算限制與商品分級產生 Starter Kit 推薦。"
+  title="我們怎麼推薦｜PickleStart Taiwan"
+  description="了解 PickleStart Taiwan 如何依照經驗、場地、現有裝備、預算與使用目標整理 Starter Kit，以及商品資料如何被挑選與更新。"
 >
-  <article class="content-page branded-page">
-    <header class="content-hero content-hero-recommend">
-      <div class="content-hero-copy">
-        <p class="eyebrow">HOW WE RECOMMEND</p>
-        <h1>推薦不是黑盒子。</h1>
-        <p class="content-lead">
-          PickleStart 使用 deterministic rule-based recommendation engine，
-          不是 AI 聊天機器人。相同輸入會得到相同的推薦邏輯。
+  <article class="recommend-page">
+    <header class="recommend-hero">
+      <div class="recommend-hero-copy">
+        <p class="recommend-eyebrow">HOW WE RECOMMEND</p>
+
+        <h1>
+          不是找最貴的，<br />
+          而是找現在適合你的。
+        </h1>
+
+        <p class="recommend-lead">
+          回答 6 個問題後，PickleStart 會先判斷你真正需要哪些裝備，
+          再依照程度、場地、現有裝備、預算與使用目標，整理出比較適合現在的選項。
         </p>
-        <a class="primary-button" href="/builder?from=recommendation_page" data-analytics-event="site_builder_clicked" data-analytics-detail-event="site_builder_source" data-analytics-placement="page_cta" data-analytics-page="recommendation_page">試試 Starter Kit Builder →</a>
+
+        <div class="recommend-hero-actions">
+          <a
+            class="recommend-primary-button"
+            href="/builder?from=recommendation_page"
+            data-analytics-event="site_builder_clicked"
+            data-analytics-detail-event="site_builder_source"
+            data-analytics-placement="page_cta"
+            data-analytics-page="recommendation_page"
+          >
+            開始配 Starter Kit →
+          </a>
+        </div>
       </div>
 
-      <aside class="logic-visual-card">
-        <span>INPUT</span>
-        <strong>場地 + 裝備 + 預算</strong>
-        <i>↓</i>
-        <span>RULE ENGINE</span>
-        <strong>必要性 + 適配 + 預算</strong>
-        <i>↓</i>
-        <span>OUTPUT</span>
-        <strong>BUY / REUSE / LATER / SKIP</strong>
+      <aside class="principle-card" aria-label="PickleStart 推薦原則">
+        <p class="principle-kicker">OUR PRINCIPLES</p>
+
+        <div class="principle-item">
+          <span>01</span>
+          <div>
+            <strong>適合現在，比買到最高階更重要</strong>
+            <p>先看目前的程度與使用情境，不會因為預算高就直接往最貴的選。</p>
+          </div>
+        </div>
+
+        <div class="principle-item">
+          <span>02</span>
+          <div>
+            <strong>能沿用，就不重買</strong>
+            <p>已有球拍、球、場地鞋或球網，都會先納入 Starter Kit 判斷。</p>
+          </div>
+        </div>
+
+        <div class="principle-item">
+          <span>03</span>
+          <div>
+            <strong>預算是上限，不是消費目標</strong>
+            <p>如果較低價格已經符合需求，就沒有必要為了花滿預算而升級。</p>
+          </div>
+        </div>
       </aside>
     </header>
 
-    <section class="recommend-flow">
-      <article><span>01</span><strong>先算你缺什麼</strong><p>已有的裝備先扣掉。</p></article>
-      <article><span>02</span><strong>場地改變需求</strong><p>球種與球網依場地決定。</p></article>
-      <article><span>03</span><strong>必要成本先扣</strong><p>再分配球拍預算。</p></article>
-      <article><span>04</span><strong>依投入程度分級</strong><p>不是越貴越優先。</p></article>
-      <article><span>05</span><strong>預算不合理就停止</strong><p>先解決情境，不硬塞商品。</p></article>
-    </section>
-
-    <section class="content-section">
-      <p class="section-kicker">STEP 01</p>
-      <h2>先算你真的缺什麼</h2>
-      <p>
-        球拍需求會扣掉你已經擁有的球拍；已有羽球鞋、網球鞋或其他適合側向移動的場地鞋，
-        第一階段就不會再次把鞋列成必買。
+    <section class="recommend-section recommend-section-centered">
+      <p class="recommend-kicker">WHAT WE LOOK AT</p>
+      <h2>推薦之前，我們先看這 6 件事</h2>
+      <p class="recommend-section-lead">
+        同一支球拍不會適合所有人。你的回答會先決定「需要什麼」，
+        再決定「哪些商品值得看」。
       </p>
-    </section>
 
-    <section class="content-section">
-      <p class="section-kicker">STEP 02</p>
-      <h2>場地會改變需求</h2>
-      <p>
-        室內與戶外使用不同類型的球；選擇公園或空地自架場地時，如果沒有球網，
-        系統才會把攜帶式球網計入必要成本。
-      </p>
-    </section>
+      <div class="input-grid">
+        <article>
+          <span>01</span>
+          <strong>經驗</strong>
+          <p>第一次玩、打過幾次、固定打，還是認真訓練。</p>
+        </article>
 
-    <section class="content-section">
-      <p class="section-kicker">STEP 03</p>
-      <h2>先扣必要成本，再分球拍預算</h2>
-      <div class="formula-card formula-card-brand">
-        <code>總預算 − 必要非球拍成本 = 可用球拍預算</code>
-        <code>可用球拍預算 ÷ 還缺的球拍數量 = 單支實際預算</code>
+        <article>
+          <span>02</span>
+          <strong>需要幾支球拍</strong>
+          <p>避免多買，也會扣掉你已經有的球拍數量。</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <strong>場地</strong>
+          <p>室內、戶外固定球場、自架場地，需求會不同。</p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <strong>已有裝備</strong>
+          <p>能沿用的球、鞋或球網，優先沿用。</p>
+        </article>
+
+        <article>
+          <span>05</span>
+          <strong>總預算</strong>
+          <p>先守住整套預算，再看每一類裝備能花多少。</p>
+        </article>
+
+        <article>
+          <span>06</span>
+          <strong>使用目標</strong>
+          <p>休閒、固定打、想進步或競賽，會影響商品等級。</p>
+        </article>
       </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">STEP 04</p>
-      <h2>球拍不是越貴越優先</h2>
-      <p>
-        球拍除了要符合預算，也會依照玩家投入程度分級。
-        第一次休閒體驗不需要直接跳到競賽等級；已固定打球或認真訓練的人，
-        也不應永遠只看到最低價入門拍。
-      </p>
-    </section>
+    <section class="recommend-section method-section">
+      <div class="section-heading-row">
+        <div>
+          <p class="recommend-kicker">OUR METHOD</p>
+          <h2>我們怎麼把答案變成推薦</h2>
+        </div>
 
-    <section class="content-section">
-      <p class="section-kicker">STEP 05</p>
-      <h2>預算不合理時，商品推薦會停止</h2>
-      <p>
-        如果最低可行裝備已經超出你的總預算，PickleStart 會先顯示 budget insufficient
-        警告與降低成本的方法，不顯示商品導購。
-      </p>
-    </section>
-
-    <section class="content-section split-content-section">
-      <div>
-        <p class="section-kicker">PRODUCT DATA</p>
-        <h2>商品資料如何處理？</h2>
-      </div>
-      <div>
         <p>
-          商品資料來自公開的品牌或商店頁面，由人工記錄價格範圍、來源與最後更新日期。
-          PickleStart 不做 24/7 即時價格爬蟲，所以實際價格與供貨仍以外部商店頁面為準。
+          不是先挑商品再塞給你，而是先把需求拆開，
+          再從符合條件的商品裡整理選項。
+        </p>
+      </div>
+
+      <div class="method-grid">
+        <article class="method-card">
+          <span class="method-number">01</span>
+          <h3>先判斷真正需要買什麼</h3>
+          <p>
+            球拍、球、場地鞋、球網不一定全部都是必買。
+            場地和使用方式會先決定哪些是現在需要的。
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span class="method-number">02</span>
+          <h3>已有的裝備先沿用</h3>
+          <p>
+            如果手上已經有能用的裝備，我們會把它算進去，
+            避免為了「配一套」而重複購買。
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span class="method-number">03</span>
+          <h3>在總預算內分配</h3>
+          <p>
+            預算是限制，不是消費目標。只要更便宜的選項已經符合需求，
+            就沒有必要為了用滿預算而往上加價。
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span class="method-number">04</span>
+          <h3>再整理適合的商品選項</h3>
+          <p>
+            先看程度與目標是否合適，再考慮價格、購買便利度與商品定位，
+            同時保留合理的替代或升級選項。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="recommend-section product-entry-section">
+      <div class="product-entry-copy">
+        <p class="recommend-kicker">PRODUCT SELECTION</p>
+        <h2>商品怎麼進入推薦清單？</h2>
+        <p>
+          PickleStart 不會把市場上所有商品全部塞進資料庫。
+          我們會優先整理資訊清楚、目前仍可購買，而且能對應不同新手需求的商品。
+        </p>
+
+        <p>
+          我們不追求把市場上每一款商品都列進來，而是希望每種程度、
+          預算與使用情境，都有合理的選擇可以比較。
+        </p>
+      </div>
+
+      <div class="criteria-card">
+        <div class="criteria-item">
+          <span>✓</span>
+          <div>
+            <strong>來源可查</strong>
+            <p>優先使用品牌官方或可信商店的公開資訊。</p>
+          </div>
+        </div>
+
+        <div class="criteria-item">
+          <span>✓</span>
+          <div>
+            <strong>價格與購買頁面可確認</strong>
+            <p>至少能確認目前售價範圍、購買頁面與主要通路。</p>
+          </div>
+        </div>
+
+        <div class="criteria-item">
+          <span>✓</span>
+          <div>
+            <strong>定位有差異</strong>
+            <p>入門、固定休閒、進階、競賽等不同需求都要有選項。</p>
+          </div>
+        </div>
+
+        <div class="criteria-item">
+          <span>✓</span>
+          <div>
+            <strong>購買便利度會被考慮</strong>
+            <p>台灣可直接購買、亞洲通路或海外購買，對實際使用者的便利性不同。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recommend-section recommendation-reading-section">
+      <div class="section-heading-row">
+        <div>
+          <p class="recommend-kicker">HOW TO READ THE RESULT</p>
+          <h2>推薦結果不是「全部都要買」</h2>
+        </div>
+
+        <p>
+          Starter Kit 先告訴你需要哪些類別；
+          商品區則是每個類別提供幾個可以比較的選項。
+        </p>
+      </div>
+
+      <div class="result-role-grid">
+        <article>
+          <span class="role-badge role-primary">優先推薦</span>
+          <strong>最貼近目前條件</strong>
+          <p>程度、目標、場地與預算都吻合時，會優先放在前面。</p>
+        </article>
+
+        <article>
+          <span class="role-badge role-alt">另一個適合選擇</span>
+          <strong>同級替代</strong>
+          <p>條件同樣合適，但品牌、價格或定位不同，讓你有比較空間。</p>
+        </article>
+
+        <article>
+          <span class="role-badge role-upgrade">升級選項</span>
+          <strong>預算有餘裕時再看</strong>
+          <p>通常比目前需求高一階，不代表你現在一定需要。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="recommend-section transparency-section">
+      <div class="transparency-card">
+        <p class="recommend-kicker">PRODUCT DATA</p>
+        <h2>我們知道什麼，也會說清楚不知道什麼</h2>
+
+        <p>
+          目前多數商品資訊來自品牌官方或商店公開頁面，
+          包含規格、售價、產品定位與購買資訊。
+        </p>
+
+        <p>
+          除非商品明確標示為「實際使用」，否則不要把 PickleStart 的推薦理解成
+          我們已經親自測過每一件商品。公開規格可以幫助篩選，但不能取代長期實測。
+        </p>
+      </div>
+
+      <div class="transparency-card">
+        <p class="recommend-kicker">UPDATES</p>
+        <h2>價格不是即時報價</h2>
+
+        <p>
+          商品頁會保留來源與更新日期，方便你在購買前回到原始頁面確認。
+          價格、庫存、折扣與海外運費都有可能改變。
+        </p>
+
+        <p>
+          如果原始商品停售、價格變動過大，或出現更適合的替代選項，
+          商品清單也會跟著調整。
         </p>
       </div>
     </section>
 
-    <section class="content-section content-callout brand-callout">
-      <p class="section-kicker">AFFILIATE FIREWALL</p>
-      <h2>分潤不參與排序</h2>
-      <p>
-        Recommendation score 不包含 affiliate commission。
-        即使某個商品沒有分潤關係，只要它更符合條件，架構仍允許推薦它。
-      </p>
+    <section class="recommend-section limits-section">
+      <div class="limits-heading">
+        <p class="recommend-kicker">WHAT THIS TOOL IS — AND ISN'T</p>
+        <h2>它是篩選工具，不是絕對排名</h2>
+        <p>
+          PickleStart 會先幫你排除明顯不合適的選項，
+          但球拍手感、重量偏好與外型，最後仍值得自己確認。
+        </p>
+      </div>
+
+      <div class="limits-grid">
+        <article>
+          <span>01</span>
+          <strong>它會幫你縮小範圍</strong>
+          <p>先排除明顯不符合目前程度、場地或預算的選項。</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <strong>它不會替你決定手感</strong>
+          <p>握感、重量、平衡感與外型偏好，最後仍可能需要實際試打。</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <strong>它會持續更新</strong>
+          <p>商品、價格與市場都會變，推薦清單也會跟著調整。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="recommend-section faq-section">
+      <p class="recommend-kicker">FAQ</p>
+      <h2>你可能還會想問</h2>
+
+      <div class="faq-list">
+        <details>
+          <summary>你們有親自測過所有推薦商品嗎？</summary>
+          <p>
+            沒有。目前多數商品以品牌或商店公開資料為主；
+            只有明確標示為「實際使用」的內容，才代表我們有親自使用經驗。
+          </p>
+        </details>
+
+        <details>
+          <summary>為什麼有高預算，卻沒有推薦最貴的球拍？</summary>
+          <p>
+            因為預算是上限，不是花費目標。只要更便宜的商品已經符合目前程度與使用需求，
+            就沒有必要為了用滿預算而往上加價。
+          </p>
+        </details>
+
+        <details>
+          <summary>推薦結果裡的三支球拍都要買嗎？</summary>
+          <p>
+            不用。Starter Kit 會告訴你需要幾支；商品區只是提供同一類別裡可以比較的選項，
+            通常挑一個適合你的即可。
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="recommend-final-cta">
+      <div>
+        <p class="recommend-kicker">READY TO START?</p>
+        <h2>知道方法了，現在配你的第一套裝備。</h2>
+      </div>
+
+      <a
+        class="recommend-primary-button"
+        href="/builder?from=recommendation_page_bottom"
+        data-analytics-event="site_builder_clicked"
+        data-analytics-detail-event="site_builder_source"
+        data-analytics-placement="bottom_cta"
+        data-analytics-page="recommendation_page"
+      >
+        開始 6 題 Starter Kit →
+      </a>
     </section>
   </article>
+
+  <style>
+    .recommend-page {
+      --recommend-navy: #10243f;
+      --recommend-blue: #087fa5;
+      --recommend-blue-soft: #eaf6f9;
+      --recommend-lime: #e2f52c;
+      --recommend-text: #4f6174;
+      --recommend-muted: #748493;
+      --recommend-line: #dfe7ea;
+      --recommend-surface: #f7faf9;
+
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 52px 0 88px;
+      color: var(--recommend-text);
+    }
+
+    .recommend-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+      gap: 56px;
+      align-items: center;
+      min-height: 500px;
+      padding: 46px 0 68px;
+    }
+
+    .recommend-hero-copy {
+      max-width: 700px;
+    }
+
+    .recommend-eyebrow,
+    .recommend-kicker,
+    .principle-kicker {
+      margin: 0 0 14px;
+      color: var(--recommend-blue);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+    }
+
+    .recommend-hero h1 {
+      max-width: 720px;
+      margin: 0;
+      color: var(--recommend-navy);
+      font-size: clamp(2.55rem, 5vw, 4.55rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .recommend-lead {
+      max-width: 660px;
+      margin: 26px 0 0;
+      color: #5a6a7c;
+      font-size: 1.08rem;
+      line-height: 1.9;
+    }
+
+    .recommend-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .recommend-primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: var(--recommend-blue);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(8, 127, 165, 0.16);
+    }
+
+    .recommend-primary-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .principle-card {
+      padding: 28px;
+      border: 1px solid #dbe7ea;
+      border-radius: 24px;
+      background: linear-gradient(155deg, #ffffff 0%, #f7fbfc 100%);
+      box-shadow: 0 20px 48px rgba(16, 36, 63, 0.08);
+    }
+
+    .principle-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      padding: 18px 0;
+      border-top: 1px solid #e4ecee;
+    }
+
+    .principle-item:first-of-type {
+      border-top: 0;
+    }
+
+    .principle-item > span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--recommend-lime);
+      color: var(--recommend-navy);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .principle-item strong {
+      color: var(--recommend-navy);
+      font-size: 1rem;
+    }
+
+    .principle-item p {
+      margin: 6px 0 0;
+      color: var(--recommend-muted);
+      line-height: 1.6;
+    }
+
+    .recommend-section {
+      padding: 74px 0;
+      border-top: 1px solid var(--recommend-line);
+    }
+
+    .recommend-section-centered {
+      text-align: center;
+    }
+
+    .recommend-section h2,
+    .recommend-final-cta h2 {
+      margin: 0;
+      color: var(--recommend-navy);
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .recommend-section-lead {
+      max-width: 700px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+      text-align: left;
+    }
+
+    .input-grid article {
+      min-height: 170px;
+      padding: 22px;
+      border: 1px solid #e2e9eb;
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .input-grid article > span,
+    .method-number {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--recommend-blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .input-grid strong {
+      color: var(--recommend-navy);
+      font-size: 1.05rem;
+    }
+
+    .input-grid p {
+      margin: 8px 0 0;
+      color: var(--recommend-muted);
+      line-height: 1.65;
+    }
+
+    .section-heading-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.65fr);
+      gap: 46px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-heading-row > p {
+      margin: 0;
+      color: var(--recommend-muted);
+      line-height: 1.75;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .method-card {
+      padding: 28px;
+      border-radius: 20px;
+      background: var(--recommend-surface);
+      border: 1px solid #e3ebed;
+    }
+
+    .method-card h3 {
+      margin: 0;
+      color: var(--recommend-navy);
+      font-size: 1.15rem;
+    }
+
+    .method-card p {
+      margin: 12px 0 0;
+      line-height: 1.75;
+    }
+
+    .product-entry-section,
+    .transparency-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .product-entry-copy p,
+    .transparency-card p {
+      line-height: 1.8;
+    }
+
+    .criteria-card {
+      padding: 10px 26px;
+      border: 1px solid #dfe8ea;
+      border-radius: 22px;
+      background: #fff;
+    }
+
+    .criteria-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      padding: 20px 0;
+      border-top: 1px solid #e7edef;
+    }
+
+    .criteria-item:first-child {
+      border-top: 0;
+    }
+
+    .criteria-item > span {
+      color: var(--recommend-blue);
+      font-weight: 900;
+    }
+
+    .criteria-item strong {
+      color: var(--recommend-navy);
+    }
+
+    .criteria-item p {
+      margin: 5px 0 0;
+      color: var(--recommend-muted);
+      line-height: 1.6;
+    }
+
+    .result-role-grid,
+    .limits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .result-role-grid article,
+    .limits-grid article {
+      padding: 24px;
+      border: 1px solid #e0e8ea;
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .result-role-grid strong,
+    .limits-grid strong {
+      display: block;
+      margin-top: 16px;
+      color: var(--recommend-navy);
+    }
+
+    .result-role-grid p,
+    .limits-grid p {
+      margin: 8px 0 0;
+      color: var(--recommend-muted);
+      line-height: 1.65;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      min-height: 28px;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    .role-primary {
+      background: var(--recommend-lime);
+      color: var(--recommend-navy);
+    }
+
+    .role-alt {
+      background: #f0f4f5;
+      color: #536579;
+    }
+
+    .role-upgrade {
+      background: var(--recommend-blue-soft);
+      color: var(--recommend-blue);
+      border: 1px solid #c9e9f0;
+    }
+
+    .transparency-card {
+      padding: 28px;
+      border: 1px solid #e0e8ea;
+      border-radius: 20px;
+      background: #fff;
+    }
+
+    .transparency-card h2 {
+      font-size: 1.55rem;
+    }
+
+    .limits-section {
+      display: block;
+    }
+
+    .limits-heading {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .limits-heading > p:last-child {
+      margin: 16px 0 0;
+      color: var(--recommend-muted);
+      line-height: 1.8;
+    }
+
+    .limits-grid article {
+      min-height: 190px;
+    }
+
+    .limits-grid article > span {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--recommend-blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .limits-grid article strong {
+      margin-top: 0;
+    }
+
+    .faq-section {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .faq-list details {
+      border: 1px solid #e0e8ea;
+      border-radius: 16px;
+      background: #fff;
+      padding: 0 18px;
+    }
+
+    .faq-list summary {
+      cursor: pointer;
+      padding: 18px 0;
+      color: var(--recommend-navy);
+      font-weight: 800;
+    }
+
+    .faq-list details p {
+      margin: 0 0 18px;
+      color: var(--recommend-muted);
+      line-height: 1.75;
+    }
+
+    .recommend-final-cta {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      align-items: center;
+      margin-top: 74px;
+      padding: 34px 36px;
+      border-radius: 24px;
+      background: #f2f8f9;
+      border: 1px solid #dce9ec;
+    }
+
+    .recommend-final-cta h2 {
+      font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+    }
+
+    @media (max-width: 900px) {
+      .recommend-hero,
+      .product-entry-section,
+      .transparency-section,
+      .section-heading-row {
+        grid-template-columns: 1fr;
+      }
+
+      .recommend-hero {
+        gap: 30px;
+        min-height: auto;
+      }
+
+      .input-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .result-role-grid,
+      .limits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recommend-final-cta {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .recommend-page {
+        width: min(100% - 28px, 1180px);
+        padding-top: 28px;
+      }
+
+      .recommend-hero {
+        padding: 26px 0 48px;
+      }
+
+      .recommend-hero h1 {
+        font-size: clamp(2.25rem, 11vw, 3.2rem);
+      }
+
+      .recommend-section {
+        padding: 54px 0;
+      }
+
+      .limits-heading {
+        margin-bottom: 26px;
+      }
+
+      .limits-grid article {
+        min-height: auto;
+      }
+
+      .input-grid,
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .principle-card,
+      .method-card,
+      .transparency-card {
+        padding: 22px;
+      }
+
+      .recommend-final-cta {
+        margin-top: 54px;
+        padding: 28px 22px;
+      }
+
+      .recommend-primary-button {
+        width: 100%;
+      }
+    }
+  </style>
 </BaseLayout>

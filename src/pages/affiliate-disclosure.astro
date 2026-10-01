@@ -3,62 +3,382 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Affiliate Disclosure｜PickleStart Taiwan"
-  description="PickleStart Taiwan 的聯盟行銷與商品推薦揭露。"
+  title="合作與分潤說明｜PickleStart Taiwan"
+  description="了解 PickleStart Taiwan 的合作連結、分潤方式，以及商品價格、優惠與供貨資訊的來源。"
 >
-  <article class="content-page content-page-narrow branded-page">
-    <header class="content-hero compact-content-hero">
-      <div class="content-hero-copy">
-        <p class="eyebrow">AFFILIATE DISCLOSURE</p>
-        <h1>分潤可以存在，但不能決定推薦。</h1>
-        <p class="content-lead">
-          部分商品連結未來可能包含聯盟行銷連結；
-          如果你完成符合條件的購買，PickleStart 可能取得少量分潤。
+  <article class="affiliate-page">
+    <header class="affiliate-hero">
+      <div class="affiliate-hero-copy">
+        <p class="affiliate-eyebrow">AFFILIATE DISCLOSURE</p>
+
+        <h1>合作與分潤說明</h1>
+
+        <p class="affiliate-lead">
+          PickleStart 的部分商品連結未來可能包含品牌合作、聯盟行銷或其他分潤連結。
+          當你透過這些連結完成符合條件的購買時，PickleStart 可能獲得合作收益。
         </p>
       </div>
 
-      <aside class="affiliate-rule-card">
-        <span>RULE</span>
-        <strong>Recommendation score<br />≠ Commission</strong>
+      <aside class="affiliate-summary-card">
+        <p class="summary-kicker">DISCLOSURE</p>
+
+        <div class="summary-item">
+          <span>01</span>
+          <div>
+            <strong>合作連結會適當標示</strong>
+            <p>若連結屬於合作、分潤或專屬優惠，我們會在適當位置說明。</p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span>02</span>
+          <div>
+            <strong>購買資訊以商家頁面為準</strong>
+            <p>價格、庫存、優惠、配送與退換貨條件，都可能隨時間變動。</p>
+          </div>
+        </div>
       </aside>
     </header>
 
-    <section class="affiliate-facts">
-      <article><strong>價格</strong><span>一般不因 affiliate link 增加</span></article>
-      <article><strong>排序</strong><span>不使用佣金比例作為分數</span></article>
-      <article><strong>來源</strong><span>實際價格與供貨以外部商店為準</span></article>
+    <section class="affiliate-section">
+      <div class="section-heading">
+        <p class="affiliate-kicker">WHAT THIS MEANS</p>
+        <h2>這代表什麼？</h2>
+        <p>
+          對使用者來說，最重要的是知道某些商品連結可能帶有商業合作關係，
+          以及實際交易條件仍由外部商家決定。
+        </p>
+      </div>
+
+      <div class="affiliate-fact-grid">
+        <article>
+          <span>01</span>
+          <strong>合作連結</strong>
+          <p>部分商品按鈕未來可能連往合作品牌、合作通路或聯盟行銷頁面。</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <strong>可能產生收益</strong>
+          <p>若你完成符合條件的購買，PickleStart 可能獲得分潤或其他合作收益。</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <strong>價格與供貨</strong>
+          <p>實際價格、庫存、折扣、運費與購買條件，以商家頁面當下資訊為準。</p>
+        </article>
+      </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">PRICE</p>
-      <h2>這會增加你的價格嗎？</h2>
-      <p>
-        一般情況下不會。聯盟分潤由商家或聯盟平台依其條件支付，
-        你看到的商品價格仍由外部商店決定。
-      </p>
+    <section class="affiliate-section current-links-section">
+      <div>
+        <p class="affiliate-kicker">CURRENT LINKS</p>
+        <h2>目前商品連結以公開來源頁面為主</h2>
+      </div>
+
+      <div class="current-links-copy">
+        <p>
+          目前 PickleStart 大部分商品按鈕會連往品牌官方或商店的公開商品頁面，
+          方便你查看最新規格、價格與供貨資訊。
+        </p>
+
+        <p>
+          未來若加入合作、分潤或專屬優惠連結，我們會保留這份說明，
+          並在適當位置標示相關合作資訊。
+        </p>
+      </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">RANKING</p>
-      <h2>分潤會影響推薦順位嗎？</h2>
-      <p>
-        不會。PickleStart 的推薦邏輯以預算、經驗、使用目標、場地與已有裝備為依據，
-        推薦分數不包含佣金比例。
-      </p>
+    <section class="affiliate-section merchant-section">
+      <div class="merchant-card">
+        <p class="affiliate-kicker">MERCHANT INFORMATION</p>
+        <h2>購買前，請再確認商家頁面的最新資訊</h2>
+
+        <p>
+          PickleStart 不負責外部商家的定價、庫存、配送、付款方式或退換貨政策。
+          商品資訊可能在我們更新頁面後發生變動，因此購買前仍建議回到原始商品頁再次確認。
+        </p>
+      </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">CURRENT LINKS</p>
-      <h2>目前的商品來源連結</h2>
-      <p>
-        在尚未建立特定 affiliate 合作前，商品按鈕可能只是連往品牌或商店的公開來源頁面。
-        未來若某個連結屬於聯盟行銷連結，網站會持續保留這份揭露。
-      </p>
-    </section>
+    <section class="affiliate-footer-links">
+      <div>
+        <p class="affiliate-kicker">LEARN MORE</p>
+        <h2>想了解 PickleStart 怎麼整理推薦？</h2>
+      </div>
 
-    <section class="content-section content-callout brand-callout">
-      <p class="section-kicker">THE PRINCIPLE</p>
-      <h2>如果最合理的答案是「現在不要買」，我們就應該這樣告訴你。</h2>
+      <div class="affiliate-link-group">
+        <a href="/how-we-recommend/">查看推薦方式 →</a>
+      </div>
     </section>
   </article>
+
+  <style>
+    .affiliate-page {
+      --affiliate-navy: #10243f;
+      --affiliate-blue: #087fa5;
+      --affiliate-lime: #e2f52c;
+      --affiliate-text: #536579;
+      --affiliate-muted: #748493;
+      --affiliate-line: #dfe7ea;
+      --affiliate-surface: #f7faf9;
+
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 52px 0 88px;
+      color: var(--affiliate-text);
+    }
+
+    .affiliate-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+      gap: 56px;
+      align-items: center;
+      min-height: 470px;
+      padding: 42px 0 66px;
+    }
+
+    .affiliate-hero-copy {
+      max-width: 700px;
+    }
+
+    .affiliate-eyebrow,
+    .affiliate-kicker,
+    .summary-kicker {
+      margin: 0 0 14px;
+      color: var(--affiliate-blue);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+    }
+
+    .affiliate-hero h1 {
+      margin: 0;
+      color: var(--affiliate-navy);
+      font-size: clamp(3rem, 5.5vw, 4.9rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .affiliate-lead {
+      max-width: 670px;
+      margin: 26px 0 0;
+      font-size: 1.08rem;
+      line-height: 1.9;
+    }
+
+    .affiliate-summary-card {
+      padding: 28px;
+      border: 1px solid #dbe7ea;
+      border-radius: 24px;
+      background: linear-gradient(155deg, #ffffff 0%, #f7fbfc 100%);
+      box-shadow: 0 20px 48px rgba(16, 36, 63, 0.08);
+    }
+
+    .summary-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      padding: 20px 0;
+      border-top: 1px solid #e4ecee;
+    }
+
+    .summary-item:first-of-type {
+      border-top: 0;
+    }
+
+    .summary-item > span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--affiliate-lime);
+      color: var(--affiliate-navy);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .summary-item strong {
+      color: var(--affiliate-navy);
+      font-size: 1rem;
+    }
+
+    .summary-item p {
+      margin: 6px 0 0;
+      color: var(--affiliate-muted);
+      line-height: 1.65;
+    }
+
+    .affiliate-section {
+      padding: 70px 0;
+      border-top: 1px solid var(--affiliate-line);
+    }
+
+    .affiliate-section h2,
+    .affiliate-footer-links h2 {
+      margin: 0;
+      color: var(--affiliate-navy);
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .section-heading {
+      max-width: 760px;
+    }
+
+    .section-heading > p:last-child {
+      margin: 16px 0 0;
+      line-height: 1.8;
+    }
+
+    .affiliate-fact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .affiliate-fact-grid article {
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid #e0e8ea;
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .affiliate-fact-grid article > span {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--affiliate-blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .affiliate-fact-grid strong {
+      color: var(--affiliate-navy);
+      font-size: 1.05rem;
+    }
+
+    .affiliate-fact-grid p {
+      margin: 10px 0 0;
+      color: var(--affiliate-muted);
+      line-height: 1.7;
+    }
+
+    .current-links-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 52px;
+      align-items: start;
+    }
+
+    .current-links-copy p {
+      margin: 0;
+      line-height: 1.85;
+    }
+
+    .current-links-copy p + p {
+      margin-top: 18px;
+    }
+
+    .merchant-section {
+      padding-top: 58px;
+      padding-bottom: 58px;
+    }
+
+    .merchant-card {
+      padding: 34px 36px;
+      border: 1px solid #dfe8ea;
+      border-radius: 24px;
+      background: var(--affiliate-surface);
+    }
+
+    .merchant-card p:last-child {
+      max-width: 880px;
+      margin: 18px 0 0;
+      line-height: 1.85;
+    }
+
+    .affiliate-footer-links {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      align-items: center;
+      margin-top: 68px;
+      padding: 32px 34px;
+      border-radius: 24px;
+      background: #f2f8f9;
+      border: 1px solid #dce9ec;
+    }
+
+    .affiliate-footer-links h2 {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+    }
+
+    .affiliate-link-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .affiliate-link-group a {
+      color: var(--affiliate-blue);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .affiliate-hero,
+      .current-links-section {
+        grid-template-columns: 1fr;
+      }
+
+      .affiliate-hero {
+        gap: 30px;
+        min-height: auto;
+      }
+
+      .affiliate-fact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .affiliate-footer-links {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .affiliate-page {
+        width: min(100% - 28px, 1180px);
+        padding-top: 28px;
+      }
+
+      .affiliate-hero {
+        padding: 26px 0 48px;
+      }
+
+      .affiliate-hero h1 {
+        font-size: clamp(2.4rem, 12vw, 3.5rem);
+      }
+
+      .affiliate-section {
+        padding: 54px 0;
+      }
+
+      .affiliate-summary-card,
+      .merchant-card {
+        padding: 22px;
+      }
+
+      .affiliate-footer-links {
+        margin-top: 54px;
+        padding: 26px 22px;
+      }
+    }
+  </style>
 </BaseLayout>

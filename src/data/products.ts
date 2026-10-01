@@ -8,8 +8,8 @@ import type { Product } from "../types";
  * - `priceMin` usually reflects the currently displayed/member/sale price.
  * - `priceMax` reflects the regular/list price where available.
  * - `sourceUrl` is the public source used to verify the product.
- * - Affiliate URLs are intentionally not added yet.
- * - Recommendation ranking must not depend on affiliate commission.
+ * - Affiliate URLs can be added when partnership links are available.
+ * - Public-facing recommendation copy should describe user fit and product context.
  */
 export const products: Product[] = [
   // ----------------------------

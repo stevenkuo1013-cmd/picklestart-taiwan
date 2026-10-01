@@ -3,81 +3,475 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Privacy｜PickleStart Taiwan"
-  description="PickleStart Taiwan 的隱私說明。不需註冊，也不要求姓名、Email、電話或付款資料。"
+  title="隱私說明｜PickleStart Taiwan"
+  description="了解 PickleStart Taiwan 在 Starter Kit、網站分析、匿名建議與外部商品連結中如何處理資料。"
 >
-  <article class="content-page content-page-narrow branded-page">
-    <header class="content-hero compact-content-hero">
-      <div class="content-hero-copy">
-        <p class="eyebrow">PRIVACY</p>
-        <h1>我們刻意少收資料。</h1>
-        <p class="content-lead">
-          不需要帳號，也不要求姓名、Email、電話、地址或付款資料。
+  <article class="privacy-page">
+    <header class="privacy-hero">
+      <div class="privacy-hero-copy">
+        <p class="privacy-eyebrow">PRIVACY</p>
+
+        <h1>
+          我們只收網站運作<br />
+          真正需要的資料
+        </h1>
+
+        <p class="privacy-lead">
+          PickleStart 不要求建立帳號，也不要求你在 Starter Kit 中提供姓名、
+          Email、電話或付款資料。這一頁用最簡單的方式說明不同功能會怎麼處理資料。
         </p>
       </div>
 
-      <aside class="privacy-badge-card">
-        <strong>NO ACCOUNT</strong>
-        <span>NO PROFILE</span>
-        <span>NO PAYMENT DATA</span>
+      <aside class="privacy-summary-card" aria-label="PickleStart 隱私原則">
+        <p class="summary-kicker">OUR APPROACH</p>
+
+        <div class="summary-item">
+          <span>01</span>
+          <div>
+            <strong>不需要帳號</strong>
+            <p>使用 Starter Kit 不需要註冊會員。</p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span>02</span>
+          <div>
+            <strong>不建立個人使用者檔案</strong>
+            <p>Builder 的回答用來產生結果，不是拿來建立會員 Profile。</p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span>03</span>
+          <div>
+            <strong>不收付款資料</strong>
+            <p>PickleStart 不在網站上直接處理商品付款。</p>
+          </div>
+        </div>
       </aside>
     </header>
 
-    <section class="privacy-principles">
-      <article><span>01</span><strong>Builder 只問推薦需要的資料</strong></article>
-      <article><span>02</span><strong>完整答案不送到分析服務</strong></article>
-      <article><span>03</span><strong>外部商店有自己的隱私政策</strong></article>
+    <section class="privacy-section privacy-section-centered">
+      <p class="privacy-kicker">HOW DATA IS USED</p>
+      <h2>不同功能，資料處理方式也不同</h2>
+      <p class="privacy-section-lead">
+        你在 Builder 裡的回答、網站使用紀錄、匿名建議，以及外部商店的資料，
+        並不是同一件事。下面分開說明。
+      </p>
+
+      <div class="privacy-grid">
+        <article class="privacy-card">
+          <span>01</span>
+          <strong>Starter Kit</strong>
+          <p>
+            Builder 只詢問和 Starter Kit 有關的選項，例如經驗、球拍數量、
+            使用場地、已有裝備、總預算與使用目標。
+          </p>
+          <p>
+            這些回答用於在瀏覽器中即時計算結果。PickleStart 不建立個人會員檔案，
+            也不把完整 Builder 答案送到網站分析服務。
+          </p>
+        </article>
+
+        <article class="privacy-card">
+          <span>02</span>
+          <strong>網站分析</strong>
+          <p>
+            PickleStart 使用 GoatCounter 了解網站是否有人使用，例如頁面瀏覽，
+            以及是否開始或完成 Builder、是否點擊商品連結等產品事件。
+          </p>
+          <p>
+            這些資料用來改善網站流程與內容，不要求你提供姓名、Email、電話或付款資料。
+          </p>
+        </article>
+
+        <article class="privacy-card">
+          <span>03</span>
+          <strong>匿名建議</strong>
+          <p>
+            如果你使用「提供建議」頁面，回覆會透過 Google Forms 提交。
+            PickleStart 不要求你在表單中填寫姓名或 Email。
+          </p>
+          <p>
+            Google Forms 由 Google 提供，因此表單服務本身會依 Google 的服務條款與隱私政策運作。
+          </p>
+        </article>
+
+        <article class="privacy-card">
+          <span>04</span>
+          <strong>外部商品網站</strong>
+          <p>
+            點擊商品來源、合作連結或商店頁面後，你會離開 PickleStart。
+          </p>
+          <p>
+            外部網站的 Cookie、帳號、付款、配送與隱私政策，都由該網站自行管理。
+          </p>
+        </article>
+      </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">BUILDER DATA</p>
-      <h2>Builder 會問什麼？</h2>
-      <p>
-        Builder 只詢問與 Starter Kit 有關的選項，例如匹克球經驗、
-        球拍數量、使用場地、已有裝備、總預算與使用目標。
-      </p>
-      <p>
-        這些答案用於在瀏覽器中即時計算結果，PickleStart 不建立個人會員檔案，
-        也不把完整 Builder 答案送到分析服務。
-      </p>
+    <section class="privacy-section browser-section">
+      <div>
+        <p class="privacy-kicker">BUILDER DATA</p>
+        <h2>Starter Kit 的回答，不是會員資料</h2>
+      </div>
+
+      <div class="browser-copy">
+        <p>
+          Builder 的目的，是依照你當下的條件產生裝備建議。
+          例如「第一次玩」、「室內場地」、「已有場地鞋」這些回答，
+          都只是用來完成當次推薦。
+        </p>
+
+        <p>
+          PickleStart 目前不要求你建立帳號，也不需要把這些回答綁定到姓名、
+          Email 或其他個人身分資料。
+        </p>
+      </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">ANALYTICS</p>
-      <h2>網站分析</h2>
-      <p>
-        正式部署後，PickleStart 可啟用 GoatCounter 來統計頁面瀏覽與少量產品事件，
-        例如是否開始 Builder、是否完成 Builder，以及是否點擊商品連結。
-      </p>
-      <p>
-        事件只使用一般事件名稱與非個人商品識別資訊，不傳送姓名、Email、電話、地址
-        或完整 Builder 回答。若網站未設定 GoatCounter，這套分析程式不會啟用。
-      </p>
+    <section class="privacy-section analytics-section">
+      <div class="analytics-copy">
+        <p class="privacy-kicker">ANALYTICS</p>
+        <h2>我們會看網站怎麼被使用</h2>
+        <p>
+          網站分析的用途，是幫助我們知道哪些頁面有人看、哪些流程容易卡住，
+          以及哪些功能真的有人使用。
+        </p>
+      </div>
+
+      <div class="analytics-list">
+        <div>
+          <span>✓</span>
+          <p>頁面瀏覽與基本網站使用情況</p>
+        </div>
+        <div>
+          <span>✓</span>
+          <p>是否開始或完成 Starter Kit</p>
+        </div>
+        <div>
+          <span>✓</span>
+          <p>是否點擊商品來源等產品事件</p>
+        </div>
+      </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">EXTERNAL SITES</p>
-      <h2>外部商品網站</h2>
-      <p>
-        點擊商品來源或未來的 affiliate link 後，你會離開 PickleStart。
-        外部商店的資料收集、Cookie、付款與隱私政策由該網站自行管理。
-      </p>
+    <section class="privacy-section security-section">
+      <div class="security-card">
+        <p class="privacy-kicker">GOOD PRACTICE</p>
+        <h2>匿名建議也請不要填敏感資料</h2>
+        <p>
+          即使表單不要求姓名或 Email，也請不要在建議內容中主動填寫密碼、
+          付款資訊、身分證件資料或其他敏感個人資訊。
+        </p>
+      </div>
     </section>
 
-    <section class="content-section">
-      <p class="section-kicker">SECURITY</p>
-      <h2>我們不會在前端放秘密金鑰</h2>
+    <section class="privacy-final-note">
+      <p class="privacy-kicker">THE SHORT VERSION</p>
+      <h2>你可以先把 PickleStart 當成一個不需要登入的工具</h2>
       <p>
-        PickleStart 是靜態網站，不需要把 API secret、商店密碼或其他私人憑證
-        放進瀏覽器程式碼。
-      </p>
-    </section>
-
-    <section class="content-section content-callout brand-callout privacy-callout">
-      <p>
-        如果未來加入新的分析、表單、會員或其他資料處理功能，
-        應在上線前同步更新這份說明。
+        Starter Kit 不要求建立帳號；網站分析用來改善使用體驗；
+        匿名建議由 Google Forms 提供；點擊商品後則會進入外部商店。
       </p>
     </section>
   </article>
+
+  <style>
+    .privacy-page {
+      --privacy-navy: #10243f;
+      --privacy-blue: #087fa5;
+      --privacy-lime: #e2f52c;
+      --privacy-text: #536579;
+      --privacy-muted: #748493;
+      --privacy-line: #dfe7ea;
+      --privacy-surface: #f7faf9;
+
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 52px 0 88px;
+      color: var(--privacy-text);
+    }
+
+    .privacy-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+      gap: 56px;
+      align-items: center;
+      min-height: 500px;
+      padding: 44px 0 68px;
+    }
+
+    .privacy-hero-copy {
+      max-width: 720px;
+    }
+
+    .privacy-eyebrow,
+    .privacy-kicker,
+    .summary-kicker {
+      margin: 0 0 14px;
+      color: var(--privacy-blue);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+    }
+
+    .privacy-hero h1 {
+      margin: 0;
+      color: var(--privacy-navy);
+      font-size: clamp(2.9rem, 5.5vw, 4.85rem);
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
+
+    .privacy-lead {
+      max-width: 690px;
+      margin: 26px 0 0;
+      color: #5a6a7c;
+      font-size: 1.08rem;
+      line-height: 1.9;
+    }
+
+    .privacy-summary-card {
+      padding: 28px;
+      border: 1px solid #dbe7ea;
+      border-radius: 24px;
+      background: linear-gradient(155deg, #ffffff 0%, #f7fbfc 100%);
+      box-shadow: 0 20px 48px rgba(16, 36, 63, 0.08);
+    }
+
+    .summary-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      padding: 18px 0;
+      border-top: 1px solid #e4ecee;
+    }
+
+    .summary-item:first-of-type {
+      border-top: 0;
+    }
+
+    .summary-item > span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--privacy-lime);
+      color: var(--privacy-navy);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .summary-item strong {
+      color: var(--privacy-navy);
+      font-size: 1rem;
+    }
+
+    .summary-item p {
+      margin: 6px 0 0;
+      color: var(--privacy-muted);
+      line-height: 1.6;
+    }
+
+    .privacy-section {
+      padding: 72px 0;
+      border-top: 1px solid var(--privacy-line);
+    }
+
+    .privacy-section-centered {
+      text-align: center;
+    }
+
+    .privacy-section h2,
+    .privacy-final-note h2 {
+      margin: 0;
+      color: var(--privacy-navy);
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .privacy-section-lead {
+      max-width: 760px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 36px;
+      text-align: left;
+    }
+
+    .privacy-card {
+      padding: 28px;
+      border: 1px solid #e0e8ea;
+      border-radius: 20px;
+      background: #fff;
+    }
+
+    .privacy-card > span {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--privacy-blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .privacy-card strong {
+      color: var(--privacy-navy);
+      font-size: 1.12rem;
+    }
+
+    .privacy-card p {
+      margin: 12px 0 0;
+      color: var(--privacy-muted);
+      line-height: 1.75;
+    }
+
+    .browser-section,
+    .analytics-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 52px;
+      align-items: start;
+    }
+
+    .browser-copy p,
+    .analytics-copy p {
+      margin: 0;
+      line-height: 1.85;
+    }
+
+    .browser-copy p + p {
+      margin-top: 18px;
+    }
+
+    .analytics-copy > p:last-child {
+      margin-top: 18px;
+    }
+
+    .analytics-list {
+      padding: 8px 26px;
+      border: 1px solid var(--privacy-line);
+      border-radius: 22px;
+      background: #fff;
+    }
+
+    .analytics-list div {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 0;
+      border-top: 1px solid #e7edef;
+    }
+
+    .analytics-list div:first-child {
+      border-top: 0;
+    }
+
+    .analytics-list span {
+      color: var(--privacy-blue);
+      font-weight: 900;
+    }
+
+    .analytics-list p {
+      margin: 0;
+      color: var(--privacy-text);
+      line-height: 1.6;
+    }
+
+    .security-section {
+      padding-top: 58px;
+      padding-bottom: 58px;
+    }
+
+    .security-card {
+      padding: 34px 36px;
+      border: 1px solid #dfe8ea;
+      border-radius: 24px;
+      background: var(--privacy-surface);
+    }
+
+    .security-card p:last-child {
+      max-width: 900px;
+      margin: 18px 0 0;
+      line-height: 1.85;
+    }
+
+    .privacy-final-note {
+      margin-top: 68px;
+      padding: 34px 36px;
+      border-radius: 24px;
+      background: var(--privacy-navy);
+      color: #dce5ec;
+    }
+
+    .privacy-final-note .privacy-kicker {
+      color: #9ddbed;
+    }
+
+    .privacy-final-note h2 {
+      color: #fff;
+    }
+
+    .privacy-final-note > p:last-child {
+      max-width: 900px;
+      margin: 16px 0 0;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 900px) {
+      .privacy-hero,
+      .browser-section,
+      .analytics-section {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-hero {
+        gap: 30px;
+        min-height: auto;
+      }
+
+      .privacy-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .privacy-page {
+        width: min(100% - 28px, 1180px);
+        padding-top: 28px;
+      }
+
+      .privacy-hero {
+        padding: 26px 0 48px;
+      }
+
+      .privacy-hero h1 {
+        font-size: clamp(2.35rem, 11vw, 3.45rem);
+      }
+
+      .privacy-section {
+        padding: 54px 0;
+      }
+
+      .privacy-summary-card,
+      .privacy-card,
+      .security-card,
+      .privacy-final-note {
+        padding: 22px;
+      }
+
+      .privacy-final-note {
+        margin-top: 54px;
+      }
+    }
+  </style>
 </BaseLayout>
