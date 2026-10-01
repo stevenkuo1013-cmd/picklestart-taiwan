@@ -269,7 +269,59 @@ export function scoreProduct(
     "符合主要使用場地。"
   );
 
-  score += 2;
+  if (product.category === "ball") {
+    const firstTimeCasual =
+      input.experience === "first_time" ||
+      input.goal === "casual";
+
+    const frequentPlayer =
+      input.experience === "weekly" ||
+      input.experience === "serious" ||
+      input.goal === "improve" ||
+      input.goal === "competitive";
+
+    let packScore = 0;
+
+    if (firstTimeCasual) {
+      if (product.packSize <= 3) {
+        packScore = 3;
+      } else if (product.packSize <= 6) {
+        packScore = 1;
+      } else {
+        packScore = -1;
+      }
+    } else if (frequentPlayer) {
+      if (
+        product.packSize >= 5 &&
+        product.packSize <= 12
+      ) {
+        packScore = 3;
+      } else if (product.packSize <= 4) {
+        packScore = 2;
+      } else {
+        packScore = 1;
+      }
+    } else {
+      if (
+        product.packSize >= 5 &&
+        product.packSize <= 6
+      ) {
+        packScore = 3;
+      } else if (product.packSize <= 4) {
+        packScore = 2;
+      } else {
+        packScore = 1;
+      }
+    }
+
+    score += packScore;
+
+    reasons.push(
+      "球的包裝數量符合目前使用頻率。"
+    );
+  } else {
+    score += 2;
+  }
 
   return {
     product,

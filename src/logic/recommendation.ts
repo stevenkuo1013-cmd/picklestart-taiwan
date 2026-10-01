@@ -25,25 +25,345 @@ function productVenueMatches(
   return product.venue.includes("outdoor");
 }
 
+function unitPrice(
+  product: Product
+): number {
+  return (
+    product.priceMin /
+    Math.max(1, product.packSize)
+  );
+}
+
+function inferredPurchaseEase(
+  product: Product
+): number {
+  if (
+    product.purchaseEase !==
+    undefined
+  ) {
+    return product.purchaseEase;
+  }
+
+  if (
+    product.purchaseRegion ===
+      "taiwan" ||
+    product.merchant
+      .toLowerCase()
+      .includes("taiwan") ||
+    product.sourceUrl.includes(".tw")
+  ) {
+    return 3;
+  }
+
+  if (
+    product.purchaseRegion === "asia" ||
+    product.sourceUrl.includes(
+      "asia.selkirk.com"
+    )
+  ) {
+    return 2;
+  }
+
+  return 1;
+}
+
+function inferredProfile(
+  product: Product
+): string {
+  if (product.paddleProfile) {
+    return product.paddleProfile;
+  }
+
+  const tags = product.tags ?? [];
+
+  if (tags.includes("control")) {
+    return "control";
+  }
+
+  if (
+    tags.includes("all-court") ||
+    tags.includes("all_court")
+  ) {
+    return "all_court";
+  }
+
+  if (tags.includes("power")) {
+    return "power";
+  }
+
+  if (
+    tags.includes("budget") ||
+    tags.includes("entry")
+  ) {
+    return "forgiving";
+  }
+
+  return "general";
+}
+
+function selectDiverseRecommendations(
+  ranked:
+    ProductRecommendation[],
+  limit: number
+): ProductRecommendation[] {
+  const remaining = [...ranked];
+  const selected:
+    ProductRecommendation[] = [];
+
+  while (
+    selected.length < limit &&
+    remaining.length > 0
+  ) {
+    const bestScore =
+      remaining[0]?.score;
+
+    if (bestScore === undefined) {
+      break;
+    }
+
+    const sameScore =
+      remaining.filter(
+        (item) =>
+          item.score === bestScore
+      );
+
+    const usedBrands =
+      new Set(
+        selected.map(
+          (item) =>
+            item.product.brand
+        )
+      );
+
+    const usedProfiles =
+      new Set(
+        selected
+          .filter(
+            (item) =>
+              item.product.category ===
+              "paddle"
+          )
+          .map(
+            (item) =>
+              inferredProfile(
+                item.product
+              )
+          )
+      );
+
+    sameScore.sort((a, b) => {
+      const aBrandNovel =
+        usedBrands.has(
+          a.product.brand
+        )
+          ? 0
+          : 1;
+
+      const bBrandNovel =
+        usedBrands.has(
+          b.product.brand
+        )
+          ? 0
+          : 1;
+
+      if (
+        bBrandNovel !==
+        aBrandNovel
+      ) {
+        return (
+          bBrandNovel -
+          aBrandNovel
+        );
+      }
+
+      if (
+        a.product.category ===
+          "paddle" &&
+        b.product.category ===
+          "paddle"
+      ) {
+        const aProfileNovel =
+          usedProfiles.has(
+            inferredProfile(
+              a.product
+            )
+          )
+            ? 0
+            : 1;
+
+        const bProfileNovel =
+          usedProfiles.has(
+            inferredProfile(
+              b.product
+            )
+          )
+            ? 0
+            : 1;
+
+        if (
+          bProfileNovel !==
+          aProfileNovel
+        ) {
+          return (
+            bProfileNovel -
+            aProfileNovel
+          );
+        }
+      }
+
+      const easeDifference =
+        inferredPurchaseEase(
+          b.product
+        ) -
+        inferredPurchaseEase(
+          a.product
+        );
+
+      if (easeDifference !== 0) {
+        return easeDifference;
+      }
+
+      const priceDifference =
+        unitPrice(a.product) -
+        unitPrice(b.product);
+
+      if (priceDifference !== 0) {
+        return priceDifference;
+      }
+
+      return a.product.name.localeCompare(
+        b.product.name
+      );
+    });
+
+    const chosen =
+      sameScore[0];
+
+    if (!chosen) {
+      break;
+    }
+
+    selected.push(chosen);
+
+    const chosenIndex =
+      remaining.findIndex(
+        (item) =>
+          item.product.id ===
+          chosen.product.id
+      );
+
+    if (chosenIndex >= 0) {
+      remaining.splice(
+        chosenIndex,
+        1
+      );
+    }
+  }
+
+  return selected;
+}
+
 function topRecommendations(
   input: BuilderInput,
   category: Product["category"],
   practicalBudgetPerUnit?: number,
   limit = 3
 ): ProductRecommendation[] {
-  if (category === "ball" && input.venue === "unknown") return [];
+  if (
+    category === "ball" &&
+    input.venue === "unknown"
+  ) {
+    return [];
+  }
 
-  return products
-    .filter((product) => product.category === category && product.active)
-    .map((product) => scoreProduct(input, product, practicalBudgetPerUnit))
-    .filter((result) => result.score > 0)
+  const ranked = products
+    .filter(
+      (product) =>
+        product.category === category &&
+        product.active
+    )
+    .map((product) =>
+      scoreProduct(
+        input,
+        product,
+        practicalBudgetPerUnit
+      )
+    )
+    .filter(
+      (result) =>
+        result.score > 0
+    )
     .sort((a, b) => {
-      if (b.score !== a.score) return b.score - a.score;
-      const aUnit = a.product.priceMin / Math.max(1, a.product.packSize);
-      const bUnit = b.product.priceMin / Math.max(1, b.product.packSize);
-      return aUnit - bUnit;
-    })
-    .slice(0, limit);
+      if (
+        b.score !== a.score
+      ) {
+        return (
+          b.score - a.score
+        );
+      }
+
+      const easeDifference =
+        inferredPurchaseEase(
+          b.product
+        ) -
+        inferredPurchaseEase(
+          a.product
+        );
+
+      if (easeDifference !== 0) {
+        return easeDifference;
+      }
+
+      return (
+        unitPrice(a.product) -
+        unitPrice(b.product)
+      );
+    });
+
+  if (
+    category === "paddle" &&
+    limit >= 3 &&
+    ranked[0]?.product
+      .recommendationTier === 2
+  ) {
+    const topScore =
+      ranked[0]?.score;
+
+    if (topScore !== undefined) {
+      const directFits =
+        ranked.filter(
+          (item) =>
+            item.score === topScore
+        );
+
+      const adjacentUpgrade =
+        ranked.find(
+          (item) =>
+            item.score < topScore &&
+            topScore - item.score <= 3 &&
+            item.product
+              .recommendationTier === 3
+        );
+
+      if (
+        directFits.length >= 2 &&
+        adjacentUpgrade
+      ) {
+        return [
+          ...selectDiverseRecommendations(
+            directFits,
+            2
+          ),
+          adjacentUpgrade
+        ];
+      }
+    }
+  }
+
+  return selectDiverseRecommendations(
+    ranked,
+    limit
+  );
 }
 
 function cheapestActiveProduct(
@@ -354,7 +674,7 @@ export function buildStarterKit(
       )
     ) {
       productRecommendations.push(
-        ...topRecommendations(input, "shoes", undefined, 1)
+        ...topRecommendations(input, "shoes", undefined, 2)
       );
     }
 

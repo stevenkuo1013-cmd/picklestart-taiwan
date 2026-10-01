@@ -306,8 +306,8 @@ describe("buildStarterKit", () => {
 });
 
 describe("real product catalog", () => {
-  it("contains exactly 15 active MVP products", () => {
-    expect(products).toHaveLength(15);
+  it("contains 25 active catalog products", () => {
+    expect(products).toHaveLength(25);
     expect(
       products.every(
         (product) => product.active
@@ -333,9 +333,7 @@ describe("real product catalog", () => {
         )
       ).toBe(true);
 
-      expect(
-        product.lastVerified
-      ).toBe("2026-09-28");
+      expect(product.lastVerified).toMatch(/^2026-\d{2}-\d{2}$/);
 
       expect(
         product.priceMin
@@ -348,6 +346,25 @@ describe("real product catalog", () => {
       );
     }
   });
+  it("includes a broader set of mainstream paddle and shoe brands", () => {
+    const brands = new Set(
+      products.map(
+        (product) => product.brand
+      )
+    );
+
+    for (const brand of [
+      "JOOLA",
+      "KUIKMA",
+      "Selkirk",
+      "Vatic Pro",
+      "Six Zero",
+      "SKECHERS"
+    ]) {
+      expect(brands.has(brand)).toBe(true);
+    }
+  });
+
 });
 
 
@@ -460,5 +477,91 @@ describe("scoring v2 behavior", () => {
           "ball"
       )
     ).toBe(false);
+  });
+});
+
+
+describe("catalog v2.1 recommendation quality", () => {
+  it("prefers a small ball pack for first-time casual players", () => {
+    const result = buildStarterKit(baseInput);
+
+    const ball =
+      result.productRecommendations.find(
+        (item) =>
+          item.product.category === "ball"
+      );
+
+    expect(ball).toBeDefined();
+    expect(
+      ball?.product.packSize
+    ).toBeLessThanOrEqual(3);
+  });
+
+  it("shows an adjacent tier-3 upgrade option for a higher-budget tier-2 user", () => {
+    const result = buildStarterKit({
+      ...baseInput,
+      experience: "few_times",
+      requestedPaddles: 1,
+      budget: 5000,
+      goal: "regular"
+    });
+
+    const paddles =
+      result.productRecommendations.filter(
+        (item) =>
+          item.product.category === "paddle"
+      );
+
+    expect(paddles).toHaveLength(3);
+
+    expect(
+      paddles.slice(0, 2).every(
+        (item) =>
+          item.product
+            .recommendationTier === 2
+      )
+    ).toBe(true);
+
+    expect(
+      paddles.some(
+        (item) =>
+          item.product
+            .recommendationTier === 3
+      )
+    ).toBe(true);
+  });
+
+  it("shows both a value court-shoe option and a pickleball-specific option for serious users", () => {
+    const result = buildStarterKit({
+      ...baseInput,
+      experience: "serious",
+      requestedPaddles: 1,
+      venue: "indoor",
+      existingEquipment: {
+        ...baseInput.existingEquipment,
+        badmintonShoes: false,
+        tennisShoes: false,
+        courtShoes: false
+      },
+      budget: 8000,
+      goal: "competitive"
+    });
+
+    const shoes =
+      result.productRecommendations.filter(
+        (item) =>
+          item.product.category === "shoes"
+      );
+
+    expect(shoes).toHaveLength(2);
+
+    expect(
+      shoes.some(
+        (item) =>
+          item.product.tags?.includes(
+            "pickleball-shoes"
+          )
+      )
+    ).toBe(true);
   });
 });

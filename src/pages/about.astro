@@ -1,101 +1,901 @@
----
+﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="About｜PickleStart Taiwan"
-  description="了解 PickleStart Taiwan 為什麼從新手預算與真正需要的裝備出發，而不是做另一個球拍排行榜。"
+  title="關於 PickleStart Taiwan｜讓匹克球新手更容易開始"
+  description="認識 PickleStart Taiwan：為台灣匹克球新手整理規則、裝備、預算與場地資訊，並依照你的情況提供更適合的 Starter Kit 建議。"
 >
-  <article class="content-page branded-page">
-    <header class="content-hero content-hero-about">
-      <div class="content-hero-copy">
-        <p class="eyebrow">ABOUT PICKLESTART</p>
-        <h1>讓第一次開始匹克球，少一點資訊焦慮。</h1>
-        <p class="content-lead">
-          PickleStart Taiwan 不是另一個「十大球拍排行榜」。
-          我們想先回答更基本的問題：你現在到底需要買什麼？
+  <article class="about-v2">
+    <header class="about-hero">
+      <div class="about-hero-copy">
+        <p class="about-kicker">ABOUT PICKLESTART</p>
+
+        <h1>
+          <span class="about-title-line about-title-main">讓第一次打匹克球</span>
+          <span class="about-title-line">
+            <span class="about-title-accent">少一點亂買</span><span class="about-title-main">，多一點開始</span>
+          </span>
+        </h1>
+
+        <p class="about-lead">
+          PickleStart Taiwan 是為台灣匹克球新手打造的入門平台。
+          我們整理規則、裝備、預算與場地資訊，幫你先回答最實際的一個問題：
+          <strong>現在到底需要準備什麼？</strong>
         </p>
-        <a class="primary-button" href="/builder?from=about" data-analytics-event="site_builder_clicked" data-analytics-detail-event="site_builder_source" data-analytics-placement="page_cta" data-analytics-page="about">建立我的 Starter Kit →</a>
+
+        <div class="about-hero-actions">
+          <a
+            class="about-button about-button-primary"
+            href="/builder?from=about"
+            data-analytics-event="site_builder_clicked"
+            data-analytics-detail-event="site_builder_source"
+            data-analytics-placement="about_hero"
+            data-analytics-page="about"
+          >
+            建立我的 Starter Kit →
+          </a>
+          <a class="about-text-link" href="/guide">
+            我想先看新手指南 →
+          </a>
+        </div>
       </div>
 
-      <aside class="content-hero-card">
-        <span class="content-card-kicker">OUR PRINCIPLE</span>
-        <strong>先買需要的，<br />其他晚點再說。</strong>
-        <p>不因為商品比較貴，就把它排得更前面。</p>
+      <aside class="about-hero-note" aria-label="PickleStart 的核心問題">
+        <span class="about-note-label">我們從這個問題開始</span>
+        <p class="about-note-question">不先問哪一支球拍最好</p>
+        <p class="about-note-answer">
+          現在的你<br />
+          真正需要什麼？
+        </p>
+        <div class="about-note-mark" aria-hidden="true">●</div>
       </aside>
     </header>
 
-    <section class="content-stat-strip">
-      <div><strong>6</strong><span>個問題</span></div>
-      <div><strong>0</strong><span>帳號需求</span></div>
-      <div><strong>4</strong><span>種決策：買 / 沿用 / 稍後 / 跳過</span></div>
-    </section>
-
-    <section class="content-section content-section-card">
-      <p class="section-kicker">THE PROBLEM</p>
-      <h2>新手缺的通常不是更多商品，而是更少的決策。</h2>
-      <p>
-        搜尋「匹克球新手」很容易找到規則、球拍、鞋子與大量商品，
-        但真正準備開始的人通常還有另一個更基本的問題：「我現在到底要買什麼？」
-      </p>
-    </section>
-
-    <section class="content-section">
-      <p class="section-kicker">WHAT WE DO</p>
-      <h2>PickleStart 解決的問題</h2>
-      <p>
-        你回答目前的經驗、場地、已有裝備、總預算與使用目標後，
-        系統會把裝備整理成四個清楚的決策。
-      </p>
-
-      <div class="decision-feature-grid">
-        <article class="decision-feature buy">
-          <span>BUY NOW</span>
-          <strong>現在真的需要買</strong>
-          <p>先把必要項目處理好。</p>
-        </article>
-        <article class="decision-feature reuse">
-          <span>REUSE</span>
-          <strong>已有裝備繼續用</strong>
-          <p>能沿用就不要求重買。</p>
-        </article>
-        <article class="decision-feature later">
-          <span>LATER</span>
-          <strong>固定打球再升級</strong>
-          <p>把非必要支出延後。</p>
-        </article>
-        <article class="decision-feature skip">
-          <span>SKIP</span>
-          <strong>目前可以直接跳過</strong>
-          <p>不為了湊清單增加花費。</p>
-        </article>
+    <section class="about-section about-origin">
+      <div class="about-section-heading">
+        <p class="about-kicker">WHY WE STARTED</p>
+        <h2>新手真正缺的<br /><span class="about-heading-accent">不是更多商品</span></h2>
       </div>
-    </section>
 
-    <section class="content-section split-content-section">
-      <div>
-        <p class="section-kicker">LOW MAINTENANCE BY DESIGN</p>
-        <h2>我們刻意沒有做什麼</h2>
-      </div>
-      <div>
-        <p>
-          MVP 不需要帳號、沒有社群功能、不做即時價格爬蟲，也沒有用 AI API 產生推薦。
+      <div class="about-origin-content">
+        <p class="about-origin-intro">
+          第一次接觸匹克球時，問題通常不是完全找不到資訊，
+          而是資訊太零散，讓人很難判斷哪些事情現在真的跟自己有關。
         </p>
-        <p>
-          這些限制是刻意的：讓推薦可以被解釋，也讓網站保持輕量、低維護，
-          不需要為了營運一個工具而收集更多使用者資料。
+
+        <div class="about-question-list" aria-label="匹克球新手常見問題">
+          <div><span>01</span><p>球拍一定要第一次就買嗎？</p></div>
+          <div><span>02</span><p>羽球鞋可以先拿來打匹克球嗎？</p></div>
+          <div><span>03</span><p>室內球和戶外球到底差在哪裡？</p></div>
+          <div><span>04</span><p>場地已經有球網，還需要自己買嗎？</p></div>
+          <div><span>05</span><p>第一次開始，預算到底要抓多少？</p></div>
+        </div>
+
+        <p class="about-origin-close">
+          PickleStart 想做的，就是先理解你的經驗、場地、現有裝備與預算，
+          再把真正需要處理的事情整理成一條比較清楚的起步路線。
         </p>
       </div>
     </section>
 
-    <section class="content-section content-callout brand-callout">
-      <p class="section-kicker">THE RULE WE KEEP</p>
-      <blockquote>如果答案是「現在不要買」，我們就直接這樣告訴你。</blockquote>
-      <p>
-        如果你的現有裝備已經夠用，我們會直接告訴你不用買。
-        如果預算根本不適合目前的場地設定，我們會先建議改變場地或借用裝備，
-        而不是為了塞進預算而推薦不合理的商品。
-      </p>
+    <section class="about-section about-journey">
+      <div class="about-section-heading about-section-heading-center">
+        <p class="about-kicker">HOW PICKLESTART HELPS</p>
+        <h2>從有點想試<br /><span class="about-heading-accent">到真的走上球場</span></h2>
+        <p>
+          不用一次搞懂所有事情，先處理現在最需要的下一步。
+        </p>
+      </div>
+
+      <div class="about-journey-grid">
+        <article class="about-journey-card">
+          <span class="about-step-number">01</span>
+          <div class="about-step-icon" aria-hidden="true">?</div>
+          <h3>先搞懂</h3>
+          <p>
+            用新手指南快速看懂規則、Kitchen、Dink，以及第一次打球前需要知道的基本觀念。
+          </p>
+          <a href="/guide">看新手指南 →</a>
+        </article>
+
+        <article class="about-journey-card about-journey-card-featured">
+          <span class="about-step-number">02</span>
+          <div class="about-step-icon" aria-hidden="true">✓</div>
+          <h3>再決定</h3>
+          <p>
+            根據你的經驗、場地、現有裝備與預算，整理哪些東西現在需要，哪些可以繼續沿用。
+          </p>
+          <a href="/builder?from=about_journey">建立 Starter Kit →</a>
+        </article>
+
+        <article class="about-journey-card">
+          <span class="about-step-number">03</span>
+          <div class="about-step-icon" aria-hidden="true">→</div>
+          <h3>真的去打</h3>
+          <p>
+            找場地、準備裝備、加入球局，把「有點想試試看」變成真正的第一場匹克球。
+          </p>
+          <a href="/guide/taipei-pickleball-courts">找場地資訊 →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-section about-method">
+      <div class="about-method-intro">
+        <p class="about-kicker">HOW WE RECOMMEND</p>
+        <h2>不是最好<br /><span class="about-heading-accent">而是更適合現在的你</span></h2>
+        <p>
+          第一次體驗、每週固定打球，或已經有羽球裝備，
+          不同情況本來就不該得到同一個答案。
+        </p>
+      </div>
+
+      <div class="about-principle-grid">
+        <article>
+          <span class="about-principle-dot"></span>
+          <h3>先用你已經有的</h3>
+          <p>能安全沿用的裝備，不會因為「這是匹克球」就叫你全部重買。</p>
+        </article>
+
+        <article>
+          <span class="about-principle-dot"></span>
+          <h3>預算不是一定要花完</h3>
+          <p>預算是限制，不是購物目標。沒有必要的東西，不需要為了湊滿預算而買。</p>
+        </article>
+
+        <article>
+          <span class="about-principle-dot"></span>
+          <h3>場地會改變需求</h3>
+          <p>室內、戶外、場地有沒有球網，都會改變第一次真正需要準備的東西。</p>
+        </article>
+
+        <article>
+          <span class="about-principle-dot"></span>
+          <h3>推薦要說得出原因</h3>
+          <p>我們希望你知道為什麼這個選項適合，而不是只看到商品名稱或排名。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-section about-values">
+      <div class="about-section-heading about-section-heading-center about-values-heading">
+        <p class="about-kicker">WHAT WE CARE ABOUT</p>
+        <h2 class="about-values-title">
+          <span>我們在意的是</span>
+          <span class="about-heading-accent">讓你更容易開始</span>
+        </h2>
+      </div>
+
+      <div class="about-values-grid">
+        <article>
+          <span>01</span>
+          <h3>對新手真的有用</h3>
+          <p>
+            內容不是越多越好。我們更在意看完之後，你是不是知道下一步要做什麼。
+          </p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>少買錯，比多買一件更重要</h3>
+          <p>
+            PickleStart 的目的不是把購物清單變長，而是減少第一次開始時不必要的花費。
+          </p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>台灣情境優先</h3>
+          <p>
+            價格、場地、商品取得方式與新手指南，都盡量以台灣使用者實際會遇到的情況整理。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-section about-transparency">
+      <div class="about-transparency-copy">
+        <p class="about-kicker about-kicker-light">TRANSPARENCY</p>
+        <h2>有合作，推薦原則也不變</h2>
+        <p>
+          PickleStart 部分商品連結未來可能包含聯盟分潤或品牌合作。
+          這些合作會清楚標示，也不會改變我們判斷「適不適合你」的條件。
+        </p>
+        <p>
+          如果某個商品更符合你的需求，即使它沒有提供佣金，
+          仍然可以出現在建議中。
+        </p>
+
+        <div class="about-transparency-links">
+          <a href="/how-we-recommend">了解我們的推薦方式 →</a>
+          <a href="/affiliate-disclosure">查看聯盟行銷揭露 →</a>
+        </div>
+      </div>
+
+      <div class="about-transparency-rule">
+        <span>我們守住的原則</span>
+        <strong>
+          適合你，<br />
+          才值得推薦
+        </strong>
+      </div>
+    </section>
+
+    <section class="about-final-cta">
+      <div class="about-final-copy">
+        <p class="about-kicker">READY TO START?</p>
+        <h2>準備好開始<br /><span class="about-heading-accent">第一場匹克球了嗎？</span></h2>
+        <p>
+          不用先把所有裝備買齊。回答幾個問題，
+          看看你現在真正需要的是什麼。
+        </p>
+      </div>
+
+      <div class="about-final-actions">
+        <a
+          class="about-button about-button-primary"
+          href="/builder?from=about_final"
+          data-analytics-event="site_builder_clicked"
+          data-analytics-detail-event="site_builder_source"
+          data-analytics-placement="about_final"
+          data-analytics-page="about"
+        >
+          建立我的 Starter Kit →
+        </a>
+        <a class="about-button about-button-secondary" href="/guide">
+          先看新手指南
+        </a>
+      </div>
     </section>
   </article>
 </BaseLayout>
+
+<style>
+  .about-v2 {
+    --about-navy: #10243f;
+    --about-blue: #087fa5;
+    --about-lime: #e2f52c;
+    --about-cream: #fbfaf4;
+    --about-line: #dce6e9;
+    --about-muted: #647487;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 28px 88px;
+    color: var(--about-navy);
+  }
+
+  .about-v2 * {
+    box-sizing: border-box;
+  }
+
+  .about-kicker {
+    margin: 0 0 16px;
+    color: var(--about-blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .about-kicker-light {
+    color: #9eddeb;
+  }
+
+  .about-nowrap {
+    white-space: nowrap;
+  }
+
+  .about-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.52fr) minmax(300px, 0.68fr);
+    gap: 52px;
+    align-items: stretch;
+    padding: 56px;
+    overflow: hidden;
+    border: 1px solid var(--about-line);
+    border-radius: 34px;
+    background:
+      radial-gradient(circle at 90% 12%, rgba(226, 245, 44, 0.18), transparent 28%),
+      linear-gradient(135deg, #ffffff 0%, #f7fbfb 100%);
+    box-shadow: 0 24px 70px rgba(16, 36, 63, 0.08);
+  }
+
+  .about-hero-copy {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .about-hero h1,
+  .about-section h2,
+  .about-final-cta h2 {
+    margin: 0;
+    color: var(--about-navy);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+  }
+
+  .about-hero h1 {
+    max-width: 820px;
+    font-size: clamp(2.65rem, 3.8vw, 3.5rem);
+    line-height: 1.08;
+  }
+
+  .about-title-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .about-title-line + .about-title-line {
+    margin-top: 12px;
+  }
+
+  .about-title-main {
+    color: var(--about-navy);
+  }
+
+  .about-title-accent,
+  .about-heading-accent {
+    color: var(--about-blue);
+  }
+
+  .about-lead {
+    max-width: 730px;
+    margin: 30px 0 0;
+    color: #4d5e72;
+    font-size: 1.04rem;
+    line-height: 1.95;
+  }
+
+  .about-lead strong {
+    color: var(--about-navy);
+  }
+
+  .about-hero-actions,
+  .about-final-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  .about-button {
+    display: inline-flex;
+    min-height: 54px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border-radius: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+
+  .about-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .about-button-primary {
+    color: var(--about-navy);
+    background: var(--about-lime);
+    box-shadow: 0 12px 30px rgba(193, 214, 22, 0.2);
+  }
+
+  .about-button-secondary {
+    border: 1px solid rgba(16, 36, 63, 0.16);
+    color: var(--about-navy);
+    background: #ffffff;
+  }
+
+  .about-text-link {
+    color: var(--about-blue);
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .about-hero-note {
+    position: relative;
+    min-height: 350px;
+    padding: 34px;
+    overflow: hidden;
+    border-radius: 28px;
+    color: #ffffff;
+    background:
+      radial-gradient(circle at 90% 85%, rgba(226, 245, 44, 0.22), transparent 27%),
+      var(--about-navy);
+  }
+
+  .about-note-label {
+    color: #9eddeb;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .about-note-question {
+    margin: 56px 0 0;
+    color: #d7e4ec;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .about-note-answer {
+    margin: 18px 0 0;
+    max-width: 310px;
+    font-size: clamp(1.85rem, 2.5vw, 2.35rem);
+    font-weight: 800;
+    line-height: 1.32;
+    letter-spacing: -0.03em;
+  }
+
+  .about-note-mark {
+    position: absolute;
+    right: 30px;
+    bottom: 18px;
+    color: var(--about-lime);
+    font-size: 4.2rem;
+    line-height: 1;
+  }
+
+  .about-section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--about-line);
+  }
+
+  .about-section-heading {
+    max-width: 520px;
+  }
+
+  .about-section-heading h2,
+  .about-method-intro h2,
+  .about-transparency h2,
+  .about-final-cta h2 {
+    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    line-height: 1.16;
+    text-wrap: balance;
+  }
+
+  .about-section-heading-center {
+    max-width: 900px;
+    margin: 0 auto 42px;
+    text-align: center;
+  }
+
+  .about-section-heading-center > p:last-child {
+    max-width: 640px;
+    margin: 18px auto 0;
+    color: var(--about-muted);
+    line-height: 1.8;
+  }
+
+  .about-origin {
+    display: grid;
+    grid-template-columns: minmax(330px, 0.86fr) minmax(0, 1.14fr);
+    gap: 72px;
+  }
+
+  .about-origin-content {
+    max-width: 720px;
+  }
+
+  .about-origin-intro,
+  .about-origin-close,
+  .about-method-intro > p:last-child {
+    margin: 0;
+    color: #536579;
+    font-size: 1.02rem;
+    line-height: 1.95;
+  }
+
+  .about-question-list {
+    margin: 32px 0;
+    border-top: 1px solid var(--about-line);
+  }
+
+  .about-question-list > div {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--about-line);
+  }
+
+  .about-question-list span {
+    color: var(--about-blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .about-question-list p {
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .about-journey-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .about-journey-card {
+    position: relative;
+    min-height: 360px;
+    padding: 30px;
+    border: 1px solid var(--about-line);
+    border-radius: 26px;
+    background: #ffffff;
+    box-shadow: 0 14px 40px rgba(16, 36, 63, 0.045);
+  }
+
+  .about-journey-card-featured {
+    background:
+      linear-gradient(145deg, rgba(226, 245, 44, 0.28), rgba(238, 248, 251, 0.84));
+    border-color: rgba(8, 127, 165, 0.22);
+  }
+
+  .about-step-number {
+    display: block;
+    color: var(--about-blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .about-step-icon {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    margin: 50px 0 22px;
+    border-radius: 50%;
+    color: var(--about-navy);
+    background: var(--about-lime);
+    font-size: 1.35rem;
+    font-weight: 900;
+  }
+
+  .about-journey-card h3,
+  .about-principle-grid h3,
+  .about-values-grid h3 {
+    margin: 0;
+    color: var(--about-navy);
+    font-size: 1.2rem;
+    line-height: 1.45;
+  }
+
+  .about-journey-card p,
+  .about-principle-grid p,
+  .about-values-grid p {
+    color: var(--about-muted);
+    line-height: 1.85;
+  }
+
+  .about-journey-card a {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    color: var(--about-blue);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .about-method {
+    display: grid;
+    grid-template-columns: minmax(340px, 0.92fr) minmax(0, 1.08fr);
+    gap: 68px;
+    align-items: start;
+  }
+
+  .about-method-intro {
+    max-width: 500px;
+  }
+
+  .about-method-intro > p:last-child {
+    margin-top: 22px;
+  }
+
+  .about-principle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .about-principle-grid article {
+    min-height: 220px;
+    padding: 26px;
+    border-radius: 22px;
+    background: var(--about-cream);
+    border: 1px solid #ece9de;
+  }
+
+  .about-principle-dot {
+    display: block;
+    width: 11px;
+    height: 11px;
+    margin-bottom: 28px;
+    border-radius: 50%;
+    background: var(--about-lime);
+    box-shadow: 0 0 0 5px rgba(226, 245, 44, 0.22);
+  }
+
+  .about-values-heading {
+    max-width: 1040px;
+  }
+
+  .about-values-title span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .about-values-title span + span {
+    margin-top: 6px;
+  }
+
+  .about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 42px;
+    border-top: 1px solid var(--about-line);
+    border-bottom: 1px solid var(--about-line);
+  }
+
+  .about-values-grid article {
+    min-height: 250px;
+    padding: 34px;
+  }
+
+  .about-values-grid article + article {
+    border-left: 1px solid var(--about-line);
+  }
+
+  .about-values-grid span {
+    display: block;
+    margin-bottom: 56px;
+    color: var(--about-blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .about-transparency {
+    display: grid;
+    grid-template-columns: minmax(0, 1.22fr) minmax(330px, 0.78fr);
+    gap: 48px;
+    align-items: center;
+    margin-top: 88px;
+    padding: 52px;
+    border: 0;
+    border-radius: 30px;
+    color: #ffffff;
+    background:
+      radial-gradient(circle at 95% 10%, rgba(226, 245, 44, 0.16), transparent 30%),
+      linear-gradient(135deg, #10243f, #164764);
+  }
+
+  .about-transparency h2 {
+    color: #ffffff;
+    max-width: 560px;
+  }
+
+  .about-transparency-copy > p:not(.about-kicker) {
+    max-width: 680px;
+    color: #d6e2ea;
+    line-height: 1.9;
+  }
+
+  .about-transparency-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    margin-top: 28px;
+  }
+
+  .about-transparency-links a {
+    color: var(--about-lime);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .about-transparency-rule {
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .about-transparency-rule span {
+    display: block;
+    margin-bottom: 30px;
+    color: #9eddeb;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+  }
+
+  .about-transparency-rule strong {
+    color: #ffffff;
+    font-size: clamp(1.45rem, 2.2vw, 2rem);
+    line-height: 1.55;
+    letter-spacing: -0.025em;
+  }
+
+  .about-final-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 44px;
+    align-items: center;
+    margin-top: 34px;
+    padding: 56px 10px 18px;
+  }
+
+  .about-final-copy {
+    max-width: 760px;
+  }
+
+  .about-final-cta p:not(.about-kicker) {
+    max-width: 640px;
+    color: var(--about-muted);
+    line-height: 1.85;
+  }
+
+  .about-final-actions {
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+
+  @media (max-width: 1000px) {
+    .about-hero {
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 32px;
+      padding: 44px;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2.5rem, 4.7vw, 3.35rem);
+    }
+
+    .about-origin,
+    .about-method {
+      gap: 46px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .about-v2 {
+      padding: 28px 18px 64px;
+    }
+
+    .about-hero,
+    .about-origin,
+    .about-method,
+    .about-transparency,
+    .about-final-cta {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero {
+      padding: 38px 28px;
+      gap: 28px;
+    }
+
+    .about-title-line {
+      display: block;
+      white-space: normal;
+    }
+
+    .about-title-line + .about-title-line {
+      margin-top: 8px;
+    }
+
+    .about-values-title span {
+      white-space: normal;
+    }
+
+    .about-hero-note {
+      min-height: 290px;
+    }
+
+    .about-origin,
+    .about-method {
+      gap: 34px;
+    }
+
+    .about-section-heading,
+    .about-method-intro {
+      max-width: 720px;
+    }
+
+    .about-journey-grid,
+    .about-values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-values-grid article + article {
+      border-left: 0;
+      border-top: 1px solid var(--about-line);
+    }
+
+    .about-values-grid article {
+      min-height: auto;
+    }
+
+    .about-values-grid span {
+      margin-bottom: 26px;
+    }
+
+    .about-final-actions {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .about-hero h1 {
+      font-size: clamp(2.35rem, 11.8vw, 3.65rem);
+      line-height: 1.08;
+    }
+
+    .about-title-line,
+    .about-title-line + .about-title-line {
+      display: block;
+      white-space: normal;
+    }
+
+    .about-section {
+      padding: 64px 0;
+    }
+
+    .about-section-heading h2,
+    .about-method-intro h2,
+    .about-transparency h2,
+    .about-final-cta h2 {
+      font-size: clamp(2rem, 9vw, 2.75rem);
+      line-height: 1.18;
+    }
+
+    .about-principle-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-transparency {
+      margin-top: 64px;
+      padding: 34px 24px;
+    }
+
+    .about-hero-actions,
+    .about-final-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .about-button {
+      width: 100%;
+    }
+
+    .about-text-link {
+      padding: 4px 2px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-button {
+      transition: none;
+    }
+  }
+
+  /* About heading color rule */
+  .about-heading-accent {
+    color: inherit;
+  }
+
+  .about-hero .about-heading-accent {
+    color: var(--about-blue);
+  }
+
+</style>
+

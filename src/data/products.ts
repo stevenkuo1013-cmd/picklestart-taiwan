@@ -1,7 +1,7 @@
 import type { Product } from "../types";
 
 /**
- * PickleStart Taiwan MVP catalog.
+ * PickleStart Taiwan product catalog.
  *
  * Notes:
  * - Prices are approximate bands verified on 2026-09-28.
@@ -192,6 +192,158 @@ export const products: Product[] = [
     tags: ["carbon", "15mm", "intermediate"]
   },
 
+
+  {
+    id: "joola-journey-sante-fe-10",
+    name: "JOOLA Journey Sante Fe 10mm 匹克球球拍",
+    brand: "JOOLA",
+    category: "paddle",
+    recommendationTier: 1,
+    purchaseRegion: "taiwan",
+    purchaseEase: 3,
+    paddleProfile: "forgiving",
+    merchant: "JOOLA Taiwan",
+    priceMin: 2199,
+    priceMax: 2199,
+    experience: ["first_time", "few_times"],
+    goals: ["casual", "regular"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://joola.tw/product/joola-journey-sante-fe-10mm-%E5%8C%B9%E5%85%8B%E7%90%83%E7%90%83%E6%8B%8D/",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "JOOLA 台灣官方入門款；10mm 蜂窩核心、玻璃纖維拍面，適合第一次購拍或休閒使用。",
+    tags: ["entry", "forgiving", "fiberglass", "taiwan"]
+  },
+  {
+    id: "kuikma-react-paddle",
+    name: "KUIKMA React 16mm 碳纖維匹克球拍",
+    brand: "KUIKMA",
+    category: "paddle",
+    recommendationTier: 2,
+    purchaseRegion: "taiwan",
+    purchaseEase: 3,
+    paddleProfile: "forgiving",
+    merchant: "Decathlon Taiwan",
+    priceMin: 1249,
+    priceMax: 1249,
+    experience: ["few_times", "weekly"],
+    goals: ["regular", "improve"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://www.decathlon.tw/en-TW/p/pickeball-racket-react-purple-kuikma-8941058.html",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "16mm 碳纖維拍面、寬厚拍頭與 235g 配置，適合已開始固定打球、想要高容錯與好操作感的人。",
+    tags: ["carbon", "16mm", "forgiving", "value", "taiwan"]
+  },
+  {
+    id: "vatic-pro-prism-flash-16",
+    name: "Vatic Pro PRISM Flash 16mm",
+    brand: "Vatic Pro",
+    category: "paddle",
+    recommendationTier: 3,
+    purchaseRegion: "international",
+    purchaseEase: 1,
+    paddleProfile: "control",
+    merchant: "Vatic Pro",
+    priceMin: 3200,
+    priceMax: 3600,
+    experience: ["few_times", "weekly", "serious"],
+    goals: ["regular", "improve", "competitive"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://vaticpro.com/products/prism",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "T700 raw carbon、foam edge wall 與 16mm 選項，偏控制與 reset 手感；台幣價格為官方美元售價約略換算，不含國際運費與稅費。",
+    tags: ["carbon", "16mm", "control", "international"]
+  },
+  {
+    id: "selkirk-slk-dauntless-widebody-16",
+    name: "Selkirk SLK Dauntless Widebody 16mm",
+    brand: "Selkirk",
+    category: "paddle",
+    recommendationTier: 3,
+    purchaseRegion: "asia",
+    purchaseEase: 2,
+    paddleProfile: "control",
+    merchant: "Selkirk Asia",
+    priceMin: 4780,
+    priceMax: 4780,
+    experience: ["few_times", "weekly", "serious"],
+    goals: ["regular", "improve", "competitive"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://asia.selkirk.com/products/slk-dauntless-asia?country=TW&currency=TWD",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "16mm PureFoam、T700 raw carbon 與 widebody 大甜區，定位為 all-court 且偏控制，適合想從入門往固定訓練升級的人。",
+    tags: ["carbon", "16mm", "control", "widebody", "asia"]
+  },
+  {
+    id: "joola-ben-johns-hyperion-cfs-16",
+    name: "JOOLA Ben Johns Hyperion CFS 16",
+    brand: "JOOLA",
+    category: "paddle",
+    recommendationTier: 4,
+    purchaseRegion: "taiwan",
+    purchaseEase: 3,
+    paddleProfile: "all_court",
+    merchant: "JOOLA Taiwan",
+    priceMin: 6699,
+    priceMax: 6699,
+    experience: ["weekly", "serious"],
+    goals: ["improve", "competitive"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://joola.tw/product-category/pickleball-all/pickleball-paddles/pickleball-paddles-singles/",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "CFS 16、Reactive 蜂巢核心與 HyperFoam 邊框，屬高階全能型選項，適合已固定訓練或競賽導向的使用者。",
+    tags: ["premium", "16mm", "all-court", "taiwan"]
+  },
+  {
+    id: "six-zero-double-black-diamond-control-16",
+    name: "Six Zero Double Black Diamond Control 16mm",
+    brand: "Six Zero",
+    category: "paddle",
+    recommendationTier: 4,
+    purchaseRegion: "international",
+    purchaseEase: 1,
+    paddleProfile: "control",
+    merchant: "Six Zero",
+    priceMin: 5750,
+    priceMax: 6200,
+    experience: ["weekly", "serious"],
+    goals: ["improve", "competitive"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://us.sixzeropickleball.com/products/double-black-diamond",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "16mm raw carbon 控制型球拍，強調 precision、control 與 power 的平衡；台幣價格為官方美元售價約略換算，不含國際運費與稅費。",
+    tags: ["premium", "16mm", "control", "international"]
+  },
+
   // ----------------------------
   // BALLS
   // ----------------------------
@@ -259,6 +411,54 @@ export const products: Product[] = [
     tags: ["outdoor", "3-pack", "competition"]
   },
 
+
+  {
+    id: "infin-outdoor-ball-5",
+    name: "INFIN 室外匹克球 5入",
+    brand: "INFIN",
+    category: "ball",
+    purchaseRegion: "taiwan",
+    purchaseEase: 3,
+    merchant: "INFIN Taiwan",
+    priceMin: 280,
+    priceMax: 350,
+    experience: ["first_time", "few_times", "weekly", "serious"],
+    goals: ["casual", "regular", "improve", "competitive"],
+    venue: ["outdoor"],
+    packSize: 5,
+    sourceUrl:
+      "https://www.headsports.com.tw/categories/infin-pickleball",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "台灣通路可直接購買的 5 入室外球，適合需要比 3 入裝稍多備用球的使用情境。",
+    tags: ["outdoor", "5-pack", "taiwan"]
+  },
+  {
+    id: "infin-indoor-ball-5",
+    name: "INFIN 室內匹克球 5入",
+    brand: "INFIN",
+    category: "ball",
+    purchaseRegion: "taiwan",
+    purchaseEase: 3,
+    merchant: "INFIN Taiwan",
+    priceMin: 280,
+    priceMax: 350,
+    experience: ["first_time", "few_times", "weekly", "serious"],
+    goals: ["casual", "regular", "improve", "competitive"],
+    venue: ["indoor"],
+    packSize: 5,
+    sourceUrl:
+      "https://www.headsports.com.tw/categories/infin-pickleball",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "台灣通路可直接購買的 5 入室內球，適合固定在室內球館打球、希望多準備幾顆球的使用者。",
+    tags: ["indoor", "5-pack", "taiwan"]
+  },
+
   // ----------------------------
   // SHOES
   // ----------------------------
@@ -324,6 +524,54 @@ export const products: Product[] = [
     shortReason:
       "專門以匹克球命名的場地鞋，適合已固定投入的玩家。",
     tags: ["pickleball-shoes", "premium"]
+  },
+
+
+  {
+    id: "head-motion-pro-pickleball",
+    name: "HEAD Motion Pro Pickleball",
+    brand: "HEAD",
+    category: "shoes",
+    purchaseRegion: "taiwan",
+    purchaseEase: 3,
+    merchant: "INFIN Taiwan",
+    priceMin: 3744,
+    priceMax: 4680,
+    experience: ["weekly", "serious"],
+    goals: ["regular", "improve", "competitive"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://www.headsports.com.tw/categories/head-pickleball",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "HEAD 台灣正式販售的匹克球鞋款，適合已固定打球、想升級到匹克球專用鞋的使用者。",
+    tags: ["pickleball-shoes", "premium", "taiwan"]
+  },
+  {
+    id: "skechers-viper-court-pro-2",
+    name: "SKECHERS Viper Court Pro 2.0",
+    brand: "SKECHERS",
+    category: "shoes",
+    purchaseRegion: "taiwan",
+    purchaseEase: 3,
+    merchant: "SKECHERS Taiwan",
+    priceMin: 4790,
+    priceMax: 4890,
+    experience: ["weekly", "serious"],
+    goals: ["improve", "competitive"],
+    venue: ["both"],
+    packSize: 1,
+    sourceUrl:
+      "https://shop.skechers-twn.com/SalePage/Index/12087417",
+    evidenceLevel: "manufacturer_specs",
+    lastVerified: "2026-10-01",
+    active: true,
+    shortReason:
+      "SKECHERS 台灣正式販售的匹克球鞋，定位較高階，適合打球頻率高且希望使用專項鞋款的人。",
+    tags: ["pickleball-shoes", "premium", "taiwan"]
   },
 
   // ----------------------------

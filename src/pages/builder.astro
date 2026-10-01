@@ -34,6 +34,478 @@ const canonicalURL = new URL(
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="zh_TW" />
 
+  
+    <style is:global>
+      /* PRODUCT CARD 2.0 */
+      .product-card-v2 {
+        border: 1px solid #dce6e9;
+        border-radius: 24px;
+        background: #ffffff;
+        box-shadow: 0 14px 38px rgba(16, 36, 63, 0.055);
+        overflow: hidden;
+      }
+
+      .product-card-v2.is-primary {
+        border-color: rgba(8, 127, 165, 0.28);
+        box-shadow: 0 16px 42px rgba(8, 127, 165, 0.08);
+      }
+
+      .product-card-v2.is-upgrade {
+        border-color: rgba(8, 127, 165, 0.22);
+        background:
+          linear-gradient(
+            145deg,
+            rgba(238, 248, 251, 0.72),
+            #ffffff 42%
+          );
+      }
+
+      .product-card-v2.is-dedicated {
+        border-color: rgba(16, 36, 63, 0.2);
+      }
+
+      .product-card-v2 .product-card-top {
+        gap: 28px;
+        align-items: flex-start;
+      }
+
+      .product-card-title-group {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .product-card-v2 .product-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .product-role-badge {
+        display: inline-flex;
+        min-height: 26px;
+        align-items: center;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.76rem;
+        font-weight: 800;
+        line-height: 1.15;
+      }
+
+      .product-role-badge.role-primary {
+        color: #10243f;
+        background: #e2f52c;
+      }
+
+      .product-role-badge.role-upgrade {
+        color: #075f7d;
+        background: #e6f6fb;
+        border: 1px solid #bce4ef;
+      }
+
+      .product-role-badge.role-alternative {
+        color: #536579;
+        background: #f2f5f6;
+        border: 1px solid #e1e8ea;
+      }
+
+      .product-role-badge.role-dedicated {
+        color: #ffffff;
+        background: #087fa5;
+      }
+
+      .product-role-badge.role-value {
+        color: #536579;
+        background: #f7f3e8;
+        border: 1px solid #e9e0ca;
+      }
+
+      .product-card-v2 h3 {
+        margin-bottom: 7px;
+        line-height: 1.35;
+      }
+
+      .product-positioning {
+        margin: 0 0 8px;
+        color: #087fa5;
+        font-size: 0.96rem;
+        font-weight: 750;
+        line-height: 1.55;
+      }
+
+      .product-card-v2 .product-merchant {
+        margin-top: 0;
+      }
+
+      .product-card-v2 .product-price {
+        flex: 0 0 auto;
+      }
+
+      .product-card-v2 .product-price strong {
+        white-space: nowrap;
+      }
+
+      .product-description {
+        margin-top: 20px;
+        color: #586a7d;
+        line-height: 1.75;
+      }
+
+      .product-fit-block {
+        margin-top: 20px;
+        padding: 18px 20px;
+        border-radius: 16px;
+        background: #f8faf9;
+        border: 1px solid #edf1ef;
+      }
+
+      .product-fit-heading {
+        margin: 0 0 12px;
+        color: #10243f;
+        font-size: 0.8rem;
+        font-weight: 850;
+        letter-spacing: 0.04em;
+      }
+
+      .product-fit-list-v2 {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .product-fit-list-v2 li {
+        display: flex;
+        gap: 9px;
+        align-items: flex-start;
+        color: #4f6174;
+        line-height: 1.55;
+      }
+
+      .product-fit-list-v2 li > span:first-child {
+        flex: 0 0 auto;
+        color: #087fa5;
+        font-weight: 900;
+      }
+
+      .product-card-v2 .product-card-footer {
+        margin-top: 22px;
+      }
+
+      @media (max-width: 720px) {
+        .product-card-v2 .product-card-top {
+          display: block;
+        }
+
+        .product-card-v2 .product-price {
+          margin-top: 14px;
+        }
+
+        .product-card-v2 .product-price strong {
+          white-space: normal;
+        }
+
+        .product-fit-block {
+          padding: 16px;
+        }
+      }
+    </style>
+
+  
+    <style is:global>
+      /* PRODUCT CARD 2.1 — compact & human copy */
+      .product-card-v2 {
+        padding: 26px 30px !important;
+      }
+
+      .product-card-v2 .product-meta {
+        margin-bottom: 9px;
+      }
+
+      .product-card-v2 h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+
+      .product-card-v2 .product-positioning {
+        margin-bottom: 6px;
+      }
+
+      .product-card-v2 .product-merchant {
+        margin-bottom: 0;
+        font-size: 0.94rem;
+      }
+
+      .product-card-v2 .product-fit-block {
+        margin-top: 16px;
+        padding: 15px 17px;
+        border-radius: 15px;
+      }
+
+      .product-card-v2 .product-fit-heading {
+        margin-bottom: 10px;
+      }
+
+      .product-card-v2 .product-fit-list-v2 {
+        gap: 8px;
+      }
+
+      .product-card-v2 .product-fit-list-v2 li {
+        color: #536579 !important;
+        font-weight: 500 !important;
+      }
+
+      .product-card-v2 .product-fit-list-v2 li > span:last-child {
+        color: #536579 !important;
+      }
+
+      .product-card-v2 .product-fit-list-v2 li > span:first-child {
+        color: #087fa5 !important;
+        font-weight: 900 !important;
+      }
+
+      .product-card-v2 .product-card-footer {
+        margin-top: 17px;
+        padding-top: 16px;
+      }
+
+      .product-card-v2 .product-verification {
+        font-size: 0.88rem;
+      }
+
+      @media (max-width: 720px) {
+        .product-card-v2 {
+          padding: 22px 20px !important;
+        }
+
+        .product-card-v2 .product-fit-block {
+          padding: 14px 15px;
+        }
+      }
+    </style>
+
+  
+    <style is:global>
+      /* PRODUCT OPTIONS 2.2 — category grouping & choice clarity */
+
+      .product-choice-intro {
+        display: grid;
+        gap: 5px;
+        margin: 4px 0 34px;
+        padding: 18px 20px;
+        border: 1px solid #d9e9ee;
+        border-radius: 16px;
+        background: #f5fafb;
+      }
+
+      .product-choice-intro strong {
+        color: #10243f;
+        font-size: 1rem;
+      }
+
+      .product-choice-intro span {
+        color: #647487;
+        line-height: 1.65;
+      }
+
+      .product-choice-group {
+        margin-top: 42px;
+      }
+
+      .product-choice-group:first-of-type {
+        margin-top: 0;
+      }
+
+      .product-choice-group + .product-choice-group {
+        padding-top: 42px;
+        border-top: 1px solid #e3eaec;
+      }
+
+      .product-choice-group-heading {
+        margin-bottom: 18px;
+      }
+
+      .product-choice-eyebrow {
+        display: block;
+        margin-bottom: 7px;
+        color: #087fa5;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      .product-choice-title-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+      }
+
+      .product-choice-title-row h3 {
+        margin: 0;
+        color: #10243f;
+        font-size: 1.55rem;
+        line-height: 1.25;
+      }
+
+      .product-choice-title-row > span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 29px;
+        padding: 4px 11px;
+        border-radius: 999px;
+        color: #10243f;
+        background: #edf8b8;
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .product-choice-group-heading p {
+        max-width: 720px;
+        margin: 8px 0 0;
+        color: #647487;
+        line-height: 1.65;
+      }
+
+      .product-choice-list {
+        display: grid;
+        gap: 18px;
+      }
+
+      .product-choice-list > .product-card-v2 {
+        margin: 0 !important;
+      }
+
+      .product-choice-list > .product-card-v2:first-child {
+        box-shadow: 0 16px 42px rgba(16, 36, 63, 0.075);
+      }
+
+      .product-choice-list > .product-card-v2:not(:first-child) {
+        box-shadow: 0 8px 24px rgba(16, 36, 63, 0.035);
+      }
+
+      .product-choice-list > .product-card-v2:not(:first-child) .product-link {
+        box-shadow: none;
+      }
+
+      .product-card-v2 .product-verification {
+        color: #8a98a6;
+        font-size: 0.82rem !important;
+      }
+
+      @media (max-width: 720px) {
+        .product-choice-intro {
+          margin-bottom: 28px;
+          padding: 16px;
+        }
+
+        .product-choice-group {
+          margin-top: 34px;
+        }
+
+        .product-choice-group + .product-choice-group {
+          padding-top: 34px;
+        }
+
+        .product-choice-title-row h3 {
+          font-size: 1.35rem;
+        }
+
+        .product-choice-list {
+          gap: 14px;
+        }
+      }
+    </style>
+
+  
+    <style is:global>
+      /* PRODUCT OPTIONS 2.2.1 — final polish */
+
+      .product-choice-intro {
+        margin-bottom: 28px;
+        padding: 16px 18px;
+      }
+
+      .product-choice-group {
+        margin-top: 34px;
+      }
+
+      .product-choice-group + .product-choice-group {
+        padding-top: 34px;
+      }
+
+      .product-choice-group-heading {
+        margin-bottom: 15px;
+      }
+
+      .product-choice-group-heading p {
+        margin-top: 6px;
+      }
+
+      .product-choice-list {
+        gap: 15px;
+      }
+
+      .product-card-v2 .product-verification {
+        color: #9aa6b2 !important;
+        font-size: 0.78rem !important;
+        font-weight: 500 !important;
+      }
+
+      .product-card-v2 .product-card-footer {
+        gap: 14px;
+      }
+
+      @media (max-width: 720px) {
+        .product-choice-intro {
+          margin-bottom: 24px;
+          padding: 15px 16px;
+        }
+
+        .product-choice-group {
+          margin-top: 28px;
+        }
+
+        .product-choice-group + .product-choice-group {
+          padding-top: 28px;
+        }
+
+        .product-choice-list {
+          gap: 12px;
+        }
+      }
+    </style>
+
+  
+    <style is:global>
+      /* EQUIPMENT STEP V2 */
+      .equipment-or-bottom {
+        margin-top: 8px;
+      }
+
+      .equipment-or-bottom span {
+        color: #7b8997;
+      }
+    </style>
+
+  
+    <style is:global>
+      /* EQUIPMENT STEP V2.1 - final polish */
+      .equipment-or-bottom {
+        margin-top: 12px;
+        margin-bottom: 2px;
+      }
+
+      .equipment-or-bottom span {
+        color: #657789 !important;
+        font-size: 0.84rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.01em;
+      }
+    </style>
+
   </head>
 
   <body>
@@ -161,7 +633,7 @@ const canonicalURL = new URL(
           </div>
 
           <p class="helper-text">
-            MVP 目前支援 1–4 支球拍。
+            目前可選 1–4 支球拍。
           </p>
         </section>
 
@@ -233,34 +705,10 @@ const canonicalURL = new URL(
           </h1>
 
           <p class="question-description">
-            我們會優先沿用你已經有的東西；如果目前都沒有，也請直接告訴我們。
+            我們會優先沿用你已有的裝備；如果都沒有，最後選「我目前都沒有」即可。
           </p>
 
           <div class="equipment-list">
-            <button
-              type="button"
-              id="no-equipment"
-              class="equipment-none-option"
-              aria-pressed="false"
-            >
-              <span class="equipment-none-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-4 9h8v2H8v-2Z"/>
-                </svg>
-              </span>
-
-              <span class="equipment-none-copy">
-                <strong>我目前都沒有</strong>
-                <small>請從零開始幫我配，不用擔心重複購買</small>
-              </span>
-
-              <span class="equipment-none-check" aria-hidden="true">✓</span>
-            </button>
-
-            <div class="equipment-or">
-              <span>或選擇你已經有／現場可用的裝備</span>
-            </div>
-
             <div class="equipment-row">
               <div>
                 <strong>匹克球拍</strong>
@@ -294,37 +742,48 @@ const canonicalURL = new URL(
               </span>
             </label>
 
-            <label class="equipment-option">
-              <input id="has-badminton-shoes" type="checkbox" />
-              <span>
-                <strong>羽球鞋</strong>
-                <small>可以先沿用，不必急著換鞋</small>
-              </span>
-            </label>
-
-            <label class="equipment-option">
-              <input id="has-tennis-shoes" type="checkbox" />
-              <span>
-                <strong>網球鞋</strong>
-                <small>具備側向移動支撐</small>
-              </span>
-            </label>
+            <input id="has-badminton-shoes" type="checkbox" hidden />
+            <input id="has-tennis-shoes" type="checkbox" hidden />
 
             <label class="equipment-option">
               <input id="has-court-shoes" type="checkbox" />
               <span>
-                <strong>Court Shoes</strong>
-                <small>其他適合球場側向移動的鞋款</small>
+                <strong>場地鞋</strong>
+                <small>羽球鞋、網球鞋或其他有側向支撐的球場鞋都可以</small>
               </span>
             </label>
 
             <label class="equipment-option">
               <input id="has-net" type="checkbox" />
               <span>
-                <strong>已有球網 / 場地有球網</strong>
-                <small>只有自備場地時特別重要</small>
+                <strong>已有可用球網</strong>
+                <small>自己有，或場地本身有球網都算</small>
               </span>
             </label>
+
+            <div class="equipment-or equipment-or-bottom">
+              <span>都沒有也沒關係</span>
+            </div>
+
+            <button
+              type="button"
+              id="no-equipment"
+              class="equipment-none-option"
+              aria-pressed="false"
+            >
+              <span class="equipment-none-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-4 9h8v2H8v-2Z"/>
+                </svg>
+              </span>
+
+              <span class="equipment-none-copy">
+                <strong>我目前都沒有</strong>
+                <small>我們會從最基本需要的裝備開始幫你整理</small>
+              </span>
+
+              <span class="equipment-none-check" aria-hidden="true">✓</span>
+            </button>
 
           </div>
         </section>
@@ -1316,6 +1775,368 @@ const canonicalURL = new URL(
         }
       }
 
+      function displayTargetPaddleTier(input: BuilderInput) {
+        const experienceTier =
+          input.experience === "first_time"
+            ? 1
+            : input.experience === "few_times"
+              ? 2
+              : input.experience === "weekly"
+                ? 3
+                : 4;
+
+        const goalTier =
+          input.goal === "casual"
+            ? 1
+            : input.goal === "regular"
+              ? 2
+              : input.goal === "improve"
+                ? 3
+                : 4;
+
+        return Math.max(
+          experienceTier,
+          goalTier
+        );
+      }
+
+      function purchaseHighlight(
+        product: ReturnType<
+          typeof buildStarterKit
+        >["productRecommendations"][number]["product"]
+      ) {
+        if (
+          product.purchaseRegion === "taiwan" ||
+          product.purchaseEase === 3
+        ) {
+          return "台灣通路可直接購買";
+        }
+
+        if (
+          product.purchaseRegion === "asia" ||
+          product.purchaseEase === 2
+        ) {
+          return "亞洲官方通路，購買相對方便";
+        }
+
+        if (
+          product.purchaseRegion === "international" ||
+          product.purchaseEase === 1
+        ) {
+          return "海外官方購買，結帳前留意運費與稅費";
+        }
+
+        return `可由 ${product.merchant} 查看目前供貨`;
+      }
+
+      function paddleProfileHighlight(
+        profile:
+          | "budget"
+          | "forgiving"
+          | "control"
+          | "all_court"
+          | "power"
+          | undefined
+      ) {
+        switch (profile) {
+          case "budget":
+            return "入門實用，先控制第一次投入";
+          case "forgiving":
+            return "好上手、容錯較高";
+          case "control":
+            return "控制取向，重視穩定手感";
+          case "all_court":
+            return "全能取向，攻守較均衡";
+          case "power":
+            return "力量取向，偏重進攻感";
+          default:
+            return "定位符合目前使用情境";
+        }
+      }
+
+      function productPriceLabel(
+        product: ReturnType<
+          typeof buildStarterKit
+        >["productRecommendations"][number]["product"]
+      ) {
+        if (
+          product.priceMin ===
+          product.priceMax
+        ) {
+          return `約 NT$${money(
+            product.priceMin
+          )}`;
+        }
+
+        return `約 NT$${money(
+          product.priceMin
+        )}–${money(
+          product.priceMax
+        )}`;
+      }
+
+
+      function productGroupMeta(
+        category: "paddle" | "ball" | "shoes" | "net"
+      ) {
+        switch (category) {
+          case "paddle":
+            return {
+              eyebrow: "PADDLE",
+              title: "球拍",
+              instruction: "選 1 支就好",
+              note: ""
+            };
+
+          case "ball":
+            return {
+              eyebrow: "BALLS",
+              title: "匹克球",
+              instruction: "準備至少 3 顆",
+              note:
+                "商品包裝數量可能不同，多出的球可以留作備用。"
+            };
+
+          case "shoes":
+            return {
+              eyebrow: "COURT SHOES",
+              title: "場地鞋",
+              instruction: "選 1 雙即可",
+              note: ""
+            };
+
+          case "net":
+            return {
+              eyebrow: "NET",
+              title: "球網",
+              instruction: "依場地需求選擇",
+              note:
+                "只有需要自行架網時，才需要考慮購買。"
+            };
+        }
+      }
+
+      function recommendationPresentation(
+        recommendation: ReturnType<
+          typeof buildStarterKit
+        >["productRecommendations"][number],
+        input: BuilderInput,
+        categoryRank: number
+      ) {
+        const product =
+          recommendation.product;
+
+        let badge = "";
+        let badgeClass = "role-alternative";
+        let cardClass = "";
+        let subtitle = "";
+        const highlights: string[] = [];
+
+        if (product.category === "paddle") {
+          const targetTier =
+            displayTargetPaddleTier(input);
+
+          const productTier =
+            product.recommendationTier ?? targetTier;
+
+          if (productTier > targetTier) {
+            badge = "升級選項";
+            badgeClass = "role-upgrade";
+            cardClass = "is-upgrade";
+            subtitle =
+              "如果想持續進步，可以往上看";
+
+            const upgradeReason =
+              targetTier <= 1
+                ? "比第一次入門需求高一階，適合想直接買一支用久一點的人"
+                : targetTier === 2
+                  ? "比目前需求高一階，適合想持續進步的人"
+                  : "比目前需求高一階，作為後續升級參考";
+
+            highlights.push(
+              upgradeReason
+            );
+          } else if (categoryRank === 0) {
+            badge = "優先推薦";
+            badgeClass = "role-primary";
+            cardClass = "is-primary";
+            subtitle =
+              paddleProfileHighlight(
+                product.paddleProfile
+              );
+
+            const fitReason =
+              targetTier === 1
+                ? "剛開始接觸，先從好上手又不過度投入的球拍開始"
+                : targetTier === 2
+                  ? "你已經有一些經驗，這個等級適合繼續使用一段時間"
+                  : targetTier === 3
+                    ? "你想持續進步，這個等級更符合固定打球的需求"
+                    : "你目前偏高頻率或競賽導向，這個等級比較合適";
+
+            highlights.push(
+              fitReason
+            );
+          } else {
+            badge = "另一個適合選擇";
+            badgeClass = "role-alternative";
+            subtitle =
+              paddleProfileHighlight(
+                product.paddleProfile
+              );
+
+            highlights.push(
+              "同樣符合目前程度，可以再比較手感、品牌與價格"
+            );
+          }
+
+          if (productTier > targetTier) {
+            highlights.push(
+              paddleProfileHighlight(
+                product.paddleProfile
+              )
+            );
+          } else if (product.paddleProfile) {
+            const profileReason =
+              paddleProfileHighlight(
+                product.paddleProfile
+              );
+
+            if (
+              !highlights.includes(
+                profileReason
+              )
+            ) {
+              highlights.push(
+                profileReason
+              );
+            }
+          }
+
+          highlights.push(
+            purchaseHighlight(product)
+          );
+        } else if (
+          product.category === "ball"
+        ) {
+          if (product.packSize <= 3) {
+            badge = "小包裝入門";
+            badgeClass = "role-primary";
+            cardClass = "is-primary";
+            subtitle =
+              "先準備夠用的數量就好";
+
+            highlights.push(
+              product.packSize === 3
+                ? "清單建議至少準備 3 顆，這個包裝數量剛好"
+                : `清單建議至少準備 3 顆；這款 ${product.packSize} 入裝，多出的可當備用球`
+            );
+          } else if (
+            input.experience === "weekly" ||
+            input.experience === "serious" ||
+            input.goal === "improve" ||
+            input.goal === "competitive"
+          ) {
+            badge = "固定打球適合";
+            badgeClass = "role-primary";
+            subtitle =
+              "較多顆數，適合固定使用";
+
+            highlights.push(
+              `清單建議至少準備 3 顆；這款 ${product.packSize} 入裝，多出的可當備用球`
+            );
+          } else {
+            badge = "實用備用量";
+            badgeClass = "role-alternative";
+            subtitle =
+              "開始固定打球時更方便";
+
+            highlights.push(
+              `清單建議至少準備 3 顆；這款 ${product.packSize} 入裝，多出的可當備用球`
+            );
+          }
+
+          highlights.push(
+            input.venue === "indoor"
+              ? "符合你的室內場地"
+              : "符合你的戶外使用場地"
+          );
+
+          highlights.push(
+            purchaseHighlight(product)
+          );
+        } else if (
+          product.category === "shoes"
+        ) {
+          const pickleballSpecific =
+            product.tags?.includes(
+              "pickleball-shoes"
+            ) ?? false;
+
+          if (pickleballSpecific) {
+            badge = "匹克球專用";
+            badgeClass = "role-dedicated";
+            cardClass = "is-dedicated";
+            subtitle =
+              "打球頻率高時值得升級";
+
+            highlights.push(
+              "你打球頻率高，匹克球專用鞋是更完整的升級選擇"
+            );
+          } else {
+            badge = "平價實用";
+            badgeClass = "role-value";
+            subtitle =
+              "先兼顧預算與場地需求";
+
+            highlights.push(
+              "如果想先控制預算，這雙多場地鞋可以先滿足基本場地需求"
+            );
+          }
+
+          highlights.push(
+            input.experience === "weekly" ||
+            input.experience === "serious"
+              ? "固定打球時，準備一雙合適的場地鞋會更實用"
+              : "等開始固定打球後，再考慮升級也不遲"
+          );
+
+          highlights.push(
+            purchaseHighlight(product)
+          );
+        } else {
+          badge =
+            categoryRank === 0
+              ? "符合目前需求"
+              : "另一個選擇";
+
+          badgeClass =
+            categoryRank === 0
+              ? "role-primary"
+              : "role-alternative";
+
+          subtitle =
+            "依目前場地需求整理";
+
+          highlights.push(
+            "符合目前使用情境"
+          );
+
+          highlights.push(
+            purchaseHighlight(product)
+          );
+        }
+
+        return {
+          badge,
+          badgeClass,
+          cardClass,
+          subtitle,
+          highlights:
+            highlights.slice(0, 3)
+        };
+      }
+
       function renderResult(
         result: ReturnType<typeof buildStarterKit>,
         input: BuilderInput
@@ -1441,75 +2262,182 @@ const canonicalURL = new URL(
           } else {
             productSection.classList.remove("hidden");
 
-            productList.innerHTML = result.productRecommendations
-              .map((recommendation, index) => {
-                const product = recommendation.product;
-                const topPick =
-                  index === 0
-                    ? `<span class="fit-badge">最符合目前條件</span>`
-                    : "";
+            const categoryOrder = [
+              "paddle",
+              "ball",
+              "shoes",
+              "net"
+            ] as const;
 
-                const reasons = recommendation.reasons
-                  .slice(0, 3)
-                  .map((reason) => `<li><span>✓</span>${reason}</li>`)
-                  .join("");
+            const groupedRecommendations =
+              categoryOrder
+                .map((category) => ({
+                  category,
+                  items:
+                    result.productRecommendations
+                      .map((recommendation, index) => ({
+                        recommendation,
+                        index
+                      }))
+                      .filter(
+                        ({ recommendation }) =>
+                          recommendation.product.category ===
+                          category
+                      )
+                }))
+                .filter(
+                  (group) =>
+                    group.items.length > 0
+                );
 
-                return `
-                  <article class="product-card">
-                    <div class="product-card-top">
-                      <div>
-                        <div class="product-meta">
-                          <span class="product-category">
-                            ${categoryLabel(product.category)}
-                          </span>
-                          ${topPick}
-                        </div>
+            productList.innerHTML = `
+              <div class="product-choice-intro">
+                <strong>下面是依你的 Starter Kit 整理出的商品選項</strong>
+                <span>
+                  每個分類挑一個適合你的即可，不需要全部購買。
+                </span>
+              </div>
 
-                        <h3>${product.name}</h3>
-                        <p class="product-merchant">來源：${product.merchant}</p>
-                      </div>
+              ${groupedRecommendations
+                .map((group) => {
+                  const meta =
+                    productGroupMeta(
+                      group.category
+                    );
 
-                      <div class="product-price">
-                        <strong>
-                          約 NT$${money(product.priceMin)}–${money(product.priceMax)}
-                        </strong>
-                      </div>
-                    </div>
+                  const cards =
+                    group.items
+                      .map(
+                        (
+                          {
+                            recommendation,
+                            index
+                          },
+                          categoryRank
+                        ) => {
+                          const product =
+                            recommendation.product;
 
-                    <p class="product-reason">${product.shortReason}</p>
+                          const presentation =
+                            recommendationPresentation(
+                              recommendation,
+                              input,
+                              categoryRank
+                            );
 
-                    <ul class="product-fit-list">
-                      ${reasons}
-                    </ul>
+                          const highlights =
+                            presentation.highlights
+                              .map(
+                                (reason) =>
+                                  `<li><span aria-hidden="true">✓</span><span>${reason}</span></li>`
+                              )
+                              .join("");
 
-                    <div class="product-card-footer">
-                      <div class="product-verification">
-                        <span>${evidenceLabel(product.evidenceLevel)}</span>
-                        <span>·</span>
-                        <span>驗證 ${product.lastVerified}</span>
-                      </div>
+                          return `
+                            <article
+                              class="product-card product-card-v2 ${presentation.cardClass}"
+                              data-choice-rank="${categoryRank + 1}"
+                            >
+                              <div class="product-card-top">
+                                <div class="product-card-title-group">
+                                  <div class="product-meta">
+                                    <span class="product-category">
+                                      ${categoryLabel(product.category)}
+                                    </span>
 
-                      <a
-                        class="product-link js-product-link"
-                        href="${product.affiliateUrl ?? product.sourceUrl}"
-                        target="_blank"
-                        rel="sponsored noopener noreferrer"
-                        data-product-id="${product.id}"
-                        data-category="${product.category}"
-                        data-rank="${index + 1}"
-                        data-link-type="${product.affiliateUrl ? "affiliate" : "source"}"
-                      >
-                        ${
-                          product.affiliateUrl
-                            ? "查看目前價格 →"
-                            : "查看商品來源 →"
+                                    <span class="product-role-badge ${presentation.badgeClass}">
+                                      ${presentation.badge}
+                                    </span>
+                                  </div>
+
+                                  <h3>${product.name}</h3>
+
+                                  <p class="product-positioning">
+                                    ${presentation.subtitle}
+                                  </p>
+
+                                  <p class="product-merchant">
+                                    來源：${product.merchant}
+                                  </p>
+                                </div>
+
+                                <div class="product-price">
+                                  <strong>
+                                    ${productPriceLabel(product)}
+                                  </strong>
+                                </div>
+                              </div>
+
+                              <div class="product-fit-block">
+                                <p class="product-fit-heading">
+                                  為什麼適合你
+                                </p>
+
+                                <ul class="product-fit-list product-fit-list-v2">
+                                  ${highlights}
+                                </ul>
+                              </div>
+
+                              <div class="product-card-footer">
+                                <div class="product-verification">
+                                  <span>${evidenceLabel(product.evidenceLevel)}</span>
+                                  <span>·</span>
+                                  <span>更新 ${product.lastVerified}</span>
+                                </div>
+
+                                <a
+                                  class="product-link js-product-link"
+                                  href="${product.affiliateUrl ?? product.sourceUrl}"
+                                  target="_blank"
+                                  rel="sponsored noopener noreferrer"
+                                  data-product-id="${product.id}"
+                                  data-category="${product.category}"
+                                  data-rank="${index + 1}"
+                                  data-link-type="${product.affiliateUrl ? "affiliate" : "source"}"
+                                  data-recommendation-role="${presentation.badge}"
+                                >
+                                  ${
+                                    product.affiliateUrl
+                                      ? "查看目前價格 →"
+                                      : "查看商品 →"
+                                  }
+                                </a>
+                              </div>
+                            </article>
+                          `;
                         }
-                      </a>
-                    </div>
-                  </article>
-                `;
-              })
-              .join("");
+                      )
+                      .join("");
+
+                  return `
+                    <section class="product-choice-group" data-product-group="${group.category}">
+                      <div class="product-choice-group-heading">
+                        <div>
+                          <span class="product-choice-eyebrow">
+                            ${meta.eyebrow}
+                          </span>
+
+                          <div class="product-choice-title-row">
+                            <h3>${meta.title}</h3>
+                            <span>${meta.instruction}</span>
+                          </div>
+
+                          ${
+                            meta.note
+                              ? `<p>${meta.note}</p>`
+                              : ""
+                          }
+                        </div>
+                      </div>
+
+                      <div class="product-choice-list">
+                        ${cards}
+                      </div>
+                    </section>
+                  `;
+                })
+                .join("")}
+            `;
           }
         }
       }

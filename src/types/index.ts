@@ -29,6 +29,23 @@ export type RecommendationTier =
   | 3
   | 4;
 
+export type PurchaseRegion =
+  | "taiwan"
+  | "asia"
+  | "international";
+
+export type PurchaseEase =
+  | 1
+  | 2
+  | 3;
+
+export type PaddleProfile =
+  | "budget"
+  | "forgiving"
+  | "control"
+  | "all_court"
+  | "power";
+
 export interface ExistingEquipment {
   paddles: number;
   balls: boolean;
@@ -73,6 +90,22 @@ export interface Product {
    * 4 = serious / competitive
    */
   recommendationTier?: RecommendationTier;
+
+  /**
+   * Purchase convenience metadata.
+   * Used only as tie-breakers after suitability score.
+   * 3 = Taiwan direct purchase
+   * 2 = Asia-region storefront
+   * 1 = International purchase
+   */
+  purchaseRegion?: PurchaseRegion;
+  purchaseEase?: PurchaseEase;
+
+  /**
+   * High-level paddle character used only to diversify equally suitable
+   * recommendations. It does not override budget / tier / experience fit.
+   */
+  paddleProfile?: PaddleProfile;
 
   merchant: string;
 

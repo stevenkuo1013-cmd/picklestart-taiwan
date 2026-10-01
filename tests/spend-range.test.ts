@@ -40,8 +40,8 @@ describe("recommended spend ranges", () => {
 
     const result = buildStarterKit(input);
 
-    expect(result.estimatedMinSpend).toBe(1935);
-    expect(result.estimatedMaxSpend).toBe(2280);
+    expect(result.estimatedMinSpend).toBe(1529);
+    expect(result.estimatedMaxSpend).toBe(1599);
   });
 
   it("C reflects serious-player paddle, indoor balls, and court shoes", () => {
@@ -63,8 +63,8 @@ describe("recommended spend ranges", () => {
 
     const result = buildStarterKit(input);
 
-    expect(result.estimatedMinSpend).toBe(5429);
-    expect(result.estimatedMaxSpend).toBe(6149);
+    expect(result.estimatedMinSpend).toBe(5454);
+    expect(result.estimatedMaxSpend).toBe(6199);
   });
 
   it("D keeps the minimum feasible range when budget is insufficient", () => {
@@ -110,7 +110,7 @@ describe("recommended spend ranges", () => {
 
     const result = buildStarterKit(input);
 
-    expect(result.estimatedMinSpend).toBe(1680);
-    expect(result.estimatedMaxSpend).toBe(1980);
+    expect(result.estimatedMinSpend).toBe(1249);
+    expect(result.estimatedMaxSpend).toBe(1249);
   });
 });
