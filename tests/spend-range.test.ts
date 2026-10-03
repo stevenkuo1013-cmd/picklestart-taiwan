@@ -114,3 +114,84 @@ describe("recommended spend ranges", () => {
     expect(result.estimatedMaxSpend).toBe(1249);
   });
 });
+
+
+describe("spend breakdown", () => {
+  it("explains that two requested paddles use the same top recommendation twice", () => {
+    const input: BuilderInput = {
+      experience: "first_time",
+      requestedPaddles: 2,
+      venue: "outdoor_court",
+      existingEquipment: { ...baseEquipment },
+      budget: 3000,
+      goal: "casual"
+    };
+
+    const result = buildStarterKit(input);
+    const paddle = result.spendBreakdown.find(
+      (item) => item.category === "paddle"
+    );
+
+    expect(paddle?.unitsNeeded).toBe(2);
+    expect(paddle?.packsNeeded).toBe(2);
+    expect(paddle?.lineMin).toBe(
+      (paddle?.packPriceMin ?? 0) * 2
+    );
+  });
+
+  it("records ball demand as three usable balls while respecting package size", () => {
+    const input: BuilderInput = {
+      experience: "first_time",
+      requestedPaddles: 2,
+      venue: "outdoor_court",
+      existingEquipment: { ...baseEquipment },
+      budget: 3000,
+      goal: "casual"
+    };
+
+    const result = buildStarterKit(input);
+    const ball = result.spendBreakdown.find(
+      (item) => item.category === "ball"
+    );
+
+    expect(ball?.unitsNeeded).toBe(3);
+    expect(ball?.packsNeeded).toBeGreaterThanOrEqual(1);
+    expect(
+      (ball?.packSize ?? 0) * (ball?.packsNeeded ?? 0)
+    ).toBeGreaterThanOrEqual(3);
+  });
+
+  it("breakdown totals match the displayed estimated spend", () => {
+    const input: BuilderInput = {
+      experience: "serious",
+      requestedPaddles: 1,
+      venue: "indoor",
+      existingEquipment: {
+        paddles: 0,
+        balls: false,
+        badmintonShoes: false,
+        tennisShoes: false,
+        courtShoes: false,
+        netAvailable: true
+      },
+      budget: 8000,
+      goal: "competitive"
+    };
+
+    const result = buildStarterKit(input);
+
+    expect(
+      result.spendBreakdown.reduce(
+        (sum, item) => sum + item.lineMin,
+        0
+      )
+    ).toBe(result.estimatedMinSpend);
+
+    expect(
+      result.spendBreakdown.reduce(
+        (sum, item) => sum + item.lineMax,
+        0
+      )
+    ).toBe(result.estimatedMaxSpend);
+  });
+});

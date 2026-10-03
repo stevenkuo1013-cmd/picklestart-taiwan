@@ -164,6 +164,27 @@ export interface ProductRecommendation {
   reasons: string[];
 }
 
+export interface SpendBreakdownItem {
+  category: ProductCategory;
+  productId: string;
+  productName: string;
+
+  /** Number of usable units the Starter Kit needs. */
+  unitsNeeded: number;
+
+  /** Number of sellable packs / items that must actually be purchased. */
+  packsNeeded: number;
+  packSize: number;
+
+  /** Price of one sellable pack / item. */
+  packPriceMin: number;
+  packPriceMax: number;
+
+  /** Total cost for this line after applying required quantity. */
+  lineMin: number;
+  lineMax: number;
+}
+
 export type WarningCode =
   | "BUDGET_INSUFFICIENT"
   | "UNKNOWN_VENUE";
@@ -185,6 +206,8 @@ export interface StarterKitResult {
 
   productRecommendations:
     ProductRecommendation[];
+
+  spendBreakdown: SpendBreakdownItem[];
 
   warnings: RecommendationWarning[];
 

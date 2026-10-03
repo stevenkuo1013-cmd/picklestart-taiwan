@@ -1799,3 +1799,856 @@
   }
 }
 
+/* PickleStart Taiwan courts hub v1 */
+.courts-hub-page {
+  max-width: 1040px;
+}
+
+.courts-hub-hero {
+  padding: 42px 44px 46px;
+  border: 1px solid #d8e8eb;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(226,245,44,.22), transparent 28%),
+    radial-gradient(circle at 5% 88%, rgba(8,127,165,.09), transparent 27%),
+    #fff;
+  box-shadow: 0 18px 46px rgba(16,36,63,.06);
+}
+
+.courts-hub-hero h1 span {
+  color: #087fa5;
+}
+
+.courts-hub-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.courts-source-link {
+  color: #087fa5;
+  font-size: .82rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.courts-hub-checklist {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.courts-hub-checklist article > span {
+  background: #eef8fa;
+  color: #087fa5;
+}
+
+.court-search-box {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.court-search-box > span {
+  color: #405465;
+  font-size: .74rem;
+  font-weight: 900;
+}
+
+.court-search-box input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 18px;
+  border: 1px solid #d5e4e7;
+  border-radius: 16px;
+  outline: none;
+  background: white;
+  color: #10243f;
+  font: inherit;
+  box-shadow: 0 8px 22px rgba(16,36,63,.04);
+}
+
+.court-search-box input:focus {
+  border-color: #69bdd2;
+  box-shadow: 0 0 0 4px rgba(8,127,165,.1);
+}
+
+.court-city-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.court-city-chips a {
+  padding: 8px 12px;
+  border: 1px solid #dce8ea;
+  border-radius: 999px;
+  background: #f8fbfb;
+  color: #10243f;
+  font-size: .72rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.court-city-chips a:hover {
+  border-color: #9ed2dd;
+  background: #eef9fb;
+}
+
+.courts-region-list {
+  display: grid;
+  gap: 64px;
+  padding: 20px 0 60px;
+}
+
+.courts-region-section {
+  scroll-margin-top: 96px;
+}
+
+.courts-region-heading {
+  margin-bottom: 18px;
+}
+
+.courts-region-heading h2 {
+  margin: 5px 0 0;
+  color: #10243f;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -.03em;
+}
+
+.courts-city-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.courts-city-card {
+  scroll-margin-top: 96px;
+  padding: 24px;
+  border: 1px solid #dce8ea;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 12px 30px rgba(16,36,63,.045);
+}
+
+.courts-city-card[hidden],
+.courts-region-section[hidden] {
+  display: none !important;
+}
+
+.courts-city-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.courts-city-label {
+  color: #087fa5;
+  font-size: .68rem;
+  font-weight: 950;
+  letter-spacing: .06em;
+}
+
+.courts-city-card h3 {
+  margin: 4px 0 0;
+  color: #10243f;
+  font-size: 1.34rem;
+  letter-spacing: -.02em;
+}
+
+.courts-place-count {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(226,245,44,.28);
+  color: #10243f;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.courts-city-description {
+  margin: 14px 0 18px;
+  color: #657985;
+  font-size: .9rem;
+  line-height: 1.68;
+}
+
+.courts-place-list {
+  display: grid;
+  border-top: 1px solid #edf2f3;
+}
+
+.courts-place-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf2f3;
+}
+
+.courts-place-row strong {
+  display: block;
+  color: #10243f;
+  font-size: .9rem;
+}
+
+.courts-place-row small {
+  display: block;
+  margin-top: 3px;
+  color: #7b8b94;
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.courts-place-row > span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #eef8fa;
+  color: #087fa5;
+  font-size: .65rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.courts-card-actions {
+  margin-top: 16px;
+}
+
+.courts-card-actions a {
+  color: #087fa5;
+  font-size: .78rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.court-search-empty {
+  margin: -20px 0 60px;
+  padding: 20px;
+  border: 1px dashed #cddfe3;
+  border-radius: 18px;
+  background: #f8fbfb;
+  color: #637985;
+  text-align: center;
+}
+
+.courts-principle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.courts-principle-grid article {
+  padding: 20px;
+  border: 1px solid #dce8ea;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.courts-principle-grid strong {
+  color: #10243f;
+}
+
+.courts-principle-grid p {
+  margin: 7px 0 0;
+  color: #657985;
+  font-size: .84rem;
+  line-height: 1.6;
+}
+
+.courts-source-note {
+  margin-top: 52px;
+}
+
+@media (max-width: 760px) {
+  .courts-hub-hero {
+    padding: 30px 22px 32px;
+  }
+
+  .courts-hub-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .courts-hub-checklist,
+  .courts-city-grid,
+  .courts-principle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .courts-city-card {
+    padding: 20px;
+  }
+
+  .courts-city-card-head {
+    gap: 10px;
+  }
+}
+
+/* ==========================================================
+   PickleStart Courts V2 — Search-first court directory
+   ========================================================== */
+
+.courts-v2-page {
+  max-width: 1100px;
+}
+
+.courts-v2-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+  gap: 34px;
+  align-items: stretch;
+  padding: 34px;
+  border: 1px solid #d8e8eb;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(226,245,44,.20), transparent 29%),
+    linear-gradient(135deg, #eefafd 0%, #fff 72%);
+  box-shadow: 0 18px 46px rgba(16,36,63,.06);
+}
+
+.courts-v2-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.courts-v2-hero-copy .eyebrow {
+  margin: 0 0 12px;
+  color: #087fa5;
+  font-size: .72rem;
+  font-weight: 950;
+  letter-spacing: .1em;
+}
+
+.courts-v2-hero h1 {
+  max-width: 660px;
+  margin: 0;
+  color: #10243f;
+  font-size: clamp(2.45rem, 5vw, 4.35rem);
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.courts-v2-hero h1 span {
+  color: #087fa5;
+}
+
+.courts-v2-hero-copy > p:not(.eyebrow) {
+  max-width: 650px;
+  margin: 20px 0 0;
+  color: #5d7380;
+  font-size: .94rem;
+  line-height: 1.8;
+}
+
+.courts-v2-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.courts-v2-stats span {
+  padding: 8px 11px;
+  border: 1px solid #dce8ea;
+  border-radius: 999px;
+  background: rgba(255,255,255,.76);
+  color: #607681;
+  font-size: .7rem;
+  font-weight: 800;
+}
+
+.courts-v2-stats strong {
+  color: #10243f;
+  font-weight: 950;
+}
+
+.courts-v2-search-panel {
+  padding: 22px;
+  border: 1px solid #d9e7e9;
+  border-radius: 22px;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 10px 28px rgba(16,36,63,.04);
+}
+
+.courts-v2-search-panel > label {
+  display: block;
+  margin-bottom: 8px;
+  color: #10243f;
+  font-size: .75rem;
+  font-weight: 950;
+}
+
+.courts-v2-search-wrap {
+  position: relative;
+}
+
+.courts-v2-search-wrap > span {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  z-index: 1;
+  color: #087fa5;
+  font-size: 1.15rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.courts-v2-search-wrap input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px 0 42px;
+  border: 1px solid #d5e4e7;
+  border-radius: 15px;
+  outline: none;
+  background: white;
+  color: #10243f;
+  font: inherit;
+  box-shadow: 0 7px 18px rgba(16,36,63,.035);
+}
+
+.courts-v2-search-wrap input:focus {
+  border-color: #69bdd2;
+  box-shadow: 0 0 0 4px rgba(8,127,165,.1);
+}
+
+.courts-v2-filter-block {
+  margin-top: 18px;
+}
+
+.courts-v2-filter-block > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #667b86;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.courts-v2-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.courts-v2-chip-row button {
+  min-height: 34px;
+  padding: 6px 11px;
+  border: 1px solid #dce8ea;
+  border-radius: 999px;
+  background: #f8fbfb;
+  color: #405666;
+  font: inherit;
+  font-size: .69rem;
+  font-weight: 850;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, color .15s ease;
+}
+
+.courts-v2-chip-row button:hover {
+  border-color: #99cfda;
+  background: #eef9fb;
+}
+
+.courts-v2-chip-row button.is-active {
+  border-color: #10243f;
+  background: #10243f;
+  color: white;
+}
+
+.courts-v2-type-row button.is-active {
+  border-color: #087fa5;
+  background: #087fa5;
+}
+
+.courts-v2-search-note {
+  margin: 17px 0 0;
+  color: #819099;
+  font-size: .67rem;
+  line-height: 1.55;
+}
+
+.courts-v2-results-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 54px 0 20px;
+  border-bottom: 1px solid #dce8ea;
+}
+
+.courts-v2-results-head h2 {
+  margin: 4px 0 0;
+  color: #10243f;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  letter-spacing: -.04em;
+}
+
+.courts-v2-results-head > p {
+  margin: 0 0 4px;
+  color: #778a94;
+  font-size: .78rem;
+}
+
+.courts-v2-results-head > p strong {
+  color: #087fa5;
+  font-size: 1rem;
+}
+
+.courts-v2-region-list {
+  display: grid;
+  gap: 56px;
+  padding: 34px 0 56px;
+}
+
+.courts-v2-region[hidden],
+.courts-v2-city-card[hidden],
+.courts-v2-place[hidden] {
+  display: none !important;
+}
+
+.courts-v2-region-heading {
+  margin-bottom: 15px;
+}
+
+.courts-v2-region-heading h2 {
+  margin: 4px 0 0;
+  color: #10243f;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  letter-spacing: -.035em;
+}
+
+.courts-v2-city-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.courts-v2-city-card {
+  overflow: hidden;
+  border: 1px solid #dce8ea;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 10px 28px rgba(16,36,63,.04);
+  scroll-margin-top: 96px;
+}
+
+.courts-v2-city-card > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.courts-v2-city-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.courts-v2-city-card > summary:hover {
+  background: #fbfefe;
+}
+
+.courts-v2-city-label {
+  color: #087fa5;
+  font-size: .66rem;
+  font-weight: 950;
+  letter-spacing: .06em;
+}
+
+.courts-v2-city-card h3 {
+  margin: 4px 0 0;
+  color: #10243f;
+  font-size: 1.25rem;
+  letter-spacing: -.025em;
+}
+
+.courts-v2-city-summary-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.courts-v2-city-summary-meta > span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(226,245,44,.28);
+  color: #10243f;
+  font-size: .66rem;
+  font-weight: 900;
+}
+
+.courts-v2-city-summary-meta > i {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #edf7f9;
+  color: #087fa5;
+  font-style: normal;
+  font-weight: 950;
+  transition: transform .16s ease;
+}
+
+.courts-v2-city-card[open] .courts-v2-city-summary-meta > i {
+  transform: rotate(45deg);
+}
+
+.courts-v2-city-body {
+  padding: 0 22px 22px;
+  border-top: 1px solid #edf2f3;
+}
+
+.courts-v2-city-description {
+  margin: 18px 0;
+  color: #647985;
+  font-size: .82rem;
+  line-height: 1.7;
+}
+
+.courts-v2-place-list {
+  display: grid;
+  gap: 10px;
+}
+
+.courts-v2-place {
+  padding: 16px;
+  border: 1px solid #e3ecee;
+  border-radius: 16px;
+  background: #fcfefe;
+}
+
+.courts-v2-place-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.courts-v2-place h4 {
+  margin: 0;
+  color: #10243f;
+  font-size: .94rem;
+  letter-spacing: -.015em;
+}
+
+.courts-v2-address {
+  margin: 5px 0 0;
+  color: #819099;
+  font-size: .69rem;
+  line-height: 1.5;
+}
+
+.courts-v2-type-badge {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #eef8fa;
+  color: #087fa5;
+  font-size: .62rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.courts-v2-place-meta {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+
+.courts-v2-place-meta > div {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #eef3f4;
+}
+
+.courts-v2-place-meta dt {
+  color: #87979f;
+  font-size: .65rem;
+  font-weight: 850;
+}
+
+.courts-v2-place-meta dd {
+  margin: 0;
+  color: #516874;
+  font-size: .72rem;
+  line-height: 1.55;
+}
+
+.courts-v2-place-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.courts-v2-place-actions a,
+.courts-v2-guide-link {
+  color: #087fa5;
+  font-size: .71rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.courts-v2-place-actions a.is-secondary {
+  color: #6d818b;
+}
+
+.courts-v2-place-actions a:hover,
+.courts-v2-guide-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.courts-v2-guide-link {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+.courts-v2-empty {
+  margin: 0 0 52px;
+}
+
+.courts-v2-update-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 26px;
+  align-items: center;
+  margin: 20px 0 42px;
+  padding: 26px 28px;
+  border: 1px solid #dce8ea;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f1fbfd, #fbfff4);
+}
+
+.courts-v2-update-note h2 {
+  margin: 5px 0 9px;
+  color: #10243f;
+  font-size: 1.3rem;
+  letter-spacing: -.025em;
+}
+
+.courts-v2-update-note p:not(.guide-step) {
+  max-width: 760px;
+  margin: 0;
+  color: #677c87;
+  font-size: .8rem;
+  line-height: 1.7;
+}
+
+.courts-v2-update-note > a {
+  color: #087fa5;
+  font-size: .74rem;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .courts-v2-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .courts-v2-city-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .courts-v2-update-note {
+    grid-template-columns: 1fr;
+  }
+
+  .courts-v2-update-note > a {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 720px) {
+  .courts-v2-page {
+    padding-top: 34px;
+  }
+
+  .courts-v2-hero {
+    gap: 22px;
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .courts-v2-hero h1 {
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+  }
+
+  .courts-v2-search-panel {
+    padding: 18px;
+  }
+
+  .courts-v2-results-head {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 40px;
+  }
+
+  .courts-v2-region-list {
+    gap: 42px;
+    padding-top: 28px;
+  }
+
+  .courts-v2-city-card > summary {
+    padding: 18px;
+  }
+
+  .courts-v2-city-body {
+    padding: 0 18px 18px;
+  }
+
+  .courts-v2-city-summary-meta > span {
+    display: none;
+  }
+
+  .courts-v2-place {
+    padding: 14px;
+  }
+
+  .courts-v2-place-meta > div {
+    grid-template-columns: 68px minmax(0, 1fr);
+  }
+
+  .courts-v2-update-note {
+    padding: 22px 18px;
+  }
+}
+
+/* PickleStart Courts V2.1 - directory polish */
+
+.courts-v2-city-card > summary:focus {
+  outline: none;
+}
+
+.courts-v2-city-card > summary:focus-visible {
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 3px rgba(8, 127, 165, .22);
+}
+
+.courts-v2-city-card[open] > summary {
+  background: #fbfefe;
+}
+
+@media (min-width: 901px) {
+  .courts-v2-city-card[open] {
+    grid-column: 1 / -1;
+    border-color: #c9e2e7;
+  }
+
+  .courts-v2-city-card[open] .courts-v2-place-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}

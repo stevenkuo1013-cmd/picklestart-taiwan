@@ -12,6 +12,7 @@ import type {
   ProductCategory,
   ProductRecommendation,
   RecommendationItem,
+  SpendBreakdownItem,
   StarterKitResult
 } from "../types";
 
@@ -421,30 +422,49 @@ function primaryRecommendedProduct(
 
 function addProductCost(
   total: { min: number; max: number },
+  breakdown: SpendBreakdownItem[],
   product: Product,
   unitsNeeded = 1
 ) {
+  const safePackSize = Math.max(1, product.packSize);
   const packsNeeded = Math.ceil(
-    unitsNeeded / Math.max(1, product.packSize)
+    unitsNeeded / safePackSize
   );
 
-  total.min += product.priceMin * packsNeeded;
-  total.max += product.priceMax * packsNeeded;
+  const lineMin = product.priceMin * packsNeeded;
+  const lineMax = product.priceMax * packsNeeded;
+
+  total.min += lineMin;
+  total.max += lineMax;
+
+  breakdown.push({
+    category: product.category,
+    productId: product.id,
+    productName: product.name,
+    unitsNeeded,
+    packsNeeded,
+    packSize: safePackSize,
+    packPriceMin: product.priceMin,
+    packPriceMax: product.priceMax,
+    lineMin,
+    lineMax
+  });
 }
 
 function estimateRecommendedSpend(
   input: BuilderInput,
   recommendations: ProductRecommendation[],
   remainingPaddles: number
-): { min: number; max: number } {
+): { min: number; max: number; items: SpendBreakdownItem[] } {
   const total = { min: 0, max: 0 };
+  const items: SpendBreakdownItem[] = [];
 
   if (remainingPaddles > 0) {
     const paddle =
       primaryRecommendedProduct(recommendations, "paddle") ??
       cheapestActiveProduct(input, "paddle");
 
-    if (paddle) addProductCost(total, paddle, remainingPaddles);
+    if (paddle) addProductCost(total, items, paddle, remainingPaddles);
   }
 
   if (!input.existingEquipment.balls) {
@@ -452,7 +472,7 @@ function estimateRecommendedSpend(
       primaryRecommendedProduct(recommendations, "ball") ??
       cheapestActiveProduct(input, "ball");
 
-    if (ball) addProductCost(total, ball);
+    if (ball) addProductCost(total, items, ball, 3);
   }
 
   const shoesRequired =
@@ -469,7 +489,7 @@ function estimateRecommendedSpend(
       primaryRecommendedProduct(recommendations, "shoes") ??
       cheapestActiveProduct(input, "shoes");
 
-    if (shoes) addProductCost(total, shoes);
+    if (shoes) addProductCost(total, items, shoes);
   }
 
   if (requiresPortableNet(input)) {
@@ -477,10 +497,10 @@ function estimateRecommendedSpend(
       primaryRecommendedProduct(recommendations, "net") ??
       cheapestActiveProduct(input, "net");
 
-    if (net) addProductCost(total, net);
+    if (net) addProductCost(total, items, net);
   }
 
-  return total;
+  return { ...total, items };
 }
 
 export function buildStarterKit(
@@ -493,6 +513,7 @@ export function buildStarterKit(
   const warnings: StarterKitResult["warnings"] = [];
   const notes: string[] = [];
   const productRecommendations: ProductRecommendation[] = [];
+  let spendBreakdown: SpendBreakdownItem[] = [];
 
   const remainingPaddles = paddlesToBuy(input);
   const nonPaddleCost = estimateRequiredNonPaddleCost(input);
@@ -701,6 +722,7 @@ export function buildStarterKit(
 
     estimatedMinSpend = recommendedSpend.min;
     estimatedMaxSpend = recommendedSpend.max;
+    spendBreakdown = recommendedSpend.items;
   }
 
   return {
@@ -711,6 +733,7 @@ export function buildStarterKit(
     optionalLater,
     skipForNow,
     productRecommendations,
+    spendBreakdown,
     warnings,
     notes
   };

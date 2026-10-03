@@ -1,0 +1,434 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import {
+  COURT_SOURCE_URL,
+  COURT_VERIFIED_AT,
+  courtCities
+} from "../../data/courts";
+import "../../styles/guide.css";
+
+const regions = ["北部", "中部", "南部"] as const;
+const cityGroups = regions.map((region) => ({
+  region,
+  cities: courtCities.filter((city) => city.region === region)
+}));
+
+const totalCourts = courtCities.reduce((sum, city) => sum + city.places.length, 0);
+const totalCities = courtCities.length;
+
+const formatDate = (date: string) => date.replaceAll("-", "/");
+
+const mapUrl = (city: string, name: string, address?: string | null) => {
+  const query = address?.trim() || `${city} ${name}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+};
+
+const faqItems = [
+  {
+    question: "這裡是台灣所有匹克球場地嗎？",
+    answer:
+      "不是。這一頁整理目前可從公開來源確認的場地與固定球聚，目的是先讓新手有可靠的起點。實際場地還會持續新增，也可能因施工、活動或球聚調整而變動。"
+  },
+  {
+    question: "找到場地，就代表我可以直接去加入嗎？",
+    answer:
+      "不一定。公園型固定球聚通常較容易加入，但運動中心、學校或私人場地可能需要預約、報名或加入群組。第一次前往前，建議先查看最新來源或向場地方確認。"
+  },
+  {
+    question: "我完全沒有球友，怎麼開始？",
+    answer:
+      "優先找有固定球聚時段、運動中心場次或有公開報名方式的場地。第一次可以先詢問是否接受新手、是否需要自備球拍，以及當天如何報名。",
+    href: "/guide/first-game",
+    linkLabel: "看第一次進球場指南"
+  },
+  {
+    question: "為什麼不把每個場地的完整時刻表都抄進來？",
+    answer:
+      "球聚時間、費用與報名方式是最容易變動的資訊。PickleStart 會提供目前整理到的資訊、資料來源與確認日期，但出發前仍應以場地方或最新公告為準。"
+  }
+];
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-10-03"
+  dateModified={COURT_VERIFIED_AT}
+  title={`台灣匹克球場地｜${totalCourts} 個場地整理與新手找場指南｜PickleStart Taiwan`}
+  description={`整理台北、新北、桃園、台中、彰化、南投、嘉義、台南、高雄、屏東等 ${totalCourts} 個匹克球場地。可依縣市、室內外與場地名稱搜尋，並查看地圖、球聚時段與資料來源。`}
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "新手指南", href: "/guide" },
+    { name: "全台匹克球場地", href: "/courts" }
+  ]}
+>
+  <article class="guide-page courts-hub-page courts-v2-page">
+    <GuideBreadcrumbs current="全台匹克球場地" />
+
+    <section class="courts-v2-hero">
+      <div class="courts-v2-hero-copy">
+        <p class="eyebrow">FIND A COURT · TAIWAN</p>
+        <h1>台灣匹克球場地<br /><span>找到你真的能去打的地方。</span></h1>
+        <p>
+          找縣市、場地名稱或室內外類型。這裡不只列地址，也整理目前可查到的球聚時段與出發前注意事項。
+        </p>
+
+        <div class="courts-v2-stats" aria-label="場地資料摘要">
+          <span>目前整理 <strong>{totalCourts}</strong> 個場地</span>
+          <span>涵蓋 <strong>{totalCities}</strong> 個縣市</span>
+          <span>更新 <strong>{formatDate(COURT_VERIFIED_AT)}</strong></span>
+        </div>
+      </div>
+
+      <div class="courts-v2-search-panel">
+        <label for="court-search">搜尋場地</label>
+        <div class="courts-v2-search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input
+            id="court-search"
+            type="search"
+            placeholder="例如：台南、振興公園、室內"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="courts-v2-filter-block">
+          <span>縣市</span>
+          <div class="courts-v2-chip-row" id="court-city-filters">
+            <button type="button" class="is-active" data-city-filter="all" aria-pressed="true">全部</button>
+            {courtCities.map((city) => (
+              <button type="button" data-city-filter={city.id} aria-pressed="false">
+                {city.city.replace("市", "").replace("縣", "")}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="courts-v2-filter-block">
+          <span>場地類型</span>
+          <div class="courts-v2-chip-row courts-v2-type-row" id="court-type-filters">
+            <button type="button" class="is-active" data-type-filter="all" aria-pressed="true">全部</button>
+            <button type="button" data-type-filter="室內" aria-pressed="false">室內</button>
+            <button type="button" data-type-filter="室外" aria-pressed="false">室外</button>
+            <button type="button" data-type-filter="風雨球場" aria-pressed="false">風雨球場</button>
+          </div>
+        </div>
+
+        <p class="courts-v2-search-note">
+          場地、費用與球聚可能調整，出發前仍建議查看最新公告。
+        </p>
+      </div>
+    </section>
+
+    <section class="courts-v2-results-head" aria-live="polite">
+      <div>
+        <p class="guide-step">COURT DIRECTORY</p>
+        <h2>全台匹克球場地</h2>
+      </div>
+      <p><strong id="court-visible-count">{totalCourts}</strong> 個符合條件的場地</p>
+    </section>
+
+    <div class="courts-v2-region-list" id="court-results">
+      {cityGroups.map((group) => (
+        <section class="courts-v2-region" data-court-region>
+          <div class="courts-v2-region-heading">
+            <p class="guide-step">{group.region}</p>
+            <h2>{group.region}匹克球場地</h2>
+          </div>
+
+          <div class="courts-v2-city-grid">
+            {group.cities.map((city) => (
+              <details
+                class="courts-v2-city-card"
+                id={city.id}
+                data-court-city
+                data-city-id={city.id}
+                data-city-search={`${city.city} ${city.region} ${city.description}`}
+              >
+                <summary>
+                  <div>
+                    <span class="courts-v2-city-label">{city.city}</span>
+                    <h3>{city.city}匹克球場地</h3>
+                  </div>
+                  <div class="courts-v2-city-summary-meta">
+                    <span>目前整理 {city.places.length} 個</span>
+                    <i aria-hidden="true">＋</i>
+                  </div>
+                </summary>
+
+                <div class="courts-v2-city-body">
+                  <p class="courts-v2-city-description">{city.description}</p>
+
+                  <div class="courts-v2-place-list">
+                    {city.places.map((place) => (
+                      <article
+                        class="courts-v2-place"
+                        data-court-place
+                        data-court-type={place.type}
+                        data-place-search={`${city.city} ${place.name} ${place.type} ${place.address ?? ""} ${place.schedule} ${place.fee ?? ""} ${place.access}`}
+                      >
+                        <div class="courts-v2-place-top">
+                          <div>
+                            <h4>{place.name}</h4>
+                            <p class="courts-v2-address">
+                              {place.address ?? "公開來源未提供完整地址，請以地圖搜尋與最新聯絡資訊確認"}
+                            </p>
+                          </div>
+                          <span class="courts-v2-type-badge">{place.type}</span>
+                        </div>
+
+                        <dl class="courts-v2-place-meta">
+                          <div>
+                            <dt>球聚／場次</dt>
+                            <dd>{place.schedule}</dd>
+                          </div>
+                          <div>
+                            <dt>費用</dt>
+                            <dd>{place.fee ?? "請以最新公告為準"}</dd>
+                          </div>
+                          <div>
+                            <dt>第一次去</dt>
+                            <dd>{place.access}</dd>
+                          </div>
+                        </dl>
+
+                        <div class="courts-v2-place-actions">
+                          <a
+                            href={mapUrl(city.city, place.name, place.address)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Google Maps ↗
+                          </a>
+                          <a
+                            href={COURT_SOURCE_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="is-secondary"
+                          >
+                            查看資料來源 ↗
+                          </a>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+
+                  {city.guideHref && (
+                    <a class="courts-v2-guide-link" href={city.guideHref}>
+                      第一次在{city.city.replace("市", "").replace("縣", "")}找場？看完整新手攻略 →
+                    </a>
+                  )}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <p class="court-search-empty courts-v2-empty" id="court-search-empty" hidden>
+      找不到符合條件的場地。可以改用縣市、場地名稱或「室內／室外」搜尋；也歡迎告訴我們漏掉的場地。
+    </p>
+
+    <section class="guide-section courts-howto-section">
+      <p class="guide-step">BEFORE YOU GO</p>
+      <h2>第一次找場，先確認這 4 件事</h2>
+
+      <div class="court-checklist courts-hub-checklist">
+        <article>
+          <span>1</span>
+          <div>
+            <strong>今天真的有匹克球場次嗎？</strong>
+            <p>公共場地可能還有其他運動或活動，不要只看地圖就直接出發。</p>
+          </div>
+        </article>
+        <article>
+          <span>2</span>
+          <div>
+            <strong>新手可以直接加入嗎？</strong>
+            <p>有些球局有程度分組或需要先報名，直接說自己第一次／剛開始打最省事。</p>
+          </div>
+        </article>
+        <article>
+          <span>3</span>
+          <div>
+            <strong>要不要自備球拍與球？</strong>
+            <p>先問清楚再買，避免第一次還沒打就把裝備一次買滿。</p>
+          </div>
+        </article>
+        <article>
+          <span>4</span>
+          <div>
+            <strong>費用與預約方式有沒有變？</strong>
+            <p>尤其運動中心、學校與固定球敘，時間和費用都可能調整。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="courts-v2-update-note">
+      <div>
+        <p class="guide-step">DATA & UPDATES</p>
+        <h2>場地資訊會變動，所以我們把來源留給你</h2>
+        <p>
+          本頁依公開場地資訊整理，固定場地、球聚時間、費用與加入方式都可能調整。
+          PickleStart 會標示資料確認日期，但出發前仍應以場地方或最新公告為準。
+        </p>
+      </div>
+      <a href={COURT_SOURCE_URL} target="_blank" rel="noopener noreferrer">
+        查看中華民國匹克球協會最新場地表 ↗
+      </a>
+    </section>
+
+    <GuideFAQ items={faqItems} />
+
+    <GuideEndCTA
+      heading="找到場地之後，再決定真的需要買什麼。"
+      text="回答 6 題，Starter Kit 會依你的場地、現有裝備與預算，把現在要買、可以沿用、之後再買和目前不用買分清楚。"
+      buttonText="建立我的 Starter Kit"
+    />
+
+    <section class="guide-source-note courts-source-note">
+      <h2>資料來源與更新說明</h2>
+      <p>
+        本頁目前以中華民國匹克球協會公開的「全台各地匹克球場地資訊」為主要整理來源，
+        並把資訊改寫成比較適合新手找場的格式。場地與球聚資訊可能隨時變動。
+      </p>
+      <div class="source-links">
+        <a href={COURT_SOURCE_URL} target="_blank" rel="noopener noreferrer">
+          中華民國匹克球協會：全台場地資訊 ↗
+        </a>
+        <a href="/guide/taipei-pickleball-courts">
+          台北匹克球場地：新手找場攻略 →
+        </a>
+        <a href="/feedback/">
+          有場地漏掉或資訊有誤？告訴我們 →
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<script>
+  const searchInput = document.querySelector<HTMLInputElement>("#court-search");
+  const cityButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-city-filter]")
+  );
+  const typeButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-type-filter]")
+  );
+  const cityCards = Array.from(
+    document.querySelectorAll<HTMLDetailsElement>("[data-court-city]")
+  );
+  const regions = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-court-region]")
+  );
+  const emptyState = document.querySelector<HTMLElement>("#court-search-empty");
+  const countNode = document.querySelector<HTMLElement>("#court-visible-count");
+
+  let activeCity = "all";
+  let activeType = "all";
+
+  const normalize = (value: string) =>
+    value.trim().toLocaleLowerCase("zh-Hant");
+
+  const setActiveButton = (
+    buttons: HTMLButtonElement[],
+    activeValue: string,
+    attribute: "cityFilter" | "typeFilter"
+  ) => {
+    buttons.forEach((button) => {
+      const value = button.dataset[attribute] ?? "all";
+      const active = value === activeValue;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  };
+
+  const updateResults = () => {
+    const query = normalize(searchInput?.value ?? "");
+    let visiblePlaces = 0;
+
+    cityCards.forEach((cityCard) => {
+      const cityId = cityCard.dataset.cityId ?? "";
+      const cityFilterMatches = activeCity === "all" || activeCity === cityId;
+      const citySearch = normalize(cityCard.dataset.citySearch ?? "");
+      const cityQueryMatches = query.length > 0 && citySearch.includes(query);
+
+      const places = Array.from(
+        cityCard.querySelectorAll<HTMLElement>("[data-court-place]")
+      );
+
+      let cityVisiblePlaces = 0;
+
+      places.forEach((place) => {
+        const typeMatches =
+          activeType === "all" || place.dataset.courtType === activeType;
+        const placeSearch = normalize(place.dataset.placeSearch ?? "");
+        const queryMatches =
+          query.length === 0 || cityQueryMatches || placeSearch.includes(query);
+
+        const visible = cityFilterMatches && typeMatches && queryMatches;
+        place.hidden = !visible;
+
+        if (visible) {
+          cityVisiblePlaces += 1;
+          visiblePlaces += 1;
+        }
+      });
+
+      cityCard.hidden = cityVisiblePlaces === 0;
+
+      if (
+        cityVisiblePlaces > 0 &&
+        (query.length > 0 || activeCity !== "all" || activeType !== "all")
+      ) {
+        cityCard.open = true;
+      }
+    });
+
+    regions.forEach((region) => {
+      const cards = Array.from(
+        region.querySelectorAll<HTMLElement>("[data-court-city]")
+      );
+      region.hidden = cards.every((card) => card.hidden);
+    });
+
+    if (countNode) countNode.textContent = String(visiblePlaces);
+    if (emptyState) emptyState.hidden = visiblePlaces !== 0;
+  };
+
+  cityButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeCity = button.dataset.cityFilter ?? "all";
+      setActiveButton(cityButtons, activeCity, "cityFilter");
+      updateResults();
+
+      if (activeCity !== "all") {
+        history.replaceState(null, "", `#${activeCity}`);
+      } else {
+        history.replaceState(null, "", window.location.pathname);
+      }
+    });
+  });
+
+  typeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeType = button.dataset.typeFilter ?? "all";
+      setActiveButton(typeButtons, activeType, "typeFilter");
+      updateResults();
+    });
+  });
+
+  searchInput?.addEventListener("input", updateResults);
+
+  const initialHash = window.location.hash.replace("#", "");
+  if (initialHash && cityCards.some((card) => card.dataset.cityId === initialHash)) {
+    activeCity = initialHash;
+    setActiveButton(cityButtons, activeCity, "cityFilter");
+  }
+
+  updateResults();
+</script>

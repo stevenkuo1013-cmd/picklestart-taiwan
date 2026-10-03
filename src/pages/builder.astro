@@ -506,7 +506,389 @@ const canonicalURL = new URL(
       }
     </style>
 
-  </head>
+
+  <style is:global>
+    /* PickleStart budget summary v2 */
+
+    .budget-summary-v2 {
+      --budget-navy: #10243f;
+      --budget-teal: #087fa5;
+      --budget-lime: #e2f52c;
+      --budget-border: #dfe7eb;
+      --budget-soft: #f5f8f7;
+
+      width: 100%;
+      padding: 28px;
+      border: 1px solid var(--budget-border);
+      border-radius: 28px;
+      background: #ffffff;
+      color: var(--budget-navy);
+      box-shadow: 0 18px 45px rgba(16, 36, 63, 0.08);
+    }
+
+    .budget-summary-v2__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .budget-summary-v2__eyebrow {
+      color: var(--budget-teal);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .budget-summary-v2__status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(226, 245, 44, 0.28);
+      color: var(--budget-navy);
+      font-size: 0.82rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .budget-summary-v2__main {
+      margin-bottom: 24px;
+    }
+
+    .budget-summary-v2__main-label {
+      display: block;
+      margin-bottom: 4px;
+      color: #657384;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .budget-summary-v2__amount {
+      display: block;
+      color: var(--budget-navy);
+      font-size: clamp(2.35rem, 6vw, 4.2rem);
+      font-weight: 850;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .budget-summary-v2__main p {
+      margin: 10px 0 0;
+      color: #657384;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .budget-progress {
+      padding: 18px 0 22px;
+      border-top: 1px solid #edf1f3;
+      border-bottom: 1px solid #edf1f3;
+    }
+
+    .budget-progress__meta,
+    .budget-progress__scale {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .budget-progress__meta {
+      margin-bottom: 10px;
+      color: #657384;
+      font-size: 0.9rem;
+    }
+
+    .budget-progress__meta strong {
+      color: var(--budget-navy);
+      font-size: 0.94rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .budget-progress__track {
+      width: 100%;
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e9eef0;
+    }
+
+    .budget-progress__fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(
+        90deg,
+        var(--budget-teal) 0%,
+        var(--budget-lime) 100%
+      );
+      transition: width 320ms ease;
+    }
+
+    .budget-progress__scale {
+      margin-top: 8px;
+      color: #7a8795;
+      font-size: 0.78rem;
+    }
+
+    .budget-summary-v2__details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .budget-detail-card {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--budget-soft);
+    }
+
+    .budget-detail-card span {
+      display: block;
+      margin-bottom: 5px;
+      color: #6c7987;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .budget-detail-card strong {
+      display: block;
+      color: var(--budget-navy);
+      font-size: 1.25rem;
+      font-weight: 850;
+      line-height: 1.25;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .budget-summary-v2__tip {
+      margin: 16px 0 0;
+      color: #5f6c79;
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .budget-summary-v2.is-over-budget {
+      border-color: rgba(190, 63, 63, 0.28);
+      background: #fffafa;
+    }
+
+    .budget-summary-v2.is-over-budget .budget-summary-v2__status {
+      background: #fde6e6;
+      color: #a72e2e;
+    }
+
+    .budget-summary-v2.is-over-budget .budget-progress__fill {
+      background: #c94a4a;
+    }
+
+    @media (max-width: 700px) {
+      .budget-summary-v2 {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .budget-summary-v2__head {
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .budget-summary-v2__amount {
+        font-size: clamp(2rem, 9.5vw, 3.15rem);
+        letter-spacing: -0.04em;
+      }
+
+      .budget-summary-v2__details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .budget-summary-v2__amount {
+        font-size: 2rem;
+      }
+
+      .budget-summary-v2__status {
+        padding-inline: 10px;
+        font-size: 0.76rem;
+      }
+
+      .budget-progress__meta {
+        align-items: flex-end;
+      }
+    }
+  </style>
+
+
+  <style is:global>
+    /* QUANTITY + BUDGET CLARITY v1 */
+    .product-quantity-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 5px 18px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid #dce9ed;
+      border-radius: 14px;
+      background: #f5fafb;
+    }
+
+    .product-quantity-summary > span {
+      color: #667789;
+      font-size: 0.84rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .product-quantity-summary > strong {
+      color: #10243f;
+      font-size: 0.98rem;
+      font-weight: 850;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .product-quantity-summary > small {
+      grid-column: 1 / -1;
+      color: #708091;
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .budget-breakdown {
+      margin: 22px 0 4px;
+      padding: 18px 20px;
+      border: 1px solid #e1e9ec;
+      border-radius: 18px;
+      background: #f8faf9;
+    }
+
+    .budget-breakdown__heading {
+      display: grid;
+      gap: 3px;
+      margin-bottom: 12px;
+    }
+
+    .budget-breakdown__heading strong {
+      color: #10243f;
+      font-size: 0.95rem;
+      font-weight: 850;
+    }
+
+    .budget-breakdown__heading span {
+      color: #748291;
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .budget-breakdown__rows {
+      display: grid;
+    }
+
+    .budget-breakdown__row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 13px 0;
+      border-top: 1px solid #e8edef;
+    }
+
+    .budget-breakdown__copy {
+      min-width: 0;
+      display: grid;
+      gap: 3px;
+    }
+
+    .budget-breakdown__category {
+      color: #087fa5;
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+    }
+
+    .budget-breakdown__copy > strong {
+      color: #243a52;
+      font-size: 0.9rem;
+      font-weight: 750;
+      line-height: 1.45;
+    }
+
+    .budget-breakdown__copy > small {
+      color: #788695;
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .budget-breakdown__price {
+      color: #10243f;
+      font-size: 0.94rem;
+      font-weight: 850;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .budget-breakdown__total {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: baseline;
+      padding-top: 13px;
+      border-top: 1px solid #d9e3e6;
+    }
+
+    .budget-breakdown__total span {
+      color: #5f6f7e;
+      font-size: 0.84rem;
+      font-weight: 750;
+    }
+
+    .budget-breakdown__total strong {
+      color: #10243f;
+      font-size: 1rem;
+      font-weight: 900;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 620px) {
+      .product-quantity-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .product-quantity-summary > strong {
+        text-align: left;
+      }
+
+      .budget-breakdown {
+        padding: 16px;
+      }
+
+      .budget-breakdown__row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .budget-breakdown__price {
+        justify-self: start;
+      }
+
+      .budget-breakdown__total {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+
+</head>
 
   <body>
     <main class="shell builder-shell">
@@ -1877,31 +2259,40 @@ const canonicalURL = new URL(
 
 
       function productGroupMeta(
-        category: "paddle" | "ball" | "shoes" | "net"
+        category: "paddle" | "ball" | "shoes" | "net",
+        input: BuilderInput
       ) {
+        const remainingPaddles = Math.max(
+          0,
+          input.requestedPaddles - input.existingEquipment.paddles
+        );
+
         switch (category) {
           case "paddle":
             return {
               eyebrow: "PADDLE",
               title: "球拍",
-              instruction: "選 1 支就好",
-              note: ""
+              instruction: `需要 ${remainingPaddles} 支｜挑 1 款`,
+              note:
+                remainingPaddles > 1
+                  ? `下方是在選「款式」；選定後依需求購買 ${remainingPaddles} 支。`
+                  : "下方是在選適合你的球拍款式。"
             };
 
           case "ball":
             return {
               eyebrow: "BALLS",
               title: "匹克球",
-              instruction: "準備至少 3 顆",
+              instruction: "至少需要 3 顆",
               note:
-                "商品包裝數量可能不同，多出的球可以留作備用。"
+                "商品以實際包裝販售；下方會直接告訴你需要買幾組。"
             };
 
           case "shoes":
             return {
               eyebrow: "COURT SHOES",
               title: "場地鞋",
-              instruction: "選 1 雙即可",
+              instruction: "挑 1 款即可",
               note: ""
             };
 
@@ -1909,11 +2300,86 @@ const canonicalURL = new URL(
             return {
               eyebrow: "NET",
               title: "球網",
-              instruction: "依場地需求選擇",
+              instruction: "依場地需求選 1 組",
               note:
                 "只有需要自行架網時，才需要考慮購買。"
             };
         }
+      }
+
+      function priceRangeText(min: number, max: number) {
+        return min === max
+          ? `NT$${money(min)}`
+          : `NT$${money(min)}–${money(max)}`;
+      }
+
+      function productQuantitySummary(
+        product: ReturnType<
+          typeof buildStarterKit
+        >["productRecommendations"][number]["product"],
+        input: BuilderInput
+      ) {
+        if (product.category === "paddle") {
+          const unitsNeeded = Math.max(
+            0,
+            input.requestedPaddles - input.existingEquipment.paddles
+          );
+          const packsNeeded = Math.ceil(
+            unitsNeeded / Math.max(1, product.packSize)
+          );
+          const totalMin = product.priceMin * packsNeeded;
+          const totalMax = product.priceMax * packsNeeded;
+
+          if (unitsNeeded <= 1) {
+            return null;
+          }
+
+          return {
+            label: product.packSize === 1
+              ? `單支 ${priceRangeText(product.priceMin, product.priceMax)}`
+              : `${product.packSize} 支入 × ${packsNeeded} 組`,
+            value: `${unitsNeeded} 支合計 ${priceRangeText(totalMin, totalMax)}`,
+            detail: "這個金額會納入上方的預估花費。"
+          };
+        }
+
+        if (product.category === "ball") {
+          const unitsNeeded = 3;
+          const packsNeeded = Math.ceil(
+            unitsNeeded / Math.max(1, product.packSize)
+          );
+          const totalMin = product.priceMin * packsNeeded;
+          const totalMax = product.priceMax * packsNeeded;
+
+          return {
+            label: `${product.packSize} 入 × ${packsNeeded} 組`,
+            value: `合計 ${priceRangeText(totalMin, totalMax)}`,
+            detail:
+              product.packSize * packsNeeded > unitsNeeded
+                ? `可取得 ${product.packSize * packsNeeded} 顆，多出的留作備用。`
+                : "剛好符合目前至少 3 顆的需求。"
+          };
+        }
+
+        return null;
+      }
+
+      function spendBreakdownQuantityLabel(
+        item: ReturnType<typeof buildStarterKit>["spendBreakdown"][number]
+      ) {
+        if (item.category === "paddle") {
+          return item.packSize === 1
+            ? `${priceRangeText(item.packPriceMin, item.packPriceMax)} × ${item.unitsNeeded} 支`
+            : `${item.packSize} 支入 × ${item.packsNeeded} 組`;
+        }
+
+        if (item.category === "ball") {
+          return `${item.packSize} 入 × ${item.packsNeeded} 組`;
+        }
+
+        if (item.category === "shoes") return "1 雙";
+        if (item.category === "net") return "1 組";
+        return `${item.packsNeeded} 組`;
       }
 
       function recommendationPresentation(
@@ -2159,51 +2625,155 @@ const canonicalURL = new URL(
             input.budget - result.estimatedMinSpend
           );
 
-          resultSummary.innerHTML = `
-            <div class="budget-summary">
-              <div class="budget-summary-copy">
-                <span class="summary-label">
-                  ${
-                    budgetInsufficient
-                      ? "這個方案目前超出你的預算"
-                      : "你的起步預算看起來可行"
-                  }
-                </span>
+          const spendMinPercent = Math.max(
+            0,
+            Math.round((result.estimatedMinSpend / input.budget) * 100)
+          );
 
-                <strong class="summary-range">
-                  NT$${money(result.estimatedMinSpend)}
-                  –
-                  NT$${money(result.estimatedMaxSpend)}
+          const spendMaxPercent = Math.max(
+            0,
+            Math.round((result.estimatedMaxSpend / input.budget) * 100)
+          );
+
+          const progressPercent = Math.min(100, spendMaxPercent);
+
+          const shortfall = Math.max(
+            0,
+            result.estimatedMinSpend - input.budget
+          );
+
+          const remainingText =
+            remainingMax === remainingMin
+              ? `NT$${money(remainingMin)}`
+              : `NT$${money(remainingMin)}–${money(remainingMax)}`;
+
+          resultSummary.innerHTML = `
+            <div class="budget-summary-v2 ${budgetInsufficient ? "is-over-budget" : ""}">
+              <div class="budget-summary-v2__head">
+                <span class="budget-summary-v2__eyebrow">裝備預算整理</span>
+
+                <span class="budget-summary-v2__status">
+                  ${budgetInsufficient ? "超出目前預算" : "✓ 在預算內"}
+                </span>
+              </div>
+
+              <div class="budget-summary-v2__main">
+                <span class="budget-summary-v2__main-label">預估花費</span>
+
+                <strong class="budget-summary-v2__amount">
+                  ${priceRangeText(result.estimatedMinSpend, result.estimatedMaxSpend)}
                 </strong>
 
                 <p>
-                  ${
-                    budgetInsufficient
-                      ? `你的預算是 NT$${money(input.budget)}，先調整場地或借用部分裝備會更合理。`
-                      : `你的總預算是 NT$${money(input.budget)}，不用為了把預算花完而升級不必要的裝備。`
-                  }
+                  依你目前的 BUY NOW 裝備與優先推薦商品估算。
                 </p>
               </div>
 
-              <div class="summary-metrics">
-                <div class="summary-metric">
-                  <span>你的預算</span>
-                  <strong>NT$${money(input.budget)}</strong>
-                </div>
+              ${
+                result.spendBreakdown.length > 0
+                  ? `
+                    <div class="budget-breakdown">
+                      <div class="budget-breakdown__heading">
+                        <strong>費用怎麼算？</strong>
+                        <span>以下用各分類的優先推薦商品估算</span>
+                      </div>
 
-                <div class="summary-metric">
-                  <span>${budgetInsufficient ? "最低可行花費" : "預算餘裕"}</span>
+                      <div class="budget-breakdown__rows">
+                        ${result.spendBreakdown
+                          .map(
+                            (item) => `
+                              <div class="budget-breakdown__row">
+                                <div class="budget-breakdown__copy">
+                                  <span class="budget-breakdown__category">
+                                    ${categoryLabel(item.category)}
+                                  </span>
+                                  <strong>${item.productName}</strong>
+                                  <small>${spendBreakdownQuantityLabel(item)}</small>
+                                </div>
+
+                                <strong class="budget-breakdown__price">
+                                  ${priceRangeText(item.lineMin, item.lineMax)}
+                                </strong>
+                              </div>
+                            `
+                          )
+                          .join("")}
+                      </div>
+
+                      <div class="budget-breakdown__total">
+                        <span>預估合計</span>
+                        <strong>
+                          ${priceRangeText(result.estimatedMinSpend, result.estimatedMaxSpend)}
+                        </strong>
+                      </div>
+                    </div>
+                  `
+                  : ""
+              }
+
+              <div class="budget-progress">
+                <div class="budget-progress__meta">
+                  <span>
+                    ${budgetInsufficient ? "目前預算不足" : "預估使用預算"}
+                  </span>
+
                   <strong>
                     ${
                       budgetInsufficient
-                        ? `NT$${money(result.estimatedMinSpend)}`
-                        : remainingMax === remainingMin
-                          ? `NT$${money(remainingMin)}`
-                          : `NT$${money(remainingMin)}–${money(remainingMax)}`
+                        ? `至少超出 NT$${money(shortfall)}`
+                        : spendMinPercent === spendMaxPercent
+                          ? `約 ${spendMinPercent}%`
+                          : `約 ${spendMinPercent}–${spendMaxPercent}%`
+                    }
+                  </strong>
+                </div>
+
+                <div
+                  class="budget-progress__track"
+                  role="progressbar"
+                  aria-label="預估預算使用比例"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="${progressPercent}"
+                >
+                  <span
+                    class="budget-progress__fill"
+                    style="width: ${progressPercent}%"
+                  ></span>
+                </div>
+
+                <div class="budget-progress__scale">
+                  <span>NT$0</span>
+                  <span>你的預算 NT$${money(input.budget)}</span>
+                </div>
+              </div>
+
+              <div class="budget-summary-v2__details">
+                <div class="budget-detail-card">
+                  <span>你的總預算</span>
+                  <strong>NT$${money(input.budget)}</strong>
+                </div>
+
+                <div class="budget-detail-card">
+                  <span>${budgetInsufficient ? "至少還差" : "預計保留"}</span>
+
+                  <strong>
+                    ${
+                      budgetInsufficient
+                        ? `NT$${money(shortfall)}`
+                        : remainingText
                     }
                   </strong>
                 </div>
               </div>
+
+              <p class="budget-summary-v2__tip">
+                ${
+                  budgetInsufficient
+                    ? "可以先借用部分裝備、沿用現有裝備，或調整方案，把必要花費拉回預算內。"
+                    : "不用為了把預算花完而升級不必要的裝備，剩下的可以先留著。"
+                }
+              </p>
             </div>
           `;
         }
@@ -2294,7 +2864,7 @@ const canonicalURL = new URL(
               <div class="product-choice-intro">
                 <strong>下面是依你的 Starter Kit 整理出的商品選項</strong>
                 <span>
-                  每個分類挑一個適合你的即可，不需要全部購買。
+                  每個分類是在挑「款式」，不是每張商品卡都要買；實際數量依上方 Starter Kit 為準。
                 </span>
               </div>
 
@@ -2302,7 +2872,8 @@ const canonicalURL = new URL(
                 .map((group) => {
                   const meta =
                     productGroupMeta(
-                      group.category
+                      group.category,
+                      input
                     );
 
                   const cards =
@@ -2332,6 +2903,12 @@ const canonicalURL = new URL(
                                   `<li><span aria-hidden="true">✓</span><span>${reason}</span></li>`
                               )
                               .join("");
+
+                          const quantitySummary =
+                            productQuantitySummary(
+                              product,
+                              input
+                            );
 
                           return `
                             <article
@@ -2367,6 +2944,22 @@ const canonicalURL = new URL(
                                   </strong>
                                 </div>
                               </div>
+
+                              ${
+                                quantitySummary
+                                  ? `
+                                    <div class="product-quantity-summary">
+                                      <span>${quantitySummary.label}</span>
+                                      <strong>${quantitySummary.value}</strong>
+                                      ${
+                                        quantitySummary.detail
+                                          ? `<small>${quantitySummary.detail}</small>`
+                                          : ""
+                                      }
+                                    </div>
+                                  `
+                                  : ""
+                              }
 
                               <div class="product-fit-block">
                                 <p class="product-fit-heading">
