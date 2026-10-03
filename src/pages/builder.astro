@@ -1,7 +1,7 @@
 ---
 import Analytics from "../components/Analytics.astro";
 import "../styles/global.css";
-const title = "Starter Kit Builder | PickleStart Taiwan";
+const title = "匹克球新手配裝工具｜60 秒配好第一套裝備｜PickleStart Taiwan";
 
 const canonicalURL = new URL(
   Astro.url.pathname,
@@ -19,7 +19,7 @@ const canonicalURL = new URL(
 
     <meta
       name="description"
-      content="回答 6 個問題，60 秒建立你的匹克球新手 Starter Kit。"
+      content="回答 6 個問題，依照場地、預算與已有裝備，60 秒配好你的第一套匹克球裝備。"
     />
 
     <link rel="canonical" href={canonicalURL} />
@@ -28,7 +28,7 @@ const canonicalURL = new URL(
     <meta property="og:title" content={title} />
     <meta
       property="og:description"
-      content="回答 6 個問題，60 秒建立你的匹克球新手 Starter Kit。"
+      content="回答 6 個問題，依照場地、預算與已有裝備，60 秒配好你的第一套匹克球裝備。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
@@ -1320,7 +1320,7 @@ const canonicalURL = new URL(
 
         <div class="result-hero">
           <div>
-            <p class="eyebrow">Your PickleStart Kit</p>
+            <p class="eyebrow">YOUR GEAR PLAN</p>
             <h1 class="result-title">
               先買需要的，<br />
               <span>其他晚點再說。</span>
@@ -1439,7 +1439,7 @@ const canonicalURL = new URL(
 
         <div class="result-actions">
           <button id="restart-button" class="primary-button" type="button">
-            重新建立 Starter Kit
+            重新配一次
           </button>
           <a class="secondary-button action-link" href="/">回首頁</a>
         </div>
@@ -1967,7 +1967,7 @@ const canonicalURL = new URL(
         if (nextButton) {
           nextButton.textContent =
             currentStep === 6
-              ? "看我的 Starter Kit →"
+              ? "看我的配裝結果 →"
               : "下一題 →";
         }
 
@@ -2862,9 +2862,9 @@ const canonicalURL = new URL(
 
             productList.innerHTML = `
               <div class="product-choice-intro">
-                <strong>下面是依你的 Starter Kit 整理出的商品選項</strong>
+                <strong>下面是依你的配裝結果整理出的商品選項</strong>
                 <span>
-                  每個分類是在挑「款式」，不是每張商品卡都要買；實際數量依上方 Starter Kit 為準。
+                  每個分類是在挑「款式」，不是每張商品卡都要買；實際數量以上方裝備建議為準。
                 </span>
               </div>
 
