@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import { courtCities, COURT_LAST_UPDATED_AT, COURT_SOURCE_URL } from "../../data/courts";
+import { courtGuideProfiles } from "../../data/court-guides";
+import { getCourtMapAction } from "../../lib/court-maps";
+import "../../styles/guide.css";
+
+export function getStaticPaths() {
+  return courtCities.filter((c) => courtGuideProfiles[c.id]).map((c) => ({
+    params: { city: c.id },
+    props: { cityData: c, profile: courtGuideProfiles[c.id] }
+  }));
+}
+
+const { cityData, profile } = Astro.props;
+const privatePlaces = cityData.places.filter((p) => p.ownership === "private");
+const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
+---
+<BaseLayout
+  pageType="article"
+  datePublished="2026-10-12"
+  dateModified={COURT_LAST_UPDATED_AT}
+  title={`${profile.title}｜PickleStart Taiwan`}
+  description={`${cityData.city}去哪裡打匹克球？整理 ${cityData.places.length} 個場地、私人球館與公共球聚，含地圖、預約來源及第一次去的提醒。`}
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "全台匹克球場地", href: "/courts/" },
+    { name: `${cityData.city}場地指南`, href: `/courts/${cityData.id}/` }
+  ]}
+>
+  <article class="guide-page courts-v4-city-page">
+    <nav class="courts-v4-breadcrumb" aria-label="頁面位置">
+      <a href="/">首頁</a><span> / </span><a href="/courts/">全台找場地</a><span> / </span><span>{cityData.city}</span>
+    </nav>
+    <header class="courts-v4-city-hero">
+      <p class="eyebrow">CITY COURT GUIDE · PICKLESTART</p>
+      <h1>{cityData.city}匹克球場地</h1>
+      <p class="courts-v4-city-subheading">{profile.title.split("：")[1] ?? "私人球館與公共球聚整理"}</p>
+      <p>{profile.intro}</p>
+      <div class="courts-v2-stats" aria-label="縣市場地資料">
+        <span>收錄 <strong>{cityData.places.length}</strong> 個場地</span>
+        <span>私人／專業球館 <strong>{privatePlaces.length}</strong> 間</span>
+        <span>資料查閱 <strong>{COURT_LAST_UPDATED_AT.replaceAll("-", "/")}</strong></span>
+      </div>
+    </header>
+    <section class="courts-v4-editorial" aria-labelledby="city-choose">
+      <p class="guide-step">HOW TO CHOOSE</p>
+      <h2 id="city-choose">第一次在{cityData.city}找場，建議這樣選</h2>
+      <p>{profile.tip}</p>
+      <p class="courts-v4-warning"><strong>出發前提醒：</strong>{profile.warning}</p>
+    </section>
+    <section class="courts-v4-venues" aria-labelledby="city-private">
+      <div class="courts-v4-section-heading">
+        <div><p class="guide-step">PRIVATE COURTS</p><h2 id="city-private">私人／專業球館</h2></div>
+        <span>{privatePlaces.length} 間</span>
+      </div>
+      <p>收錄有公開資訊可查的場館；能否訂到位、場租和借拍方式請以場館官方資訊為準。</p>
+      <div class="courts-v4-venue-grid">
+        {privatePlaces.map((p) => (
+          <article class="courts-v4-venue-card">
+            <div class="courts-v4-venue-head"><h3>{p.name}</h3><span>{p.type}</span></div>
+            <p class="courts-v4-address">{p.address ?? "完整門牌尚未確認，請先向場館取得入口地標"}</p>
+            <p>{p.access}</p>
+            <p class="courts-v4-proof">{p.sourceType === "official" ? "場館官方公開資訊" : "第三方公開名錄／活動資訊，待館方確認"}</p>
+            <p class="courts-v42-map-hint" data-map-status={p.mapLinkCheckedAt ? "checked" : getCourtMapAction(cityData.city, p).kind}>{getCourtMapAction(cityData.city, p).note}</p>
+            <div class="courts-v4-venue-links">
+              {getCourtMapAction(cityData.city, p).href ? (
+                <a
+                  href={getCourtMapAction(cityData.city, p).href!}
+                  class={getCourtMapAction(cityData.city, p).kind === "search" && !p.mapLinkCheckedAt ? "is-map-search" : "is-map-place"}
+                  title={getCourtMapAction(cityData.city, p).note}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >{getCourtMapAction(cityData.city, p).label}</a>
+              ) : (
+                <span class="courts-v4-map-note">地點待核對，請先洽館方</span>
+              )}
+              {p.bookingUrl && <a href={p.bookingUrl} target="_blank" rel="noopener noreferrer">官方預約／聯絡 ↗</a>}
+              {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer">資料來源 ↗</a>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+    {otherPlaces.length > 0 && (
+      <section class="courts-v4-venues" aria-labelledby="city-public">
+        <div class="courts-v4-section-heading"><div><p class="guide-step">COMMUNITY & PUBLIC</p><h2 id="city-public">公共場地與固定球聚</h2></div><span>{otherPlaces.length} 個</span></div>
+        <p>公園、學校和運動中心通常不是隨到隨打。以下是目前資料庫的場地起點，確切時段需向管理單位或球聚主揪確認。</p>
+        <div class="courts-v4-public-grid">
+          {otherPlaces.map((p) => (
+            <div class="courts-v4-public-item">
+              <strong>{p.name}</strong><small>{p.type} · {p.access}</small>
+              {getCourtMapAction(cityData.city, p).href ? (
+                <a href={getCourtMapAction(cityData.city, p).href!} title={getCourtMapAction(cityData.city, p).note} target="_blank" rel="noopener noreferrer">{getCourtMapAction(cityData.city, p).kind === "place" ? "開啟場館資訊 ↗" : "搜尋場館（需選擇）↗"}</a>
+              ) : <span class="courts-v4-map-note">位置待核對</span>}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+    <section class="courts-v4-local-faq" aria-labelledby="city-faq">
+      <p class="guide-step">FIRST-TIME FAQ</p><h2 id="city-faq">{cityData.city}找場常見問題</h2>
+      {profile.faqs.map(([question, answer]) => (
+        <div><h3>{question}</h3><p>{answer}</p></div>
+      ))}
+    </section>
+    <section class="courts-v4-updated">
+      <h2>場地資料與確認方式</h2>
+      <p>本頁由 PickleStart 依場館官方資訊及公開名錄整理，並重新撰寫新手找場建議；非即時空場查詢或實地營運認證。有 Place ID 或場館分享連結的項目會先開啟 Google Maps 地點資訊頁，而非直接規劃路線；其他場地採文字搜尋，即使曾實測正確，搜尋結果仍可能變動。請出發前再次核實。</p>
+      <a href="/courts/">返回全台匹克球場地（含縣市／室內外篩選） →</a>
+      <a href={COURT_SOURCE_URL} target="_blank" rel="noopener noreferrer">參考：中華民國匹克球協會公開場地資訊 ↗</a>
+    </section>
+    <GuideEndCTA
+      heading="場地決定了，第一套裝備不用亂買。"
+      text="回答 6 題，依照預算、已有裝備和上場目標，整理第一次打球真正需要的東西。"
+      buttonText="幫我配第一套裝備"
+    />
+  </article>
+</BaseLayout>

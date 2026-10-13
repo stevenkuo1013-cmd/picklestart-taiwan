@@ -5,9 +5,12 @@ import GuideFAQ from "../../components/GuideFAQ.astro";
 import GuideEndCTA from "../../components/GuideEndCTA.astro";
 import {
   COURT_SOURCE_URL,
-  COURT_VERIFIED_AT,
+  COURT_DISCOVERY_SOURCE_URL,
+  COURT_LAST_UPDATED_AT,
   courtCities
 } from "../../data/courts";
+import { courtGuideProfiles } from "../../data/court-guides";
+import { getCourtMapAction } from "../../lib/court-maps";
 import "../../styles/guide.css";
 
 const regions = ["北部", "中部", "南部"] as const;
@@ -18,13 +21,17 @@ const cityGroups = regions.map((region) => ({
 
 const totalCourts = courtCities.reduce((sum, city) => sum + city.places.length, 0);
 const totalCities = courtCities.length;
+const totalPrivateCourts = courtCities.reduce(
+  (sum, city) => sum + city.places.filter((place) => place.ownership === "private").length,
+  0
+);
 
 const formatDate = (date: string) => date.replaceAll("-", "/");
 
-const mapUrl = (city: string, name: string, address?: string | null) => {
-  const query = address?.trim() || `${city} ${name}`;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-};
+const ownershipLabel = (place: CourtLinkPlace) =>
+  place.ownership === "private"
+    ? "私人／專業球館"
+    : place.ownership === "community" ? "會員／社團" : "公共／球聚";
 
 const faqItems = [
   {
@@ -55,9 +62,9 @@ const faqItems = [
 <BaseLayout
   pageType="article"
   datePublished="2026-10-03"
-  dateModified={COURT_VERIFIED_AT}
+  dateModified={COURT_LAST_UPDATED_AT}
   title={`台灣匹克球場地｜${totalCourts} 個場地整理與新手找場指南｜PickleStart Taiwan`}
-  description={`整理台北、新北、桃園、台中、彰化、南投、嘉義、台南、高雄、屏東等 ${totalCourts} 個匹克球場地。可依縣市、室內外與場地名稱搜尋，並查看地圖、球聚時段與資料來源。`}
+  description={`整理台北、新北、桃園、新竹、台中、彰化、雲林、嘉義、台南、高雄等 ${totalCourts} 個匹克球場地。可依縣市、室內外與場地名稱搜尋，並查看地圖、球聚時段與資料來源。`}
   breadcrumbs={[
     { name: "首頁", href: "/" },
     { name: "新手指南", href: "/guide" },
@@ -72,13 +79,14 @@ const faqItems = [
         <p class="eyebrow">FIND A COURT · TAIWAN</p>
         <h1>台灣匹克球場地<br /><span>找到你真的能去打的地方。</span></h1>
         <p>
-          找縣市、場地名稱或室內外類型。這裡不只列地址，也整理目前可查到的球聚時段與出發前注意事項。
+          優先找能預約的私人球館，也保留公園、校園與固定球聚。先確認場館資訊，再從地圖找入口。
         </p>
 
         <div class="courts-v2-stats" aria-label="場地資料摘要">
           <span>目前整理 <strong>{totalCourts}</strong> 個場地</span>
+          <span>其中 <strong>{totalPrivateCourts}</strong> 間私人球館</span>
           <span>涵蓋 <strong>{totalCities}</strong> 個縣市</span>
-          <span>更新 <strong>{formatDate(COURT_VERIFIED_AT)}</strong></span>
+          <span>更新 <strong>{formatDate(COURT_LAST_UPDATED_AT)}</strong></span>
         </div>
       </div>
 
@@ -89,7 +97,7 @@ const faqItems = [
           <input
             id="court-search"
             type="search"
-            placeholder="例如：台南、振興公園、室內"
+            placeholder="例如：新竹、球館名稱、室內"
             autocomplete="off"
           />
         </div>
@@ -107,7 +115,16 @@ const faqItems = [
         </div>
 
         <div class="courts-v2-filter-block">
-          <span>場地類型</span>
+          <span>經營類型</span>
+          <div class="courts-v2-chip-row courts-v2-ownership-row" id="court-ownership-filters">
+            <button type="button" class="is-active" data-ownership-filter="private" aria-pressed="true">私人／專業球館</button>
+            <button type="button" data-ownership-filter="public" aria-pressed="false">公共／球聚</button>
+            <button type="button" data-ownership-filter="all" aria-pressed="false">全部場地</button>
+          </div>
+        </div>
+
+        <div class="courts-v2-filter-block">
+          <span>室內外</span>
           <div class="courts-v2-chip-row courts-v2-type-row" id="court-type-filters">
             <button type="button" class="is-active" data-type-filter="all" aria-pressed="true">全部</button>
             <button type="button" data-type-filter="室內" aria-pressed="false">室內</button>
@@ -116,8 +133,11 @@ const faqItems = [
           </div>
         </div>
 
+        <p class="courts-v4-filter-feedback" role="status" aria-live="polite">
+          目前符合 <strong id="court-filter-count">{totalPrivateCourts}</strong> 個場地，向下查看詳細資訊。
+        </p>
         <p class="courts-v2-search-note">
-          場地、費用與球聚可能調整，出發前仍建議查看最新公告。
+          優先顯示私人球館。有 Place ID 或場館分享連結的項目可開啟 Google Maps 地點資訊；其他可能透過文字搜尋，即使已實測，搜尋結果仍可能變動。
         </p>
       </div>
     </section>
@@ -125,9 +145,10 @@ const faqItems = [
     <section class="courts-v2-results-head" aria-live="polite">
       <div>
         <p class="guide-step">COURT DIRECTORY</p>
-        <h2>全台匹克球場地</h2>
+        <h2 id="court-results-title">私人／專業球館</h2>
+        <p class="courts-v3-directory-hint">這裡顯示的是目前符合篩選條件的場地。可切換經營類型或縣市，點開各縣市查看詳情。</p>
       </div>
-      <p><strong id="court-visible-count">{totalCourts}</strong> 個符合條件的場地</p>
+      <p class="courts-v3-results-count"><strong id="court-visible-count">{totalPrivateCourts}</strong> 個符合條件的場地</p>
     </section>
 
     <div class="courts-v2-region-list" id="court-results">
@@ -153,13 +174,25 @@ const faqItems = [
                     <h3>{city.city}匹克球場地</h3>
                   </div>
                   <div class="courts-v2-city-summary-meta">
-                    <span>目前整理 {city.places.length} 個</span>
+                    <span data-city-visible-count>符合 {city.places.filter((place) => place.ownership === "private").length} 個</span>
                     <i aria-hidden="true">＋</i>
                   </div>
                 </summary>
 
                 <div class="courts-v2-city-body">
-                  <p class="courts-v2-city-description">{city.description}</p>
+                  <p
+                    class="courts-v2-city-description"
+                    data-city-description
+                    data-original-description={city.description}
+                  >
+                    以下是本縣市目前收錄的私人／專業球館；預約時段、費用與是否接受新手請以場館最新公告為準。
+                  </p>
+
+                  {courtGuideProfiles[city.id] && (
+                    <a class="courts-v4-city-guide" href={`/courts/${city.id}/`}>
+                      {city.city}新手找場整理：先看預約方式、公共球聚與交通注意事項 <span aria-hidden="true">→</span>
+                    </a>
+                  )}
 
                   <div class="courts-v2-place-list">
                     {city.places.map((place) => (
@@ -167,16 +200,23 @@ const faqItems = [
                         class="courts-v2-place"
                         data-court-place
                         data-court-type={place.type}
-                        data-place-search={`${city.city} ${place.name} ${place.type} ${place.address ?? ""} ${place.schedule} ${place.fee ?? ""} ${place.access}`}
+                        data-court-ownership={place.ownership ?? "public"}
+                        class:list={{ "is-private": place.ownership === "private" }}
+                        data-place-search={`${city.city} ${place.name} ${place.type} ${ownershipLabel(place)} ${place.address ?? ""} ${place.schedule} ${place.fee ?? ""} ${place.access}`}
                       >
                         <div class="courts-v2-place-top">
                           <div>
                             <h4>{place.name}</h4>
                             <p class="courts-v2-address">
-                              {place.address ?? "公開來源未提供完整地址，請以地圖搜尋與最新聯絡資訊確認"}
+                              {place.address ?? "尚未取得足夠精確的場館地址或地標，請先向場地方確認"}
                             </p>
                           </div>
-                          <span class="courts-v2-type-badge">{place.type}</span>
+                          <div class="courts-v3-badges">
+                            <span class="courts-v3-ownership-badge" data-private={place.ownership === "private"}>
+                              {ownershipLabel(place)}
+                            </span>
+                            <span class="courts-v2-type-badge">{place.type}</span>
+                          </div>
                         </div>
 
                         <dl class="courts-v2-place-meta">
@@ -194,21 +234,44 @@ const faqItems = [
                           </div>
                         </dl>
 
+                        {place.verifiedAt && (
+                          <p class="courts-v3-proof">
+                            {place.sourceType === "official" ? "資料來源：場館官方公開頁面" : "資料來源：公開名錄／活動，需向場館確認"}
+                            · 資料查閱 {formatDate(place.verifiedAt)}（非實地查證）
+                          </p>
+                        )}
+                        <p class="courts-v42-map-hint" data-map-status={place.mapLinkCheckedAt ? "checked" : getCourtMapAction(city.city, place).kind}>{getCourtMapAction(city.city, place).note}</p>
                         <div class="courts-v2-place-actions">
+                          {getCourtMapAction(city.city, place).href ? (
+                            <a
+                              href={getCourtMapAction(city.city, place).href!}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class={getCourtMapAction(city.city, place).kind === "search" && !place.mapLinkCheckedAt ? "is-map-search" : "is-map-place"}
+                              title={getCourtMapAction(city.city, place).note}
+                            >
+                              {getCourtMapAction(city.city, place).label}
+                            </a>
+                          ) : (
+                            <span class="courts-v4-map-note">地點待核對，請先洽場館</span>
+                          )}
+                          {place.bookingUrl && (
+                            <a
+                              href={place.bookingUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="courts-v3-booking-link"
+                            >
+                              官方預約／聯絡 ↗
+                            </a>
+                          )}
                           <a
-                            href={mapUrl(city.city, place.name, place.address)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Google Maps ↗
-                          </a>
-                          <a
-                            href={COURT_SOURCE_URL}
+                            href={place.sourceUrl ?? COURT_SOURCE_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="is-secondary"
                           >
-                            查看資料來源 ↗
+                            {place.sourceType === "official" ? "官方資訊 ↗" : "查看資料來源 ↗"}
                           </a>
                         </div>
                       </article>
@@ -228,9 +291,28 @@ const faqItems = [
       ))}
     </div>
 
-    <p class="court-search-empty courts-v2-empty" id="court-search-empty" hidden>
-      找不到符合條件的場地。可以改用縣市、場地名稱或「室內／室外」搜尋；也歡迎告訴我們漏掉的場地。
-    </p>
+    <div class="court-search-empty courts-v2-empty courts-v3-empty-state" id="court-search-empty" hidden>
+      <p>目前沒有符合條件的場地。可以清除搜尋與篩選，查看所有已收錄的場地。</p>
+      <button type="button" id="court-clear-filters">清除條件，查看全部場地 →</button>
+    </div>
+
+    <section class="courts-v4-guides" aria-label="各縣市找場指南">
+      <div>
+        <p class="guide-step">CITY GUIDES</p>
+        <h2>依縣市看第一次找場的重點</h2>
+        <p>不只是列地址，也整理該縣市有哪些預約制球館、公共球聚，以及新手出發前應該注意的差異。</p>
+      </div>
+      <div class="courts-v4-guide-grid">
+        {courtCities.filter((c) => Boolean(courtGuideProfiles[c.id])).map((c) => (
+          <a href={`/courts/${c.id}/`}>
+            <span>{c.city}</span>
+            <strong>{c.city}匹克球場地攻略</strong>
+            <small>{c.places.length} 個已收錄場地 · {c.places.filter((p) => p.ownership === "private").length} 間私人球館</small>
+            <b aria-hidden="true">↗</b>
+          </a>
+        ))}
+      </div>
+    </section>
 
     <section class="guide-section courts-howto-section">
       <p class="guide-step">BEFORE YOU GO</p>
@@ -273,8 +355,9 @@ const faqItems = [
         <p class="guide-step">DATA & UPDATES</p>
         <h2>場地資訊會變動，所以我們把來源留給你</h2>
         <p>
-          本頁依公開場地資訊整理，固定場地、球聚時間、費用與加入方式都可能調整。
-          PickleStart 會標示資料確認日期，但出發前仍應以場地方或最新公告為準。
+          私人球館優先核對場館官網或預約頁，其他場地參照協會及公開名錄。
+          已有核對地標或分享連結的場館優先開啟地點資訊頁；部分場地使用文字搜尋，會區分實測成功與待核對狀態。使用者可從地點資訊頁自行選擇路線規劃。
+          費用與營運狀態可能變動，出發前仍請直接向場館確認。
         </p>
       </div>
       <a href={COURT_SOURCE_URL} target="_blank" rel="noopener noreferrer">
@@ -293,12 +376,16 @@ const faqItems = [
     <section class="guide-source-note courts-source-note">
       <h2>資料來源與更新說明</h2>
       <p>
-        本頁目前以中華民國匹克球協會公開的「全台各地匹克球場地資訊」為主要整理來源，
-        並把資訊改寫成比較適合新手找場的格式。場地與球聚資訊可能隨時變動。
+        既有公共／球聚場地參考中華民國匹克球協會公開資訊；新增私人球館以場館官網、預約頁及公開名錄交叉核對。
+        iPickleball 作為尋找候選場地的線索來源，不直接複製其介紹、照片或時刻表。
+        「資料查閱日期」只代表網頁核對，不代表實際到場；有錯誤歡迎回報。
       </p>
       <div class="source-links">
         <a href={COURT_SOURCE_URL} target="_blank" rel="noopener noreferrer">
           中華民國匹克球協會：全台場地資訊 ↗
+        </a>
+        <a href={COURT_DISCOVERY_SOURCE_URL} target="_blank" rel="noopener noreferrer">
+          iPickleball：全台場地名錄（候選來源）↗
         </a>
         <a href="/guide/taipei-pickleball-courts">
           台北匹克球場地：新手找場攻略 →
@@ -316,6 +403,9 @@ const faqItems = [
   const cityButtons = Array.from(
     document.querySelectorAll<HTMLButtonElement>("[data-city-filter]")
   );
+  const ownershipButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-ownership-filter]")
+  );
   const typeButtons = Array.from(
     document.querySelectorAll<HTMLButtonElement>("[data-type-filter]")
   );
@@ -327,9 +417,13 @@ const faqItems = [
   );
   const emptyState = document.querySelector<HTMLElement>("#court-search-empty");
   const countNode = document.querySelector<HTMLElement>("#court-visible-count");
+  const filterCountNode = document.querySelector<HTMLElement>("#court-filter-count");
+  const resultsTitle = document.querySelector<HTMLElement>("#court-results-title");
+  const clearFiltersButton = document.querySelector<HTMLButtonElement>("#court-clear-filters");
 
   let activeCity = "all";
   let activeType = "all";
+  let activeOwnership = "private";
 
   const normalize = (value: string) =>
     value.trim().toLocaleLowerCase("zh-Hant");
@@ -337,7 +431,7 @@ const faqItems = [
   const setActiveButton = (
     buttons: HTMLButtonElement[],
     activeValue: string,
-    attribute: "cityFilter" | "typeFilter"
+    attribute: "cityFilter" | "typeFilter" | "ownershipFilter"
   ) => {
     buttons.forEach((button) => {
       const value = button.dataset[attribute] ?? "all";
@@ -366,11 +460,15 @@ const faqItems = [
       places.forEach((place) => {
         const typeMatches =
           activeType === "all" || place.dataset.courtType === activeType;
+        const ownership = place.dataset.courtOwnership ?? "public";
+        const ownershipMatches = activeOwnership === "all" ||
+          (activeOwnership === "private" && ownership === "private") ||
+          (activeOwnership === "public" && ownership !== "private");
         const placeSearch = normalize(place.dataset.placeSearch ?? "");
         const queryMatches =
           query.length === 0 || cityQueryMatches || placeSearch.includes(query);
 
-        const visible = cityFilterMatches && typeMatches && queryMatches;
+        const visible = cityFilterMatches && typeMatches && ownershipMatches && queryMatches;
         place.hidden = !visible;
 
         if (visible) {
@@ -380,11 +478,23 @@ const faqItems = [
       });
 
       cityCard.hidden = cityVisiblePlaces === 0;
+      cityCard.classList.toggle("has-single-visible-place", cityVisiblePlaces === 1);
 
-      if (
-        cityVisiblePlaces > 0 &&
-        (query.length > 0 || activeCity !== "all" || activeType !== "all")
-      ) {
+      const cityCount = cityCard.querySelector<HTMLElement>("[data-city-visible-count]");
+      if (cityCount) cityCount.textContent = `符合 ${cityVisiblePlaces} 個`;
+
+      const cityDescription = cityCard.querySelector<HTMLElement>("[data-city-description]");
+      if (cityDescription) {
+        cityDescription.textContent = activeOwnership === "private"
+          ? "以下是本縣市目前收錄的私人／專業球館；預約時段、費用與是否接受新手請以場館最新公告為準。"
+          : activeOwnership === "public"
+            ? cityDescription.dataset.originalDescription ?? "公共場地與球聚資訊可能變動，出發前請確認。"
+            : "這裡同時包含私人球館、公共場地及球聚。請以各場地的來源確認實際開放與報名方式。";
+      }
+
+      // 使用者確實搜尋或指定縣市時展開所有符合的城市；
+      // 僅使用一般篩選時，保持手動展開狀態，避免一次打開整個台灣。
+      if (cityVisiblePlaces > 0 && (query.length > 0 || activeCity !== "all")) {
         cityCard.open = true;
       }
     });
@@ -396,7 +506,21 @@ const faqItems = [
       region.hidden = cards.every((card) => card.hidden);
     });
 
+    // 初次載入只展開第一個有結果的城市，搜尋／指定縣市則按需求展開。
+    // 其他城市可由使用者自行開合，保留自行展開的選擇。
+    if (!cityCards.some((card) => !card.hidden && card.open)) {
+      const firstVisibleCity = cityCards.find((card) => !card.hidden);
+      if (firstVisibleCity) firstVisibleCity.open = true;
+    }
     if (countNode) countNode.textContent = String(visiblePlaces);
+    if (filterCountNode) filterCountNode.textContent = String(visiblePlaces);
+    if (resultsTitle) {
+      resultsTitle.textContent = activeOwnership === "private"
+        ? "私人／專業球館"
+        : activeOwnership === "public"
+          ? "公共場地與固定球聚"
+          : "全台匹克球場地";
+    }
     if (emptyState) emptyState.hidden = visiblePlaces !== 0;
   };
 
@@ -410,7 +534,16 @@ const faqItems = [
         history.replaceState(null, "", `#${activeCity}`);
       } else {
         history.replaceState(null, "", window.location.pathname);
+        cityCards.forEach((card) => { card.open = false; });
       }
+    });
+  });
+
+  ownershipButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeOwnership = button.dataset.ownershipFilter ?? "private";
+      setActiveButton(ownershipButtons, activeOwnership, "ownershipFilter");
+      updateResults();
     });
   });
 
@@ -422,12 +555,34 @@ const faqItems = [
     });
   });
 
-  searchInput?.addEventListener("input", updateResults);
+  let hadSearch = false;
+  searchInput?.addEventListener("input", () => {
+    const hasSearch = Boolean(searchInput.value.trim());
+    // 搜尋清空後收起自動展開的城市，回到易瀏覽的列表。
+    if (hadSearch && !hasSearch) cityCards.forEach((card) => { card.open = false; });
+    hadSearch = hasSearch;
+    updateResults();
+  });
+
+  clearFiltersButton?.addEventListener("click", () => {
+    if (searchInput) searchInput.value = "";
+    activeCity = "all";
+    activeType = "all";
+    activeOwnership = "all";
+    setActiveButton(cityButtons, activeCity, "cityFilter");
+    setActiveButton(typeButtons, activeType, "typeFilter");
+    setActiveButton(ownershipButtons, activeOwnership, "ownershipFilter");
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+    cityCards.forEach((card) => { card.open = false; });
+    updateResults();
+  });
 
   const initialHash = window.location.hash.replace("#", "");
   if (initialHash && cityCards.some((card) => card.dataset.cityId === initialHash)) {
     activeCity = initialHash;
+    activeOwnership = "all";
     setActiveButton(cityButtons, activeCity, "cityFilter");
+    setActiveButton(ownershipButtons, activeOwnership, "ownershipFilter");
   }
 
   updateResults();
