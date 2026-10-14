@@ -4,6 +4,7 @@ import GuideEndCTA from "../../components/GuideEndCTA.astro";
 import { courtCities, COURT_LAST_UPDATED_AT, COURT_SOURCE_URL } from "../../data/courts";
 import { courtGuideProfiles } from "../../data/court-guides";
 import { getCourtMapAction } from "../../lib/court-maps";
+import CourtAnalytics from "../../components/CourtAnalytics.astro";
 import "../../styles/guide.css";
 
 export function getStaticPaths() {
@@ -68,6 +69,11 @@ const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
               {getCourtMapAction(cityData.city, p).href ? (
                 <a
                   href={getCourtMapAction(cityData.city, p).href!}
+                  data-court-action="map"
+                  data-court-id={p.id}
+                  data-court-city={cityData.id}
+                  data-court-ownership={p.ownership ?? "public"}
+                  data-court-page="city"
                   class={getCourtMapAction(cityData.city, p).kind === "search" && !p.mapLinkCheckedAt ? "is-map-search" : "is-map-place"}
                   title={getCourtMapAction(cityData.city, p).note}
                   target="_blank"
@@ -76,7 +82,7 @@ const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
               ) : (
                 <span class="courts-v4-map-note">地點待核對，請先洽館方</span>
               )}
-              {p.bookingUrl && <a href={p.bookingUrl} target="_blank" rel="noopener noreferrer">官方預約／聯絡 ↗</a>}
+              {p.bookingUrl && <a data-court-action="booking" data-court-id={p.id} data-court-city={cityData.id} data-court-ownership={p.ownership ?? "public"} data-court-page="city" href={p.bookingUrl} target="_blank" rel="noopener noreferrer">官方預約／聯絡 ↗</a>}
               {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer">資料來源 ↗</a>}
             </div>
           </article>
@@ -92,7 +98,7 @@ const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
             <div class="courts-v4-public-item">
               <strong>{p.name}</strong><small>{p.type} · {p.access}</small>
               {getCourtMapAction(cityData.city, p).href ? (
-                <a href={getCourtMapAction(cityData.city, p).href!} title={getCourtMapAction(cityData.city, p).note} target="_blank" rel="noopener noreferrer">{getCourtMapAction(cityData.city, p).kind === "place" ? "開啟場館資訊 ↗" : "搜尋場館（需選擇）↗"}</a>
+                <a data-court-action="map" data-court-id={p.id} data-court-city={cityData.id} data-court-ownership={p.ownership ?? "public"} data-court-page="city" href={getCourtMapAction(cityData.city, p).href!} title={getCourtMapAction(cityData.city, p).note} target="_blank" rel="noopener noreferrer">{getCourtMapAction(cityData.city, p).kind === "place" ? "開啟場館資訊 ↗" : "搜尋場館（需選擇）↗"}</a>
               ) : <span class="courts-v4-map-note">位置待核對</span>}
             </div>
           ))}
@@ -117,4 +123,5 @@ const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
       buttonText="幫我配第一套裝備"
     />
   </article>
+  <CourtAnalytics />
 </BaseLayout>

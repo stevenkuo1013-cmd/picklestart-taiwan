@@ -11,6 +11,7 @@ import {
 } from "../../data/courts";
 import { courtGuideProfiles } from "../../data/court-guides";
 import { getCourtMapAction } from "../../lib/court-maps";
+import CourtAnalytics from "../../components/CourtAnalytics.astro";
 import "../../styles/guide.css";
 
 const regions = ["北部", "中部", "南部"] as const;
@@ -245,6 +246,11 @@ const faqItems = [
                           {getCourtMapAction(city.city, place).href ? (
                             <a
                               href={getCourtMapAction(city.city, place).href!}
+                              data-court-action="map"
+                              data-court-id={place.id}
+                              data-court-city={city.id}
+                              data-court-ownership={place.ownership ?? "public"}
+                              data-court-page="hub"
                               target="_blank"
                               rel="noopener noreferrer"
                               class={getCourtMapAction(city.city, place).kind === "search" && !place.mapLinkCheckedAt ? "is-map-search" : "is-map-place"}
@@ -258,6 +264,11 @@ const faqItems = [
                           {place.bookingUrl && (
                             <a
                               href={place.bookingUrl}
+                              data-court-action="booking"
+                              data-court-id={place.id}
+                              data-court-city={city.id}
+                              data-court-ownership={place.ownership ?? "public"}
+                              data-court-page="hub"
                               target="_blank"
                               rel="noopener noreferrer"
                               class="courts-v3-booking-link"
@@ -396,6 +407,7 @@ const faqItems = [
       </div>
     </section>
   </article>
+  <CourtAnalytics />
 </BaseLayout>
 
 <script>

@@ -1,0 +1,22 @@
+<!-- V4.12: shared, one-event-per-click listener for court map/booking links. -->
+<script>
+  import { trackEvent } from "../lib/analytics";
+  import { getCourtClickEvent } from "../lib/court-analytics";
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const link = event.target.closest<HTMLAnchorElement>("a[data-court-action]");
+    if (!link) return;
+
+    const click = getCourtClickEvent({
+      action: link.dataset.courtAction,
+      court: link.dataset.courtId,
+      city: link.dataset.courtCity,
+      ownership: link.dataset.courtOwnership,
+      page: link.dataset.courtPage
+    });
+
+    if (click) trackEvent(click.name, click.props);
+    // Keep the original href, target and navigation behaviour unchanged.
+  });
+</script>
