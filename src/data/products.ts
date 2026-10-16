@@ -29,7 +29,7 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.headsports.com.tw/categories/pickleball-rackets",
+      "https://www.headsports.com.tw/zh-hant/products/infin-pickleball-paddle-colorful",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-09-28",
     active: true,
@@ -51,7 +51,7 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.headsports.com.tw/products/infin-pickleball-paddle",
+      "https://www.headsports.com.tw/zh-hant/products/infin-pickleball-paddle",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-09-28",
     active: true,
@@ -60,8 +60,8 @@ export const products: Product[] = [
     tags: ["carbon", "16mm", "value"]
   },
   {
-    id: "head-kickstarter-200216",
-    name: "HEAD Kickstarter Pickleball 15mm",
+    id: "head-kickstarter-200206",
+    name: "HEAD Kickstarter Pickleball 15mm（黃色）",
     brand: "HEAD",
     category: "paddle",
     recommendationTier: 2,
@@ -73,9 +73,9 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.headsports.com.tw/zh-hant/products/head-kickstarter-pickleball-200216",
+      "https://www.headsports.com.tw/zh-hant/products/head-kickstarter-pickleball-200206",
     evidenceLevel: "manufacturer_specs",
-    lastVerified: "2026-09-28",
+    lastVerified: "2026-10-16",
     active: true,
     shortReason:
       "15mm 平衡控攻與玻纖拍面，定位明確的新手至進階入門款。",
@@ -95,7 +95,7 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.headsports.com.tw/categories/beginner",
+      "https://www.headsports.com.tw/zh-hant/products/adidas-match-light-2026-paddle",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-09-28",
     active: true,
@@ -117,7 +117,7 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.headsports.com.tw/categories/intermediate",
+      "https://www.headsports.com.tw/zh-hant/products/head-gravity-xceed-2026-pickleball-200626",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-09-28",
     active: true,
@@ -126,48 +126,48 @@ export const products: Product[] = [
     tags: ["intermediate", "mid-range"]
   },
   {
-    id: "franklin-signature-pro-13",
-    name: "Franklin Signature Pro 13mm",
-    brand: "Franklin",
+    id: "head-radical-xceed-2026",
+    name: "HEAD Radical XCEED 2026 15mm 匹克球拍",
+    brand: "HEAD",
     category: "paddle",
     recommendationTier: 3,
-    merchant: "Franklin Sports Taiwan",
-    priceMin: 3280,
-    priceMax: 3480,
+    merchant: "INFIN Taiwan",
+    priceMin: 3060,
+    priceMax: 3600,
     experience: ["few_times", "weekly", "serious"],
     goals: ["regular", "improve", "competitive"],
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.franklinsports.com.tw/products/franklinsignature-pro%E5%B0%88%E6%A5%AD%E7%8E%BB%E7%92%83%E7%BA%96%E7%B6%AD%E5%8C%B9%E5%85%8B%E7%90%83%E6%8B%8D13mm-%E9%BB%91%E9%87%91",
+      "https://www.headsports.com.tw/zh-hant/products/head-radical-xceed-2026-pickleball-200616",
     evidenceLevel: "manufacturer_specs",
-    lastVerified: "2026-09-28",
+    lastVerified: "2026-10-16",
     active: true,
     shortReason:
-      "13mm 較偏快速回彈與攻防轉換，適合已有基本經驗的玩家。",
-    tags: ["13mm", "intermediate", "speed"]
+      "15mm 玻璃纖維拍面、SpinOn 旋轉設計，適合逐步進階、重視全能控攻的使用者。",
+    tags: ["15mm", "intermediate", "all-court", "fiberglass", "taiwan"]
   },
   {
-    id: "franklin-signature-pro-16",
-    name: "Franklin Signature Pro 16mm",
-    brand: "Franklin",
+    id: "kasaca-pro-max-ii-16mm",
+    name: "KASACA Pro Max II 16mm 碳纖維匹克球拍",
+    brand: "KASACA",
     category: "paddle",
     recommendationTier: 3,
-    merchant: "Franklin Sports Taiwan",
-    priceMin: 3280,
-    priceMax: 3480,
+    merchant: "Decathlon Taiwan（第三方賣家）",
+    priceMin: 3043,
+    priceMax: 3580,
     experience: ["few_times", "weekly", "serious"],
     goals: ["regular", "improve", "competitive"],
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.franklinsports.com.tw/products/franklinsignature-pro%E5%B0%88%E6%A5%AD%E7%8E%BB%E7%92%83%E7%A2%B3%E7%BA%96%E7%B6%AD%E5%8C%B9%E5%85%8B%E7%90%83%E6%8B%8D16mm-%E6%B7%A1%E7%B4%AB",
+      "https://www.decathlon.tw/p/%E9%96%8B%E5%AD%B8%E5%AD%A3-%E5%85%AB%E4%BA%94%E6%8A%98-kasaca-pro-max-ii-%E5%8C%B9%E5%85%8B%E7%90%83%E6%8B%8D-%E5%B0%88%E6%A5%AD%E7%AB%B6%E6%8A%80%E6%AC%BE-kasaca-1b4ce477-17f4-4460-8b59-c8e0efed4a0c.html",
     evidenceLevel: "manufacturer_specs",
-    lastVerified: "2026-09-28",
+    lastVerified: "2026-10-16",
     active: true,
     shortReason:
-      "16mm 較偏穩定控制與容錯，適合希望長期練習的玩家。",
-    tags: ["16mm", "intermediate", "control"]
+      "16mm T700 碳纖維拍面與熱壓結構，適合固定練習、注重旋轉與控制的玩家；迪卡儂第三方商家販售。",
+    tags: ["16mm", "carbon", "intermediate", "control", "marketplace"]
   },
   {
     id: "head-radical-team-15-2026",
@@ -235,9 +235,9 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.decathlon.tw/en-TW/p/pickeball-racket-react-purple-kuikma-8941058.html",
+      "https://www.decathlon.tw/p/%E7%A2%B3%E7%BA%96%E7%B6%AD%E5%8C%B9%E5%85%8B%E7%90%83%E6%8B%8D-react-%E7%B4%AB%E8%89%B2-kuikma-8941058.html",
     evidenceLevel: "manufacturer_specs",
-    lastVerified: "2026-10-01",
+    lastVerified: "2026-10-16",
     active: true,
     shortReason:
       "16mm 碳纖維拍面、寬厚拍頭與 235g 配置，適合已開始固定打球、想要高容錯與好操作感的人。",
@@ -310,7 +310,7 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://joola.tw/product-category/pickleball-all/pickleball-paddles/pickleball-paddles-singles/",
+      "https://joola.tw/product/ben-johns-hyperion-cfs-16-pickleball-paddle/",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-10-01",
     active: true,
@@ -360,7 +360,7 @@ export const products: Product[] = [
     venue: ["outdoor"],
     packSize: 3,
     sourceUrl:
-      "https://www.headsports.com.tw/en/categories/head-pickleball",
+      "https://www.headsports.com.tw/zh-hant/products/championship-40",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-09-28",
     active: true,
@@ -384,7 +384,7 @@ export const products: Product[] = [
       "https://www.headsports.com.tw/en/categories/head-pickleball",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-09-28",
-    active: true,
+    active: false,
     shortReason:
       "小包裝室內球，適合先確認常用場地後再大量補充。",
     tags: ["indoor", "3-pack"]
@@ -427,7 +427,7 @@ export const products: Product[] = [
     venue: ["outdoor"],
     packSize: 5,
     sourceUrl:
-      "https://www.headsports.com.tw/categories/infin-pickleball",
+      "https://www.headsports.com.tw/zh-hant/products/pickleball-ball-outdoor",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-10-01",
     active: true,
@@ -450,7 +450,7 @@ export const products: Product[] = [
     venue: ["indoor"],
     packSize: 5,
     sourceUrl:
-      "https://www.headsports.com.tw/categories/infin-pickleball",
+      "https://www.headsports.com.tw/zh-hant/products/pickleball-ball-indoor",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-10-01",
     active: true,
@@ -475,9 +475,9 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.decathlon.tw/c/%E7%90%83%E6%8B%8D%E9%81%8B%E5%8B%95/%E7%B6%B2%E7%90%83/%E7%B6%B2%E7%90%83%E9%9E%8B/%E7%94%B7%E6%AC%BE%E7%B6%B2%E7%90%83%E9%9E%8B.html",
+      "https://www.decathlon.tw/p/%E7%94%B7%E6%AC%BE%E5%A4%9A%E7%A8%AE%E5%A0%B4%E5%9C%B0%E7%B6%B2%E7%90%83%E9%9E%8B-essential-%E5%85%A8%E7%99%BD-decathlon-8668903.html",
     evidenceLevel: "manufacturer_specs",
-    lastVerified: "2026-09-28",
+    lastVerified: "2026-10-16",
     active: true,
     shortReason:
       "低價多場地網球鞋，可作為沒有場地鞋、但開始固定打球者的入門選項。",
@@ -496,9 +496,9 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.decathlon.tw/en-TW/p/multi-court-tennis-shoes-ts500-off-white-artengo-8882112.html",
+      "https://www.decathlon.tw/p/%E5%A4%9A%E5%A0%B4%E5%9C%B0%E9%81%A9%E7%94%A8%E6%AC%BE%E7%B6%B2%E7%90%83%E9%81%8B%E5%8B%95%E9%9E%8B-500-%E4%B9%B3%E7%99%BD%E8%89%B2-artengo-8882112.html",
     evidenceLevel: "manufacturer_specs",
-    lastVerified: "2026-09-28",
+    lastVerified: "2026-10-16",
     active: true,
     shortReason:
       "多場地設計、定位在較頻繁場上移動的使用情境。",
@@ -517,7 +517,7 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.headsports.com.tw/en/categories/k-swiss",
+      "https://www.headsports.com.tw/zh-hant/products/k-swiss-express-light-pickleball-2-04902-074",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-09-28",
     active: true,
@@ -542,7 +542,7 @@ export const products: Product[] = [
     venue: ["both"],
     packSize: 1,
     sourceUrl:
-      "https://www.headsports.com.tw/categories/head-pickleball",
+      "https://www.headsports.com.tw/zh-hant/products/head-motion-pro-pickleball-men-shoes-273746",
     evidenceLevel: "manufacturer_specs",
     lastVerified: "2026-10-01",
     active: true,
@@ -578,24 +578,24 @@ export const products: Product[] = [
   // NET
   // ----------------------------
   {
-    id: "conti-portable-pickleball-net",
-    name: "CONTI 便攜式匹克球網組",
-    brand: "CONTI",
+    id: "infmarc-portable-pickleball-net",
+    name: "INFMARC 6.7m 便攜式匹克球網架組",
+    brand: "INFMARC",
     category: "net",
-    merchant: "CONTI Taiwan",
-    priceMin: 5980,
-    priceMax: 5980,
+    merchant: "Decathlon Taiwan（第三方賣家）",
+    priceMin: 3200,
+    priceMax: 3200,
     experience: ["first_time", "few_times", "weekly", "serious"],
     goals: ["casual", "regular", "improve", "competitive"],
     venue: ["outdoor"],
     packSize: 1,
     sourceUrl:
-      "https://www.conti.com.tw/product/",
+      "https://www.decathlon.tw/p/%E9%99%90%E6%9C%AC%E5%B3%B6%E9%85%8D%E9%80%81-%E5%8C%B9%E5%85%8B%E7%90%83%E7%B6%B2-%E5%8F%AF%E6%94%9C%E5%BC%8F%E5%8C%B9%E5%85%8B%E7%90%83%E7%B6%B2%E6%9E%B6%E7%B5%84-%E6%94%B6%E7%B4%8D%E5%BC%8F%E7%90%83%E7%B6%B2-infmarc-2ff57cf2-fc1d-4578-96fa-1ed83526c1ec.html",
     evidenceLevel: "manufacturer_specs",
-    lastVerified: "2026-09-28",
+    lastVerified: "2026-10-16",
     active: true,
     shortReason:
-      "只有需要自行架設完整場地時才應納入預算。",
-    tags: ["portable-net", "self-setup"]
+      "自架場地才需要的 6.7m 可收納網架；商品頁標示僅限台灣本島配送，購買前請確認規格與供貨。",
+    tags: ["portable-net", "self-setup", "taiwan-main-island", "marketplace"]
   }
 ];
