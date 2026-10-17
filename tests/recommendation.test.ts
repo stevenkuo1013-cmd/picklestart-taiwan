@@ -306,13 +306,14 @@ describe("buildStarterKit", () => {
 });
 
 describe("real product catalog", () => {
-  it("contains 25 active catalog products", () => {
+  it("contains 25 catalog entries, with only the unavailable indoor ball inactive", () => {
     expect(products).toHaveLength(25);
-    expect(
-      products.every(
-        (product) => product.active
-      )
-    ).toBe(true);
+
+    const inactiveIds = products
+      .filter((product) => !product.active)
+      .map((product) => product.id);
+    expect(inactiveIds).toEqual(["head-championship-indoor-3"]);
+    expect(products.filter((product) => product.active)).toHaveLength(24);
   });
 
   it("contains no mock products", () => {

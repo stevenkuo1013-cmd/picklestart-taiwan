@@ -86,9 +86,14 @@ describe("recommended spend ranges", () => {
 
     const result = buildStarterKit(input);
 
-    expect(result.estimatedMinSpend).toBe(9555);
-    expect(result.estimatedMaxSpend).toBe(10200);
+    expect(result.estimatedMinSpend).toBe(6775);
+    expect(result.estimatedMaxSpend).toBe(7420);
     expect(result.productRecommendations).toHaveLength(0);
+    expect(
+      result.warnings.some((warning) => warning.code === "BUDGET_INSUFFICIENT")
+    ).toBe(true);
+    // Estimates are still shown, but no cart details are built when over budget.
+    expect(result.spendBreakdown).toHaveLength(0);
   });
 
   it("E reflects the single tier-2 paddle recommendation", () => {

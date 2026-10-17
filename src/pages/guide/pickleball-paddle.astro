@@ -1,0 +1,302 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideBreadcrumbs from "../../components/GuideBreadcrumbs.astro";
+import GuideFAQ from "../../components/GuideFAQ.astro";
+import GuideRelatedLinks from "../../components/GuideRelatedLinks.astro";
+import GuideEndCTA from "../../components/GuideEndCTA.astro";
+import "../../styles/guide.css";
+
+const faqItems = [
+  {
+    question: "新手第一支匹克球拍一定要買碳纖維嗎？",
+    answer: "不用。玻璃纖維與碳纖維都有不同價位、結構和手感；對剛開始打的人來說，握起來舒服、重量合適、願意持續拿去打，比單看材質重要。"
+  },
+  {
+    question: "13mm 和 16mm 球拍，哪個比較適合新手？",
+    answer: "不能只看厚度決定。較厚的核心常給人比較柔和的控球手感，較薄的核心常更直接，但拍面、核心結構和整體重量也會影響表現；有機會最好實際試打。"
+  },
+  {
+    question: "匹克球拍價格要抓多少才合理？",
+    answer: "第一次體驗可以先借拍。若確定想繼續打，先依實際可用預算設定上限，再把球、鞋和其他真正需要的裝備算進去；不要只因為折扣或別人用高階拍就超出預算。",
+    href: "/guide/beginner-budget/",
+    linkLabel: "看新手整套裝備預算"
+  },
+  {
+    question: "比賽一定要用認證球拍嗎？",
+    answer: "如果打算參加有器材規範的正式賽事，應先看主辦單位採用的規則，並核對該型號是否在指定的核准名單中。一般新手體驗則先向場館確認器材要求即可。"
+  }
+];
+
+const relatedItems = [
+  {
+    href: "/guide/beginner-equipment/",
+    title: "第一次要買哪些裝備？",
+    description: "球拍之外，球、鞋、球網哪些該先準備"
+  },
+  {
+    href: "/guide/beginner-budget/",
+    title: "第一套裝備預算",
+    description: "先算真正缺什麼，再決定球拍能花多少"
+  },
+  {
+    href: "/guide/first-game/",
+    title: "第一次去球場",
+    description: "確認能不能借拍，少花一次冤枉錢"
+  }
+];
+---
+
+<BaseLayout
+  pageType="article"
+  datePublished="2026-10-17"
+  dateModified="2026-10-17"
+  title="匹克球拍推薦與選購指南｜新手第一支怎麼選？｜PickleStart Taiwan"
+  description="第一次買匹克球拍怎麼選？從價格、13mm 與 16mm 厚度、碳纖維與玻璃纖維、重量與握把開始，整理台灣新手挑第一支球拍真正需要知道的事。"
+  breadcrumbs={[
+    { name: "首頁", href: "/" },
+    { name: "匹克球新手指南", href: "/guide/" },
+    { name: "匹克球拍選購指南", href: "/guide/pickleball-paddle/" }
+  ]}
+>
+  <article class="guide-page paddle-buying-guide">
+    <GuideBreadcrumbs current="匹克球拍選購指南" />
+
+    <div class="guide-hero">
+      <p class="eyebrow">YOUR FIRST PADDLE · BEGINNER GUIDE</p>
+      <h1>第一次買匹克球拍？<br />先挑順手的。</h1>
+      <p class="guide-lead">
+        搜尋「匹克球拍推薦」很容易看到一整排品牌和規格。但如果你連自己喜歡什麼手感都還不知道，
+        第一支真的不用買最貴。先看這幾個關鍵，再決定要不要買。
+      </p>
+      <div class="guide-cta-row">
+        <a
+          class="primary-button"
+          href="/builder/?from=guide_inline&article=pickleball-paddle"
+          data-analytics-event="guide_builder_clicked"
+          data-analytics-detail-event="guide_builder_source"
+          data-analytics-placement="hero_inline"
+          data-analytics-article="pickleball-paddle"
+        >
+          幫我配第一套裝備 →
+        </a>
+        <span>回答 6 題 · 不需註冊</span>
+      </div>
+    </div>
+
+    <section class="guide-summary" aria-label="新手選球拍重點">
+      <div><span class="guide-summary-label">還沒打過</span><strong>先借拍體驗</strong></div>
+      <div><span class="guide-summary-label">準備買第一支</span><strong>先看握感與重量</strong></div>
+      <div><span class="guide-summary-label">規格怎麼選</span><strong>厚度不是成績保證</strong></div>
+    </section>
+
+    <section class="guide-section" id="try-first">
+      <p class="guide-step">01 · BEFORE BUYING</p>
+      <h2>先問自己：我真的需要現在買球拍嗎？</h2>
+      <p>
+        第一次去體驗課、朋友揪團，或是還不確定會不會固定打？先問球館、教練或朋友能不能借拍。
+        多打一兩次再買，你會比較知道自己喜歡輕一點、手感柔和一點，還是擊球回饋直接一點。
+      </p>
+      <div class="guide-note">
+        <strong>PickleStart 的原則</strong>
+        <p>你已經有能用的球拍，就先用；沒有的話，先確認場地能不能借。把錢花在真正需要的地方。</p>
+      </div>
+    </section>
+
+    <section class="guide-section" id="thickness">
+      <p class="guide-step">02 · CORE THICKNESS</p>
+      <h2>13mm、16mm 差在哪？別把厚度當作唯一答案</h2>
+      <p>
+        商品標示的 13mm、16mm，通常是球拍核心厚度。它會影響擊球回饋，但不會單獨決定一支拍的控制力或威力。
+        核心材質、拍面、形狀與重量，也都會一起影響實際手感。
+      </p>
+      <div class="paddle-compare-grid">
+        <article class="paddle-compare-card">
+          <span class="paddle-spec">13 mm 左右</span>
+          <h3>擊球回饋可能更直接</h3>
+          <p>部分較薄的球拍手感比較俐落；但不是每支薄拍都一定更有力量，也不代表較難控制。</p>
+        </article>
+        <article class="paddle-compare-card">
+          <span class="paddle-spec">16 mm 左右</span>
+          <h3>常見較柔和的控球取向</h3>
+          <p>部分較厚的球拍更重視穩定與觸球感；但厚拍也可能很有彈性，仍要看整體設計。</p>
+        </article>
+      </div>
+      <p class="paddle-micro-note">比起只盯著 mm 數字，實際試打時更值得注意：你是否容易把球控制到想要的位置？</p>
+    </section>
+
+    <section class="guide-section" id="materials">
+      <p class="guide-step">03 · PADDLE FACE</p>
+      <h2>玻璃纖維、碳纖維，哪一種值得買？</h2>
+      <p>
+        你會常看到「玻璃纖維（Fiberglass）」和「碳纖維（Carbon Fiber）」兩個詞。
+        它們是常見的拍面材料，卻不能直接拿材質名稱判斷一支球拍的好壞。
+      </p>
+      <div class="paddle-compare-grid">
+        <article class="paddle-compare-card">
+          <span class="paddle-spec">FIBERGLASS</span>
+          <h3>玻璃纖維球拍</h3>
+          <p>入門款常見的材料之一。價格和彈性表現會因產品不同而變化，適不適合還是要看整支球拍的設計。</p>
+        </article>
+        <article class="paddle-compare-card">
+          <span class="paddle-spec">CARBON FIBER</span>
+          <h3>碳纖維球拍</h3>
+          <p>從平價到高階都有；不同碳纖維結構也可能帶來完全不同的回饋。看到「T700」不等於一定比較好打。</p>
+        </article>
+      </div>
+      <p class="paddle-micro-note">新手不用為了「一定要碳纖維」硬拉高預算；先看適用程度、握感、售後與可接受價格。</p>
+    </section>
+
+    <section class="guide-section" id="weight-grip">
+      <p class="guide-step">04 · FEEL IN YOUR HAND</p>
+      <h2>重量與握把，往往比規格表更值得先看</h2>
+      <p>
+        不少球拍落在約 220–240 公克的區間，對新手可當成試握的起點，並不是標準答案。
+        拿起來不吃力是一回事，連續揮拍、快速換方向會不會累又是另一回事；同樣重量的球拍也可能因配重不同而有不同感覺。
+      </p>
+      <div class="paddle-check-grid">
+        <div><span>01</span><strong>自然握住</strong><p>不用特別用力捏，手指不會擠成一團。</p></div>
+        <div><span>02</span><strong>連續揮幾下</strong><p>正反手切換時，拍頭不會一直拖著手走。</p></div>
+        <div><span>03</span><strong>打幾球看看</strong><p>感受擊球點偏掉時，球拍是否容易扭動。</p></div>
+      </div>
+      <p class="paddle-micro-note">如果可以到實體店或球館試握，通常比只看網路上的重量數字更有參考價值。</p>
+    </section>
+
+    <section class="guide-section" id="budget">
+      <p class="guide-step">05 · YOUR BUDGET</p>
+      <h2>匹克球拍價格怎麼抓？先看你打球的頻率</h2>
+      <p>以下是規劃第一支球拍預算的簡單分法，不是市場行情統計，也不是價格越高就越好。</p>
+      <div class="paddle-budget-grid">
+        <article>
+          <span>先體驗看看</span>
+          <strong>先借拍，或抓 NT$1,500 內</strong>
+          <p>還不確定是否持續打球，就不用急著升級到昂貴的球拍。</p>
+        </article>
+        <article>
+          <span>開始固定打</span>
+          <strong>約 NT$1,500–3,500</strong>
+          <p>有機會比較握感、厚度與材質，重點是找到願意長期使用的選擇。</p>
+        </article>
+        <article>
+          <span>已有明確偏好</span>
+          <strong>NT$3,500 以上再評估</strong>
+          <p>知道自己想改善的手感或打法，再考慮更高價位的規格。</p>
+        </article>
+      </div>
+      <p class="paddle-micro-note">價位區間僅供預算規劃，非即時商品報價。還需要球、場地鞋或第二支球拍時，記得一起算進總預算。</p>
+      <a class="guide-inline-link" href="/guide/beginner-budget/">看第一套匹克球裝備要花多少 →</a>
+    </section>
+
+    <section class="guide-section" id="mistakes">
+      <p class="guide-step">06 · BUY SMART</p>
+      <h2>買第一支球拍，先避開這四個常見誤區</h2>
+      <div class="guide-skip-grid">
+        <article><strong>以為越貴就越適合新手</strong><p>預算有限時，球拍不必吃掉所有裝備費用。</p></article>
+        <article><strong>以為 16mm 一定比 13mm 好</strong><p>厚度只是一個條件，還是要看整體手感。</p></article>
+        <article><strong>只看材質或行銷用語</strong><p>「碳纖維」、「高旋轉」不會自動變成適合你的拍。</p></article>
+        <article><strong>沒確認型號就下單</strong><p>看清楚商品規格、價格、供貨與退換貨方式。</p></article>
+      </div>
+    </section>
+
+    <section class="guide-section" id="quick-pick">
+      <p class="guide-step">TAKEAWAY</p>
+      <h2>如果今天就要選，記住這個順序</h2>
+      <div class="paddle-steps" aria-label="選購球拍的三個步驟">
+        <p><strong>先決定要不要買。</strong>能借拍體驗就不一定要立刻花錢。</p>
+        <p><strong>再抓合理的總預算。</strong>先扣掉其他必要裝備，剩下的才是球拍預算。</p>
+        <p><strong>最後比較握感與手感。</strong>厚度、材質、重量一起看，不用追求單一規格。</p>
+      </div>
+    </section>
+
+    <GuideFAQ items={faqItems} />
+    <GuideRelatedLinks items={relatedItems} />
+    <GuideEndCTA
+      heading="第一支球拍不用靠猜，也不用一次買齊。"
+      text="回答 6 題，讓新手配裝工具依照你的預算、程度、打球場地與已有裝備，整理出真正需要購買的項目。"
+      buttonText="幫我配第一套裝備"
+    />
+
+    <section class="guide-source-note">
+      <h2>資料與選購提醒</h2>
+      <p>
+        本文整理一般選購原則，不是針對個別球拍做過實測，也不保證某種材質或厚度一定帶來特定表現。
+        價格、貨況、商品規格與賽事器材規定可能改變，購買前請以商家及主辦單位最新資訊為準。
+      </p>
+      <div class="source-links">
+        <a href="https://usapickleball.org/docs/eec/Equipment-Standards-Manual.pdf" target="_blank" rel="noopener noreferrer">USA Pickleball：Equipment Standards Manual ↗</a>
+        <a href="https://pickleball.com/docs/en/article/pickleball-paddle-buying-guide-how-to-choose-the-right-paddle" target="_blank" rel="noopener noreferrer">Pickleball.com：Paddle Buying Guide ↗</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .paddle-buying-guide .paddle-compare-grid,
+  .paddle-buying-guide .paddle-budget-grid,
+  .paddle-buying-guide .paddle-check-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .paddle-buying-guide .paddle-budget-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .paddle-buying-guide .paddle-check-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .paddle-buying-guide .paddle-compare-card,
+  .paddle-buying-guide .paddle-budget-grid article,
+  .paddle-buying-guide .paddle-check-grid > div {
+    border: 1px solid #dfe9eb;
+    border-radius: 20px;
+    background: #fff;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(16, 36, 63, .035);
+  }
+  .paddle-buying-guide .paddle-spec,
+  .paddle-buying-guide .paddle-budget-grid article > span,
+  .paddle-buying-guide .paddle-check-grid span {
+    display: block;
+    color: #087fa5;
+    font-size: .76rem;
+    font-weight: 850;
+    letter-spacing: .045em;
+    margin-bottom: 10px;
+  }
+  .paddle-buying-guide .paddle-compare-card h3,
+  .paddle-buying-guide .paddle-budget-grid strong,
+  .paddle-buying-guide .paddle-check-grid strong {
+    display: block;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #10243f;
+  }
+  .paddle-buying-guide .paddle-compare-card p,
+  .paddle-buying-guide .paddle-budget-grid p,
+  .paddle-buying-guide .paddle-check-grid p {
+    margin: 11px 0 0;
+    color: #526579;
+    line-height: 1.8;
+    font-size: .92rem;
+  }
+  .paddle-buying-guide .paddle-micro-note {
+    margin-top: 12px;
+    color: #587184;
+    font-size: .89rem;
+  }
+  .paddle-buying-guide .paddle-steps {
+    background: linear-gradient(125deg, #ecf9fc, #fcfff0);
+    border: 1px solid #dcebed;
+    border-radius: 22px;
+    padding: 16px 25px;
+  }
+  .paddle-buying-guide .paddle-steps p { margin: 15px 0; }
+  .paddle-buying-guide .paddle-steps strong { color: #075f7e; }
+  @media (max-width: 780px) {
+    .paddle-buying-guide .paddle-budget-grid,
+    .paddle-buying-guide .paddle-check-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .paddle-buying-guide .paddle-compare-grid { grid-template-columns: 1fr; }
+    .paddle-buying-guide .paddle-compare-card,
+    .paddle-buying-guide .paddle-budget-grid article,
+    .paddle-buying-guide .paddle-check-grid > div { padding: 18px; }
+    .paddle-buying-guide .paddle-steps { padding: 14px 18px; }
+  }
+</style>
