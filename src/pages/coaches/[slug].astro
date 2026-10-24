@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CoachAnalytics from "../../components/CoachAnalytics.astro";
+import { coachDirectory, type CoachProfile } from "../../data/coaches";
+import { publishedCoaches, coachContacts } from "../../lib/coach-directory";
+import "../../styles/coaches.css";
+
+export const getStaticPaths = () => publishedCoaches(coachDirectory).map((coach) => ({ params: { slug: coach.id }, props: { coach } }));
+
+const { coach } = Astro.props as { coach: CoachProfile };
+const contacts = coachContacts(coach);
+const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE" };
+---
+<BaseLayout
+  title={`${coach.displayName}｜${coach.cities.join("、")}匹克球教練｜PickleStart Taiwan`}
+  description={`${coach.displayName} 的匹克球教學地區：${coach.teachingAreas.join("、")}。適合程度：${coach.levels.join("、")}。可透過公開 IG、FB 或 LINE 自行詢問課程。`}
+  breadcrumbs={[{ name: "首頁", href: "/" }, { name: "找教練", href: "/coaches/" }, { name: coach.displayName, href: `/coaches/${coach.id}/` }]}
+>
+  <article class="coach-profile">
+    <nav class="coach-crumbs" aria-label="麵包屑"><a href="/">首頁</a><span aria-hidden="true">›</span><a href="/coaches/">找教練</a><span aria-hidden="true">›</span><span aria-current="page">{coach.displayName}</span></nav>
+    <header class="coach-profile-head">
+      <div class="coach-avatar coach-avatar-large">{coach.photo ? <img src={coach.photo} alt={`${coach.displayName} 的公開照片`} /> : <span aria-hidden="true">◉</span>}</div>
+      <div><p class="coach-eyebrow">COACH PROFILE · PUBLIC INFO</p><h1>{coach.displayName}</h1><p>{coach.teachingAreas.join("、")}</p><div class="coach-tags">{coach.levels.map((level) => <span>{level}</span>)}{coach.formats.map((format) => <span class="coach-tag-alt">{format}</span>)}</div></div>
+    </header>
+    <section class="coach-profile-main"><h2>關於教練</h2><p>{coach.introduction}</p>{coach.experience && <p><strong>教學經驗（教練自述）：</strong>{coach.experience}</p>}{coach.qualifications && <p><strong>資格／經歷（教練自述）：</strong>{coach.qualifications}</p>}<p class="coach-confirmed">資料最近確認：{coach.lastConfirmed}</p></section>
+    <section class="coach-profile-contact"><div><p class="coach-eyebrow">GET IN TOUCH</p><h2>私訊教練，了解課程</h2><p>點選教練提供的社群連結自行洽談；本站不參與預約、報價或付款。</p></div><div class="coach-contact-buttons">{contacts.map((contact) => <a href={contact.href} target="_blank" rel="noopener noreferrer external nofollow" data-coach-id={coach.id} data-coach-network={contact.network} aria-label={`透過 ${networkNames[contact.network]} 聯絡 ${coach.displayName}`}>{networkNames[contact.network]} ↗</a>)}</div></section>
+    <p class="coach-profile-disclaimer">上述資料由教練提供並同意公開；請自行確認課程細節與教學資格。PickleStart 不提供課程安排或交易服務。教練本人如需更正或撤下資料，請私訊 <a href="https://www.instagram.com/picklestart.taiwan/" target="_blank" rel="noopener noreferrer external nofollow">PickleStart 官方 Instagram</a>。</p>
+    <a class="coach-back" href="/coaches/">← 回到全台教練目錄</a>
+  </article>
+  <CoachAnalytics />
+</BaseLayout>

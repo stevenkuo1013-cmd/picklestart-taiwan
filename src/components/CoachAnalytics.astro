@@ -1,0 +1,11 @@
+<script>
+  import { trackEvent } from "../lib/analytics";
+  import { getCoachClickEvent } from "../lib/coach-analytics";
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const anchor = event.target.closest<HTMLAnchorElement>("a[data-coach-network]");
+    if (!anchor) return;
+    const action = getCoachClickEvent(anchor.dataset.coachId, anchor.dataset.coachNetwork);
+    if (action) trackEvent(action.name, action.props);
+  });
+</script>

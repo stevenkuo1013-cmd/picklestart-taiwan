@@ -12,6 +12,7 @@ const path = Astro.url.pathname;
       <a class:list={[{ active: path === "/" }]} href="/">首頁</a>
       <a class:list={[{ active: path.startsWith("/guide") }]} href="/guide/">新手指南</a>
       <a class:list={[{ active: path.startsWith("/courts") }]} href="/courts/">找場地</a>
+      <a class:list={[{ active: path.startsWith("/coaches") }]} href="/coaches/">找教練</a>
       <a
         class:list={[{ active: path === "/builder/" }]}
         href="/builder/?from=nav"
@@ -46,6 +47,7 @@ const path = Astro.url.pathname;
         <a class:list={[{ active: path === "/" }]} href="/" aria-current={path === "/" ? "page" : undefined}>首頁</a>
         <a class:list={[{ active: path.startsWith("/guide") }]} href="/guide/" aria-current={path.startsWith("/guide") ? "page" : undefined}>新手指南</a>
         <a class:list={[{ active: path.startsWith("/courts") }]} href="/courts/" aria-current={path.startsWith("/courts") ? "page" : undefined}>找場地</a>
+        <a class:list={[{ active: path.startsWith("/coaches") }]} href="/coaches/" aria-current={path.startsWith("/coaches") ? "page" : undefined}>找教練</a>
         <a
           class:list={[{ active: path === "/builder/" }]}
           href="/builder/?from=mobile_nav"

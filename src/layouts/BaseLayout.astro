@@ -13,6 +13,7 @@ interface Props {
   pageType?: "website" | "article";
   datePublished?: string;
   dateModified?: string;
+  robots?: "index,follow,max-image-preview:large" | "noindex,follow";
   breadcrumbs?: Array<{
     name: string;
     href: string;
@@ -26,7 +27,8 @@ const {
   pageType = "website",
   datePublished,
   dateModified,
-  breadcrumbs = []
+  breadcrumbs = [],
+  robots = "index,follow,max-image-preview:large"
 } = Astro.props;
 
 const siteBase = Astro.site ?? Astro.url.origin;
@@ -110,7 +112,7 @@ const structuredData = {
     <meta name="description" content={description} />
 
     <meta name="theme-color" content="#087fa5" />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="robots" content={robots} />
 
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png" />

@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CoachAnalytics from "../../components/CoachAnalytics.astro";
+import { coachDirectory, COACH_CITIES } from "../../data/coaches";
+import { COACH_FORM_URL } from "../../data/coach-form";
+import { publishedCoaches, coachContacts } from "../../lib/coach-directory";
+import "../../styles/coaches.css";
+
+const coaches = publishedCoaches(coachDirectory);
+const formIsReady = /^https:\/\/tally\.so\/r\/[A-Za-z0-9]+(?:[/?#].*)?$/.test(COACH_FORM_URL);
+const levels = ["零基礎", "初學", "進階", "競技"];
+const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE" };
+---
+
+<BaseLayout
+  title="全台匹克球教練｜依地區找新手教學與私人課｜PickleStart Taiwan"
+  description="想學匹克球卻不知道從哪找教練？依縣市與學習程度查看教練自行提供的授課資訊，再從 IG、FB 或 LINE 直接聯絡。本站不代為預約或收款。"
+  robots={coaches.length ? "index,follow,max-image-preview:large" : "noindex,follow"}
+  breadcrumbs={[{ name: "首頁", href: "/" }, { name: "全台匹克球教練", href: "/coaches/" }]}
+>
+  <div class="coach-directory">
+    <nav class="coach-crumbs" aria-label="麵包屑"><a href="/">首頁</a><span aria-hidden="true">›</span><span aria-current="page">找教練</span></nav>
+    <header class="coach-hero">
+      <div class="coach-hero-main">
+        <p class="coach-eyebrow">PICKLESTART · 找教練</p>
+        <h1>想學匹克球，<span>先找到適合你的教練。</span></h1>
+        <p>依教學地區與程度瀏覽教練介紹，再透過 Instagram、Facebook 或 LINE 直接聯絡本人。課程費用、時間與地點，交由你和教練自行確認。</p>
+        <div class="coach-hero-notes"><span>依地區搜尋</span><span>適合各種程度</span><span>直接私訊教練</span></div>
+      </div>
+    </header>
+
+    {coaches.length > 0 ? (
+      <>
+        <section class="coach-filter-panel" aria-label="教練搜尋條件">
+          <div class="coach-filter-heading"><h2>尋找適合自己的教練</h2><p>目前收錄 {coaches.length} 位公開刊登教練，資料仍會持續更新。</p></div>
+          <div class="coach-filters">
+            <label>教學縣市
+              <select id="coach-city-filter"><option value="">全台</option>{COACH_CITIES.map((city) => <option value={city}>{city}</option>)}</select>
+            </label>
+            <label>適合程度
+              <select id="coach-level-filter"><option value="">不限程度</option>{levels.map((level) => <option value={level}>{level}</option>)}</select>
+            </label>
+            <label>關鍵字
+              <input id="coach-keyword-filter" type="search" placeholder="教練名稱、區域、教學特色" autocomplete="off" />
+            </label>
+          </div>
+          <p class="coach-result-count" role="status" aria-live="polite">符合條件 <strong id="coach-visible-count">{coaches.length}</strong> 位</p>
+        </section>
+        <div class="coach-list" id="coach-list">
+          {coaches.map((coach) => (
+            <article class="coach-card" data-coach-id={coach.id} data-coach-city={coach.cities.join("|")} data-coach-level={coach.levels.join("|")} data-coach-search={[coach.displayName, ...coach.teachingAreas, ...coach.cities, ...coach.levels, ...coach.formats, coach.introduction].join(" ").toLocaleLowerCase("zh-TW")}>
+              <div class="coach-card-top">
+                <div class="coach-avatar">
+                  {coach.photo ? <img src={coach.photo} alt={`${coach.displayName} 的公開照片`} loading="lazy" /> : <span aria-hidden="true">◉</span>}
+                </div>
+                <div><p class="coach-card-kicker">PICKLEBALL COACH</p><h2>{coach.displayName}</h2><p class="coach-card-location">{coach.teachingAreas.join("、")}</p></div>
+              </div>
+              <div class="coach-tags">{coach.levels.map((level) => <span>{level}</span>)}{coach.formats.map((format) => <span class="coach-tag-alt">{format}</span>)}</div>
+              <p class="coach-card-intro">{coach.introduction}</p>
+              <div class="coach-card-bottom">
+                <a class="coach-more" href={`/coaches/${coach.id}/`}>查看教練資料 →</a>
+                <div class="coach-socials">{coachContacts(coach).map((contact) => <a href={contact.href} target="_blank" rel="noopener noreferrer external nofollow" data-coach-id={coach.id} data-coach-network={contact.network} aria-label={`透過 ${networkNames[contact.network]} 聯絡 ${coach.displayName}`}>{networkNames[contact.network]} ↗</a>)}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div id="coach-no-results" class="coach-no-results" hidden>目前沒有符合篩選條件的教練。可以試試其他縣市或程度。</div>
+      </>
+    ) : (
+      <section class="coach-empty" aria-labelledby="coach-empty-title">
+        <div class="coach-empty-icon" aria-hidden="true">↗</div>
+        <div><p class="coach-eyebrow">FIRST COACHES WANTED</p><h2 id="coach-empty-title">教練名單正在募集第一批資料</h2><p>我們只刊登教練同意公開、經過人工檢查的介紹與聯絡方式。目前尚無公開教練名單，不會用未確認資訊或示範人名充數。</p></div>
+      </section>
+    )}
+
+    <section class="coach-application" id="apply">
+      <div class="coach-application-copy">
+        <p class="coach-eyebrow">教練免費刊登</p>
+        <h2>讓更多想學匹克球的人找到你</h2>
+        <p>提供教學地區、適合程度、個人介紹，以及願意公開的 IG／FB／LINE 聯絡方式。我們確認資料後才會上架；目前這張表單只提供新增刊登申請。</p>
+      </div>
+      {formIsReady ? (
+        <a class="coach-apply-button" href={COACH_FORM_URL} target="_blank" rel="noopener noreferrer external nofollow">免費申請教練刊登 ↗</a>
+      ) : (
+        <p class="coach-application-pending" role="status">教練申請表單準備中，完成設定後開放刊登。</p>
+      )}
+    </section>
+
+    <aside class="coach-disclaimer" aria-label="平台服務說明">
+      <h2>聯絡與課程安排說明</h2>
+      <p>PickleStart Taiwan 僅提供教練自行提供並同意公開的基本資訊。課程時間、價格、場地、器材、付款與取消等事項請直接聯絡教練確認；本站不代洽、預約、代收款或介入課程爭議。教學經驗與證照如有刊登，除另行標示外均屬教練自述，非本站認證。</p>
+      <p>教練若需更正資料或不再刊登，請透過 <a href="https://www.instagram.com/picklestart.taiwan/" target="_blank" rel="noopener noreferrer external nofollow">PickleStart 官方 Instagram</a> 私訊聯絡我們。本站會先核對申請者身分，再人工處理；新增刊登表單不受理這類申請。</p>
+    </aside>
+  </div>
+  <CoachAnalytics />
+  <script>
+    const city = document.querySelector<HTMLSelectElement>("#coach-city-filter");
+    const level = document.querySelector<HTMLSelectElement>("#coach-level-filter");
+    const query = document.querySelector<HTMLInputElement>("#coach-keyword-filter");
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".coach-card[data-coach-id]"));
+    const count = document.querySelector<HTMLElement>("#coach-visible-count");
+    const noResults = document.querySelector<HTMLElement>("#coach-no-results");
+    const updateCoaches = () => {
+      const q = (query?.value || "").trim().toLocaleLowerCase("zh-TW");
+      let visible = 0;
+      for (const card of cards) {
+        const cities = (card.dataset.coachCity || "").split("|");
+        const levels = (card.dataset.coachLevel || "").split("|");
+        const match = (!city?.value || cities.includes(city.value)) &&
+          (!level?.value || levels.includes(level.value)) &&
+          (!q || (card.dataset.coachSearch || "").includes(q));
+        card.hidden = !match;
+        if (match) visible++;
+      }
+      if (count) count.textContent = String(visible);
+      if (noResults) noResults.hidden = visible !== 0;
+    };
+    city?.addEventListener("change", updateCoaches);
+    level?.addEventListener("change", updateCoaches);
+    query?.addEventListener("input", updateCoaches);
+  </script>
+</BaseLayout>

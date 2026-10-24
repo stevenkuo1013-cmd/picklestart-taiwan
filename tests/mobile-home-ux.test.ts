@@ -7,12 +7,12 @@ const home = file("src/pages/index.astro");
 const css = file("src/styles/public.css");
 
 describe("V4.16 mobile navigation and homepage simplification", () => {
-  it("uses a keyboard-accessible native disclosure menu with five destinations", () => {
+  it("uses a keyboard-accessible native disclosure menu with six destinations", () => {
     expect(header).toContain('<details class="mobile-menu">');
     expect(header).toContain('<summary aria-label="網站選單">');
     const panel = header.split('<nav class="mobile-menu-panel"')[1]?.split("</nav>")[0] ?? "";
-    expect((panel.match(/<a\b/g) ?? [])).toHaveLength(5);
-    for (const destination of ['href="/"', 'href="/guide/"', 'href="/courts/"', 'href="/builder/?from=mobile_nav"', 'href="/about/"']) {
+    expect((panel.match(/<a\b/g) ?? [])).toHaveLength(6);
+    for (const destination of ['href="/"', 'href="/guide/"', 'href="/courts/"', 'href="/coaches/"', 'href="/builder/?from=mobile_nav"', 'href="/about/"']) {
       expect(panel).toContain(destination);
     }
   });
