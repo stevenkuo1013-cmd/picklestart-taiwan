@@ -33,7 +33,50 @@ const path = Astro.url.pathname;
       data-analytics-detail-event="site_builder_source"
       data-analytics-placement="header_cta"
     >
-      開始配裝備 <span>→</span>
+      <span class="header-cta-long">開始配裝備</span><span class="header-cta-short">配裝備</span> <span aria-hidden="true">→</span>
     </a>
+
+    <details class="mobile-menu">
+      <summary aria-label="網站選單">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </summary>
+      <nav class="mobile-menu-panel" aria-label="手機主要導覽">
+        <a class:list={[{ active: path === "/" }]} href="/" aria-current={path === "/" ? "page" : undefined}>首頁</a>
+        <a class:list={[{ active: path.startsWith("/guide") }]} href="/guide/" aria-current={path.startsWith("/guide") ? "page" : undefined}>新手指南</a>
+        <a class:list={[{ active: path.startsWith("/courts") }]} href="/courts/" aria-current={path.startsWith("/courts") ? "page" : undefined}>找場地</a>
+        <a
+          class:list={[{ active: path === "/builder/" }]}
+          href="/builder/?from=mobile_nav"
+          aria-current={path === "/builder/" ? "page" : undefined}
+          data-analytics-event="site_builder_clicked"
+          data-analytics-detail-event="site_builder_source"
+          data-analytics-placement="mobile_nav"
+        >新手配裝工具</a>
+        <a class:list={[{ active: path === "/about/" }]} href="/about/" aria-current={path === "/about/" ? "page" : undefined}>關於我們</a>
+      </nav>
+    </details>
   </div>
 </header>
+
+<script>
+  // Native <details> works without JavaScript; these listeners improve dismissal.
+  const mobileMenu = document.querySelector<HTMLDetailsElement>(".mobile-menu");
+  if (mobileMenu) {
+    document.addEventListener("pointerdown", (event) => {
+      if (mobileMenu.open && event.target instanceof Node && !mobileMenu.contains(event.target)) {
+        mobileMenu.open = false;
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileMenu.open) {
+        mobileMenu.open = false;
+        mobileMenu.querySelector<HTMLElement>("summary")?.focus();
+      }
+    });
+    window.matchMedia("(min-width: 1041px)").addEventListener("change", (event) => {
+      if (event.matches) mobileMenu.open = false;
+    });
+  }
+</script>
