@@ -105,6 +105,25 @@ const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
         </div>
       </section>
     )}
+
+    {cityData.id === "taipei" && (
+      <section class="courts-v4-editorial" aria-labelledby="taipei-first-game">
+        <p class="guide-step">FIRST GAME IN TAIPEI</p>
+        <h2 id="taipei-first-game">台北第一次找球局，先確認這 4 件事</h2>
+        <p>有匹克球場，不代表到了現場就能直接加入球局。第一次去的話，先問清楚場次與新手接待方式，比只看地址更實用。</p>
+        <div class="court-checklist">
+          <article><span>1</span><div><strong>有適合新手的場次嗎？</strong><p>問清楚是自由加入的零打（Open Play）、需要報名的球敘，還是自行找朋友包場。</p></div></article>
+          <article><span>2</span><div><strong>需要事先登記嗎？</strong><p>就算是公園、學校或河濱場地，也可能有固定活動或主揪安排，先確認日期與加入方式。</p></div></article>
+          <article><span>3</span><div><strong>能借球拍、會提供球嗎？</strong><p>第一次體驗不一定需要先買球拍。報名時問借拍、用球、鞋子要求與可能費用。</p></div></article>
+          <article><span>4</span><div><strong>出發前再次確認地點與時段</strong><p>室內場館可能須預約；戶外球敘可能因天氣或活動調整，不要只看舊時刻表就直接前往。</p></div></article>
+        </div>
+        <h3>不知道怎麼問？可以直接傳這段訊息</h3>
+        <div class="guide-script-box">
+          <p>「你好，我是第一次接觸匹克球的新手，想問這週有適合新手加入的球敘或零打嗎？需要先報名嗎？球拍可以借嗎？第一次去有什麼注意事項？」</p>
+        </div>
+        <p>想自己租場，可再參考 <a href="https://www.tsc.taipei/%E5%A0%B4%E9%A4%A8%E4%BB%8B%E7%B4%B9/%E5%8C%B9%E5%85%8B%E7%90%83%E7%90%83%E5%A0%B4pickleball/" target="_blank" rel="noopener noreferrer">臺北市網球中心的官方匹克球場資訊 ↗</a>；實際開放、租借與價格請以公告為準。</p>
+      </section>
+    )}
     <section class="courts-v4-local-faq" aria-labelledby="city-faq">
       <p class="guide-step">FIRST-TIME FAQ</p><h2 id="city-faq">{cityData.city}找場常見問題</h2>
       {profile.faqs.map(([question, answer]) => (

@@ -266,7 +266,7 @@ export const courtCities: CourtCity[] = [
         "access": "有新手教學場次，建議先報名"
       }
     ],
-    "guideHref": "/guide/taipei-pickleball-courts"
+    "guideHref": null
   },
   {
     "region": "北部",
