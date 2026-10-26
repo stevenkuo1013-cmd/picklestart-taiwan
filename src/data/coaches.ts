@@ -67,7 +67,7 @@ export const coachDirectory: CoachProfile[] = [
     ],
     "introduction": "在新豐設有室內匹克球訓練室，提供多種輔助教具與數位匹克球模擬器協助教學；另提供銀髮族入門課程優惠。",
     "experience": "網球及高爾夫球教學經驗超過 10 年，匹克球教學約 1.3 年。",
-    "qualifications": "匹克球丙級教練（申請者自述）。",
+    "qualifications": "匹克球丙級教練。",
     "photo": "/images/coaches/jk.webp",
     "lastConfirmed": "2026-10-26",
     "instagram": "https://www.instagram.com/everwellsports/",
@@ -96,7 +96,7 @@ export const coachDirectory: CoachProfile[] = [
       "團體"
     ],
     "introduction": "提供入門與進階匹克球教學，注重腳步移動技巧及比賽情境練習，課程包含球感、過渡區技巧及比賽模擬。",
-    "qualifications": "PPR L1、PPR L2、PPR YD（申請者自述，尚未獨立查驗）。",
+    "qualifications": "PPR L1、PPR L2、PPR YD。",
     "photo": "/images/coaches/kay-lin.webp",
     "lastConfirmed": "2026-10-26",
     "line": "https://line.me/ti/p/-Y8p_4LUZY",
@@ -124,7 +124,7 @@ export const coachDirectory: CoachProfile[] = [
       "團體"
     ],
     "introduction": "喜歡匹克球，也投入匹克球新手推廣，希望陪更多人一起接觸這項運動。",
-    "experience": "申請者自述目前球技程度約 3.5，已有固定學生，教學對象包含新手至程度 2.5 的學員。",
+    "experience": "目前球技程度約 3.5，已有固定學生，教學對象包含新手至程度 2.5 的學員。",
     "photo": "/images/coaches/yezi.webp",
     "lastConfirmed": "2026-10-26",
     "instagram": "https://reurl.cc/rkqEqN",
@@ -152,8 +152,8 @@ export const coachDirectory: CoachProfile[] = [
       "團體"
     ],
     "introduction": "具備超過 20 年的運動競技教學經驗，擅長用容易理解的方式講解技巧，協助學員循序漸進學習匹克球。",
-    "experience": "申請者自述具有超過 20 年的運動競技教學經驗。",
-    "qualifications": "匹克球丙級教練、田徑 C 級教練、排球 C 級教練（申請者自述）。",
+    "experience": "具有超過 20 年的運動競技教學經驗。",
+    "qualifications": "匹克球丙級教練、田徑 C 級教練、排球 C 級教練。",
     "photo": "/images/coaches/dian-ge.webp",
     "lastConfirmed": "2026-10-26",
     "instagram": "https://www.instagram.com/gosaxon/",
@@ -184,7 +184,7 @@ export const coachDirectory: CoachProfile[] = [
       "團體"
     ],
     "introduction": "Hello，我是 Sauli，提供雙北地區的匹克球教學。",
-    "qualifications": "PPR L1、中華民國匹克球協會丙級教練證；申請者自述於林口南勢國小指導社團，並與匹克啾、SP Pickleball 團隊合作。",
+    "qualifications": "PPR L1、中華民國匹克球協會丙級教練證；於林口南勢國小指導社團，並與匹克啾、SP Pickleball 團隊合作。",
     "photo": "/images/coaches/sauli.webp",
     "lastConfirmed": "2026-10-26",
     "instagram": "https://www.instagram.com/pickleball_sauli/",

@@ -68,3 +68,6 @@
 @media(max-width:510px){.coach-directory,.coach-profile{padding-top:20px}.coach-hero{padding:24px 20px;border-radius:21px}.coach-hero h1{font-size:2.2rem}.coach-filters{grid-template-columns:1fr}.coach-filters label:last-child{grid-column:auto}.coach-empty{align-items:flex-start;flex-direction:column}.coach-card{padding:18px}.coach-card-top{gap:12px}.coach-avatar{width:65px;height:65px}.coach-card h2{font-size:1.3rem}.coach-profile-head{flex-direction:column;align-items:flex-start}.coach-avatar-large{width:100px;height:100px}.coach-profile-main,.coach-profile-contact{padding:22px}}
 
 @media(max-width:480px){.coach-apply-button{white-space:normal;text-align:center;width:100%}.coach-hero-notes span{font-size:.75rem}.coach-hero h1{font-size:clamp(2rem,8vw,2.28rem)}}
+
+/* V4.18 Coach heading legibility: consistent near-black. */
+.coach-directory h1, .coach-directory h2, .coach-profile h1, .coach-profile h2, .coach-hero h1 span { color: #161616; }
