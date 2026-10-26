@@ -14,9 +14,11 @@ const sample: CoachProfile = {
 };
 
 describe("V4.17 approved public coach directory", () => {
-  it("starts without fabricated live coaches", () => {
-    expect(coachDirectory).toHaveLength(0);
-    expect(publishedCoaches(coachDirectory)).toHaveLength(0);
+  it("loads only manually approved and publishable real coach profiles", () => {
+    expect(coachDirectory).toHaveLength(5);
+    expect(publishedCoaches(coachDirectory)).toHaveLength(5);
+    expect(coachDirectory.every(coach => coach.approved && coach.active)).toBe(true);
+    expect(coachDirectory.every(coach => coach.teachingAreas.join('、') === coach.cities.join('、'))).toBe(true);
   });
   it("provides Taiwan regions for the city filter", () => {
     expect(COACH_CITIES).toContain("臺北市");
@@ -48,6 +50,10 @@ describe("V4.17 approved public coach directory", () => {
     expect(safeCoachLink("line", "https://line.me/R/ti/p/@coach-abc")).not.toBeNull();
     expect(safeCoachLink("line", "https://line.me/ti/p/abcDE")).not.toBeNull();
     expect(coachContacts(sample).map((x) => x.network)).toEqual(["instagram", "line"]);
+    expect(safeCoachLink("instagram", "https://reurl.cc/rkqEqN")).toBe("https://reurl.cc/rkqEqN");
+    expect(safeCoachLink("facebook", "https://reurl.cc/rkqEqN")).toBeNull();
+    expect(safeCoachLink("instagram", "https://reurl.cc/notApproved")).toBeNull();
+    expect(safeCoachLink("instagram", "https://reurl.cc/rkqEqN?changed=1")).toBeNull();
   });
   it("rejects phishing and unsafe links", () => {
     for (const url of ["javascript:alert(1)", "http://lin.ee/abc", "https://lin.ee.evil.com/abc", "https://line.me.evil.com/R/ti/p/a", "https://google.com/line.me", "https://line.me/whatever"]) {

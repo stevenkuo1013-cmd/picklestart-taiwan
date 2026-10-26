@@ -9,9 +9,17 @@ const trustedHosts: Record<CoachNetwork, readonly string[]> = {
   line: ["line.me", "www.line.me", "lin.ee"]
 };
 
+/**
+ * A SINGLE coach-submitted Instagram short link has been approved for display.
+ * Do not trust other reurl.cc links, and do not treat this IG link as Facebook.
+ * A short-link redirect destination can change: verify destination manually.
+ */
+const allowedInstagramShortLink = "https://reurl.cc/rkqEqN";
+
 /** Reject javascript:, spoofed hosts, non-HTTPS and untrusted public links. */
 export function safeCoachLink(network: CoachNetwork, candidate?: string): string | null {
   if (typeof candidate !== "string" || !candidate.trim()) return null;
+  if (network === "instagram" && candidate.trim() === allowedInstagramShortLink) return allowedInstagramShortLink;
   try {
     const url = new URL(candidate.trim());
     if (url.protocol !== "https:" || !trustedHosts[network].includes(url.hostname.toLowerCase())) return null;
