@@ -71,3 +71,19 @@
 
 /* V4.18 Coach heading legibility: consistent near-black. */
 .coach-directory h1, .coach-directory h2, .coach-profile h1, .coach-profile h2, .coach-hero h1 span { color: #161616; }
+
+/* V4.20 COACH SEO: regional discoverability without doorway pages. */
+.coach-area-links,.coach-choice-guide,.coach-profile-area-nav{margin-top:24px;padding:24px;border:1px solid #e0e9eb;border-radius:22px;background:#fff}
+.coach-area-links h2,.coach-choice-guide h2{margin:0 0 10px;font-size:clamp(1.3rem,2.4vw,1.65rem);line-height:1.4;color:#161616}
+.coach-area-links p,.coach-choice-guide p,.coach-choice-guide li{color:#526674;line-height:1.8}
+.coach-area-links p{margin:0 0 15px}
+.coach-area-grid{display:flex;gap:10px;flex-wrap:wrap}
+.coach-area-grid a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #dce9eb;border-radius:12px;background:#f5fafb;color:#134966;text-decoration:none;font-weight:700}
+.coach-area-grid a span{color:#5c7684;font-weight:500;font-size:.84rem}
+.coach-area-grid a:hover,.coach-area-grid a:focus-visible{background:#f2fcbf;border-color:#dce9a9}
+.coach-choice-guide ul{padding-left:1.3rem;margin:10px 0 12px}
+.coach-choice-guide li+li{margin-top:8px}
+.coach-choice-guide p:last-child{margin-bottom:0}
+.coach-choice-guide a,.coach-profile-area-nav a{color:#086d91;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.coach-profile-area-nav{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;color:#161616}
+@media(max-width:510px){.coach-area-links,.coach-choice-guide,.coach-profile-area-nav{padding:20px}}

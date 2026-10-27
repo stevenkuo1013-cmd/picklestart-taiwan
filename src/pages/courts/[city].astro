@@ -5,6 +5,8 @@ import { courtCities, COURT_LAST_UPDATED_AT, COURT_SOURCE_URL } from "../../data
 import { courtGuideProfiles } from "../../data/court-guides";
 import { getCourtMapAction } from "../../lib/court-maps";
 import CourtAnalytics from "../../components/CourtAnalytics.astro";
+import { coachDirectory, type CoachCity } from "../../data/coaches";
+import { publishedCoaches } from "../../lib/coach-directory";
 import "../../styles/guide.css";
 
 export function getStaticPaths() {
@@ -17,6 +19,13 @@ export function getStaticPaths() {
 const { cityData, profile } = Astro.props;
 const privatePlaces = cityData.places.filter((p) => p.ownership === "private");
 const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
+// Match the existing six city guides to actual public coach locations.
+const coachCityForCourt: Record<string, string> = {
+  "taipei": "臺北市", "new-taipei": "新北市", "hsinchu-county": "新竹縣",
+  "taichung": "臺中市", "tainan": "臺南市", "kaohsiung": "高雄市"
+};
+const linkedCoachCity = coachCityForCourt[cityData.id] as CoachCity | undefined;
+const cityCoachCount = linkedCoachCity ? publishedCoaches(coachDirectory).filter((coach) => coach.cities.includes(linkedCoachCity)).length : 0;
 ---
 <BaseLayout
   pageType="article"
@@ -136,6 +145,15 @@ const otherPlaces = cityData.places.filter((p) => p.ownership !== "private");
       <a href="/courts/">返回全台匹克球場地（含縣市／室內外篩選） →</a>
       <a href={COURT_SOURCE_URL} target="_blank" rel="noopener noreferrer">參考：中華民國匹克球協會公開場地資訊 ↗</a>
     </section>
+    <!-- V4.20-COURT-COACH-LINK: only show verified real directory coverage -->
+    {linkedCoachCity && cityCoachCount > 0 && (
+      <section class="courts-v4-editorial" aria-label={`${cityData.city}匹克球教練`}>
+        <p class="guide-step">LOCAL COACH DIRECTORY</p>
+        <h2>在{cityData.city}想找匹克球教練？</h2>
+        <p>目前 PickleStart 已收錄 {cityCoachCount} 位提供{cityData.city}教學資訊的教練。可查看適合程度與公開聯絡方式，再由你直接向教練確認課程。</p>
+        <p><a href={`/coaches/?city=${encodeURIComponent(linkedCoachCity)}#coach-list`}>查看{cityData.city}匹克球教練（{cityCoachCount} 位）→</a></p>
+      </section>
+    )}
     <GuideEndCTA
       heading="場地決定了，第一套裝備不用亂買。"
       text="回答 6 題，依照預算、已有裝備和上場目標，整理第一次打球真正需要的東西。"

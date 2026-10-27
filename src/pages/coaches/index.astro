@@ -10,11 +10,16 @@ const coaches = publishedCoaches(coachDirectory);
 const formIsReady = /^https:\/\/tally\.so\/r\/[A-Za-z0-9]+(?:[/?#].*)?$/.test(COACH_FORM_URL);
 const levels = ["零基礎", "初學", "進階", "競技"];
 const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE" };
+// Only show cities with genuine, approved public coaches.
+const coachCityCounts = COACH_CITIES.map((city) => ({
+  city,
+  count: coaches.filter((coach) => coach.cities.includes(city)).length
+})).filter((item) => item.count > 0);
 ---
 
 <BaseLayout
-  title="全台匹克球教練｜依地區找新手教學與私人課｜PickleStart Taiwan"
-  description="想學匹克球卻不知道從哪找教練？依縣市與學習程度查看教練自行提供的授課資訊，再從 IG、FB 或 LINE 直接聯絡。本站不代為預約或收款。"
+  title="匹克球教練｜台北、新北、台中等全台教學資訊｜PickleStart Taiwan"
+  description="找匹克球教練？查看台北、新北、新竹、台中、高雄、雲林等地的教練介紹、適合程度與教學方式，並透過 Instagram 或 LINE 直接聯絡。課程細節請自行確認。"
   robots={coaches.length ? "index,follow,max-image-preview:large" : "noindex,follow"}
   breadcrumbs={[{ name: "首頁", href: "/" }, { name: "全台匹克球教練", href: "/coaches/" }]}
 >
@@ -31,6 +36,18 @@ const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE
 
     {coaches.length > 0 ? (
       <>
+        <!-- V4.20-COACH-SEO-LINKS: visible, useful regional entry points -->
+        <nav class="coach-area-links" aria-label="依縣市找匹克球教練">
+          <h2>依縣市找匹克球教練</h2>
+          <p>先選擇教學地區，再用程度或關鍵字縮小範圍。僅顯示目前已有公開教練資料的縣市。</p>
+          <div class="coach-area-grid">
+            {coachCityCounts.map(({ city, count }) => (
+              <a href={`/coaches/?city=${encodeURIComponent(city)}#coach-list`}>
+                {city}匹克球教練 <span>{count} 位</span>
+              </a>
+            ))}
+          </div>
+        </nav>
         <section class="coach-filter-panel" aria-label="教練搜尋條件">
           <div class="coach-filter-heading"><h2>尋找適合自己的教練</h2><p>目前收錄 {coaches.length} 位公開刊登教練，資料仍會持續更新。</p></div>
           <div class="coach-filters">
@@ -70,6 +87,19 @@ const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE
       <section class="coach-empty" aria-labelledby="coach-empty-title">
         <div class="coach-empty-icon" aria-hidden="true">↗</div>
         <div><p class="coach-eyebrow">FIRST COACHES WANTED</p><h2 id="coach-empty-title">教練名單正在募集第一批資料</h2><p>我們只刊登教練同意公開、經過人工檢查的介紹與聯絡方式。目前尚無公開教練名單，不會用未確認資訊或示範人名充數。</p></div>
+      </section>
+    )}
+
+    {coaches.length > 0 && (
+      <section class="coach-choice-guide" aria-labelledby="coach-choice-title">
+        <h2 id="coach-choice-title">第一次找匹克球教練，怎麼選？</h2>
+        <p>先確認教學縣市與適合程度，再看看教練提供的一對一、雙人或團體課程，挑選符合自己需求的方式。</p>
+        <ul>
+          <li><strong>第一次學匹克球：</strong>可以先詢問是否提供零基礎教學、是否需要自備球拍，以及第一堂課會練習什麼。</li>
+          <li><strong>已有打球經驗：</strong>可詢問是否有針對腳步、截擊、第三拍或實戰對打的練習安排。</li>
+          <li><strong>預約前確認：</strong>請直接向教練確認課程費用、上課地點、場租與取消規定；本站不代訂課程。</li>
+        </ul>
+        <p>如果還沒決定在哪打球，可以先看看 <a href="/courts/">全台匹克球場地資訊</a>。</p>
       </section>
     )}
 
@@ -118,5 +148,12 @@ const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE
     city?.addEventListener("change", updateCoaches);
     level?.addEventListener("change", updateCoaches);
     query?.addEventListener("input", updateCoaches);
+    // A city link from a court guide opens the same canonical directory prefiltered.
+    // We do not create indexable near-duplicate city pages with thin content.
+    const linkedCity = new URLSearchParams(window.location.search).get("city");
+    if (linkedCity && city && Array.from(city.options).some((opt) => opt.value === linkedCity)) {
+      city.value = linkedCity;
+      updateCoaches();
+    }
   </script>
 </BaseLayout>

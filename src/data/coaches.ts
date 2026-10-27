@@ -210,13 +210,14 @@ export const coachDirectory: CoachProfile[] = [
     ],
     "formats": [
       "一對一",
-      "雙人"
+      "雙人",
+      "團體"
     ],
-    "introduction": "具有約 7–8 年桌球教學經驗，接觸匹克球後同時投入桌球與匹克球教學。提供雙北地區的一對一與雙人課程，歡迎有興趣的學員洽詢試上。",
+    "introduction": "具有約 7–8 年桌球教學經驗，接觸匹克球後同時投入桌球與匹克球教學。提供雙北地區的一對一、雙人及團體課程，歡迎有興趣的學員洽詢試上。",
     "experience": "桌球教學經驗約 7–8 年；曾獲台中國際匹克球公開賽 4.0 級單打第三名。",
     "instagram": "https://www.instagram.com/_elvin526/",
     "line": "https://line.me/ti/p/K9fqCmyNRa",
-    "lastConfirmed": "2026-10-26",
+    "lastConfirmed": "2026-10-27",
     "photo": "/images/coaches/elvin-taipei.webp",
     "approved": true,
     "active": true

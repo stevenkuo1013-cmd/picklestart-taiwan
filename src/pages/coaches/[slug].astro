@@ -12,8 +12,8 @@ const contacts = coachContacts(coach);
 const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE" };
 ---
 <BaseLayout
-  title={`${coach.displayName}｜${coach.cities.join("、")}匹克球教練｜PickleStart Taiwan`}
-  description={`${coach.displayName} 的匹克球教學地區：${coach.teachingAreas.join("、")}。適合程度：${coach.levels.join("、")}。可透過公開 IG、FB 或 LINE 自行詢問課程。`}
+  title={`${coach.displayName}｜${coach.cities.join("、")}匹克球教練與教學資訊｜PickleStart Taiwan`}
+  description={`在${coach.cities.join("、")}找匹克球教練？認識 ${coach.displayName} 的教學介紹，適合${coach.levels.join("、")}程度，提供${coach.formats.join("、")}課程，並可直接聯絡了解詳情。`}
   breadcrumbs={[{ name: "首頁", href: "/" }, { name: "找教練", href: "/coaches/" }, { name: coach.displayName, href: `/coaches/${coach.id}/` }]}
 >
   <article class="coach-profile">
@@ -23,6 +23,13 @@ const networkNames = { instagram: "Instagram", facebook: "Facebook", line: "LINE
       <div><p class="coach-eyebrow">COACH PROFILE · PUBLIC INFO</p><h1>{coach.displayName}</h1><p>{coach.teachingAreas.join("、")}</p><div class="coach-tags">{coach.levels.map((level) => <span>{level}</span>)}{coach.formats.map((format) => <span class="coach-tag-alt">{format}</span>)}</div></div>
     </header>
     <section class="coach-profile-main"><h2>關於教練</h2><p>{coach.introduction}</p>{coach.experience && <p><strong>教學經驗：</strong>{coach.experience}</p>}{coach.qualifications && <p><strong>資格／經歷：</strong>{coach.qualifications}</p>}<p class="coach-confirmed">資料最近確認：{coach.lastConfirmed}</p></section>
+    <!-- V4.20-COACH-PROFILE-AREAS -->
+    <nav class="coach-profile-area-nav" aria-label="查看相同縣市的教練">
+      <strong>想比較同地區的教練？</strong>
+      {coach.cities.map((city) => (
+        <a href={`/coaches/?city=${encodeURIComponent(city)}#coach-list`}>{city}匹克球教練名單 →</a>
+      ))}
+    </nav>
     <section class="coach-profile-contact"><div><p class="coach-eyebrow">GET IN TOUCH</p><h2>私訊教練，了解課程</h2><p>點選教練提供的社群連結自行洽談；本站不參與預約、報價或付款。</p></div><div class="coach-contact-buttons">{contacts.map((contact) => <a href={contact.href} target="_blank" rel="noopener noreferrer external nofollow" data-coach-id={coach.id} data-coach-network={contact.network} aria-label={`透過 ${networkNames[contact.network]} 聯絡 ${coach.displayName}`}>{networkNames[contact.network]} ↗</a>)}</div></section>
     <p class="coach-profile-disclaimer">上述資料由教練提供並同意公開；請自行確認課程細節與教學資格。PickleStart 不提供課程安排或交易服務。教練本人如需更正或撤下資料，請私訊 <a href="https://www.instagram.com/picklestart.taiwan/" target="_blank" rel="noopener noreferrer external nofollow">PickleStart 官方 Instagram</a>。</p>
     <a class="coach-back" href="/coaches/">← 回到全台教練目錄</a>
