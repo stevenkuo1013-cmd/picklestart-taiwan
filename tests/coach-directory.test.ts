@@ -15,8 +15,8 @@ const sample: CoachProfile = {
 
 describe("V4.17 approved public coach directory", () => {
   it("loads only manually approved and publishable real coach profiles", () => {
-    expect(coachDirectory).toHaveLength(5);
-    expect(publishedCoaches(coachDirectory)).toHaveLength(5);
+    expect(coachDirectory).toHaveLength(9);
+    expect(publishedCoaches(coachDirectory)).toHaveLength(9);
     expect(coachDirectory.every(coach => coach.approved && coach.active)).toBe(true);
     expect(coachDirectory.every(coach => coach.teachingAreas.join('、') === coach.cities.join('、'))).toBe(true);
   });
