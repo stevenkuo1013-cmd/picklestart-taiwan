@@ -2898,3 +2898,53 @@
   border-color: #146e7d;
   color: #fff;
 }
+
+/* V4.21 · Court hub readability only (scoped, filtering and content untouched). */
+.courts-v2-page .courts-v2-hero { gap: 24px; padding: 30px; box-shadow: 0 10px 28px rgba(16,36,63,.04); }
+.courts-v2-page .courts-v2-hero h1,
+.courts-v2-page .courts-v2-hero h1 span { color: #171b22; }
+.courts-v2-page .courts-v2-hero-copy > p:not(.eyebrow) { color: #536672; line-height: 1.7; }
+.courts-v2-page .courts-v2-search-panel { padding: 20px; box-shadow: 0 6px 18px rgba(16,36,63,.025); }
+.courts-v2-page .courts-v2-search-note { color: #607681; font-size: .74rem; line-height: 1.6; }
+.courts-v2-page .courts-v2-results-head { padding-top: 40px; }
+.courts-v2-page .courts-v2-city-card { box-shadow: 0 6px 20px rgba(16,36,63,.035); }
+.courts-v2-page .courts-v2-city-card > summary { padding: 18px 20px; }
+.courts-v2-page .courts-v2-place { background: #fff; border-color: #e2e9ea; }
+.courts-v2-page .courts-v2-place h4 { color: #171b22; font-size: 1.02rem; line-height: 1.45; }
+.courts-v2-page .courts-v2-address { color: #637784; font-size: .76rem; }
+.courts-v2-page .courts-v2-place-meta dd { color: #425766; font-size: .78rem; line-height: 1.65; }
+.courts-v2-page .courts-v2-place-meta dt { color: #5c7380; font-size: .7rem; }
+@media (max-width: 760px) {
+  .courts-v2-page .courts-v2-hero { padding: 22px 18px; }
+  .courts-v2-page .courts-v2-search-panel { padding: 17px; }
+  .courts-v2-page .courts-v2-city-card > summary { padding: 17px 16px; }
+}
+
+/* V4.21 Fix1 · Court headline + CTA balanced wrapping only. */
+.courts-v2-page .courts-v2-hero h1 {
+  font-size: clamp(2.1rem, 4.4vw, 3.55rem);
+  line-height: 1.15;
+}
+.courts-v2-page .courts-v2-hero h1 > span {
+  display: block;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.courts-v2-page .guide-end-cta p:not(.eyebrow) {
+  text-wrap: balance;
+}
+@media (max-width: 720px) {
+  .courts-v2-page .courts-v2-hero h1 {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+  }
+}
+
+/* V4.22 Fix1 — Balance only the second, explicitly separated guide headline line. */
+.guide-story-page .guide-hero h1 > .guide-story-heading-tail {
+  display: block;
+  text-wrap: balance;
+}
+@media (max-width: 360px) {
+  .guide-hub .guide-hub-hero h1 { font-size: 2.35rem; }
+  .paddle-buying-guide .guide-hero h1 { font-size: 2.35rem; }
+}

@@ -1648,3 +1648,51 @@ a { color: inherit; }
   .header-cta-short { display: inline; }
   .mobile-menu > summary { width: 44px; height: 44px; }
 }
+
+/* V4.21 · Homepage readability only (no global style overrides). */
+.hero-v3 h1.hero-title-v4 .hero-title-dark,
+.hero-v3 h1.hero-title-v4 .hero-title-teal {
+  color: #171b22;
+}
+.home-block.home-block-v3 { padding-top: 54px; padding-bottom: 54px; }
+.home-block-v3 .section-intro-row { margin-bottom: 24px; }
+.home-block-v3 .flow-card { min-height: 0; padding: 22px; box-shadow: 0 7px 22px rgba(16,36,63,.035); }
+.home-block-v3 .flow-card p { line-height: 1.65; }
+.why-strip-v3 .why-heading h2,
+.guide-home-block .block-heading h2 { color: #171b22; }
+@media (max-width: 760px) {
+  .home-block.home-block-v3 { padding-top: 42px; padding-bottom: 42px; }
+  .home-block-v3 .flow-card { padding: 19px; }
+}
+
+/* V4.22 — Mobile hero & narrow trust-strip orphan fixes. */
+@media (max-width: 480px) {
+  .hero-v3 h1.hero-title-v4 {
+    font-size: clamp(2.12rem, 9vw, 2.48rem);
+  }
+  .hero-v3 h1.hero-title-v4 .hero-title-line {
+    text-wrap: balance;
+  }
+}
+@media (max-width: 820px) {
+  .trust-ribbon > div {
+    gap: 8px;
+    padding-inline: 8px;
+  }
+  .trust-ribbon .trust-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+  .trust-ribbon .trust-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .trust-ribbon p {
+    min-width: 0;
+  }
+  .trust-ribbon strong,
+  .trust-ribbon small {
+    text-wrap: balance;
+  }
+}

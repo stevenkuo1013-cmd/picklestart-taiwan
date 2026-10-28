@@ -124,7 +124,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="about-section about-method">
       <div class="about-method-intro">
         <p class="about-kicker">HOW WE RECOMMEND</p>
-        <h2>不是最好<br /><span class="about-heading-accent">而是更適合現在的你</span></h2>
+        <h2>不是最好<span class="about-heading-accent">而是更適合現在的你</span></h2>
         <p>
           第一次體驗、每週固定打球，或已經有羽球裝備，
           不同情況本來就不該得到同一個答案。
@@ -201,7 +201,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="about-final-cta">
       <div class="about-final-copy">
         <p class="about-kicker">READY TO START?</p>
-        <h2>準備好開始<br /><span class="about-heading-accent">第一場匹克球了嗎？</span></h2>
+        <h2>準備好開始<span class="about-heading-accent">第一場匹克球了嗎？</span></h2>
         <p>
           不用先把所有裝備買齊。回答幾個問題，
           看看你現在真正需要的是什麼。
@@ -873,5 +873,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     color: var(--about-blue);
   }
 
+  /* V4.22 Fix1 — Balance the two identified about-page heading tails only. */
+  .about-method-intro h2 > .about-heading-accent,
+  .about-final-copy h2 > .about-heading-accent {
+    display: block;
+    text-wrap: balance;
+  }
 </style>
 

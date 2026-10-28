@@ -12,8 +12,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <p class="recommend-eyebrow">HOW WE RECOMMEND</p>
 
         <h1>
-          不是找最貴的，<br />
-          而是找現在適合你的。
+          不是找最貴的，<span class="recommend-heading-tail">而是找現在適合你的</span>
         </h1>
 
         <p class="recommend-lead">
@@ -344,7 +343,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="recommend-final-cta">
       <div>
         <p class="recommend-kicker">READY TO START?</p>
-        <h2>知道方法了，現在配你的第一套裝備。</h2>
+        <h2>知道方法了，現在配你的第一套裝備</h2>
       </div>
 
       <a
@@ -850,6 +849,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       .recommend-primary-button {
         width: 100%;
       }
+    }
+      /* V4.22 Fix1 — Keep the original second line but balance its wraps. */
+    .recommend-hero h1 > .recommend-heading-tail {
+      display: block;
+      text-wrap: balance;
     }
   </style>
 </BaseLayout>

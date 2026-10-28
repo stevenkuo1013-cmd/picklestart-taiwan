@@ -2207,3 +2207,18 @@ body {
   }
 }
 
+
+/* V4.22 — Orphan-line readability in site content only.
+   Does not affect nav, controls, SEO or underlying text/data. */
+.public-shell :is(h1, h2, h3, h4) {
+  text-wrap: balance;
+}
+.public-shell :is(p, li, summary) {
+  text-wrap: pretty;
+}
+
+/* V4.22 Fix1 — Builder question title only; preserve all text and controls. */
+.builder-shell .question-title { text-wrap: balance; }
+@media (max-width: 350px) {
+  .builder-shell .question-title { font-size: 2.04rem; }
+}

@@ -9,7 +9,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <article class="feedback-page">
     <header class="feedback-hero">
       <p class="feedback-eyebrow">FEEDBACK</p>
-      <h1>有沒有什麼想對<br />PickleStart 說的？</h1>
+      <h1>有沒有什麼想對<span class="feedback-heading-tail">PickleStart 說的？</span></h1>
       <p class="feedback-lead">
         不用留下姓名或 Email。哪裡不好用、看不懂，
         或有任何希望我們改進的地方，都歡迎直接告訴我們。
@@ -341,6 +341,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       .feedback-embed-frame iframe {
         height: 610px;
+      }
+    }
+      /* V4.22 Fix1 — Keep the brand phrase together on narrow screens. */
+    .feedback-hero h1 > .feedback-heading-tail {
+      display: block;
+      text-wrap: balance;
+    }
+    @media (max-width: 480px) {
+      .feedback-hero h1 > .feedback-heading-tail {
+        font-size: .74em;
+        white-space: nowrap;
       }
     }
   </style>

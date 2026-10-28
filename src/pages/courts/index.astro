@@ -78,9 +78,9 @@ const faqItems = [
     <section class="courts-v2-hero">
       <div class="courts-v2-hero-copy">
         <p class="eyebrow">FIND A COURT · TAIWAN</p>
-        <h1>台灣匹克球場地<br /><span>找到你真的能去打的地方。</span></h1>
+        <h1><span>全台匹克球場地</span><span>依縣市找球館與球聚</span></h1>
         <p>
-          優先找能預約的私人球館，也保留公園、校園與固定球聚。先確認場館資訊，再從地圖找入口。
+          搜尋私人球館、公共球場與固定球聚，快速找到地點、場次與聯絡方式。
         </p>
 
         <div class="courts-v2-stats" aria-label="場地資料摘要">
@@ -138,7 +138,7 @@ const faqItems = [
           目前符合 <strong id="court-filter-count">{totalPrivateCourts}</strong> 個場地，向下查看詳細資訊。
         </p>
         <p class="courts-v2-search-note">
-          優先顯示私人球館。有 Place ID 或場館分享連結的項目可開啟 Google Maps 地點資訊；其他可能透過文字搜尋，即使已實測，搜尋結果仍可能變動。
+          優先顯示私人球館。部分地圖連結使用名稱搜尋，出發前請核對地點與最新開放資訊。
         </p>
       </div>
     </section>
@@ -147,7 +147,7 @@ const faqItems = [
       <div>
         <p class="guide-step">COURT DIRECTORY</p>
         <h2 id="court-results-title">私人／專業球館</h2>
-        <p class="courts-v3-directory-hint">這裡顯示的是目前符合篩選條件的場地。可切換經營類型或縣市，點開各縣市查看詳情。</p>
+        <p class="courts-v3-directory-hint">展開縣市，查看場地、費用、球聚時間與資料來源。</p>
       </div>
       <p class="courts-v3-results-count"><strong id="court-visible-count">{totalPrivateCourts}</strong> 個符合條件的場地</p>
     </section>
@@ -186,7 +186,7 @@ const faqItems = [
                     data-city-description
                     data-original-description={city.description}
                   >
-                    以下是本縣市目前收錄的私人／專業球館；預約時段、費用與是否接受新手請以場館最新公告為準。
+                    預約、費用與是否開放新手，請以場館最新公告為準。
                   </p>
 
                   {courtGuideProfiles[city.id] && (
@@ -379,7 +379,7 @@ const faqItems = [
     <GuideFAQ items={faqItems} />
 
     <GuideEndCTA
-      heading="找到場地之後，再決定真的需要買什麼。"
+      heading="找到場地之後，再決定真的需要買什麼"
       text="回答 6 題，配裝工具會依你的場地、現有裝備與預算，把現在要買、可以沿用、之後再買和目前不用買分清楚。"
       buttonText="幫我配第一次上場的裝備"
     />
@@ -495,7 +495,7 @@ const faqItems = [
       const cityDescription = cityCard.querySelector<HTMLElement>("[data-city-description]");
       if (cityDescription) {
         cityDescription.textContent = activeOwnership === "private"
-          ? "以下是本縣市目前收錄的私人／專業球館；預約時段、費用與是否接受新手請以場館最新公告為準。"
+          ? "預約、費用與是否開放新手，請以場館最新公告為準。"
           : activeOwnership === "public"
             ? cityDescription.dataset.originalDescription ?? "公共場地與球聚資訊可能變動，出發前請確認。"
             : "這裡同時包含私人球館、公共場地及球聚。請以各場地的來源確認實際開放與報名方式。";
